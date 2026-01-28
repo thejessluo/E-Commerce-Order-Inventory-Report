@@ -34,7 +34,7 @@ This Power BI suite provides end-to-end visibility into the Sellercloud ecosyste
 ![Surge Sales](./screenshots/SurgeSales.png)
 
 ## 🛠️ Technical Architecture
-* **Data Source:** Sellercloud API / SQL Backend.
+* **Data Source:** Sellercloud API / SQL Backend, accessed via OpenVPN.
 * **Version Control:** Developed using the **Power BI Project (.pbip)** format for granular Git tracking.
 * **DAX Highlights:**
     * 7-Day Rolling Averages for RMA rates.
