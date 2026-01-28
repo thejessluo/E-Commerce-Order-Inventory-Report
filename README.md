@@ -18,7 +18,7 @@ This Power BI suite provides end-to-end visibility into the Sellercloud ecosyste
 * **Dropship Monitoring:** Dedicated tracking for Aging Dropship None orders (Excludes WFS).
 
 ### 3. Post-Order & RMA Analytics
-![Post Order](./screenshots/PostOrderDash.png)
+![Post Order](./screenshots/PostOrderDashboard.png)
 * **Carrier Performance:** Monitoring "No Carrier Scan" packages across FedEx and UPS to identify transit bottlenecks.
 * **Returns Management (RMA):** * Monthly RMA return rate trends and granular return analysis by Product ID.
     * 7-day rolling average of return rates vs. quantity sold to spot quality control issues.
