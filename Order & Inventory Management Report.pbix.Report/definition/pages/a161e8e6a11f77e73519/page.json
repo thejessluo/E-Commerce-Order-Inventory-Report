@@ -1,0 +1,47 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/page/2.0.0/schema.json",
+  "name": "a161e8e6a11f77e73519",
+  "displayName": "📈 Units Sold by SKU",
+  "displayOption": "ActualSize",
+  "height": 810,
+  "width": 1600,
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "aad5d88ab4200ea1c271",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "bvc_OrderItem"
+              }
+            },
+            "Property": "ProductID"
+          }
+        },
+        "type": "Categorical",
+        "howCreated": "Drillthrough"
+      }
+    ]
+  },
+  "pageBinding": {
+    "name": "a6501676d5213917acde",
+    "type": "Drillthrough",
+    "parameters": [
+      {
+        "name": "2a520a821dd0c744e6d3",
+        "boundFilter": "aad5d88ab4200ea1c271",
+        "fieldExpr": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "bvc_OrderItem"
+              }
+            },
+            "Property": "ProductID"
+          }
+        }
+      }
+    ]
+  }
+}

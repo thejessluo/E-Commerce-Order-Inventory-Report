@@ -1,0 +1,279 @@
+table RMAItem
+	lineageTag: 881ca70e-c7b5-4c7f-a90a-ef382524eae2
+
+	column ID
+		dataType: int64
+		formatString: 0
+		lineageTag: d408dbf1-30d2-4c85-bf58-e2b500a558b2
+		summarizeBy: count
+		sourceColumn: ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column RMAID
+		dataType: int64
+		formatString: 0
+		lineageTag: da32359c-5bcc-42a9-aa66-6bb76e068493
+		summarizeBy: none
+		sourceColumn: RMAID
+
+		annotation SummarizationSetBy = Automatic
+
+	column OriginalOrderID
+		dataType: int64
+		formatString: 0
+		lineageTag: c81aafcb-1e53-4ede-9509-722e9c6a3ed9
+		summarizeBy: count
+		sourceColumn: OriginalOrderID
+
+		annotation SummarizationSetBy = Automatic
+
+	column OriginalOrderItemID
+		dataType: int64
+		formatString: 0
+		lineageTag: 3f010cb1-34b3-4ccb-a9f6-c2c6bf7f5724
+		summarizeBy: none
+		sourceColumn: OriginalOrderItemID
+
+		annotation SummarizationSetBy = Automatic
+
+	column ReturnReason
+		dataType: int64
+		formatString: 0
+		lineageTag: eaf21e1d-638d-4a1c-b5af-7aedaeef32e5
+		summarizeBy: sum
+		sourceColumn: ReturnReason
+
+		annotation SummarizationSetBy = Automatic
+
+	column ReturnResolution
+		dataType: int64
+		formatString: 0
+		lineageTag: 8107a78c-9f6a-4768-a05e-02b076d3f801
+		summarizeBy: sum
+		sourceColumn: ReturnResolution
+
+		annotation SummarizationSetBy = Automatic
+
+	column NewOrderID
+		dataType: int64
+		formatString: 0
+		lineageTag: 6716f7d4-b5c0-44a9-adee-44656229878f
+		summarizeBy: count
+		sourceColumn: NewOrderID
+
+		annotation SummarizationSetBy = Automatic
+
+	column NewOrderItemID
+		dataType: int64
+		formatString: 0
+		lineageTag: 292d6d86-174c-4312-9227-bb89a398de3a
+		summarizeBy: count
+		sourceColumn: NewOrderItemID
+
+		annotation SummarizationSetBy = Automatic
+
+	column ProblemDescription
+		dataType: string
+		lineageTag: 8f5ee0bc-80d7-4930-8926-8973f2de5f55
+		summarizeBy: none
+		sourceColumn: ProblemDescription
+
+		annotation SummarizationSetBy = Automatic
+
+	column CustomerSupportComments
+		dataType: string
+		lineageTag: 16d86e5d-010e-42d4-965c-ead7f7c11c92
+		summarizeBy: none
+		sourceColumn: CustomerSupportComments
+
+		annotation SummarizationSetBy = Automatic
+
+	column QtyReturned
+		dataType: int64
+		formatString: 0
+		lineageTag: d4225b6a-a7e0-4551-800e-d0187d119985
+		summarizeBy: sum
+		sourceColumn: QtyReturned
+
+		annotation SummarizationSetBy = Automatic
+
+	column RefundAmount
+		dataType: double
+		lineageTag: 6df0cc35-2ddd-415e-8059-32cba80ba7d5
+		summarizeBy: sum
+		sourceColumn: RefundAmount
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column QtyReceived
+		dataType: int64
+		formatString: 0
+		lineageTag: 9e82dfdc-09e1-45a1-b3a8-d6010045eb3e
+		summarizeBy: sum
+		sourceColumn: QtyReceived
+
+		annotation SummarizationSetBy = Automatic
+
+	column QtyReceivedAddToInventory
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 76d6ffe5-f82f-4351-8302-bbb31063143b
+		summarizeBy: none
+		sourceColumn: QtyReceivedAddToInventory
+
+		annotation SummarizationSetBy = Automatic
+
+	column ReplacementSKU
+		dataType: string
+		lineageTag: 6ec2a729-ba33-4519-932f-ae6d372afa16
+		summarizeBy: none
+		sourceColumn: ReplacementSKU
+
+		annotation SummarizationSetBy = Automatic
+
+	column OriginalOrderItemKitItemProductID
+		dataType: string
+		lineageTag: 0a2f745a-ff7d-4a85-a5e7-e8589af0ff44
+		summarizeBy: none
+		sourceColumn: OriginalOrderItemKitItemProductID
+
+		annotation SummarizationSetBy = Automatic
+
+	column ReturnedToWarehouseID
+		dataType: int64
+		formatString: 0
+		lineageTag: 35a11dde-094c-478a-b539-f2c4b4dc1be5
+		summarizeBy: count
+		sourceColumn: ReturnedToWarehouseID
+
+		annotation SummarizationSetBy = Automatic
+
+	column Disposition
+		dataType: string
+		lineageTag: 0d2d9ab1-269c-4aa3-813f-5a9e11f7ebe2
+		summarizeBy: none
+		sourceColumn: Disposition
+
+		annotation SummarizationSetBy = Automatic
+
+	column DispositionProductCondition
+		dataType: string
+		lineageTag: a3845e5a-1a3d-4b62-b946-76ba65549bed
+		summarizeBy: none
+		sourceColumn: DispositionProductCondition
+
+		annotation SummarizationSetBy = Automatic
+
+	column ApprovalStatus
+		dataType: int64
+		formatString: 0
+		lineageTag: bbb26aa1-c11b-40b0-8753-6ca67858786d
+		summarizeBy: sum
+		sourceColumn: ApprovalStatus
+
+		annotation SummarizationSetBy = Automatic
+
+	column ArrivedOn
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: a7a01750-3ceb-4c34-9394-f12dc826f3d5
+		summarizeBy: none
+		sourceColumn: ArrivedOn
+
+		variation Variation
+			isDefault
+			relationship: 14da510b-5b86-419f-beb4-74f426e9cd55
+			defaultHierarchy: LocalDateTable_152c527b-e028-451d-9f30-a04cac326338.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	column ConditionScale
+		dataType: string
+		lineageTag: c515c398-1e10-4459-b041-4d468badf964
+		summarizeBy: none
+		sourceColumn: ConditionScale
+
+		annotation SummarizationSetBy = Automatic
+
+	column RestockingFee
+		dataType: double
+		lineageTag: 97039137-b35a-4c82-8ab1-79898fcbc242
+		summarizeBy: sum
+		sourceColumn: RestockingFee
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column InspectionNotes
+		dataType: string
+		lineageTag: 33b26aa2-c0c2-411e-bcb0-b225c3874cdf
+		summarizeBy: none
+		sourceColumn: InspectionNotes
+
+		annotation SummarizationSetBy = Automatic
+
+	column TaxRefund
+		dataType: double
+		lineageTag: 8f294e0b-7edc-4034-9fe0-542bfbf2d052
+		summarizeBy: sum
+		sourceColumn: TaxRefund
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column ChannelReasonCode
+		dataType: string
+		lineageTag: 975acf47-5814-45ce-a4ad-33eee5d0a905
+		summarizeBy: none
+		sourceColumn: ChannelReasonCode
+
+		annotation SummarizationSetBy = Automatic
+
+	column OrderSourceRMAID
+		dataType: string
+		lineageTag: 13e2d9ba-6d2f-4ae9-be2f-07583413ae71
+		summarizeBy: none
+		sourceColumn: OrderSourceRMAID
+
+		annotation SummarizationSetBy = Automatic
+
+	column ExpectedResoluton
+		dataType: int64
+		formatString: 0
+		lineageTag: 7b4005d4-192b-44fb-95ee-af847764c372
+		summarizeBy: sum
+		sourceColumn: ExpectedResoluton
+
+		annotation SummarizationSetBy = Automatic
+
+	column ExpectedDisposition
+		dataType: int64
+		formatString: 0
+		lineageTag: 8b5d8e21-3e5b-4652-b2be-fc44d4986332
+		summarizeBy: sum
+		sourceColumn: ExpectedDisposition
+
+		annotation SummarizationSetBy = Automatic
+
+	column SerialNumbersReturned
+		dataType: string
+		lineageTag: a98c9512-2fec-4c94-bad1-6bfc7a23eb07
+		summarizeBy: none
+		sourceColumn: SerialNumbersReturned
+
+		annotation SummarizationSetBy = Automatic
+
+	partition RMAItem = m
+		mode: import
+		source =
+				let
+				    Source = Sql.Database("10.13.0.206", "SC"),
+				    dbo_RMAItem = Source{[Schema="dbo",Item="RMAItem"]}[Data]
+				in
+				    dbo_RMAItem
+

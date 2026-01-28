@@ -1,0 +1,541 @@
+{
+  "version": "1.1.0",
+  "diagrams": [
+    {
+      "ordinal": 0,
+      "scrollPosition": {
+        "x": 147.5,
+        "y": 0
+      },
+      "nodes": [
+        {
+          "location": {
+            "x": 2013.9346450640267,
+            "y": 1655.6319986608346
+          },
+          "nodeIndex": "OrderSource",
+          "nodeLineageTag": "f524050a-8d48-43f6-9059-8a0580309105",
+          "size": {
+            "height": 128,
+            "width": 234
+          },
+          "zIndex": 11
+        },
+        {
+          "location": {
+            "x": 1065.0597624458796,
+            "y": 489.653843238076
+          },
+          "nodeIndex": "Amazon_Merchants",
+          "nodeLineageTag": "05afd48e-4a53-489d-8eeb-5efd9d18030a",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 6
+        },
+        {
+          "location": {
+            "x": 1364.0115109470642,
+            "y": 945.97900631313871
+          },
+          "nodeIndex": "bvc_OrderItem",
+          "nodeLineageTag": "edc2320c-5534-46a9-945e-4470b14b468e",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 36
+        },
+        {
+          "location": {
+            "x": 320.05017062943193,
+            "y": 1119.3476507895332
+          },
+          "nodeIndex": "bvc_Package",
+          "nodeLineageTag": "a9453fe3-ef3a-4be4-bc39-628473d17070",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 24
+        },
+        {
+          "location": {
+            "x": 1814.694161149697,
+            "y": 945.941277713192
+          },
+          "nodeIndex": "Warehouse",
+          "nodeLineageTag": "46705461-a367-423c-b5e8-0c63e556b3c2",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 37
+        },
+        {
+          "location": {
+            "x": 1907.1473173109607,
+            "y": 588.619055087157
+          },
+          "nodeIndex": "Product",
+          "nodeLineageTag": "c5077b1b-8b53-4a45-8ae5-145941948e61",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 26
+        },
+        {
+          "location": {
+            "x": 2816.4436599526907,
+            "y": 894.38692905028074
+          },
+          "nodeIndex": "MeasuresTable",
+          "nodeLineageTag": "958df3f6-1b5e-4269-a0c0-48194503070c",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 7
+        },
+        {
+          "location": {
+            "x": 2002.7312959108606,
+            "y": 1301.1723847344595
+          },
+          "nodeIndex": "bvc_Product_InventoryLog",
+          "nodeLineageTag": "38c716da-4636-431d-9d04-651d69a52139",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 23
+        },
+        {
+          "location": {
+            "x": 3100.4436599526907,
+            "y": 894.38692905028074
+          },
+          "nodeIndex": "PurchaseItem",
+          "nodeLineageTag": "6717a66b-5fcd-4044-8a0e-8a2333f87596",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 10
+        },
+        {
+          "location": {
+            "x": 1317.8908641313237,
+            "y": 234.77629411133807
+          },
+          "nodeIndex": "Purchase",
+          "nodeLineageTag": "b0f0a38c-0b0e-4773-af74-0864798a9078",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 40
+        },
+        {
+          "location": {
+            "x": 3384.4436599526907,
+            "y": 894.38692905028074
+          },
+          "nodeIndex": "vw_PurchaseOrderFullText",
+          "nodeLineageTag": "0fa180e5-6e94-4290-bfe5-900882d36095",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 8
+        },
+        {
+          "location": {
+            "x": 1337.7814010225652,
+            "y": -50
+          },
+          "nodeIndex": "PO_STATUS_MAPPINGS",
+          "nodeLineageTag": "126eb14f-eb5a-4787-873e-d2a45c2d934b",
+          "size": {
+            "height": 128,
+            "width": 234
+          },
+          "zIndex": 9
+        },
+        {
+          "location": {
+            "x": 1624.6049753499058,
+            "y": 61.936764636529006
+          },
+          "nodeIndex": "RECEIVEDSTATUS_MAPPINGS",
+          "nodeLineageTag": "380ecdf5-a4e0-423d-b2f7-55c61f75dd3a",
+          "size": {
+            "height": 128,
+            "width": 234
+          },
+          "zIndex": 5
+        },
+        {
+          "location": {
+            "x": 920.03092344441882,
+            "y": 1055.6178230999662
+          },
+          "nodeIndex": "BVC_ORDER",
+          "nodeLineageTag": "581d7ffe-204f-471a-ab8b-f75c083d013b",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 39
+        },
+        {
+          "location": {
+            "x": 50,
+            "y": 1212.9365930277804
+          },
+          "nodeIndex": "DELIVERYSTATUS_MAPPINGS",
+          "nodeLineageTag": "91457fb0-b481-4cd5-9d37-f4a602ea2a36",
+          "size": {
+            "height": 128,
+            "width": 234
+          },
+          "zIndex": 12
+        },
+        {
+          "location": {
+            "x": 630.043503666499,
+            "y": 1311.7770531312115
+          },
+          "nodeIndex": "SHIPPINGSTATUS_MAPPINGS",
+          "nodeLineageTag": "fe5d3b6b-578a-4fc1-8886-c91dee236f65",
+          "size": {
+            "height": 128,
+            "width": 234
+          },
+          "zIndex": 13
+        },
+        {
+          "location": {
+            "x": 921.20698667426063,
+            "y": 874.58738313259255
+          },
+          "nodeIndex": "STATUSCODE_MAPPINGS",
+          "nodeLineageTag": "60b4bc41-d66a-448d-91ce-7f7ed6736647",
+          "size": {
+            "height": 128,
+            "width": 234
+          },
+          "zIndex": 34
+        },
+        {
+          "location": {
+            "x": 1598.920239322314,
+            "y": 763.52241503576738
+          },
+          "nodeIndex": "SELLERCLOUD_PRODUCT_IMAGES",
+          "nodeLineageTag": "319001cb-5dd5-4c4a-bfbc-9bb2d38776c1",
+          "size": {
+            "height": 128,
+            "width": 234
+          },
+          "zIndex": 16
+        },
+        {
+          "location": {
+            "x": 2300.7809173601349,
+            "y": 1738.7738581005615
+          },
+          "nodeIndex": "RMA",
+          "nodeLineageTag": "df679a22-a276-45ec-85fd-6bc5c0928505",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 15
+        },
+        {
+          "location": {
+            "x": 1412.7199251896243,
+            "y": 1660.5367788128633
+          },
+          "nodeIndex": "RMAItem",
+          "nodeLineageTag": "881ca70e-c7b5-4c7f-a90a-ef382524eae2",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 18
+        },
+        {
+          "location": {
+            "x": 896.12906708776677,
+            "y": 1493.2655692732876
+          },
+          "nodeIndex": "DateTable",
+          "nodeLineageTag": "557d7688-3ddd-4eec-b5ab-347c7c000534",
+          "size": {
+            "height": 200,
+            "width": 234
+          },
+          "zIndex": 14
+        },
+        {
+          "location": {
+            "x": 3668.4436599526907,
+            "y": 980.38692905028074
+          },
+          "nodeIndex": "RMA_MonthOffsets",
+          "nodeLineageTag": "20d26eee-42c7-45fd-ac68-e2845a6890c6",
+          "size": {
+            "height": 128,
+            "width": 234
+          },
+          "zIndex": 21
+        },
+        {
+          "location": {
+            "x": 3952.4436599526907,
+            "y": 968.38692905028074
+          },
+          "nodeIndex": "prm_UnitsSold_Revenue",
+          "nodeLineageTag": "2d6e86cc-ddc1-4a7e-afff-4c832ede7c37",
+          "size": {
+            "height": 152,
+            "width": 234
+          },
+          "zIndex": 19
+        },
+        {
+          "location": {
+            "x": 630.045462511579,
+            "y": 1082.0065778045846
+          },
+          "nodeIndex": "ORDERSTATUS_MAPPINGS",
+          "nodeLineageTag": "0d44913b-7e48-4dca-b42f-3744d8ff95c7",
+          "size": {
+            "height": 128,
+            "width": 234
+          },
+          "zIndex": 35
+        },
+        {
+          "location": {
+            "x": 2197.1505734847096,
+            "y": 456.03612705325122
+          },
+          "nodeIndex": "PRODUCTSTATUS_MAPPINGS",
+          "nodeLineageTag": "6b0a7f18-d3cd-4dba-bfe9-bae9346bef1f",
+          "size": {
+            "height": 128,
+            "width": 234
+          },
+          "zIndex": 17
+        },
+        {
+          "location": {
+            "x": 4236.4436599526907,
+            "y": 968.38692905028074
+          },
+          "nodeIndex": "STATES_REGION",
+          "nodeLineageTag": "b70a8d98-e449-4f52-8477-507d5c001b46",
+          "size": {
+            "height": 152,
+            "width": 234
+          },
+          "zIndex": 4
+        },
+        {
+          "location": {
+            "x": 2567.9083081230415,
+            "y": 1380.8244173543117
+          },
+          "nodeIndex": "Inventory_PandL",
+          "nodeLineageTag": "58bbee45-9426-439c-9480-d6f75851e865",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 25
+        },
+        {
+          "location": {
+            "x": 2292.5289220472018,
+            "y": 1023.7017035890635
+          },
+          "nodeIndex": "ProductWarehouse",
+          "nodeLineageTag": "58fd5dfe-6307-4f7d-89ca-9c10b9ae6bcd",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 20
+        },
+        {
+          "location": {
+            "x": 4520.4436599526907,
+            "y": 968.38692905028074
+          },
+          "nodeIndex": "Product_Daily_Sales",
+          "nodeLineageTag": "019fded9-2a18-4c0a-ab09-4a7853f5c726",
+          "size": {
+            "height": 152,
+            "width": 234
+          },
+          "zIndex": 28
+        },
+        {
+          "location": {
+            "x": 1101.5947311439293,
+            "y": 1722.0158542563295
+          },
+          "nodeIndex": "OLD_TBL_Product_Sales_Spike_Flag",
+          "nodeLineageTag": "b02ab36f-5438-4445-881a-5f0afa4c5b03",
+          "size": {
+            "height": 176,
+            "width": 234
+          },
+          "zIndex": 2
+        },
+        {
+          "location": {
+            "x": 1209.5359148384232,
+            "y": 1303.2672579444838
+          },
+          "nodeIndex": "Product_Sales_Spike_Flag",
+          "nodeLineageTag": "fd2e4d7f-dc44-46db-808b-d4f8e082fe8c",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 27
+        },
+        {
+          "location": {
+            "x": 4804.4436599526907,
+            "y": 944.38692905028074
+          },
+          "nodeIndex": "SpikeMultiplier",
+          "nodeLineageTag": "9b1d25ca-e8a7-4e73-9596-d8653ed5c5f6",
+          "size": {
+            "height": 200,
+            "width": 234
+          },
+          "zIndex": 3
+        },
+        {
+          "location": {
+            "x": 5088.4436599526907,
+            "y": 968.38692905028074
+          },
+          "nodeIndex": "DuplicatesCheck",
+          "nodeLineageTag": "716ccb32-1b60-4e34-9dc9-5b6a0a248213",
+          "size": {
+            "height": 152,
+            "width": 234
+          },
+          "zIndex": 29
+        },
+        {
+          "location": {
+            "x": 2582.4436599526907,
+            "y": 808.32325546164839
+          },
+          "nodeIndex": "Shipped_ProductIDs",
+          "nodeLineageTag": "b3d206fb-ef9c-4229-8c4a-ee2f3738e475",
+          "size": {
+            "height": 200,
+            "width": 234
+          },
+          "zIndex": 30
+        },
+        {
+          "location": {
+            "x": 1907.252492007631,
+            "y": 244.77267256016444
+          },
+          "nodeIndex": "Recently_Ordered_ProductIDs",
+          "nodeLineageTag": "27d1f79f-a309-4363-b33a-0d1ff865f1dd",
+          "size": {
+            "height": 200,
+            "width": 234
+          },
+          "zIndex": 31
+        },
+        {
+          "location": {
+            "x": 50.007742232020519,
+            "y": 1026.5112259249181
+          },
+          "nodeIndex": "OrderID_Warehouse_Map",
+          "nodeLineageTag": "9019586d-d1ce-4723-8d58-03ca8d80c600",
+          "size": {
+            "height": 128,
+            "width": 234
+          },
+          "zIndex": 32
+        },
+        {
+          "location": {
+            "x": 630.150820125979,
+            "y": 900.78340322145414
+          },
+          "nodeIndex": "DROPSHIPSTATUS_MAPPINGS",
+          "nodeLineageTag": "9147573b-31a1-439a-852c-0e3f7c84b80c",
+          "size": {
+            "height": 128,
+            "width": 234
+          },
+          "zIndex": 22
+        },
+        {
+          "location": {
+            "x": 2524.1103266193572,
+            "y": 520.38692905028074
+          },
+          "nodeIndex": "AgingOpenOrdersMatrixData",
+          "nodeLineageTag": "859d6508-4d9f-494e-b216-ffaa69b6c8c3",
+          "size": {
+            "height": 128,
+            "width": 234
+          },
+          "zIndex": 33
+        },
+        {
+          "location": {
+            "x": 660.44365995269072,
+            "y": 558.38692905028074
+          },
+          "nodeIndex": "bvc_Order_Property_UserDefined",
+          "nodeLineageTag": "978e3446-9566-4068-a9c5-85be94620916",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 38
+        },
+        {
+          "location": {
+            "x": 1617.0530748107083,
+            "y": 388.10007876302848
+          },
+          "nodeIndex": "MERGED_PO_ITEMS_TABLE",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 1
+        }
+      ],
+      "name": "All tables",
+      "zoomValue": 40,
+      "pinKeyFieldsToTop": true,
+      "showExtraHeaderInfo": false,
+      "hideKeyFieldsWhenCollapsed": false,
+      "tablesLocked": false
+    }
+  ],
+  "selectedDiagram": "All tables",
+  "defaultDiagram": "All tables"
+}

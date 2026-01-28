@@ -1,0 +1,35 @@
+table DateTable
+	lineageTag: 557d7688-3ddd-4eec-b5ab-347c7c000534
+
+	column Date
+		formatString: General Date
+		lineageTag: 7f1870f1-2462-46ee-8c7c-205b05d793b3
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [Date]
+
+		variation Variation
+			isDefault
+			relationship: f21dbddf-bdcd-4290-8c4a-897813f0f74b
+			defaultHierarchy: LocalDateTable_fc785518-de41-47a5-9008-b2d4290a95f3.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	partition DateTable = calculated
+		mode: import
+		source = ```
+				
+				SELECTCOLUMNS(
+				    DISTINCT(
+				        SELECTCOLUMNS(
+				            'BVC_ORDER',
+				            "Date", DATEVALUE('BVC_ORDER'[TimeOfOrder])
+				        )
+				    ),
+				    "Date", [Date]
+				)
+				
+				```
+
+	annotation PBI_Id = c8842fb62568451fa05417d0cd4955ef
+

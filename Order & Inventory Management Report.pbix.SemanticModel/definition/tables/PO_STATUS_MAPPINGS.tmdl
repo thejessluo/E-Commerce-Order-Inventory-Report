@@ -1,0 +1,43 @@
+table PO_STATUS_MAPPINGS
+	isHidden
+	lineageTag: 126eb14f-eb5a-4787-873e-d2a45c2d934b
+
+	column PO_STATUS_CODE
+		dataType: double
+		isHidden
+		lineageTag: b56a98a6-baff-4b70-8db6-45ad450a80f2
+		summarizeBy: none
+		sourceColumn: PO_STATUS_CODE
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column PO_STATUS_MAPPING
+		dataType: string
+		isHidden
+		lineageTag: 6fb7362d-9cc9-470c-97a7-0313d4ce7ec5
+		summarizeBy: none
+		sourceColumn: PO_STATUS_MAPPING
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	partition PO_STATUS_MAPPINGS = m
+		mode: import
+		source =
+				let
+				    Source = Snowflake.Databases("zo76507.west-europe.azure.snowflakecomputing.com","WH_XSMALL_83818"),
+				    DATAHAWK_WRITABLE_83818_Database = Source{[Name="DATAHAWK_WRITABLE_83818",Kind="Database"]}[Data],
+				    SELLERCLOUD_DATA_Schema = DATAHAWK_WRITABLE_83818_Database{[Name="SELLERCLOUD_DATA",Kind="Schema"]}[Data],
+				    PO_STATUS_MAPPINGS_Table = SELLERCLOUD_DATA_Schema{[Name="PO_STATUS_MAPPINGS",Kind="Table"]}[Data]
+				in
+				    PO_STATUS_MAPPINGS_Table
+
+	changedProperty = IsHidden
+
+	annotation PBI_ResultType = Table
+

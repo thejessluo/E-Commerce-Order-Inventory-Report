@@ -1,0 +1,36 @@
+table SELLERCLOUD_PRODUCT_IMAGES
+	lineageTag: 319001cb-5dd5-4c4a-bfbc-9bb2d38776c1
+
+	column PRODUCTID
+		dataType: string
+		lineageTag: 7568b32e-8cff-4e2c-917c-3aa34357cd6f
+		summarizeBy: none
+		sourceColumn: PRODUCTID
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'First Image URL'
+		dataType: string
+		lineageTag: afc274e5-3d7d-44fb-ac93-ecc3a0e2fe00
+		dataCategory: ImageUrl
+		summarizeBy: none
+		sourceColumn: First Image URL
+
+		annotation SummarizationSetBy = Automatic
+
+	partition SELLERCLOUD_PRODUCT_IMAGES = m
+		mode: import
+		source =
+				let
+				    Source = Snowflake.Databases("zo76507.west-europe.azure.snowflakecomputing.com","WH_XSMALL_83818"),
+				    DATAHAWK_WRITABLE_83818_Database = Source{[Name="DATAHAWK_WRITABLE_83818",Kind="Database"]}[Data],
+				    SELLERCLOUD_DATA_Schema = DATAHAWK_WRITABLE_83818_Database{[Name="SELLERCLOUD_DATA",Kind="Schema"]}[Data],
+				    SELLERCLOUD_PRODUCT_IMAGES_Table = SELLERCLOUD_DATA_Schema{[Name="SELLERCLOUD_PRODUCT_IMAGES",Kind="Table"]}[Data],
+				    #"Grouped Rows" = Table.Group(SELLERCLOUD_PRODUCT_IMAGES_Table, {"PRODUCTID"}, {{"First Image URL", each List.Min([IMAGEURL]), type nullable text}})
+				in
+				    #"Grouped Rows"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

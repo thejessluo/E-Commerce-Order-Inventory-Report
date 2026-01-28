@@ -1,0 +1,41 @@
+table DELIVERYSTATUS_MAPPINGS
+	isHidden
+	lineageTag: 91457fb0-b481-4cd5-9d37-f4a602ea2a36
+
+	column DELIVERYSTATUS
+		dataType: double
+		isHidden
+		lineageTag: a7b44d17-9705-411f-a9ce-0e1103b4d92d
+		summarizeBy: none
+		sourceColumn: DELIVERYSTATUS
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column DELIVERYSTATUS_MAPPING
+		dataType: string
+		isHidden
+		lineageTag: 54447574-3282-4350-812a-4e219db6c1d1
+		summarizeBy: none
+		sourceColumn: DELIVERYSTATUS_MAPPING
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	partition DELIVERYSTATUS_MAPPINGS = m
+		mode: import
+		source =
+				let
+				    Source = Snowflake.Databases("zo76507.west-europe.azure.snowflakecomputing.com","WH_XSMALL_83818"),
+				    DATAHAWK_WRITABLE_83818_Database = Source{[Name="DATAHAWK_WRITABLE_83818",Kind="Database"]}[Data],
+				    SELLERCLOUD_DATA_Schema = DATAHAWK_WRITABLE_83818_Database{[Name="SELLERCLOUD_DATA",Kind="Schema"]}[Data],
+				    DELIVERYSTATUS_MAPPINGS_Table = SELLERCLOUD_DATA_Schema{[Name="DELIVERYSTATUS_MAPPINGS",Kind="Table"]}[Data]
+				in
+				    DELIVERYSTATUS_MAPPINGS_Table
+
+	changedProperty = IsHidden
+

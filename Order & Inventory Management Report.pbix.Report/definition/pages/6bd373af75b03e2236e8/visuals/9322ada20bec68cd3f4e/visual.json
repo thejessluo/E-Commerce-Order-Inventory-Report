@@ -1,0 +1,16 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.5.0/schema.json",
+  "name": "9322ada20bec68cd3f4e",
+  "position": {
+    "x": 1042.5,
+    "y": 285,
+    "z": 12000,
+    "height": 128.75,
+    "width": 220,
+    "tabOrder": 17000
+  },
+  "visualGroup": {
+    "displayName": "NEGATIVE STOCK",
+    "groupMode": "ScaleMode"
+  }
+}

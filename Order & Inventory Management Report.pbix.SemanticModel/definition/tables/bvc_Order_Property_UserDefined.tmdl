@@ -1,0 +1,653 @@
+/// Filtered to the last 18 months based on PAYMENTDATE column.
+table bvc_Order_Property_UserDefined
+	lineageTag: 978e3446-9566-4068-a9c5-85be94620916
+
+	column OrderID
+		dataType: int64
+		formatString: 0
+		lineageTag: 76c80e03-caae-4a83-8411-31b91702c804
+		summarizeBy: none
+		sourceColumn: OrderID
+
+		annotation SummarizationSetBy = Automatic
+
+	column CUSTOMERSERVICEREPLY
+		dataType: string
+		lineageTag: c08bcc7a-75fd-4c84-a0b3-b10e6646c274
+		summarizeBy: none
+		sourceColumn: CUSTOMERSERVICEREPLY
+
+		annotation SummarizationSetBy = Automatic
+
+	column SALES_DIVISION
+		dataType: string
+		lineageTag: 7c2ef0d3-e67e-4085-89be-46382b6b89c1
+		summarizeBy: none
+		sourceColumn: SALES_DIVISION
+
+		annotation SummarizationSetBy = Automatic
+
+	column SOURCE_CODE
+		dataType: string
+		lineageTag: 0b4c4f86-0b21-4245-a33d-15b87d122fd4
+		summarizeBy: none
+		sourceColumn: SOURCE_CODE
+
+		annotation SummarizationSetBy = Automatic
+
+	column RETURNS_CODE
+		dataType: string
+		lineageTag: 01289c82-de3a-472b-b37e-74ed3efbe58b
+		summarizeBy: none
+		sourceColumn: RETURNS_CODE
+
+		annotation SummarizationSetBy = Automatic
+
+	column RESERVATION_NUMBER
+		dataType: string
+		lineageTag: e42bf860-4ab0-4819-814f-91bfb8d53523
+		summarizeBy: none
+		sourceColumn: RESERVATION_NUMBER
+
+		annotation SummarizationSetBy = Automatic
+
+	column LOWES_STORENUMBER
+		dataType: string
+		lineageTag: f3404317-6d33-4546-b2aa-e5e7e9d77404
+		summarizeBy: none
+		sourceColumn: LOWES_STORENUMBER
+
+		annotation SummarizationSetBy = Automatic
+
+	column ISSHIPTOSTORE
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 6a0673b2-0be0-496f-8052-d128270e6de6
+		summarizeBy: none
+		sourceColumn: ISSHIPTOSTORE
+
+		annotation SummarizationSetBy = Automatic
+
+	column REGISTRY_NUMBER
+		dataType: string
+		lineageTag: ee1c4d7a-aa28-4119-8157-c213b63a595b
+		summarizeBy: none
+		sourceColumn: REGISTRY_NUMBER
+
+		annotation SummarizationSetBy = Automatic
+
+	column SAKS_BRANDINFO
+		dataType: string
+		lineageTag: 856f5184-e254-4547-9251-1d4eeb50848a
+		summarizeBy: none
+		sourceColumn: SAKS_BRANDINFO
+
+		annotation SummarizationSetBy = Automatic
+
+	column SAKS_PAYMENTTYPE
+		dataType: string
+		lineageTag: afdf2f68-26ae-498e-93c9-7c6c805892d0
+		summarizeBy: none
+		sourceColumn: SAKS_PAYMENTTYPE
+
+		annotation SummarizationSetBy = Automatic
+
+	column SAKS_PACKINGSLIPFORMAT
+		dataType: string
+		lineageTag: 31f5f056-6242-4987-898b-b0e3c30632e7
+		summarizeBy: none
+		sourceColumn: SAKS_PACKINGSLIPFORMAT
+
+		annotation SummarizationSetBy = Automatic
+
+	column LOWES_ORDERSSCCNUMBER
+		dataType: string
+		lineageTag: a9b60ac8-45a5-423a-a931-ed743c6a6c3c
+		summarizeBy: none
+		sourceColumn: LOWES_ORDERSSCCNUMBER
+
+		annotation SummarizationSetBy = Automatic
+
+	column IS_SOS_ORDER
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 7dde3aa5-208e-4f15-ad81-5aa68d434e47
+		summarizeBy: none
+		sourceColumn: IS_SOS_ORDER
+
+		annotation SummarizationSetBy = Automatic
+
+	column EMAIL
+		dataType: string
+		lineageTag: ac394844-e439-40b4-8417-a76e50f28a92
+		summarizeBy: none
+		sourceColumn: EMAIL
+
+		annotation SummarizationSetBy = Automatic
+
+	column REQUIRESCANCELLATION
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 2c3890f6-46a1-4991-8dad-4a9d43d34cff
+		summarizeBy: none
+		sourceColumn: REQUIRESCANCELLATION
+
+		annotation SummarizationSetBy = Automatic
+
+	column DSCOCONSUMERORDERNUMBER
+		dataType: string
+		lineageTag: ee246283-3869-40ab-b3c4-b1e6c8bfb4b8
+		summarizeBy: none
+		sourceColumn: DSCOCONSUMERORDERNUMBER
+
+		annotation SummarizationSetBy = Automatic
+
+	column LOWES_SALES_DEVISION
+		dataType: string
+		lineageTag: 9ad26ffd-0c3c-4174-8cc6-0a89cce950a3
+		summarizeBy: none
+		sourceColumn: LOWES_SALES_DEVISION
+
+		annotation SummarizationSetBy = Automatic
+
+	column LOWES_SALESPERSON
+		dataType: string
+		lineageTag: 071db346-2c66-4767-b73e-6a40a3ec3e75
+		summarizeBy: none
+		sourceColumn: LOWES_SALESPERSON
+
+		annotation SummarizationSetBy = Automatic
+
+	column LOWES_BUSINESS_RULE_CODE
+		dataType: string
+		lineageTag: 36a5fa24-c519-4624-a025-cab70e1b3f49
+		summarizeBy: none
+		sourceColumn: LOWES_BUSINESS_RULE_CODE
+
+		annotation SummarizationSetBy = Automatic
+
+	column JCPENNEY_SOLDTO
+		dataType: string
+		lineageTag: 309ccb8a-a6a1-462b-be88-bbada7505853
+		summarizeBy: none
+		sourceColumn: JCPENNEY_SOLDTO
+
+		annotation SummarizationSetBy = Automatic
+
+	column DSCO_COUPONS
+		dataType: string
+		lineageTag: 6500696b-a64b-45e5-bed0-86f5e402e01a
+		summarizeBy: none
+		sourceColumn: DSCO_COUPONS
+
+		annotation SummarizationSetBy = Automatic
+
+	column DSCO_EMAIL
+		dataType: string
+		lineageTag: 2254138e-aa94-4bc9-946b-9931a2b804ed
+		summarizeBy: none
+		sourceColumn: DSCO_EMAIL
+
+		annotation SummarizationSetBy = Automatic
+
+	column COSTCOORDERFLAG
+		dataType: string
+		lineageTag: ef5fd44e-53d2-40b4-a875-f637def426d6
+		summarizeBy: none
+		sourceColumn: COSTCOORDERFLAG
+
+		annotation SummarizationSetBy = Automatic
+
+	column THIRDPARTYBILLINGCOST
+		dataType: double
+		lineageTag: 1e502bd4-64c1-4940-8735-1f8dd9bc70d7
+		summarizeBy: sum
+		sourceColumn: THIRDPARTYBILLINGCOST
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column PICKANDPACKFEEUPDATED
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: cc357750-7a66-4a7b-b4f2-42ea0c201cfc
+		summarizeBy: none
+		sourceColumn: PICKANDPACKFEEUPDATED
+
+		annotation SummarizationSetBy = Automatic
+
+	column SAMS_PONUMBER
+		dataType: string
+		lineageTag: bf231af7-b256-43f3-984e-00ca09ba16b7
+		summarizeBy: none
+		sourceColumn: SAMS_PONUMBER
+
+		annotation SummarizationSetBy = Automatic
+
+	column SAMS_BPGLN_ORDER
+		dataType: string
+		lineageTag: 20a1e5f6-dc05-456e-9deb-5bfc50969820
+		summarizeBy: none
+		sourceColumn: SAMS_BPGLN_ORDER
+
+		annotation SummarizationSetBy = Automatic
+
+	column SAMS_BPNAME_ORDER
+		dataType: string
+		lineageTag: ff37b19f-79e7-45f8-96e8-5d7df75880cf
+		summarizeBy: none
+		sourceColumn: SAMS_BPNAME_ORDER
+
+		annotation SummarizationSetBy = Automatic
+
+	column SAMS_CUSTOMERORDER
+		dataType: string
+		lineageTag: e3ac7861-152e-4da8-8b68-6328eaf6ab82
+		summarizeBy: none
+		sourceColumn: SAMS_CUSTOMERORDER
+
+		annotation SummarizationSetBy = Automatic
+
+	column SAMS_MEMBERSHIPNUMBER
+		dataType: string
+		lineageTag: b0451283-412b-48f5-8712-df4cbc2ce74f
+		summarizeBy: none
+		sourceColumn: SAMS_MEMBERSHIPNUMBER
+
+		annotation SummarizationSetBy = Automatic
+
+	column SAMS_VENDORNUMBER_ORDER
+		dataType: string
+		lineageTag: 760b551b-4ce3-456b-bfdb-bd0f7158b833
+		summarizeBy: none
+		sourceColumn: SAMS_VENDORNUMBER_ORDER
+
+		annotation SummarizationSetBy = Automatic
+
+	column SAMS_DEPARTMENTNUMBER_ORDER
+		dataType: string
+		lineageTag: 01fb95fc-0486-4ae6-b988-bd132efb8b5b
+		summarizeBy: none
+		sourceColumn: SAMS_DEPARTMENTNUMBER_ORDER
+
+		annotation SummarizationSetBy = Automatic
+
+	column SAMS_TERMS
+		dataType: string
+		lineageTag: e3090df7-09d2-48e1-b2e5-5d6819de7cb3
+		summarizeBy: none
+		sourceColumn: SAMS_TERMS
+
+		annotation SummarizationSetBy = Automatic
+
+	column SAMS_TERMS_NET_DAYS
+		dataType: string
+		lineageTag: 655223ac-2ade-4dc0-9bcd-2b1d23a65bb4
+		summarizeBy: none
+		sourceColumn: SAMS_TERMS_NET_DAYS
+
+		annotation SummarizationSetBy = Automatic
+
+	column MIRAKL_CHANNEL
+		dataType: string
+		lineageTag: df9fd5b9-ba3e-43b8-9d0d-14ab457e0f59
+		summarizeBy: none
+		sourceColumn: MIRAKL_CHANNEL
+
+		annotation SummarizationSetBy = Automatic
+
+	column MIRAKL_SHOP_ID
+		dataType: int64
+		formatString: 0
+		lineageTag: 5c53a811-4b5e-4714-b82d-c4130a806b3b
+		summarizeBy: count
+		sourceColumn: MIRAKL_SHOP_ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column SHIPPINGMETHODCHECKED
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: d81b6ce6-a48c-4c58-ae96-8d12fc069b99
+		summarizeBy: none
+		sourceColumn: SHIPPINGMETHODCHECKED
+
+		annotation SummarizationSetBy = Automatic
+
+	column DSCOINVOICEID
+		dataType: string
+		lineageTag: e809f865-c0f5-4662-b61d-4c6e608fdf2b
+		summarizeBy: none
+		sourceColumn: DSCOINVOICEID
+
+		annotation SummarizationSetBy = Automatic
+
+	column COSTCO_PRINTFRENCHFIRST
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 450d406f-0ffe-4e4a-ac9e-fe8de791d2c8
+		summarizeBy: none
+		sourceColumn: COSTCO_PRINTFRENCHFIRST
+
+		annotation SummarizationSetBy = Automatic
+
+	column PAYMENTAMOUNT
+		dataType: double
+		lineageTag: df4441b3-6b63-45b4-89d6-14ca854731d8
+		summarizeBy: sum
+		sourceColumn: PAYMENTAMOUNT
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column PAYMENTCHECKNUMBER
+		dataType: string
+		lineageTag: e9a95c21-4b53-4cfc-a7b9-1138b19a9ba3
+		summarizeBy: none
+		sourceColumn: PAYMENTCHECKNUMBER
+
+		annotation SummarizationSetBy = Automatic
+
+	column PAYMENTNAME
+		dataType: string
+		lineageTag: bb1a783f-1593-4370-b268-92425c8d0af3
+		summarizeBy: none
+		sourceColumn: PAYMENTNAME
+
+		annotation SummarizationSetBy = Automatic
+
+	column PAYMENTDAY
+		dataType: dateTime
+		formatString: Short Date
+		lineageTag: afcff837-6e7a-4498-9110-a4c74219755c
+		summarizeBy: none
+		sourceColumn: PAYMENTDAY
+
+		variation Variation
+			isDefault
+			relationship: 02f3ad83-7cdb-4a44-bd19-dbcc622f5fc3
+			defaultHierarchy: LocalDateTable_4d7c222d-5820-45a4-8f8d-85177b48c5c7.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column PAYMENTRECEIVED
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 481c9603-3a76-4ecf-8569-62d436018129
+		summarizeBy: none
+		sourceColumn: PAYMENTRECEIVED
+
+		annotation SummarizationSetBy = Automatic
+
+	column DCGSTATUS
+		dataType: string
+		lineageTag: 890cb248-b6df-42b5-bcff-723402b65b6c
+		summarizeBy: none
+		sourceColumn: DCGSTATUS
+
+		annotation SummarizationSetBy = Automatic
+
+	column DCGTRACKING
+		dataType: string
+		lineageTag: d0fc4c7b-7a53-41e9-b59c-fbfc9125c9c1
+		summarizeBy: none
+		sourceColumn: DCGTRACKING
+
+		annotation SummarizationSetBy = Automatic
+
+	column DCGPALLET
+		dataType: string
+		lineageTag: 1fa40c22-fb0b-4450-b16c-8b600a835bb5
+		summarizeBy: none
+		sourceColumn: DCGPALLET
+
+		annotation SummarizationSetBy = Automatic
+
+	column DCGTRAILER
+		dataType: string
+		lineageTag: 94c71758-156d-4cbf-a03e-a56b3cf968d2
+		summarizeBy: none
+		sourceColumn: DCGTRAILER
+
+		annotation SummarizationSetBy = Automatic
+
+	column RULEENGINEPROCESSED
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: c56e5de3-1aa9-41fc-95e8-4b41ef9a5ccb
+		summarizeBy: none
+		sourceColumn: RULEENGINEPROCESSED
+
+		annotation SummarizationSetBy = Automatic
+
+	column HASBEENINBACKORDER
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 06e2edc8-d78f-4a89-b97b-9646956c33c7
+		summarizeBy: none
+		sourceColumn: HASBEENINBACKORDER
+
+		annotation SummarizationSetBy = Automatic
+
+	column BJ_ORDERINTERNALCONTROLNUMBER
+		dataType: string
+		lineageTag: e40073c3-dc23-4e52-9d08-7fb7ffab267d
+		summarizeBy: none
+		sourceColumn: BJ_ORDERINTERNALCONTROLNUMBER
+
+		annotation SummarizationSetBy = Automatic
+
+	column SPLCUSTOM1
+		dataType: string
+		lineageTag: f3e8c401-5342-4e37-8333-eb950c65a47a
+		summarizeBy: none
+		sourceColumn: SPLCUSTOM1
+
+		annotation SummarizationSetBy = Automatic
+
+	column SPLCUSTOM2
+		dataType: string
+		lineageTag: 2728bbfb-5940-45b6-84c8-6a4e381841fe
+		summarizeBy: none
+		sourceColumn: SPLCUSTOM2
+
+		annotation SummarizationSetBy = Automatic
+
+	column SPLCUSTOM3
+		dataType: string
+		lineageTag: e62f25f1-2b11-4872-8383-54a73e4c0b54
+		summarizeBy: none
+		sourceColumn: SPLCUSTOM3
+
+		annotation SummarizationSetBy = Automatic
+
+	column SPLCUSTOM4
+		dataType: string
+		lineageTag: 56f9ffd4-5bde-4410-b32d-ac1b5045232e
+		summarizeBy: none
+		sourceColumn: SPLCUSTOM4
+
+		annotation SummarizationSetBy = Automatic
+
+	column SPLCUSTOM5
+		dataType: string
+		lineageTag: 1dd4aa62-ac7d-4911-a5f8-2a8b2b2a42af
+		summarizeBy: none
+		sourceColumn: SPLCUSTOM5
+
+		annotation SummarizationSetBy = Automatic
+
+	column DSCO_SHIPPINGSURCHARGE
+		dataType: double
+		lineageTag: dd80c00f-2108-4094-96a8-7b7cdfa8f011
+		summarizeBy: sum
+		sourceColumn: DSCO_SHIPPINGSURCHARGE
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column SAKS_TAX
+		dataType: double
+		lineageTag: 4ba9f076-8966-44d1-9c5f-cf4713b84cc0
+		summarizeBy: sum
+		sourceColumn: SAKS_TAX
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column SAKS_HANDLING
+		dataType: double
+		lineageTag: 47bf714f-8ebb-4500-9d07-be44465218bc
+		summarizeBy: sum
+		sourceColumn: SAKS_HANDLING
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column SPLEXPORTCUSTOM1
+		dataType: string
+		lineageTag: d65cfedd-795b-4bb8-9556-52cf1aabbff7
+		summarizeBy: none
+		sourceColumn: SPLEXPORTCUSTOM1
+
+		annotation SummarizationSetBy = Automatic
+
+	column SPLEXPORTCUSTOM2
+		dataType: string
+		lineageTag: 78027e9e-32ac-40d2-be9a-ac221d50df0a
+		summarizeBy: none
+		sourceColumn: SPLEXPORTCUSTOM2
+
+		annotation SummarizationSetBy = Automatic
+
+	column SPLEXPORTCUSTOM3
+		dataType: string
+		lineageTag: 9f2f8bd9-fbab-4404-9907-3b5e3a691630
+		summarizeBy: none
+		sourceColumn: SPLEXPORTCUSTOM3
+
+		annotation SummarizationSetBy = Automatic
+
+	column SPLEXPORTCUSTOM4
+		dataType: string
+		lineageTag: d07ae098-20d2-4de8-b011-a03eaa56b58e
+		summarizeBy: none
+		sourceColumn: SPLEXPORTCUSTOM4
+
+		annotation SummarizationSetBy = Automatic
+
+	column SPLEXPORTCUSTOM5
+		dataType: string
+		lineageTag: 9c1ad951-bd61-4dff-b543-fe726e258955
+		summarizeBy: none
+		sourceColumn: SPLEXPORTCUSTOM5
+
+		annotation SummarizationSetBy = Automatic
+
+	column SPLIMPORTCUSTOM1
+		dataType: string
+		lineageTag: a01fbe49-0a76-4c9a-bc4d-a57ac1e0c20b
+		summarizeBy: none
+		sourceColumn: SPLIMPORTCUSTOM1
+
+		annotation SummarizationSetBy = Automatic
+
+	column SPLIMPORTCUSTOM2
+		dataType: string
+		lineageTag: 3a02583a-e6c4-4f02-b651-bbf680b499ad
+		summarizeBy: none
+		sourceColumn: SPLIMPORTCUSTOM2
+
+		annotation SummarizationSetBy = Automatic
+
+	column SPLIMPORTCUSTOM3
+		dataType: string
+		lineageTag: 2d6d2b94-ae87-4b24-92a1-3a80e1d4ceab
+		summarizeBy: none
+		sourceColumn: SPLIMPORTCUSTOM3
+
+		annotation SummarizationSetBy = Automatic
+
+	column SPLIMPORTCUSTOM4
+		dataType: string
+		lineageTag: d4321cf0-d7e7-4e8e-8c46-d5ab0b332a33
+		summarizeBy: none
+		sourceColumn: SPLIMPORTCUSTOM4
+
+		annotation SummarizationSetBy = Automatic
+
+	column SPLIMPORTCUSTOM5
+		dataType: string
+		lineageTag: 6572bd8d-acb4-43a5-8af5-4fe548d1719f
+		summarizeBy: none
+		sourceColumn: SPLIMPORTCUSTOM5
+
+		annotation SummarizationSetBy = Automatic
+
+	column PROCESSEDFORSSCCID
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: b50374b2-84e4-4e9e-b239-a42fe18815ff
+		summarizeBy: none
+		sourceColumn: PROCESSEDFORSSCCID
+
+		annotation SummarizationSetBy = Automatic
+
+	column LOWES_BOL_NUMBER
+		dataType: int64
+		formatString: 0
+		lineageTag: 0065f1ba-6c7b-4278-a140-198657e0d802
+		summarizeBy: sum
+		sourceColumn: LOWES_BOL_NUMBER
+
+		annotation SummarizationSetBy = Automatic
+
+	column WOOT_PO_NUMBER
+		dataType: string
+		lineageTag: dfe773fb-5773-463c-91e1-f14ee8925916
+		summarizeBy: none
+		sourceColumn: WOOT_PO_NUMBER
+
+		annotation SummarizationSetBy = Automatic
+
+	column TDSPLSAVEDSEARCHID
+		dataType: string
+		lineageTag: 99501cf9-998f-4885-a13a-3c460a40cdf8
+		summarizeBy: none
+		sourceColumn: TDSPLSAVEDSEARCHID
+
+		annotation SummarizationSetBy = Automatic
+
+	partition bvc_Order_Property_UserDefined = m
+		mode: import
+		source =
+				let
+				    Source = Sql.Database("10.13.0.206", "SC"),
+				    dbo_bvc_Order_Property_UserDefined =
+				        Value.NativeQuery(
+				            Source,
+				            "
+				            SELECT *
+				            FROM dbo.bvc_Order_Property_UserDefined
+				            WHERE PAYMENTDAY >= DATEADD(MONTH, -18, CAST(GETDATE() AS date))
+				            "
+				        ),
+				    #"Changed Type" =
+				        Table.TransformColumnTypes(
+				            dbo_bvc_Order_Property_UserDefined,
+				            {{"PAYMENTDAY", type date}}
+				        )
+				in
+				    #"Changed Type"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

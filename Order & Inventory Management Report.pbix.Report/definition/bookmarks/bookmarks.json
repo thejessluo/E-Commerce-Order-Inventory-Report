@@ -1,0 +1,87 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/bookmarksMetadata/1.0.0/schema.json",
+  "items": [
+    {
+      "name": "d7c967ee6c5a38096e08",
+      "displayName": "Ed Sales Report Filters",
+      "children": [
+        "3f7a392e6c39eb7295a0",
+        "cf7bbd6e48ddb0a78d8e",
+        "ed720ee704b929ad8199",
+        "b964fd57b328d4ab51ea",
+        "709b525b9a09a0166de0",
+        "e4bef989d47489bba1b5",
+        "ba9b4b40a39c0330e7e8",
+        "aed29f13902c1a7163b0",
+        "c5c775d361ad7b8b299b"
+      ]
+    },
+    {
+      "name": "f97cf25875d481374be5",
+      "displayName": "RESETs",
+      "children": [
+        "f5922b41789c0cb5764d",
+        "aeb0731032b00e48a441",
+        "838e24dce869f1e36348",
+        "1c06eb6a55096b5be0be",
+        "9b43da735050086b380b",
+        "d999f222ec506cc90b4c",
+        "9fc77ab9c1d03f465e81",
+        "1697c550444b0ba847a6",
+        "63583e1bcba64cda4471",
+        "d18d391690a1e2eccd50",
+        "02f4570763009886e45a",
+        "86a6da5a91d2a81652c2",
+        "3f8edb69c16174e5e287",
+        "577ed76a54c4033dee0c",
+        "d8e8464d07b53e498079",
+        "0ff84f741003b3a00849",
+        "8d9c9c20762f545a9cae"
+      ]
+    },
+    {
+      "name": "80d06d5a06630013cb68",
+      "displayName": "Filter Panes",
+      "children": [
+        "85ea6f676dc771deb095",
+        "2f508cb24ec4e0d0d2d2",
+        "c34a4c15241d66491065",
+        "9d1803e8e9a109805059",
+        "522cd1209d5288193721",
+        "79c58f518544a5298c7b",
+        "0d4a1653e0104943560a",
+        "8b792e3f9b58c0d87e23"
+      ]
+    },
+    {
+      "name": "01b60911e1c7bea20a0c"
+    },
+    {
+      "name": "b2fdc02b1408073b99c6"
+    },
+    {
+      "name": "8307661cb1c2e604a7bc"
+    },
+    {
+      "name": "12abc53c8a6a15ad03e2"
+    },
+    {
+      "name": "1f4e025029c21c24e248"
+    },
+    {
+      "name": "4e29fbca30ca9db7de02"
+    },
+    {
+      "name": "2088f06b2770082cb44e"
+    },
+    {
+      "name": "e729b8e8c1e3156c0650"
+    },
+    {
+      "name": "b37f3cd2fee1898aae17"
+    },
+    {
+      "name": "3bf8264eaaa1e147ddfc"
+    }
+  ]
+}

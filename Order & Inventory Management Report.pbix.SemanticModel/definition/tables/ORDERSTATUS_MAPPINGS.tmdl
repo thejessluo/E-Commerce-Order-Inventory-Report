@@ -1,0 +1,39 @@
+table ORDERSTATUS_MAPPINGS
+	isHidden
+	lineageTag: 0d44913b-7e48-4dca-b42f-3744d8ff95c7
+
+	column ORDERSTATUS
+		dataType: string
+		isHidden
+		lineageTag: 99d9fdcb-c610-4b10-8914-d91b23cd5cd8
+		summarizeBy: none
+		sourceColumn: ORDERSTATUS
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column ORDERSTATUS_MAPPINGS
+		dataType: string
+		isHidden
+		lineageTag: 3c28fce1-4dc8-4c90-9b56-4c948d81ffaa
+		summarizeBy: none
+		sourceColumn: ORDERSTATUS_MAPPINGS
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	partition ORDERSTATUS_MAPPINGS = m
+		mode: import
+		source =
+				let
+				    Source = Snowflake.Databases("zo76507.west-europe.azure.snowflakecomputing.com","WH_XSMALL_83818",[Implementation="2.0"]),
+				    DATAHAWK_WRITABLE_83818_Database = Source{[Name="DATAHAWK_WRITABLE_83818",Kind="Database"]}[Data],
+				    SELLERCLOUD_DATA_Schema = DATAHAWK_WRITABLE_83818_Database{[Name="SELLERCLOUD_DATA",Kind="Schema"]}[Data],
+				    ORDERSTATUS_MAPPINGS_Table = SELLERCLOUD_DATA_Schema{[Name="ORDERSTATUS_MAPPINGS",Kind="Table"]}[Data]
+				in
+				    ORDERSTATUS_MAPPINGS_Table
+
+	changedProperty = IsHidden
+

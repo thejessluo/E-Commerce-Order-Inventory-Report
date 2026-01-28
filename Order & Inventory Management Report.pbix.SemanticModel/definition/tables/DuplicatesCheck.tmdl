@@ -1,0 +1,57 @@
+table DuplicatesCheck
+	isHidden
+	lineageTag: 716ccb32-1b60-4e34-9dc9-5b6a0a248213
+
+	column ProductID
+		isHidden
+		lineageTag: 28b0dd4d-5a4f-4f44-8a91-37cf3dbb79cf
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: Product_Daily_Sales[ProductID]
+
+		annotation SummarizationSetBy = Automatic
+
+	column SaleDate
+		isHidden
+		formatString: General Date
+		lineageTag: 881698de-1c84-45ac-8e43-461b282b8d92
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: Product_Daily_Sales[SaleDate]
+
+		variation Variation
+			isDefault
+			relationship: e4559512-c19c-49aa-86dd-0e0869ae0825
+			defaultHierarchy: LocalDateTable_f7068cb5-aa72-4559-afd1-fd9118661686.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	column RowCount
+		isHidden
+		formatString: 0
+		lineageTag: 118f0a4f-004c-46ff-b3bf-be5464acf5d7
+		summarizeBy: sum
+		isNameInferred
+		sourceColumn: [RowCount]
+
+		annotation SummarizationSetBy = Automatic
+
+	partition DuplicatesCheck = calculated
+		mode: import
+		source = ```
+				--checks for duplicate combinations of [ProductID] and [SaleDate] in the Product_Daily_Sales table.
+				ADDCOLUMNS(
+				    SUMMARIZE(Product_Daily_Sales, [ProductID], [SaleDate]),
+				    "RowCount", COUNTROWS(
+				        FILTER(
+				            Product_Daily_Sales,
+				            Product_Daily_Sales[ProductID] = EARLIER(Product_Daily_Sales[ProductID]) &&
+				            Product_Daily_Sales[SaleDate] = EARLIER(Product_Daily_Sales[SaleDate])
+				        )
+				    )
+				)
+				
+				```
+
+	annotation PBI_Id = 82109a99cef64aa59b3ffa6c617dc849
+

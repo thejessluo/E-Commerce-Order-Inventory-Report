@@ -1,0 +1,43 @@
+table OrderID_Warehouse_Map
+	isHidden
+	lineageTag: 9019586d-d1ce-4723-8d58-03ca8d80c600
+
+	column OrderID
+		isHidden
+		lineageTag: 1f5008e9-0c89-475a-a4e0-0fc29f898564
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: bvc_OrderItem[OrderID]
+
+		annotation SummarizationSetBy = Automatic
+
+	column Warehouse
+		isHidden
+		lineageTag: 56147a20-46a6-4d0a-8ac3-be3dc1aed897
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [Warehouse]
+
+		annotation SummarizationSetBy = Automatic
+
+	partition OrderID_Warehouse_Map = calculated
+		mode: import
+		source = ```
+				---- Bridge table to map each OrderID to its shipping warehouse so bvc_Package data can be analyzed by warehouse.
+				
+				SUMMARIZE (
+				    bvc_OrderItem,
+				    bvc_OrderItem[OrderID],
+				    "Warehouse", MAX(bvc_OrderItem[Warehouse Name])
+				)
+				/** You're trying to report bvc_Package data (specifically, No Carrier Scan flags) by Warehouse, but the warehouse info lives in bvc_OrderItem, and package info lives in bvc_Package.
+				
+				These two tables do not have a direct relationship.
+				But they both connect to bvc_Order using OrderID ←→ ID.
+				
+				So you need a bridge to connect the warehouse info to the packages, via OrderID.**/
+				
+				```
+
+	annotation PBI_Id = e9385fea5b814423b50adf3524fd4114
+

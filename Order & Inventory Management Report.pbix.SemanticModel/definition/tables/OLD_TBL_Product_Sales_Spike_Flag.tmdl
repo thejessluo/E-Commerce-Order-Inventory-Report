@@ -1,0 +1,77 @@
+table OLD_TBL_Product_Sales_Spike_Flag
+	isHidden
+	lineageTag: b02ab36f-5438-4445-881a-5f0afa4c5b03
+
+	column ProductID
+		isHidden
+		lineageTag: 8326f1bd-daa2-4aa7-9d0b-7fff50b6b521
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: bvc_OrderItem[ProductID]
+
+		annotation SummarizationSetBy = Automatic
+
+	column Sales_24h
+		isHidden
+		formatString: 0
+		lineageTag: c4301c18-6d11-4434-b4e2-2bacd187a57e
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [Sales_24h]
+
+		annotation SummarizationSetBy = Automatic
+
+	column Sales_7d
+		isHidden
+		formatString: 0
+		lineageTag: a87c60a4-2b69-4c6e-8958-2a97121ace0f
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [Sales_7d]
+
+		annotation SummarizationSetBy = Automatic
+
+	column SalesSpike_Flag = ```
+			
+			VAR Avg7 = DIVIDE([Sales_7d], 7)
+			RETURN IF(Avg7 > 0 && [Sales_24h] >= 2 * Avg7, 1, 0)
+			
+			```
+		isHidden
+		formatString: 0
+		lineageTag: f4ea9c14-60c9-496f-92e0-59b3c19910e2
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	partition OLD_TBL_Product_Sales_Spike_Flag = calculated
+		mode: import
+		source = ```
+				
+				VAR LatestDate =
+				    CALCULATE(
+				        MAX(bvc_OrderItem[RecordCreatedOn])
+				    )
+				
+				VAR TodayStart = LatestDate - 1
+				VAR Prior7Start = TodayStart - 7
+				
+				RETURN
+				ADDCOLUMNS(
+				    DISTINCT(bvc_OrderItem[ProductID]),
+				    "Sales_24h", CALCULATE(
+				        SUM(bvc_OrderItem[Qty]),
+				        bvc_OrderItem[RecordCreatedOn] >= TodayStart,
+				        bvc_OrderItem[RecordCreatedOn] < LatestDate
+				    ),
+				    "Sales_7d", CALCULATE(
+				        SUM(bvc_OrderItem[Qty]),
+				        bvc_OrderItem[RecordCreatedOn] >= Prior7Start,
+				        bvc_OrderItem[RecordCreatedOn] < TodayStart
+				    )
+				)
+				
+				```
+
+	annotation PBI_Id = dab097751f0f429ab8977b044f84533a
+

@@ -1,0 +1,67 @@
+table Product_Daily_Sales
+	isHidden
+	lineageTag: 019fded9-2a18-4c0a-ab09-4a7853f5c726
+
+	column SaleDate
+		dataType: dateTime
+		isHidden
+		formatString: Short Date
+		lineageTag: d6d2d967-b702-4d82-b4c4-9b201299b69d
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [SaleDate]
+
+		variation Variation
+			isDefault
+			relationship: 222349ec-355d-4164-8da0-5e402c534589
+			defaultHierarchy: LocalDateTable_4ca393f6-986e-4700-b418-107916b24cf7.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column DailyQty
+		isHidden
+		formatString: 0
+		lineageTag: 19a7321f-1009-4dd8-a569-8be06f943273
+		summarizeBy: sum
+		isNameInferred
+		sourceColumn: [DailyQty]
+
+		annotation SummarizationSetBy = Automatic
+
+	column ProductID
+		isHidden
+		lineageTag: 04811b36-7cd4-4519-857a-7305174b15e7
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [ProductID]
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Product_Daily_Sales = calculated
+		mode: import
+		source = ```
+				--calculates sum of qty sold by productID by day across all retailers. Excludes WFS
+				SELECTCOLUMNS(
+				    GROUPBY(
+				        ADDCOLUMNS(
+				            FILTER(
+				                bvc_OrderItem,
+				                bvc_OrderItem[OrderSource - CompanyName] <> "WFS - Tzumi Electronics"
+				            ),
+				            "SaleDate", TRUNC(bvc_OrderItem[RecordCreatedOn])
+				        ),
+				        bvc_OrderItem[ProductID],
+				        [SaleDate],
+				        "DailyQty", SUMX(CURRENTGROUP(), bvc_OrderItem[Qty])
+				    ),
+				    "ProductID", bvc_OrderItem[ProductID],
+				    "SaleDate", [SaleDate],
+				    "DailyQty", [DailyQty]
+				)
+				
+				```
+
+	annotation PBI_Id = 7162ed0d0dae489ebfb5db08347ed981
+

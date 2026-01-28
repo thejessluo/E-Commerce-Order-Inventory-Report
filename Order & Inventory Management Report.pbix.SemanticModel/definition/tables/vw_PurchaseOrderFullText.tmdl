@@ -1,0 +1,194 @@
+table vw_PurchaseOrderFullText
+	isHidden
+	lineageTag: 0fa180e5-6e94-4290-bfe5-900882d36095
+
+	column PurchaseItemID
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 29822ef4-4a2e-4dc3-8d82-184e17db68c4
+		summarizeBy: count
+		sourceColumn: PurchaseItemID
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column PurchaseID
+		dataType: string
+		isHidden
+		lineageTag: ce45b200-9fc6-4de1-a54e-6794010f9ba2
+		summarizeBy: none
+		sourceColumn: PurchaseID
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column OriginalPurchaseID
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: c9eb8432-df03-4e11-a487-ad3263c48fc5
+		summarizeBy: count
+		sourceColumn: OriginalPurchaseID
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column VendorID
+		dataType: string
+		isHidden
+		lineageTag: 227ba43c-ad50-4a48-84cc-be506557f060
+		summarizeBy: none
+		sourceColumn: VendorID
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column VendorInvoiceNumber
+		dataType: string
+		isHidden
+		lineageTag: 23a64e00-6044-4b9e-a6bc-fc0ef932516c
+		summarizeBy: none
+		sourceColumn: VendorInvoiceNumber
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column ProductID
+		dataType: string
+		isHidden
+		lineageTag: f11708a5-215b-42a1-bb31-bc454184270a
+		summarizeBy: none
+		sourceColumn: ProductID
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column ProductName
+		dataType: string
+		isHidden
+		lineageTag: 0cf7eca3-49f2-41a7-99a4-f77e0c55f961
+		summarizeBy: none
+		sourceColumn: ProductName
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column DisplayName
+		dataType: string
+		isHidden
+		lineageTag: 320124e9-912b-4b01-aee9-49a5b3e03ae3
+		summarizeBy: none
+		sourceColumn: DisplayName
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column ClientID
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 4ed65e33-a8b8-46bb-9710-cd90f4e6a686
+		summarizeBy: count
+		sourceColumn: ClientID
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column UPC
+		dataType: string
+		isHidden
+		lineageTag: 49c296b0-953d-4289-8965-4eec174c70d5
+		summarizeBy: none
+		sourceColumn: UPC
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column CompanyName
+		dataType: string
+		isHidden
+		lineageTag: 77ec84a0-3e23-4e1c-ac56-d117aced9902
+		summarizeBy: none
+		sourceColumn: CompanyName
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column CreatedOn
+		dataType: dateTime
+		isHidden
+		formatString: General Date
+		lineageTag: ee930da5-b09f-44ad-9b6a-cf5ac2a0a928
+		summarizeBy: none
+		sourceColumn: CreatedOn
+
+		variation Variation
+			isDefault
+			relationship: d5d5273a-c2b2-4b91-8fa7-9ba96d4f0878
+			defaultHierarchy: LocalDateTable_d705d5ed-ffc8-4e3b-ac1f-3721e2750aaa.'Date Hierarchy'
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column POType
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 3dcf6b90-9c6c-4ec2-86f3-df848347bdd9
+		summarizeBy: sum
+		sourceColumn: POType
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column CompanyID
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: e7a7342b-5793-44e8-9dee-c5d2f98b5f47
+		summarizeBy: count
+		sourceColumn: CompanyID
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column PurchaseTitle
+		dataType: string
+		isHidden
+		lineageTag: 414d1ae6-df4f-46a3-9776-1063b356493d
+		summarizeBy: none
+		sourceColumn: PurchaseTitle
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	partition vw_PurchaseOrderFullText = m
+		mode: import
+		source =
+				let
+				    Source = Sql.Databases("10.13.0.206"),
+				    SC = Source{[Name="SC"]}[Data],
+				    dbo_vw_PurchaseOrderFullText = SC{[Schema="dbo",Item="vw_PurchaseOrderFullText"]}[Data]
+				in
+				    dbo_vw_PurchaseOrderFullText
+
+	changedProperty = IsHidden
+
+	annotation PBI_ResultType = Table
+

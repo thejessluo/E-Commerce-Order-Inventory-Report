@@ -1,0 +1,555 @@
+table PurchaseItem
+	isHidden
+	lineageTag: 6717a66b-5fcd-4044-8a0e-8a2333f87596
+
+	column ID
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 9e1bb351-4969-4669-bed9-6312f090c198
+		summarizeBy: count
+		sourceColumn: ID
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column PurchaseID
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 88aaa0aa-cd17-4088-be83-1ffefcb2e34f
+		summarizeBy: count
+		sourceColumn: PurchaseID
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column ProductID
+		dataType: string
+		isHidden
+		lineageTag: d2006b79-573b-428e-bac4-d05f3e5bd9f6
+		summarizeBy: none
+		sourceColumn: ProductID
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column ProductName
+		dataType: string
+		isHidden
+		lineageTag: fff2c02f-0737-45ad-82b6-d164788d013d
+		summarizeBy: none
+		sourceColumn: ProductName
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column QtyOrdered
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 34d07de9-0b37-42c8-b8c9-c61e7f6cf0f9
+		summarizeBy: sum
+		sourceColumn: QtyOrdered
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column QtyReceived
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: c538e030-dc24-4343-bf4d-9e10122fafb3
+		summarizeBy: sum
+		sourceColumn: QtyReceived
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column QtyReceivedToDate
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 3bd93576-e169-47a0-a544-829165f22541
+		summarizeBy: sum
+		sourceColumn: QtyReceivedToDate
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column UnitPrice
+		dataType: double
+		isHidden
+		formatString: \$#,0.00;(\$#,0.00);\$#,0.00
+		lineageTag: 831371e5-171f-4dff-bacc-506f74bd323e
+		summarizeBy: sum
+		sourceColumn: UnitPrice
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column Status
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 4df9d650-6e1d-4faa-b451-1e6cdaf5160f
+		summarizeBy: sum
+		sourceColumn: Status
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column Total
+		dataType: double
+		isHidden
+		formatString: \$#,0.00;(\$#,0.00);\$#,0.00
+		lineageTag: 5196cd5b-0af0-4f95-90a3-bb48db5736cc
+		summarizeBy: sum
+		sourceColumn: Total
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column UpdatedOn
+		dataType: dateTime
+		isHidden
+		formatString: General Date
+		lineageTag: b1829951-a421-4d63-b9ec-af4fd6ad61ac
+		summarizeBy: none
+		sourceColumn: UpdatedOn
+
+		variation Variation
+			isDefault
+			relationship: d40e3a5c-5e16-474e-bd88-386f921b7219
+			defaultHierarchy: LocalDateTable_de685071-b67c-402b-b9fb-80f086ae0ce6.'Date Hierarchy'
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column UpdatedBy
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: b316c48e-bed6-42ca-83df-a263f27f0bec
+		summarizeBy: sum
+		sourceColumn: UpdatedBy
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column DiscountValue
+		dataType: double
+		isHidden
+		lineageTag: 840ff9c7-f60c-45c6-945e-faaf081dad69
+		summarizeBy: sum
+		sourceColumn: DiscountValue
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column DiscountType
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: b9831130-da4f-4849-ad1f-642f775df90c
+		summarizeBy: sum
+		sourceColumn: DiscountType
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column AdjustedPrice
+		dataType: double
+		isHidden
+		lineageTag: 52e147ed-08c5-4368-b2cd-43a6da58e38d
+		summarizeBy: sum
+		sourceColumn: AdjustedPrice
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column QtyPerCase
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 2660fd4d-a2b2-4e2f-84ab-197f65257201
+		summarizeBy: sum
+		sourceColumn: QtyPerCase
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column DefaultWarehouseID
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 2b370c71-1598-4a2d-b022-5b3297f39934
+		summarizeBy: count
+		sourceColumn: DefaultWarehouseID
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column CoOpPrice
+		dataType: double
+		isHidden
+		lineageTag: 78c4e5f5-502f-4753-b64c-ebc810f7e24b
+		summarizeBy: sum
+		sourceColumn: CoOpPrice
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column DropShipFee
+		dataType: double
+		isHidden
+		lineageTag: d7682bd1-5698-4731-92cc-f470a05d991d
+		summarizeBy: sum
+		sourceColumn: DropShipFee
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column MultiDiscountTotal
+		dataType: double
+		isHidden
+		lineageTag: a5ad4d1f-cdb0-41ab-b66c-b2f50f77c4e0
+		summarizeBy: sum
+		sourceColumn: MultiDiscountTotal
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column ExpectedDeliveryDate
+		dataType: dateTime
+		isHidden
+		formatString: General Date
+		lineageTag: 4f30ed4e-c863-4900-b346-7cbe3c7470a1
+		summarizeBy: none
+		sourceColumn: ExpectedDeliveryDate
+
+		variation Variation
+			isDefault
+			relationship: ee448df5-9efe-407e-8e85-4b53b903e2a9
+			defaultHierarchy: LocalDateTable_5f1bf702-b5eb-4e97-8037-79578a3c62f8.'Date Hierarchy'
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column ExtraCostPerUnit
+		dataType: double
+		isHidden
+		lineageTag: f77d8b99-c606-4905-a3e8-86e77657b4e1
+		summarizeBy: sum
+		sourceColumn: ExtraCostPerUnit
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column AdjustedPriceAfterMultiDiscount
+		dataType: double
+		isHidden
+		lineageTag: 1aa0cbd8-c36c-4b2e-acfb-a303e96cffd1
+		summarizeBy: sum
+		sourceColumn: AdjustedPriceAfterMultiDiscount
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column PreSaleQty
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: f9486195-0cc9-4e0d-babc-f9ea19b94456
+		summarizeBy: sum
+		sourceColumn: PreSaleQty
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column PreSaleDate
+		dataType: dateTime
+		isHidden
+		formatString: General Date
+		lineageTag: 6f4b5a7d-66ea-489b-8a1a-e3d2091085a7
+		summarizeBy: none
+		sourceColumn: PreSaleDate
+
+		variation Variation
+			isDefault
+			relationship: 159754ac-c66b-45ab-838d-6424a4a6d3de
+			defaultHierarchy: LocalDateTable_0028bc40-5978-4805-b395-e30a16037baf.'Date Hierarchy'
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column FBAAllocationQty
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: ca977323-9a72-4df8-82e8-32923c6b9d41
+		summarizeBy: sum
+		sourceColumn: FBAAllocationQty
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column CostPerCase
+		dataType: double
+		isHidden
+		lineageTag: f1e1b7f9-d64a-4670-a650-44b0c2323832
+		summarizeBy: sum
+		sourceColumn: CostPerCase
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column CaseQtyOrdered
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: ffd934bf-394e-4910-ad8a-73c2e989fb65
+		summarizeBy: sum
+		sourceColumn: CaseQtyOrdered
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column POItemNotes
+		dataType: string
+		isHidden
+		lineageTag: f491d711-721d-4305-944c-b95cc6b61209
+		summarizeBy: none
+		sourceColumn: POItemNotes
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column RelatedOrderID
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: e56804fc-1ecb-4c6e-a89d-56b021e50b6f
+		summarizeBy: count
+		sourceColumn: RelatedOrderID
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column RelatedOrderItemID
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 4b74a44c-ffee-4ee0-8c5e-c5835d801be9
+		summarizeBy: count
+		sourceColumn: RelatedOrderItemID
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column RelatedOrderItemKitItemID
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 461af07f-3036-40fd-9b4f-f85638a1294c
+		summarizeBy: count
+		sourceColumn: RelatedOrderItemKitItemID
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column ProductIDOriginalAdded
+		dataType: string
+		isHidden
+		lineageTag: 248c31cf-d5a3-4026-8094-52f64afdabdd
+		summarizeBy: none
+		sourceColumn: ProductIDOriginalAdded
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column ProductQtyOriginalAdded
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 41a9f1db-0d84-45ee-8163-c9ff61cf3741
+		summarizeBy: sum
+		sourceColumn: ProductQtyOriginalAdded
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column PreSellQuantityEnabled
+		dataType: boolean
+		isHidden
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 8e261dfd-4ff9-4c05-89cc-d9c31851b99a
+		summarizeBy: none
+		sourceColumn: PreSellQuantityEnabled
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column PreSellQuantity
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 98d67eff-0699-4b9b-b571-6e4f1b9ede30
+		summarizeBy: sum
+		sourceColumn: PreSellQuantity
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column QtyPaid
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 7a4bdfae-18e3-41e4-8e72-c527376df2a3
+		summarizeBy: sum
+		sourceColumn: QtyPaid
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column POItemNotesLocal
+		dataType: string
+		isHidden
+		lineageTag: e563c963-9bf7-468e-b33d-7505b6b7d9c7
+		summarizeBy: none
+		sourceColumn: POItemNotesLocal
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column OriginalPOItemID
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 809126b4-f1ff-4e19-959b-ad7f0ef3820d
+		summarizeBy: count
+		sourceColumn: OriginalPOItemID
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column ExtraCostPOBasedPerUnit
+		dataType: double
+		isHidden
+		lineageTag: b0e2e4f7-f277-45a5-9d75-f09990a39159
+		summarizeBy: sum
+		sourceColumn: ExtraCostPOBasedPerUnit
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column CreditMemoQtyPicked
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 788bb149-fba5-428a-b8da-f28d26ab78a4
+		summarizeBy: sum
+		sourceColumn: CreditMemoQtyPicked
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column ReceiveCounter
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 81448dfe-74d0-4e52-a4e1-005ab7b21ca9
+		summarizeBy: sum
+		sourceColumn: ReceiveCounter
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column DefaultWarehouseBinID
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 2fad22c4-2808-41af-a880-78e386b6190e
+		summarizeBy: count
+		sourceColumn: DefaultWarehouseBinID
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	partition PurchaseItem = m
+		mode: import
+		source =
+				let
+				    Source = Sql.Databases("10.13.0.206"),
+				    SC = Source{[Name="SC"]}[Data],
+				    dbo_PurchaseItem = SC{[Schema="dbo",Item="PurchaseItem"]}[Data]
+				in
+				    dbo_PurchaseItem
+
+	changedProperty = IsHidden
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

@@ -1,0 +1,41 @@
+table RECEIVEDSTATUS_MAPPINGS
+	isHidden
+	lineageTag: 380ecdf5-a4e0-423d-b2f7-55c61f75dd3a
+
+	column RECEIVINGSTATUS
+		dataType: string
+		isHidden
+		lineageTag: db285828-2ef8-44ff-a491-b6b8a25c813b
+		summarizeBy: none
+		sourceColumn: RECEIVINGSTATUS
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column RECEIVINGSTATUS_MAPPING
+		dataType: string
+		isHidden
+		lineageTag: 2d5e7bfa-9824-48b1-bf1b-084716c03074
+		summarizeBy: none
+		sourceColumn: RECEIVINGSTATUS_MAPPING
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	partition RECEIVEDSTATUS_MAPPINGS = m
+		mode: import
+		source =
+				let
+				    Source = Snowflake.Databases("zo76507.west-europe.azure.snowflakecomputing.com","WH_XSMALL_83818"),
+				    DATAHAWK_WRITABLE_83818_Database = Source{[Name="DATAHAWK_WRITABLE_83818",Kind="Database"]}[Data],
+				    SELLERCLOUD_DATA_Schema = DATAHAWK_WRITABLE_83818_Database{[Name="SELLERCLOUD_DATA",Kind="Schema"]}[Data],
+				    RECEIVEDSTATUS_MAPPINGS_Table = SELLERCLOUD_DATA_Schema{[Name="RECEIVEDSTATUS_MAPPINGS",Kind="Table"]}[Data]
+				in
+				    RECEIVEDSTATUS_MAPPINGS_Table
+
+	changedProperty = IsHidden
+
+	annotation PBI_ResultType = Exception
+

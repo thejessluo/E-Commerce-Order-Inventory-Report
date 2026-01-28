@@ -1,0 +1,38 @@
+table SpikeMultiplier
+	isHidden
+	lineageTag: 9b1d25ca-e8a7-4e73-9596-d8653ed5c5f6
+
+	column Multiplier
+		isHidden
+		lineageTag: 00ed18ae-def5-408e-b939-4678aa660777
+		summarizeBy: sum
+		isNameInferred
+		sourceColumn: [Multiplier]
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	partition SpikeMultiplier = calculated
+		mode: import
+		source = ```
+				
+				DATATABLE(
+				    "Multiplier", DOUBLE,
+				    {
+				        {0.5},
+				        {0.75},
+				        {1},
+				        {1.25},
+				        {1.5},
+				        {1.75},
+				        {2},
+				        {2.5},
+				        {3}
+				    }
+				)
+				
+				```
+
+	annotation PBI_Id = be0db0cf80064dfba48580b0f7bf810f
+

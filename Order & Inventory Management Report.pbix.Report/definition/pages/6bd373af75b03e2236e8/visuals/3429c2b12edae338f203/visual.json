@@ -1,0 +1,16 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.5.0/schema.json",
+  "name": "3429c2b12edae338f203",
+  "position": {
+    "x": 1152.6984126984128,
+    "y": 606.34920634920616,
+    "z": 13000,
+    "height": 130,
+    "width": 250,
+    "tabOrder": 20000
+  },
+  "visualGroup": {
+    "displayName": "POs INACCURATE COSTING",
+    "groupMode": "ScaleMode"
+  }
+}

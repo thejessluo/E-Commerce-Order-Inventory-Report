@@ -1,0 +1,30 @@
+table DROPSHIPSTATUS_MAPPINGS
+	lineageTag: 9147573b-31a1-439a-852c-0e3f7c84b80c
+
+	column DROPSHIP_STATUS
+		dataType: string
+		lineageTag: b436d127-97f1-4dbf-812d-f385bc27d8e9
+		summarizeBy: none
+		sourceColumn: DROPSHIP_STATUS
+
+		annotation SummarizationSetBy = Automatic
+
+	column DROPSHIP_STATUS_MAPPINGS
+		dataType: string
+		lineageTag: 90934123-4846-44c6-b908-69713020801a
+		summarizeBy: none
+		sourceColumn: DROPSHIP_STATUS_MAPPINGS
+
+		annotation SummarizationSetBy = Automatic
+
+	partition DROPSHIPSTATUS_MAPPINGS = m
+		mode: import
+		source =
+				let
+				    Source = Snowflake.Databases("zo76507.west-europe.azure.snowflakecomputing.com","WH_XSMALL_83818",[Implementation="2.0"]),
+				    DATAHAWK_WRITABLE_83818_Database = Source{[Name="DATAHAWK_WRITABLE_83818",Kind="Database"]}[Data],
+				    SELLERCLOUD_DATA_Schema = DATAHAWK_WRITABLE_83818_Database{[Name="SELLERCLOUD_DATA",Kind="Schema"]}[Data],
+				    DROPSHIPSTATUS_MAPPINGS_Table = SELLERCLOUD_DATA_Schema{[Name="DROPSHIPSTATUS_MAPPINGS",Kind="Table"]}[Data]
+				in
+				    DROPSHIPSTATUS_MAPPINGS_Table
+

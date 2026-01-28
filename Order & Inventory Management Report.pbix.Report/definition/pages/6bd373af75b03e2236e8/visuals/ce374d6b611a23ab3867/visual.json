@@ -1,0 +1,16 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.5.0/schema.json",
+  "name": "ce374d6b611a23ab3867",
+  "position": {
+    "x": 244.08822130221955,
+    "y": 285.95588235294116,
+    "z": 7000,
+    "height": 129.41176470588235,
+    "width": 221.1764705882353,
+    "tabOrder": 15000
+  },
+  "visualGroup": {
+    "displayName": "SALES SPIKE",
+    "groupMode": "ScaleMode"
+  }
+}

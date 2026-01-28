@@ -1,0 +1,23 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/page/2.0.0/schema.json",
+  "name": "0eaa8a97bd0efce54f74",
+  "displayName": "📈Units Sold by Channel / SKU",
+  "displayOption": "ActualSize",
+  "height": 810,
+  "width": 1440,
+  "objects": {
+    "outspacePane": [
+      {
+        "properties": {
+          "width": {
+            "expr": {
+              "Literal": {
+                "Value": "239L"
+              }
+            }
+          }
+        }
+      }
+    ]
+  }
+}

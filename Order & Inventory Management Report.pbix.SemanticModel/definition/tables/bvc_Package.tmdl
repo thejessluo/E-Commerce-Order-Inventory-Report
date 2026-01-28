@@ -1,0 +1,255 @@
+table bvc_Package
+	lineageTag: a9453fe3-ef3a-4be4-bc39-628473d17070
+
+	column ID
+		dataType: int64
+		formatString: 0
+		lineageTag: 28dc128a-c60a-489c-ac59-cd7f891b0eba
+		summarizeBy: count
+		sourceColumn: ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column Length
+		dataType: double
+		lineageTag: 075effaa-ea2b-4c5e-920f-4369d329592b
+		summarizeBy: sum
+		sourceColumn: Length
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Width
+		dataType: double
+		lineageTag: e52abccc-be90-4b73-bbb2-f9a2f9171228
+		summarizeBy: sum
+		sourceColumn: Width
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Height
+		dataType: double
+		lineageTag: 295ff996-fdef-4d48-8ac3-710e75d6cce3
+		summarizeBy: sum
+		sourceColumn: Height
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Weight
+		dataType: double
+		lineageTag: 81e11cc8-508c-4e82-afdd-f8e630c448cd
+		summarizeBy: sum
+		sourceColumn: Weight
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column ShippingServiceCode
+		dataType: string
+		lineageTag: 5eb0b370-4f49-41a9-a4e8-a80173283e95
+		summarizeBy: none
+		sourceColumn: ShippingServiceCode
+
+		annotation SummarizationSetBy = Automatic
+
+	column ShippingMethodName
+		dataType: string
+		lineageTag: a4753847-7602-41c8-a717-f966bb4f84e2
+		summarizeBy: none
+		sourceColumn: ShippingMethodName
+
+		annotation SummarizationSetBy = Automatic
+
+	column TrackingNumber
+		dataType: string
+		lineageTag: e5f89e83-be0a-45f7-9819-f538f6e75253
+		summarizeBy: none
+		sourceColumn: TrackingNumber
+
+		annotation SummarizationSetBy = Automatic
+
+	column ShipDate
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 840221d1-f58e-4ed8-9e82-06c16f466baa
+		summarizeBy: none
+		sourceColumn: ShipDate
+
+		variation Variation
+			isDefault
+			relationship: 855c473c-1cf9-4112-9046-3222ba0dc884
+			defaultHierarchy: LocalDateTable_b47855c2-8651-4ff4-9fea-9e942940924c.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	column FinalShippingFee
+		dataType: double
+		lineageTag: 69cc57ea-c9d7-49e5-848f-20d994a87877
+		summarizeBy: sum
+		sourceColumn: FinalShippingFee
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column OrderID
+		dataType: int64
+		formatString: 0
+		lineageTag: d8335605-797c-4845-8d77-c605e041598f
+		summarizeBy: none
+		sourceColumn: OrderID
+
+		annotation SummarizationSetBy = Automatic
+
+	column OrderItemID
+		dataType: int64
+		formatString: 0
+		lineageTag: 399de5e4-a5b7-4c19-9ae6-9e4400e06b86
+		summarizeBy: none
+		sourceColumn: OrderItemID
+
+		annotation SummarizationSetBy = Automatic
+
+	column Qty
+		dataType: int64
+		formatString: 0
+		lineageTag: 722e268d-dd83-4abc-895b-b3f91b8c8391
+		summarizeBy: sum
+		sourceColumn: Qty
+
+		annotation SummarizationSetBy = Automatic
+
+	column DeliveryStatus
+		dataType: string
+		lineageTag: d6aa09eb-89c8-48d8-9af9-b98797088a7c
+		summarizeBy: none
+		sourceColumn: DeliveryStatus
+
+		changedProperty = DataType
+
+		annotation SummarizationSetBy = Automatic
+
+	column DeliveryDate
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 60d3a8c0-e82d-4298-bcef-2df04cc78674
+		summarizeBy: none
+		sourceColumn: DeliveryDate
+
+		variation Variation
+			isDefault
+			relationship: e21b45bd-14f5-4d53-a20e-ee3b103f99c0
+			defaultHierarchy: LocalDateTable_feccbffd-a582-415a-80c3-6de9543773de.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	column DeliveryStatusDescription
+		dataType: string
+		lineageTag: f2bf0b99-fc48-4da2-83cf-9e2a3bc51cbc
+		summarizeBy: none
+		sourceColumn: DeliveryStatusDescription
+
+		annotation SummarizationSetBy = Automatic
+
+	column DeliveryStatus_Mapping = RELATED('DELIVERYSTATUS_MAPPINGS'[DELIVERYSTATUS_MAPPING])
+		displayFolder: 1Columns
+		lineageTag: ec9c0c47-ccbe-4529-8744-b8f6e15d7846
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column CHECK_Is_NoCarrierScan_Item = ```
+			
+			IF (
+			    bvc_Package[DeliveryStatus_Mapping] IN {
+			        "Unshipped",
+			        "TrackingQueryFailedOnce",
+			        "TrackingQueryFailedTwice",
+			        "TrackingQueryFailedThrice"
+			    }
+			    && bvc_Package[ShippingStatus_Mapping] = "FullyShipped"
+			    && TRUNC ( bvc_Package[ShipDate] ) <> TODAY()
+			    && RELATED('OrderID_Warehouse_Map'[Warehouse]) <> "WFS Warehouse"
+			    && RELATED('BVC_ORDER'[ShippingCarrier]) IN { "FedEx", "UPS" },
+			    1,
+			    0
+			)
+			
+			```
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		displayFolder: 1Columns
+		lineageTag: 89ef2ea6-524c-4037-b6a8-200d41742cad
+		summarizeBy: none
+
+		changedProperty = DataType
+
+		annotation SummarizationSetBy = Automatic
+
+	column ShippingStatus_Mapping = RELATED('BVC_ORDER'[ShippingStatus_Mapping]) //pulls the related ShippingStatus_Mapping from BVC_ORDER (which is also a related formula)
+		displayFolder: 1Columns
+		lineageTag: 6f6bba56-43b0-4538-9d7a-603b987aef05
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'ShipDate - Copy'
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 9ea8e8dc-5eda-4b77-88e1-89e8fc3cabd2
+		summarizeBy: none
+		sourceColumn: ShipDate - Copy
+
+		variation Variation
+			isDefault
+			relationship: d2dd3b63-f353-4d91-98c6-f4d9f0429e7c
+			defaultHierarchy: LocalDateTable_1f0d237c-773b-41ec-b822-5bf2f4ac1f1c.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	partition bvc_Package = m
+		mode: import
+		source = ```
+				let
+				    Source = Sql.Database("10.13.0.206", "SC", 
+				        [Query="
+				            SELECT
+				                p.ID,
+				                p.Length,
+				                p.Width,
+				                p.Height,
+				                p.Weight,
+				                p.ShippingServiceCode,
+				                p.ShippingMethodName,
+				                p.TrackingNumber,
+				                p.ShipDate,
+				                p.FinalShippingFee,
+				                p.OrderID,
+				                p.OrderItemID,
+				                p.Qty,
+				                p.DeliveryStatus,
+				                p.DeliveryDate,
+				                p.DeliveryStatusDescription
+				            FROM bvc_Package p WITH (NOLOCK)
+				            INNER JOIN bvc_Order o WITH (NOLOCK) ON p.OrderID = o.ID
+				            WHERE o.RecordCreatedOn >= DATEADD(MONTH, -12, GETDATE());
+				        "]
+				    ),
+				    #"Duplicated Column" = Table.DuplicateColumn(Source, "ShipDate", "ShipDate - Copy"),
+				    #"Changed Type" = Table.TransformColumnTypes(#"Duplicated Column", {{"ShipDate - Copy", type date}})
+				in
+				    #"Changed Type"
+				```
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

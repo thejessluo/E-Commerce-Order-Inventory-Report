@@ -1,0 +1,113 @@
+table bvc_Product_InventoryLog
+	lineageTag: 38c716da-4636-431d-9d04-651d69a52139
+
+	measure Count_Recent_ZeroStocks = ```
+			
+			CALCULATE(
+			    COUNTROWS(bvc_Product_InventoryLog),
+			    FILTER(
+			        bvc_Product_InventoryLog,
+			        bvc_Product_InventoryLog[LogDate] >= TODAY() - 1 &&
+			        bvc_Product_InventoryLog[LogDate] <= TODAY() &&
+			        bvc_Product_InventoryLog[OldValue] >= 1 &&
+			        bvc_Product_InventoryLog[NewValue] <= 0
+			    )
+			) + 0
+			
+			```
+		formatString: 0
+		displayFolder: 1Measures/Columns
+		lineageTag: 918f3ab3-a5fe-41f8-9d71-45b4f295c6f5
+
+	column ID
+		dataType: int64
+		formatString: 0
+		lineageTag: 4cc8b145-16d1-4ec7-8d72-cd2045f62524
+		summarizeBy: count
+		sourceColumn: ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column ProductID
+		dataType: string
+		lineageTag: b1a665da-20c7-4c81-8ade-c45bae42d9b0
+		summarizeBy: none
+		sourceColumn: ProductID
+
+		annotation SummarizationSetBy = Automatic
+
+	column LogDate
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 3a8558e7-7cdc-441d-8c62-ab4ce73b354c
+		summarizeBy: none
+		sourceColumn: LogDate
+
+		variation Variation
+			isDefault
+			relationship: 74add57d-11fa-4e4d-a065-936fe38d9bc7
+			defaultHierarchy: LocalDateTable_4022267d-6c08-4132-8269-9a0b7b74153e.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	column WarehouseID
+		dataType: int64
+		formatString: 0
+		lineageTag: 01f12cdc-bf3b-47f7-a775-b77bd3587117
+		summarizeBy: none
+		sourceColumn: WarehouseID
+
+		annotation SummarizationSetBy = Automatic
+
+	column OldValue
+		dataType: int64
+		formatString: 0
+		lineageTag: 94765acf-f77a-4471-8e2b-db9f91092625
+		summarizeBy: sum
+		sourceColumn: OldValue
+
+		annotation SummarizationSetBy = Automatic
+
+	column NewValue
+		dataType: int64
+		formatString: 0
+		lineageTag: 0c766dda-3982-4981-b518-24260912b140
+		summarizeBy: sum
+		sourceColumn: NewValue
+
+		annotation SummarizationSetBy = Automatic
+
+	column WarehousesTrace
+		dataType: string
+		lineageTag: d2f88a79-bc7f-40ac-8266-328d74ffa5fc
+		summarizeBy: none
+		sourceColumn: WarehousesTrace
+
+		annotation SummarizationSetBy = Automatic
+
+	column ApplicationName
+		dataType: string
+		lineageTag: 37af8642-c483-40c0-a56f-059322c0bfc2
+		summarizeBy: none
+		sourceColumn: ApplicationName
+
+		annotation SummarizationSetBy = Automatic
+
+	column StoredProcedureName
+		dataType: string
+		lineageTag: c4a59a6e-b024-46a2-994f-8391f100b8c4
+		summarizeBy: none
+		sourceColumn: StoredProcedureName
+
+		annotation SummarizationSetBy = Automatic
+
+	partition bvc_Product_InventoryLog = m
+		mode: import
+		source =
+				let
+				    Source = Sql.Databases("10.13.0.206"),
+				    SC = Source{[Name="SC"]}[Data],
+				    dbo_bvc_Product_InventoryLog = SC{[Schema="dbo",Item="bvc_Product_InventoryLog"]}[Data]
+				in
+				    dbo_bvc_Product_InventoryLog
+

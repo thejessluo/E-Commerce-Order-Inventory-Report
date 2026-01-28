@@ -1,0 +1,16 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.5.0/schema.json",
+  "name": "66858e9ae4e1f46be86f",
+  "position": {
+    "x": 220.00008532298932,
+    "y": 467.7142942465847,
+    "z": 22000,
+    "height": 132.24489795918367,
+    "width": 267.75510204081633,
+    "tabOrder": 23000
+  },
+  "visualGroup": {
+    "displayName": "Inventory No Orders",
+    "groupMode": "ScaleMode"
+  }
+}

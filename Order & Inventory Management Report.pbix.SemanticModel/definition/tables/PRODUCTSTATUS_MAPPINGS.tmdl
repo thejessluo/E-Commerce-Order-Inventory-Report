@@ -1,0 +1,39 @@
+table PRODUCTSTATUS_MAPPINGS
+	isHidden
+	lineageTag: 6b0a7f18-d3cd-4dba-bfe9-bae9346bef1f
+
+	column PRODUCTSTATUS
+		dataType: string
+		isHidden
+		lineageTag: 7a6ec3e5-a916-43b3-b516-8e323ff4eb03
+		summarizeBy: none
+		sourceColumn: PRODUCTSTATUS
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column PRODUCTSTATUS_MAPPINGS
+		dataType: string
+		isHidden
+		lineageTag: 989286fd-0049-45fd-b1a1-5055553809d9
+		summarizeBy: none
+		sourceColumn: PRODUCTSTATUS_MAPPINGS
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	partition PRODUCTSTATUS_MAPPINGS = m
+		mode: import
+		source =
+				let
+				    Source = Snowflake.Databases("zo76507.west-europe.azure.snowflakecomputing.com","WH_XSMALL_83818",[Implementation="2.0"]),
+				    DATAHAWK_WRITABLE_83818_Database = Source{[Name="DATAHAWK_WRITABLE_83818",Kind="Database"]}[Data],
+				    SELLERCLOUD_DATA_Schema = DATAHAWK_WRITABLE_83818_Database{[Name="SELLERCLOUD_DATA",Kind="Schema"]}[Data],
+				    PRODUCTSTATUS_MAPPINGS_Table = SELLERCLOUD_DATA_Schema{[Name="PRODUCTSTATUS_MAPPINGS",Kind="Table"]}[Data]
+				in
+				    PRODUCTSTATUS_MAPPINGS_Table
+
+	changedProperty = IsHidden
+

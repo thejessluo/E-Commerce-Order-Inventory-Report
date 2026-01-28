@@ -1,0 +1,16 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.5.0/schema.json",
+  "name": "7a80b1a25dd9cdc40a10",
+  "position": {
+    "x": 1054,
+    "y": 0,
+    "z": 6000,
+    "height": 40,
+    "width": 272,
+    "tabOrder": 11000
+  },
+  "visualGroup": {
+    "displayName": "Collapsed Filters Pane",
+    "groupMode": "ScaleMode"
+  }
+}

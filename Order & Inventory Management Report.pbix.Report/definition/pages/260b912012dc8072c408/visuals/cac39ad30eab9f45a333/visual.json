@@ -1,0 +1,17 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.5.0/schema.json",
+  "name": "cac39ad30eab9f45a333",
+  "position": {
+    "x": 0,
+    "y": 0,
+    "z": 0,
+    "height": 135.37761601455873,
+    "width": 224.28571428571431,
+    "tabOrder": 0
+  },
+  "visualGroup": {
+    "displayName": "AOO BUTTON",
+    "groupMode": "ScaleMode"
+  },
+  "parentGroupName": "8f84e4a45956ecba9bd2"
+}

@@ -1,0 +1,17 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.5.0/schema.json",
+  "name": "4431911476b89d90abc1",
+  "position": {
+    "x": 30.591075017425894,
+    "y": 15.143525986889175,
+    "z": 3000,
+    "height": 123.37630662020906,
+    "width": 231.32558139534879,
+    "tabOrder": 0
+  },
+  "visualGroup": {
+    "displayName": "UNSHIPPED BUTTON",
+    "groupMode": "ScaleMode"
+  },
+  "parentGroupName": "56f92b9d6a27b24b091c"
+}

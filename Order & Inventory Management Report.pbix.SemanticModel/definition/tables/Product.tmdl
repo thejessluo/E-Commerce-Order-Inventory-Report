@@ -1,0 +1,4128 @@
+table Product
+	lineageTag: c5077b1b-8b53-4a45-8ae5-145941948e61
+
+	/// This calculated column checks each product and:
+	/// 
+	/// Finds the most recent purchase order date for that product.
+	/// 
+	/// Gets the quantity on order for that date only if the PO wasn’t cancelled.
+	/// 
+	/// If no valid (non-cancelled) PO exists, it returns 0.
+	/// 
+	/// This way, we avoid counting cancelled POs while still retaining all products in the table.
+	measure PO_QtyOnOrder_Measure = ```
+			
+			VAR ProductID = SELECTEDVALUE('Product'[ID])
+			VAR LatestDate =
+			    CALCULATE(
+			        MAX('MERGED_PO_ITEMS_TABLE'[CreatedOn]),
+			        'MERGED_PO_ITEMS_TABLE'[ProductID] = ProductID
+			    )
+			RETURN
+			    CALCULATE(
+			        MAX('MERGED_PO_ITEMS_TABLE'[Qty_On_Order]),
+			        'MERGED_PO_ITEMS_TABLE'[ProductID] = ProductID,
+			        'MERGED_PO_ITEMS_TABLE'[CreatedOn] = LatestDate
+			    )
+			
+			```
+		formatString: 0
+		displayFolder: 1Measures/Columns
+		lineageTag: 4fb92f42-145d-474e-9cd5-2fde57b70e3a
+
+	measure COUNT_Zero_Stock_SKUs_With_PO = ```
+			
+			COUNTROWS(
+			    FILTER(
+			        ADDCOLUMNS(
+			            'Product',
+			            "HasPO", [Latest_PO]
+			        ),
+			        'Product'[Is_Zero_Stock_NoRecentOrders] = TRUE() &&
+			        NOT ISBLANK([HasPO])
+			    )
+			)
+			
+			```
+		formatString: 0
+		displayFolder: 1Measures/Columns
+		lineageTag: 20d10d3c-7be4-4a1c-89f7-671c25f56606
+
+	measure COUNT_Zero_Stock_SKUs_Without_PO = ```
+			
+			COUNTROWS(
+			    FILTER(
+			        ADDCOLUMNS(
+			            'Product',
+			            "HasPO", [Latest_PO]
+			        ),
+			        'Product'[Is_Zero_Stock_NoRecentOrders] = TRUE() &&
+			        ISBLANK([HasPO])
+			    )
+			)
+			
+			```
+		formatString: 0
+		displayFolder: 1Measures/Columns
+		lineageTag: 77bb73f8-97ed-4eac-824e-b3053f34d607
+
+	measure COUNT_Negative_Inventory_Products = ```
+			
+			CALCULATE(
+			    COUNTROWS('Product'),
+			    'Product'[CHECK_Negative_Inventory] = 1
+			) + 0 
+			
+			```
+		formatString: 0
+		displayFolder: 1Measures/Columns
+		lineageTag: d19c1cd0-314a-44e7-b102-9b352e425984
+
+	column ID
+		dataType: string
+		lineageTag: 43fa2eeb-a4a6-49a8-9071-c80573a0f597
+		summarizeBy: none
+		sourceColumn: ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column ProductName
+		dataType: string
+		lineageTag: b9b27934-d1b4-49d7-8d1b-c91525db23a5
+		summarizeBy: none
+		sourceColumn: ProductName
+
+		annotation SummarizationSetBy = Automatic
+
+	column ProductTypeID
+		dataType: string
+		lineageTag: da5bd8c8-6bdc-41fc-a82e-61b09415d9a8
+		summarizeBy: none
+		sourceColumn: ProductTypeID
+
+		annotation SummarizationSetBy = Automatic
+
+	column ListPrice
+		dataType: decimal
+		formatString: \$#,0.###############;(\$#,0.###############);\$#,0.###############
+		lineageTag: 1bcf9356-175a-45c0-9045-62e5ef259180
+		summarizeBy: sum
+		sourceColumn: ListPrice
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"currencyCulture":"en-US"}
+
+	column SitePrice
+		dataType: decimal
+		formatString: \$#,0.###############;(\$#,0.###############);\$#,0.###############
+		lineageTag: 06bab504-91e6-4555-b03b-bbc57a5a3a3d
+		summarizeBy: sum
+		sourceColumn: SitePrice
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"currencyCulture":"en-US"}
+
+	column SiteCost
+		dataType: decimal
+		formatString: \$#,0.###############;(\$#,0.###############);\$#,0.###############
+		lineageTag: a2694437-c537-4a81-bc66-be419fc21499
+		summarizeBy: sum
+		sourceColumn: SiteCost
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"currencyCulture":"en-US"}
+
+	column MetaKeywords
+		dataType: string
+		lineageTag: a2656f5f-3c2e-43a7-be5d-0ccbbe14f4c1
+		summarizeBy: none
+		sourceColumn: MetaKeywords
+
+		annotation SummarizationSetBy = Automatic
+
+	column MetaDescription
+		dataType: string
+		lineageTag: 776bd80d-11b1-4780-ae41-c30d0701c5b0
+		summarizeBy: none
+		sourceColumn: MetaDescription
+
+		annotation SummarizationSetBy = Automatic
+
+	column MetaTitle
+		dataType: string
+		lineageTag: d0efb602-c2ae-4696-a5ed-f45137e20744
+		summarizeBy: none
+		sourceColumn: MetaTitle
+
+		annotation SummarizationSetBy = Automatic
+
+	column TaxExempt
+		dataType: string
+		lineageTag: 56c34fcd-3595-4612-b118-9b4111b5dfa5
+		summarizeBy: none
+		sourceColumn: TaxExempt
+
+		annotation SummarizationSetBy = Automatic
+
+	column TaxClass
+		dataType: string
+		lineageTag: 24b3105e-b079-4776-a9ec-45103fef8687
+		summarizeBy: none
+		sourceColumn: TaxClass
+
+		annotation SummarizationSetBy = Automatic
+
+	column NonShipping
+		dataType: string
+		lineageTag: a6c0de60-5ca8-4c0b-aeeb-20781f5de9ed
+		summarizeBy: none
+		sourceColumn: NonShipping
+
+		annotation SummarizationSetBy = Automatic
+
+	column ShipSeparately
+		dataType: string
+		lineageTag: 8d8a349c-9b17-4aa9-bafd-ac0d7d78e3c7
+		summarizeBy: none
+		sourceColumn: ShipSeparately
+
+		annotation SummarizationSetBy = Automatic
+
+	column DropShipMode
+		dataType: string
+		lineageTag: 2c09d765-4543-46e2-bc12-f1dfc4044c8f
+		summarizeBy: none
+		sourceColumn: DropShipMode
+
+		annotation SummarizationSetBy = Automatic
+
+	column Status
+		dataType: string
+		lineageTag: 74d17770-5c24-417e-b290-cab6481b9d1e
+		summarizeBy: none
+		sourceColumn: Status
+
+		annotation SummarizationSetBy = Automatic
+
+	column ImageFileSmall
+		dataType: string
+		lineageTag: 9d6b2b89-84d3-4f94-84c8-d531f09ef49e
+		summarizeBy: none
+		sourceColumn: ImageFileSmall
+
+		annotation SummarizationSetBy = Automatic
+
+	column ImageFileMedium
+		dataType: string
+		lineageTag: e2c400d7-0106-478c-a035-d49df7006d65
+		summarizeBy: none
+		sourceColumn: ImageFileMedium
+
+		annotation SummarizationSetBy = Automatic
+
+	column CreationDate
+		dataType: dateTime
+		formatString: Short Date
+		lineageTag: de8acd34-06e5-42e3-b554-94d3a925f683
+		summarizeBy: none
+		sourceColumn: CreationDate
+
+		variation Variation
+			isDefault
+			relationship: e76da045-acd2-414e-9976-d74badc0c2e2
+			defaultHierarchy: LocalDateTable_2bf7fcda-341e-4746-8da8-ad07b143e623.'Date Hierarchy'
+
+		changedProperty = DataType
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column MinimumQty
+		dataType: string
+		lineageTag: c1811f9a-0fda-426c-a565-8b380f7a8369
+		summarizeBy: none
+		sourceColumn: MinimumQty
+
+		annotation SummarizationSetBy = Automatic
+
+	column ParentID
+		dataType: string
+		lineageTag: 4a013456-b915-4f86-8422-a52c8d9518f3
+		summarizeBy: none
+		sourceColumn: ParentID
+
+		annotation SummarizationSetBy = Automatic
+
+	column VariantDisplayMode
+		dataType: string
+		lineageTag: a897c7ae-01a5-4c92-b460-54e315917ca4
+		summarizeBy: none
+		sourceColumn: VariantDisplayMode
+
+		annotation SummarizationSetBy = Automatic
+
+	column InventoryAvailableQty
+		dataType: int64
+		formatString: 0
+		lineageTag: b6a740ed-f1bc-48b9-9535-0af29dead7cd
+		summarizeBy: sum
+		sourceColumn: InventoryAvailableQty
+
+		annotation SummarizationSetBy = Automatic
+
+	column InventoryLowStockNotice
+		dataType: string
+		lineageTag: c7f286bd-742e-4648-a5a1-3647044d4d2c
+		summarizeBy: none
+		sourceColumn: InventoryLowStockNotice
+
+		annotation SummarizationSetBy = Automatic
+
+	column InventoryStatus
+		dataType: string
+		lineageTag: 3a0a4afb-b201-4864-833a-30764952a9f6
+		summarizeBy: none
+		sourceColumn: InventoryStatus
+
+		annotation SummarizationSetBy = Automatic
+
+	column InventoryNotAvailableStatus
+		dataType: string
+		lineageTag: f1a113e5-5cf0-44fb-ad4f-cd04095c5bed
+		summarizeBy: none
+		sourceColumn: InventoryNotAvailableStatus
+
+		annotation SummarizationSetBy = Automatic
+
+	column InventoryNotAvailableMessage
+		dataType: string
+		lineageTag: 5cbc9319-9812-4dab-8819-10a3219c6b73
+		summarizeBy: none
+		sourceColumn: InventoryNotAvailableMessage
+
+		annotation SummarizationSetBy = Automatic
+
+	column ShortDescription
+		dataType: string
+		lineageTag: 671af44d-d0f6-4175-a225-c9c42ebb281a
+		summarizeBy: none
+		sourceColumn: ShortDescription
+
+		annotation SummarizationSetBy = Automatic
+
+	column LongDescription
+		dataType: string
+		lineageTag: 899874fb-8657-43fb-9e9a-9f8e4342ae12
+		summarizeBy: none
+		sourceColumn: LongDescription
+
+		annotation SummarizationSetBy = Automatic
+
+	column ManufacturerID
+		dataType: string
+		lineageTag: e590612a-05b5-4721-8302-b205cc614c8b
+		summarizeBy: none
+		sourceColumn: ManufacturerID
+
+		annotation SummarizationSetBy = Automatic
+
+	column VendorID
+		dataType: string
+		lineageTag: 9ee26cdc-20ec-489e-ab83-0bc09c6599e1
+		summarizeBy: none
+		sourceColumn: VendorID
+
+		annotation SummarizationSetBy = Automatic
+
+	column GiftWrapAllowed
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: a08f07d3-de7c-4e98-a7b1-5442eaf23aad
+		summarizeBy: none
+		sourceColumn: GiftWrapAllowed
+
+		annotation SummarizationSetBy = Automatic
+
+	column ExtraShipFee
+		dataType: string
+		lineageTag: c4ea2da5-22b2-4309-b3ce-3e25cfff0503
+		summarizeBy: none
+		sourceColumn: ExtraShipFee
+
+		annotation SummarizationSetBy = Automatic
+
+	column IsBundle
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: f0fc50fb-ea8c-42ac-addc-a8ecb26f0b62
+		summarizeBy: none
+		sourceColumn: IsBundle
+
+		annotation SummarizationSetBy = Automatic
+
+	column Weight
+		dataType: double
+		lineageTag: 52dd591f-7428-446a-9bbf-8c1f8478d7d3
+		summarizeBy: sum
+		sourceColumn: Weight
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column WeightUnits
+		dataType: string
+		lineageTag: 2d28752d-651d-458d-9b85-0e5ffdd74d77
+		summarizeBy: none
+		sourceColumn: WeightUnits
+
+		annotation SummarizationSetBy = Automatic
+
+	column Rating
+		dataType: string
+		lineageTag: 74c3d015-e38f-455d-9a2b-082dcc13d253
+		summarizeBy: none
+		sourceColumn: Rating
+
+		annotation SummarizationSetBy = Automatic
+
+	column Priority
+		dataType: string
+		lineageTag: b1915451-2256-40ce-9bb8-739d9dfbcadc
+		summarizeBy: none
+		sourceColumn: Priority
+
+		annotation SummarizationSetBy = Automatic
+
+	column IsEndOfLife
+		dataType: string
+		lineageTag: c1d845f9-8662-4b42-b1e8-cf66589d4dfc
+		summarizeBy: none
+		sourceColumn: IsEndOfLife
+
+		annotation SummarizationSetBy = Automatic
+
+	column LastCost
+		dataType: decimal
+		formatString: \$#,0.###############;(\$#,0.###############);\$#,0.###############
+		lineageTag: 9d4e9bd8-681a-4676-8d13-56b0a06bacd6
+		summarizeBy: sum
+		sourceColumn: LastCost
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"currencyCulture":"en-US"}
+
+	column AverageCost
+		dataType: decimal
+		formatString: \$#,0.###############;(\$#,0.###############);\$#,0.###############
+		lineageTag: 534d2fbe-309c-40ee-a75e-d07c2cf43f1f
+		summarizeBy: sum
+		sourceColumn: AverageCost
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"currencyCulture":"en-US"}
+
+	column StorePrice
+		dataType: decimal
+		formatString: \$#,0.###############;(\$#,0.###############);\$#,0.###############
+		lineageTag: db61ddb1-c1d0-4957-a0be-dee1482462ee
+		summarizeBy: sum
+		sourceColumn: StorePrice
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"currencyCulture":"en-US"}
+
+	column DateModified
+		dataType: dateTime
+		formatString: Short Date
+		lineageTag: 4dd5c1bc-71c0-4364-a204-c69759fdae69
+		summarizeBy: none
+		sourceColumn: DateModified
+
+		variation Variation
+			isDefault
+			relationship: 336e79a1-690a-412d-b81a-396eddf8de65
+			defaultHierarchy: LocalDateTable_dc6ad71f-d8b9-42f5-8982-f9d103420f83.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	column ModifiedBy
+		dataType: string
+		lineageTag: 510c0578-5629-4f29-8406-3926a702d90b
+		summarizeBy: none
+		sourceColumn: ModifiedBy
+
+		annotation SummarizationSetBy = Automatic
+
+	column DateCreated
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: b8466041-64ac-46d5-9821-338367babe9e
+		summarizeBy: none
+		sourceColumn: DateCreated
+
+		variation Variation
+			isDefault
+			relationship: e803ebed-9a80-4fe3-ad29-7d4ed27aa891
+			defaultHierarchy: LocalDateTable_7dc81dcf-b31c-474f-951e-83cf7ff0eda1.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	column CreatedBy
+		dataType: string
+		lineageTag: 0a8c4b99-8597-477c-a8cc-889c23ce641b
+		summarizeBy: none
+		sourceColumn: CreatedBy
+
+		annotation SummarizationSetBy = Automatic
+
+	column EbayPrice
+		dataType: string
+		lineageTag: 9c8824a4-cba4-483f-b922-51dd23ae16cb
+		summarizeBy: none
+		sourceColumn: EbayPrice
+
+		annotation SummarizationSetBy = Automatic
+
+	column EbayStatus
+		dataType: string
+		lineageTag: 8ca481b2-a4c3-4712-9aae-d2092bb4298d
+		summarizeBy: none
+		sourceColumn: EbayStatus
+
+		annotation SummarizationSetBy = Automatic
+
+	column EbayListed
+		dataType: string
+		lineageTag: 36209fef-d375-44c0-8ce1-b6e60143635c
+		summarizeBy: none
+		sourceColumn: EbayListed
+
+		annotation SummarizationSetBy = Automatic
+
+	column EbayLastListDate
+		dataType: string
+		lineageTag: f6cc1ba9-1f1a-44bb-9acc-eaa299fe77ec
+		summarizeBy: none
+		sourceColumn: EbayLastListDate
+
+		annotation SummarizationSetBy = Automatic
+
+	column EbayLastModifiedDate
+		dataType: string
+		lineageTag: 2ba51622-a816-44e1-bccb-4e67e04a7f8c
+		summarizeBy: none
+		sourceColumn: EbayLastModifiedDate
+
+		annotation SummarizationSetBy = Automatic
+
+	column Researched
+		dataType: string
+		lineageTag: a6b2aa96-1291-4956-b198-ee32b88e3889
+		summarizeBy: none
+		sourceColumn: Researched
+
+		annotation SummarizationSetBy = Automatic
+
+	column LastResearchDate
+		dataType: string
+		lineageTag: f4d52a94-8720-484c-8402-29486a774a41
+		summarizeBy: none
+		sourceColumn: LastResearchDate
+
+		annotation SummarizationSetBy = Automatic
+
+	column ResearchedBy
+		dataType: string
+		lineageTag: eacd6418-9311-43af-9fe1-a615406664a0
+		summarizeBy: none
+		sourceColumn: ResearchedBy
+
+		annotation SummarizationSetBy = Automatic
+
+	column Watch
+		dataType: string
+		lineageTag: 6426592b-bb1e-45af-8491-080c7dfd88c3
+		summarizeBy: none
+		sourceColumn: Watch
+
+		annotation SummarizationSetBy = Automatic
+
+	column PriceGrabberURL
+		dataType: string
+		lineageTag: e9ddcf7c-f607-469b-9d25-eeaf0ce6faba
+		summarizeBy: none
+		sourceColumn: PriceGrabberURL
+
+		annotation SummarizationSetBy = Automatic
+
+	column EbayListedBy
+		dataType: string
+		lineageTag: 3ff06a00-4be8-404c-9fdc-7ff104cd6277
+		summarizeBy: none
+		sourceColumn: EbayListedBy
+
+		annotation SummarizationSetBy = Automatic
+
+	column EBayHighPrice
+		dataType: string
+		lineageTag: ef2f4279-c147-4371-b07e-8e5dd34032cb
+		summarizeBy: none
+		sourceColumn: EBayHighPrice
+
+		annotation SummarizationSetBy = Automatic
+
+	column EbayLowPrice
+		dataType: string
+		lineageTag: da8dc366-1612-4871-8c1b-dea1b7edfacd
+		summarizeBy: none
+		sourceColumn: EbayLowPrice
+
+		annotation SummarizationSetBy = Automatic
+
+	column WatchFrequency
+		dataType: string
+		lineageTag: 60e3bc3f-ec53-493b-884c-96e24ac896d4
+		summarizeBy: none
+		sourceColumn: WatchFrequency
+
+		annotation SummarizationSetBy = Automatic
+
+	column eBaySaleQty
+		dataType: string
+		lineageTag: 2afc3f1b-5d0b-42f0-ade6-82e7670e67ce
+		summarizeBy: none
+		sourceColumn: eBaySaleQty
+
+		annotation SummarizationSetBy = Automatic
+
+	column EbayPostpone
+		dataType: string
+		lineageTag: 380590fa-7bd8-468a-ba94-7e90aff86902
+		summarizeBy: none
+		sourceColumn: EbayPostpone
+
+		annotation SummarizationSetBy = Automatic
+
+	column IsToBuy
+		dataType: string
+		lineageTag: 3b6555c2-4ef4-4acb-b908-036d4a081a6d
+		summarizeBy: none
+		sourceColumn: IsToBuy
+
+		annotation SummarizationSetBy = Automatic
+
+	column IsBackOrder
+		dataType: string
+		lineageTag: f1bd6840-91f7-4327-b1df-1aa28336824f
+		summarizeBy: none
+		sourceColumn: IsBackOrder
+
+		annotation SummarizationSetBy = Automatic
+
+	column AmazonPrice
+		dataType: string
+		lineageTag: 8bd6a7be-43fe-4a22-a8b5-a88b5f3b4b95
+		summarizeBy: none
+		sourceColumn: AmazonPrice
+
+		annotation SummarizationSetBy = Automatic
+
+	column MaxDiscountPrice
+		dataType: string
+		lineageTag: ebdd6733-9e3c-422c-908e-ffb0fc003d5d
+		summarizeBy: none
+		sourceColumn: MaxDiscountPrice
+
+		annotation SummarizationSetBy = Automatic
+
+	column IsUserDefinedPrice
+		dataType: string
+		lineageTag: 2f747c00-67a5-4a90-a292-4c8c65d4d0c2
+		summarizeBy: none
+		sourceColumn: IsUserDefinedPrice
+
+		annotation SummarizationSetBy = Automatic
+
+	column EstimatedCost
+		dataType: decimal
+		formatString: \$#,0.###############;(\$#,0.###############);\$#,0.###############
+		lineageTag: f1c589fc-c8ab-477f-8e03-95cb4d33a4a5
+		summarizeBy: sum
+		sourceColumn: EstimatedCost
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"currencyCulture":"en-US"}
+
+	column ShippingCost
+		dataType: decimal
+		formatString: \$#,0.###############;(\$#,0.###############);\$#,0.###############
+		lineageTag: 3377a3ce-a84c-49ef-8e1b-a145e25b8fae
+		summarizeBy: sum
+		sourceColumn: ShippingCost
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"currencyCulture":"en-US"}
+
+	column ShippingPrice
+		dataType: decimal
+		formatString: \$#,0.###############;(\$#,0.###############);\$#,0.###############
+		lineageTag: a17792f1-e9c8-473a-b406-4c6d6521bf3c
+		summarizeBy: sum
+		sourceColumn: ShippingPrice
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"currencyCulture":"en-US"}
+
+	column ShippingPriceEbay
+		dataType: string
+		lineageTag: b3b666af-82c0-42f8-b977-86cd0cfacef4
+		summarizeBy: none
+		sourceColumn: ShippingPriceEbay
+
+		annotation SummarizationSetBy = Automatic
+
+	column EbayListingFee
+		dataType: string
+		lineageTag: 4838a054-58d4-4612-8588-8c2d95eaf9a1
+		summarizeBy: none
+		sourceColumn: EbayListingFee
+
+		annotation SummarizationSetBy = Automatic
+
+	column EbayListingFeeUserDefined
+		dataType: string
+		lineageTag: 388146fc-ff3a-41cb-97c7-3358ea4f371e
+		summarizeBy: none
+		sourceColumn: EbayListingFeeUserDefined
+
+		annotation SummarizationSetBy = Automatic
+
+	column EbayTransactionFee
+		dataType: string
+		lineageTag: dcabd447-ec8f-4f07-a638-3f26926b3c45
+		summarizeBy: none
+		sourceColumn: EbayTransactionFee
+
+		annotation SummarizationSetBy = Automatic
+
+	column EbayTransactionFeeUserDefined
+		dataType: string
+		lineageTag: fcc72652-35d3-45c9-b7f3-45b429c4af38
+		summarizeBy: none
+		sourceColumn: EbayTransactionFeeUserDefined
+
+		annotation SummarizationSetBy = Automatic
+
+	column PaypalFee
+		dataType: string
+		lineageTag: 97a3fd92-630a-4d2f-8a8a-9d29a29cfe8f
+		summarizeBy: none
+		sourceColumn: PaypalFee
+
+		annotation SummarizationSetBy = Automatic
+
+	column PaypalFeeUserDefined
+		dataType: string
+		lineageTag: a6850ef8-3265-4afd-b200-b8e7d5eb9754
+		summarizeBy: none
+		sourceColumn: PaypalFeeUserDefined
+
+		annotation SummarizationSetBy = Automatic
+
+	column MaxDiscountPricePercentage
+		dataType: string
+		lineageTag: 3e8dbb1f-5d35-4576-b214-5cca1a40f027
+		summarizeBy: none
+		sourceColumn: MaxDiscountPricePercentage
+
+		annotation SummarizationSetBy = Automatic
+
+	column MaxDiscountPriceUserDefined
+		dataType: string
+		lineageTag: 969e15bb-dd2c-4828-a281-2432e5c5e4b5
+		summarizeBy: none
+		sourceColumn: MaxDiscountPriceUserDefined
+
+		annotation SummarizationSetBy = Automatic
+
+	column EbayListingFeePercentage
+		dataType: string
+		lineageTag: 95e3457a-033b-45f1-b6da-eaf6f3eaeef8
+		summarizeBy: none
+		sourceColumn: EbayListingFeePercentage
+
+		annotation SummarizationSetBy = Automatic
+
+	column EbayTransactionFeePercentage
+		dataType: string
+		lineageTag: fcf2e4e0-40c9-4268-be21-6b4ff40bd55d
+		summarizeBy: none
+		sourceColumn: EbayTransactionFeePercentage
+
+		annotation SummarizationSetBy = Automatic
+
+	column PaypalFeePercentage
+		dataType: string
+		lineageTag: 2ee23c21-8d7d-4bcc-bf39-c6775e163f58
+		summarizeBy: none
+		sourceColumn: PaypalFeePercentage
+
+		annotation SummarizationSetBy = Automatic
+
+	column PriceLevel
+		dataType: string
+		lineageTag: e47e76fb-8d4a-4d04-a92b-adee2287819a
+		summarizeBy: none
+		sourceColumn: PriceLevel
+
+		annotation SummarizationSetBy = Automatic
+
+	column ToBeResearched
+		dataType: string
+		lineageTag: 3444db7b-f182-4e1f-82c8-2ea1b147db2b
+		summarizeBy: none
+		sourceColumn: ToBeResearched
+
+		annotation SummarizationSetBy = Automatic
+
+	column bPromote
+		dataType: string
+		lineageTag: 6c363e57-aed8-4fb4-ad7f-8eeb3985e432
+		summarizeBy: none
+		sourceColumn: bPromote
+
+		annotation SummarizationSetBy = Automatic
+
+	column WebEnabled
+		dataType: string
+		lineageTag: d7ea9834-ab8a-4b79-97fa-72227f099084
+		summarizeBy: none
+		sourceColumn: WebEnabled
+
+		annotation SummarizationSetBy = Automatic
+
+	column TotalLocationQty
+		dataType: string
+		lineageTag: a6008b20-0464-4de7-b7d5-4548b58de16e
+		summarizeBy: none
+		sourceColumn: TotalLocationQty
+
+		annotation SummarizationSetBy = Automatic
+
+	column InBundlePrice
+		dataType: string
+		lineageTag: 990420b7-e782-41ed-b063-8ac2ce050a96
+		summarizeBy: none
+		sourceColumn: InBundlePrice
+
+		annotation SummarizationSetBy = Automatic
+
+	column WeightOz
+		dataType: string
+		lineageTag: 198d7b44-ffb0-49c6-bc94-bf7091c8c811
+		summarizeBy: none
+		sourceColumn: WeightOz
+
+		annotation SummarizationSetBy = Automatic
+
+	column CompanyID
+		dataType: string
+		lineageTag: a3fdc034-b0c3-46e9-bd9f-24af4a4f48a0
+		summarizeBy: none
+		sourceColumn: CompanyID
+
+		annotation SummarizationSetBy = Automatic
+
+	column PackageWeightLbs
+		dataType: double
+		lineageTag: 5661c22c-12a4-4645-b78b-91bb45e387c0
+		summarizeBy: sum
+		sourceColumn: PackageWeightLbs
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column PackageWeightOz
+		dataType: double
+		lineageTag: f7a7121a-2c62-4a0c-91aa-ddad9fffe2ff
+		summarizeBy: sum
+		sourceColumn: PackageWeightOz
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column ManufacturerSKU
+		dataType: string
+		lineageTag: f0a0d710-0d9d-4fe3-9d05-268ce7b5419e
+		summarizeBy: none
+		sourceColumn: ManufacturerSKU
+
+		annotation SummarizationSetBy = Automatic
+
+	column WeightVerified
+		dataType: string
+		lineageTag: ecfb3ce9-4a74-4939-86bf-3d5d3fb104fe
+		summarizeBy: none
+		sourceColumn: WeightVerified
+
+		annotation SummarizationSetBy = Automatic
+
+	column ShadowOf
+		dataType: string
+		lineageTag: 4a3a837b-d44a-4bd6-88a8-d42902475583
+		summarizeBy: none
+		sourceColumn: ShadowOf
+
+		annotation SummarizationSetBy = Automatic
+
+	column ExportedForBuyDotCom
+		dataType: string
+		lineageTag: 8b34d155-a03f-497f-8b45-4b52f8255dc9
+		summarizeBy: none
+		sourceColumn: ExportedForBuyDotCom
+
+		annotation SummarizationSetBy = Automatic
+
+	column BuyDotComPrice
+		dataType: string
+		lineageTag: cb8467c2-1fd3-4200-8fe9-be4075166cd1
+		summarizeBy: none
+		sourceColumn: BuyDotComPrice
+
+		annotation SummarizationSetBy = Automatic
+
+	column NewEggPrice
+		dataType: string
+		lineageTag: 7daea645-2bfc-425f-909e-9a22b611476c
+		summarizeBy: none
+		sourceColumn: NewEggPrice
+
+		annotation SummarizationSetBy = Automatic
+
+	column InventoryLastNotifiedOn
+		dataType: string
+		lineageTag: ff3c4412-51e5-457b-97de-5f4d0e47e55b
+		summarizeBy: none
+		sourceColumn: InventoryLastNotifiedOn
+
+		annotation SummarizationSetBy = Automatic
+
+	column ExportedForNewEgg
+		dataType: string
+		lineageTag: 987a2b52-e6ae-4185-80a6-b68f022542f8
+		summarizeBy: none
+		sourceColumn: ExportedForNewEgg
+
+		annotation SummarizationSetBy = Automatic
+
+	column ExportedToBuyDotComDate
+		dataType: string
+		lineageTag: c2ed6b35-15e2-4509-8375-3e7a9019d1ec
+		summarizeBy: none
+		sourceColumn: ExportedToBuyDotComDate
+
+		annotation SummarizationSetBy = Automatic
+
+	column WholeSalePrice
+		dataType: string
+		lineageTag: 2c528303-c15e-442d-b3dd-29d1c1e1fbe7
+		summarizeBy: none
+		sourceColumn: WholeSalePrice
+
+		annotation SummarizationSetBy = Automatic
+
+	column BuyDotComEnabled
+		dataType: string
+		lineageTag: 73ef3f77-2866-47a4-ac8a-d5cb56008bde
+		summarizeBy: none
+		sourceColumn: BuyDotComEnabled
+
+		annotation SummarizationSetBy = Automatic
+
+	column NewEggEnabled
+		dataType: string
+		lineageTag: 5a0e5e39-998b-4dbd-af2b-ddc61494f039
+		summarizeBy: none
+		sourceColumn: NewEggEnabled
+
+		annotation SummarizationSetBy = Automatic
+
+	column MagentoEnabled
+		dataType: string
+		lineageTag: 62a9d44c-4015-418a-81c8-c3013fa3b143
+		summarizeBy: none
+		sourceColumn: MagentoEnabled
+
+		annotation SummarizationSetBy = Automatic
+
+	column ExportedForMagento
+		dataType: string
+		lineageTag: 53317d69-3d40-4a10-ba62-7ec29da6db68
+		summarizeBy: none
+		sourceColumn: ExportedForMagento
+
+		annotation SummarizationSetBy = Automatic
+
+	column ColorID
+		dataType: string
+		lineageTag: 83597d5e-0df4-4bf0-9daf-d4bc8f8a7941
+		summarizeBy: none
+		sourceColumn: ColorID
+
+		annotation SummarizationSetBy = Automatic
+
+	column SizeID
+		dataType: string
+		lineageTag: 57e960b0-614e-459a-8a9a-f49b2513dff9
+		summarizeBy: none
+		sourceColumn: SizeID
+
+		annotation SummarizationSetBy = Automatic
+
+	column StyleID
+		dataType: string
+		lineageTag: 43b19220-c3ca-4266-87a8-59fefee902bc
+		summarizeBy: none
+		sourceColumn: StyleID
+
+		annotation SummarizationSetBy = Automatic
+
+	column ExportedForAmazon
+		dataType: string
+		lineageTag: 1a52ac03-437b-42a1-91de-3f5cd690f3f1
+		summarizeBy: none
+		sourceColumn: ExportedForAmazon
+
+		annotation SummarizationSetBy = Automatic
+
+	column ProductSource
+		dataType: string
+		lineageTag: 9fed45cc-daf7-4712-b22e-eb9626f28719
+		summarizeBy: none
+		sourceColumn: ProductSource
+
+		annotation SummarizationSetBy = Automatic
+
+	column ProductSourceSKU
+		dataType: string
+		lineageTag: 381d684d-da49-4147-947c-ea5ed25ad0bd
+		summarizeBy: none
+		sourceColumn: ProductSourceSKU
+
+		annotation SummarizationSetBy = Automatic
+
+	column ProductMasterSKU
+		dataType: string
+		lineageTag: 1ac598e7-7a6f-4866-8cc0-579cbb91a6c8
+		summarizeBy: none
+		sourceColumn: ProductMasterSKU
+
+		annotation SummarizationSetBy = Automatic
+
+	column CustomTitle
+		dataType: string
+		lineageTag: b58da662-86c4-4493-bec6-f0cf40ce07a8
+		summarizeBy: none
+		sourceColumn: CustomTitle
+
+		annotation SummarizationSetBy = Automatic
+
+	column SearsEnabled
+		dataType: string
+		lineageTag: 5488350b-111e-454d-8887-ca279ddeb650
+		summarizeBy: none
+		sourceColumn: SearsEnabled
+
+		annotation SummarizationSetBy = Automatic
+
+	column ExportedForSears
+		dataType: string
+		lineageTag: b3dcbc60-9784-4d98-93f1-04c9e132cba6
+		summarizeBy: none
+		sourceColumn: ExportedForSears
+
+		annotation SummarizationSetBy = Automatic
+
+	column SearchResultsTitle
+		dataType: string
+		lineageTag: ef41f69a-b2c4-485b-a8ec-156f9b90b2fa
+		summarizeBy: none
+		sourceColumn: SearchResultsTitle
+
+		annotation SummarizationSetBy = Automatic
+
+	column ShippingPackageTypeID
+		dataType: string
+		lineageTag: 21ffac0e-dc15-417d-b5b9-afda28ff9af8
+		summarizeBy: none
+		sourceColumn: ShippingPackageTypeID
+
+		annotation SummarizationSetBy = Automatic
+
+	column BingEnabled
+		dataType: string
+		lineageTag: 967c05d7-0d45-40fc-9baf-d17edd4bade3
+		summarizeBy: none
+		sourceColumn: BingEnabled
+
+		annotation SummarizationSetBy = Automatic
+
+	column PriceGrabberEnabled
+		dataType: string
+		lineageTag: 5e6afa01-5bf4-42cc-9a73-9bc9e0c21b74
+		summarizeBy: none
+		sourceColumn: PriceGrabberEnabled
+
+		annotation SummarizationSetBy = Automatic
+
+	column CashBackEnabled
+		dataType: string
+		lineageTag: 18d95da1-02ac-44c0-923f-8cbabd185bf4
+		summarizeBy: none
+		sourceColumn: CashBackEnabled
+
+		annotation SummarizationSetBy = Automatic
+
+	column ExpectedAvailableDate
+		dataType: string
+		lineageTag: 36ab474c-5c13-4dd4-85ef-979aa6b6b1b9
+		summarizeBy: none
+		sourceColumn: ExpectedAvailableDate
+
+		annotation SummarizationSetBy = Automatic
+
+	column CustomMessage
+		dataType: string
+		lineageTag: ab7fc493-23c3-4e71-be1a-72d2bf7b4871
+		summarizeBy: none
+		sourceColumn: CustomMessage
+
+		annotation SummarizationSetBy = Automatic
+
+	column Commission
+		dataType: string
+		lineageTag: d7006272-1927-4f58-8600-e07cb86ffe42
+		summarizeBy: none
+		sourceColumn: Commission
+
+		annotation SummarizationSetBy = Automatic
+
+	column NewEggPriceUseDefault
+		dataType: string
+		lineageTag: 13f0832a-78a8-4bdb-be1a-c1b6a7efbf13
+		summarizeBy: none
+		sourceColumn: NewEggPriceUseDefault
+
+		annotation SummarizationSetBy = Automatic
+
+	column NewEggSafetyQuantity
+		dataType: string
+		lineageTag: 3f69ae12-fdf1-4984-9ba1-1f89b45feeb5
+		summarizeBy: none
+		sourceColumn: NewEggSafetyQuantity
+
+		annotation SummarizationSetBy = Automatic
+
+	column NewEggSafetyQuantityUseDefault
+		dataType: string
+		lineageTag: 9a6cd863-7d08-4684-bdfa-8e36f98ec57c
+		summarizeBy: none
+		sourceColumn: NewEggSafetyQuantityUseDefault
+
+		annotation SummarizationSetBy = Automatic
+
+	column HandlingFeeUseDefault
+		dataType: string
+		lineageTag: c492d485-deb2-403f-adf0-fe8d4a628144
+		summarizeBy: none
+		sourceColumn: HandlingFeeUseDefault
+
+		annotation SummarizationSetBy = Automatic
+
+	column HandlingFeeFixedAmount
+		dataType: string
+		lineageTag: 7d855778-e9eb-4b93-8a51-c7041b5cc9b3
+		summarizeBy: none
+		sourceColumn: HandlingFeeFixedAmount
+
+		annotation SummarizationSetBy = Automatic
+
+	column HandlingFeePricePercentage
+		dataType: string
+		lineageTag: 65c74af2-6402-4b97-905c-f11b357a28ae
+		summarizeBy: none
+		sourceColumn: HandlingFeePricePercentage
+
+		annotation SummarizationSetBy = Automatic
+
+	column FreeShipping
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: d45287e7-e57e-45c1-a8d8-ebc662889ac4
+		summarizeBy: none
+		sourceColumn: FreeShipping
+
+		annotation SummarizationSetBy = Automatic
+
+	column ShippingDomesticOnly
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 18094ed2-bfc7-4dca-a6cc-a92fbb479e1f
+		summarizeBy: none
+		sourceColumn: ShippingDomesticOnly
+
+		annotation SummarizationSetBy = Automatic
+
+	column MaximumShippingPackages
+		dataType: string
+		lineageTag: 59b39b00-4cc8-4e27-9d52-ecae277f6056
+		summarizeBy: none
+		sourceColumn: MaximumShippingPackages
+
+		annotation SummarizationSetBy = Automatic
+
+	column ExportedForNewEggOn
+		dataType: string
+		lineageTag: bffe6084-9685-4711-ac3a-f9ea65735e8d
+		summarizeBy: none
+		sourceColumn: ExportedForNewEggOn
+
+		annotation SummarizationSetBy = Automatic
+
+	column ExportedForMagentoOn
+		dataType: string
+		lineageTag: 57d98a52-f4c0-45bb-9973-072a1ad303aa
+		summarizeBy: none
+		sourceColumn: ExportedForMagentoOn
+
+		annotation SummarizationSetBy = Automatic
+
+	column OnOrder
+		dataType: string
+		lineageTag: 0c717e1f-6239-479b-8d3a-0b5f6b65df59
+		summarizeBy: none
+		sourceColumn: OnOrder
+
+		annotation SummarizationSetBy = Automatic
+
+	column InventoryDependantOption
+		dataType: string
+		lineageTag: 5ee32d5f-2fb5-44d9-be78-9bcbed05d0a1
+		summarizeBy: none
+		sourceColumn: InventoryDependantOption
+
+		annotation SummarizationSetBy = Automatic
+
+	column OverStockEnabled
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: dd743f4d-80e1-49b9-8688-634db762817b
+		summarizeBy: none
+		sourceColumn: OverStockEnabled
+
+		annotation SummarizationSetBy = Automatic
+
+	column ExportedForOverStock
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 3ceb26ce-e8ba-4342-99ce-560ca165f6e8
+		summarizeBy: none
+		sourceColumn: ExportedForOverStock
+
+		annotation SummarizationSetBy = Automatic
+
+	column NexTagEnabled
+		dataType: string
+		lineageTag: 0acba2ea-1e3a-4755-9eb1-8fc9c4ff60d1
+		summarizeBy: none
+		sourceColumn: NexTagEnabled
+
+		annotation SummarizationSetBy = Automatic
+
+	column GoogleBaseEnabled
+		dataType: string
+		lineageTag: 95829c5e-0afd-4df7-904f-4a724acf83bf
+		summarizeBy: none
+		sourceColumn: GoogleBaseEnabled
+
+		annotation SummarizationSetBy = Automatic
+
+	column ReOrderQty
+		dataType: string
+		lineageTag: 0c6ace79-8892-4ba1-a25c-b95b680c30d0
+		summarizeBy: none
+		sourceColumn: ReOrderQty
+
+		annotation SummarizationSetBy = Automatic
+
+	column QtyPerCase
+		dataType: double
+		lineageTag: e24237b2-5f63-47cf-a4fb-594bb7bc743e
+		summarizeBy: sum
+		sourceColumn: QtyPerCase
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column RequireShippertoAcknowledgeWarning
+		dataType: string
+		lineageTag: e28c4306-6cca-421e-adb4-755f34036b4b
+		summarizeBy: none
+		sourceColumn: RequireShippertoAcknowledgeWarning
+
+		annotation SummarizationSetBy = Automatic
+
+	column RequireShipperToInputInformation
+		dataType: string
+		lineageTag: c971b044-300b-4a2f-b73e-0c058a69b001
+		summarizeBy: none
+		sourceColumn: RequireShipperToInputInformation
+
+		annotation SummarizationSetBy = Automatic
+
+	column ShippingCustomInstructions
+		dataType: string
+		lineageTag: fee7ec46-4515-4544-bffc-6efa57ede328
+		summarizeBy: none
+		sourceColumn: ShippingCustomInstructions
+
+		annotation SummarizationSetBy = Automatic
+
+	column ShippingCustomWarning
+		dataType: string
+		lineageTag: 03e30e52-3571-403e-b38c-b1af7279ec29
+		summarizeBy: none
+		sourceColumn: ShippingCustomWarning
+
+		annotation SummarizationSetBy = Automatic
+
+	column MagentoSafetyQuantity
+		dataType: string
+		lineageTag: fd007ea9-6a3d-467d-bd86-8b5a214367fd
+		summarizeBy: none
+		sourceColumn: MagentoSafetyQuantity
+
+		annotation SummarizationSetBy = Automatic
+
+	column MagentoSafetyQuantityUseDefault
+		dataType: string
+		lineageTag: a1624c07-82c2-44b9-b30f-0da049dd8e91
+		summarizeBy: none
+		sourceColumn: MagentoSafetyQuantityUseDefault
+
+		annotation SummarizationSetBy = Automatic
+
+	column Purchaser
+		dataType: string
+		lineageTag: 593b1789-cdb4-4f99-9d36-cae7149b3c78
+		summarizeBy: none
+		sourceColumn: Purchaser
+
+		annotation SummarizationSetBy = Automatic
+
+	column IsSubComponentScanRequired
+		dataType: string
+		lineageTag: 2423381a-dca9-4666-91f2-9a80362c9197
+		summarizeBy: none
+		sourceColumn: IsSubComponentScanRequired
+
+		annotation SummarizationSetBy = Automatic
+
+	column BuyDotComCategoryID
+		dataType: string
+		lineageTag: 44a956a7-435d-47f5-b89f-18b083ca47b9
+		summarizeBy: none
+		sourceColumn: BuyDotComCategoryID
+
+		annotation SummarizationSetBy = Automatic
+
+	column InventoryAuditDate
+		dataType: string
+		lineageTag: d8508b52-4d00-4994-b9f1-866ba1dfa990
+		summarizeBy: none
+		sourceColumn: InventoryAuditDate
+
+		annotation SummarizationSetBy = Automatic
+
+	column IsPricesConverted
+		dataType: string
+		lineageTag: 0ce23825-5dcc-4f8c-88fa-13805c58c139
+		summarizeBy: none
+		sourceColumn: IsPricesConverted
+
+		annotation SummarizationSetBy = Automatic
+
+	column PricesLastConvertedOn
+		dataType: string
+		lineageTag: 3e32f86e-8b1a-4719-8966-f0923693536e
+		summarizeBy: none
+		sourceColumn: PricesLastConvertedOn
+
+		annotation SummarizationSetBy = Automatic
+
+	column PricesConvertedToCurrency
+		dataType: string
+		lineageTag: 191a1c69-10da-41ab-84ce-3992c100ba47
+		summarizeBy: none
+		sourceColumn: PricesConvertedToCurrency
+
+		annotation SummarizationSetBy = Automatic
+
+	column ASIN1
+		dataType: string
+		lineageTag: 00ca40cc-f5b9-40a8-aa82-7a9b4d14647d
+		summarizeBy: none
+		sourceColumn: ASIN1
+
+		annotation SummarizationSetBy = Automatic
+
+	column DefaultKitParentProductID
+		dataType: string
+		lineageTag: 97250e2b-9523-4af3-bfba-4ac211d4ea84
+		summarizeBy: none
+		sourceColumn: DefaultKitParentProductID
+
+		annotation SummarizationSetBy = Automatic
+
+	column GiftMessageAllowed
+		dataType: string
+		lineageTag: bcaf1810-8488-4988-8d0e-38c3c1e178dc
+		summarizeBy: none
+		sourceColumn: GiftMessageAllowed
+
+		annotation SummarizationSetBy = Automatic
+
+	column MAPPrice
+		dataType: string
+		lineageTag: 87616219-6dc1-4560-8912-dd45fd3d34a6
+		summarizeBy: none
+		sourceColumn: MAPPrice
+
+		annotation SummarizationSetBy = Automatic
+
+	column ShippingCarrier
+		dataType: string
+		lineageTag: a0dd874d-d8c5-4935-abb6-f107dbdb2a2c
+		summarizeBy: none
+		sourceColumn: ShippingCarrier
+
+		annotation SummarizationSetBy = Automatic
+
+	column ShippingMethod
+		dataType: string
+		lineageTag: bc9e066f-2deb-4574-b16a-79d6fc8653ce
+		summarizeBy: none
+		sourceColumn: ShippingMethod
+
+		annotation SummarizationSetBy = Automatic
+
+	column QtyPerPalet
+		dataType: int64
+		formatString: 0
+		lineageTag: 6e95c851-55a8-45c0-82d3-47f7d5e868ea
+		summarizeBy: sum
+		sourceColumn: QtyPerPalet
+
+		annotation SummarizationSetBy = Automatic
+
+	column ClientID
+		dataType: string
+		lineageTag: eaa8f274-f46d-4798-a6b8-28948e83bf2c
+		summarizeBy: none
+		sourceColumn: ClientID
+
+		annotation SummarizationSetBy = Automatic
+
+	column SalePrice
+		dataType: decimal
+		formatString: \$#,0.###############;(\$#,0.###############);\$#,0.###############
+		lineageTag: baebe603-6808-43d8-a975-e5b39769c22b
+		summarizeBy: sum
+		sourceColumn: SalePrice
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"currencyCulture":"en-US"}
+
+	column ShippingRuleID
+		dataType: string
+		lineageTag: 0dcf6068-fafb-45fb-871f-640e84f5d2cc
+		summarizeBy: none
+		sourceColumn: ShippingRuleID
+
+		annotation SummarizationSetBy = Automatic
+
+	column DealerNet
+		dataType: string
+		lineageTag: e520c0d3-6841-4abe-8c1c-2198470e7e1e
+		summarizeBy: none
+		sourceColumn: DealerNet
+
+		annotation SummarizationSetBy = Automatic
+
+	column DealerDiscount
+		dataType: string
+		lineageTag: 8daecfa6-651b-47e9-a91b-ef109f1abbfe
+		summarizeBy: none
+		sourceColumn: DealerDiscount
+
+		annotation SummarizationSetBy = Automatic
+
+	column DealerDiscountFromDate
+		dataType: string
+		lineageTag: d6efb357-9aa0-4748-b865-fe7a23debac7
+		summarizeBy: none
+		sourceColumn: DealerDiscountFromDate
+
+		annotation SummarizationSetBy = Automatic
+
+	column DealerDiscountToDate
+		dataType: string
+		lineageTag: 38eeee40-0a98-4400-bdf8-cb232a70ec20
+		summarizeBy: none
+		sourceColumn: DealerDiscountToDate
+
+		annotation SummarizationSetBy = Automatic
+
+	column DealerDiscountVendorID
+		dataType: string
+		lineageTag: cfaa5cea-6e44-4287-bf8f-c7854e6d5988
+		summarizeBy: none
+		sourceColumn: DealerDiscountVendorID
+
+		annotation SummarizationSetBy = Automatic
+
+	column CoOp
+		dataType: string
+		lineageTag: f5bc4ff0-d57f-4bfb-9195-63f291ed7f4c
+		summarizeBy: none
+		sourceColumn: CoOp
+
+		annotation SummarizationSetBy = Automatic
+
+	column UseMapPriceForWebsite
+		dataType: string
+		lineageTag: 78cb0b1c-08ff-475b-bad4-5caadebebeb3
+		summarizeBy: none
+		sourceColumn: UseMapPriceForWebsite
+
+		annotation SummarizationSetBy = Automatic
+
+	column MagentoLastUpdatedOn
+		dataType: string
+		lineageTag: abc4eeb9-906d-4ba6-965e-18d2a94761e0
+		summarizeBy: none
+		sourceColumn: MagentoLastUpdatedOn
+
+		annotation SummarizationSetBy = Automatic
+
+	column AggregateQty
+		dataType: int64
+		formatString: 0
+		lineageTag: 2407e10d-8468-48a1-958e-98867a728c9d
+		summarizeBy: sum
+		sourceColumn: AggregateQty
+
+		annotation SummarizationSetBy = Automatic
+
+	column EnableSellingBelowCost
+		dataType: string
+		lineageTag: af8c9233-a879-4f10-9f96-e311fc458b68
+		summarizeBy: none
+		sourceColumn: EnableSellingBelowCost
+
+		annotation SummarizationSetBy = Automatic
+
+	column IsPriceFallEnabled
+		dataType: string
+		lineageTag: 96a03fca-d375-471e-8f58-630544c2d237
+		summarizeBy: none
+		sourceColumn: IsPriceFallEnabled
+
+		annotation SummarizationSetBy = Automatic
+
+	column IsExportedForPriceFall
+		dataType: string
+		lineageTag: 3eef6e13-79e7-41c7-bfc7-5de9c8cf6e71
+		summarizeBy: none
+		sourceColumn: IsExportedForPriceFall
+
+		annotation SummarizationSetBy = Automatic
+
+	column ExportedForPriceFallOn
+		dataType: string
+		lineageTag: 9c59f607-219a-4dff-9417-517a3c49a7c3
+		summarizeBy: none
+		sourceColumn: ExportedForPriceFallOn
+
+		annotation SummarizationSetBy = Automatic
+
+	column NetWorkSolutionsProductID
+		dataType: string
+		lineageTag: 129eb6ac-4c7c-41a3-a7d7-d19a7c869b41
+		summarizeBy: none
+		sourceColumn: NetWorkSolutionsProductID
+
+		annotation SummarizationSetBy = Automatic
+
+	column SalesManCost
+		dataType: string
+		lineageTag: ca6fbc8c-5207-493b-a01b-6d11947e287f
+		summarizeBy: none
+		sourceColumn: SalesManCost
+
+		annotation SummarizationSetBy = Automatic
+
+	column AggregatePhysicalQty
+		dataType: int64
+		formatString: 0
+		lineageTag: 3c010a56-069d-40e7-accb-2711bf442296
+		summarizeBy: sum
+		sourceColumn: AggregatePhysicalQty
+
+		annotation SummarizationSetBy = Automatic
+
+	column AggregateLastDate
+		dataType: dateTime
+		formatString: Short Date
+		lineageTag: cbd4b91a-c3a1-4acd-b990-2ccba4e05ff0
+		summarizeBy: none
+		sourceColumn: AggregateLastDate
+
+		variation Variation
+			isDefault
+			relationship: c12d2ef5-8bf6-4319-9ccc-6b3c61fbbcfd
+			defaultHierarchy: LocalDateTable_b11ed0d8-cb78-4b2d-b4d6-c20944838fae.'Date Hierarchy'
+
+		changedProperty = DataType
+
+		annotation SummarizationSetBy = Automatic
+
+	column InventoryDate
+		dataType: string
+		lineageTag: 247f4db3-4df8-47ce-bc1c-6e582e1afbaa
+		summarizeBy: none
+		sourceColumn: InventoryDate
+
+		annotation SummarizationSetBy = Automatic
+
+	column TrackInventoryChanges
+		dataType: string
+		lineageTag: d326c5b1-1067-4bd1-936e-1a74a491775b
+		summarizeBy: none
+		sourceColumn: TrackInventoryChanges
+
+		annotation SummarizationSetBy = Automatic
+
+	column VendorFeedVendorID
+		dataType: string
+		lineageTag: 3e97ce8a-4ee4-4c95-a405-91fd1d2889b2
+		summarizeBy: none
+		sourceColumn: VendorFeedVendorID
+
+		annotation SummarizationSetBy = Automatic
+
+	column VendorFeedLastReceivedOn
+		dataType: string
+		lineageTag: 24c0dc50-da11-45b1-8c85-b3ac12d53b8b
+		summarizeBy: none
+		sourceColumn: VendorFeedLastReceivedOn
+
+		annotation SummarizationSetBy = Automatic
+
+	column ShipByTruck
+		dataType: string
+		lineageTag: 9760f257-5647-4671-b9b7-7bea27cde90c
+		summarizeBy: none
+		sourceColumn: ShipByTruck
+
+		annotation SummarizationSetBy = Automatic
+
+	column WebsiteSafetyQty
+		dataType: string
+		lineageTag: 7ca32096-8c76-4ffc-9165-bf83ffd081b1
+		summarizeBy: none
+		sourceColumn: WebsiteSafetyQty
+
+		annotation SummarizationSetBy = Automatic
+
+	column WebsiteSafetyQtyUseDefault
+		dataType: string
+		lineageTag: c8a3595f-5d9c-4315-844e-5b7820731c70
+		summarizeBy: none
+		sourceColumn: WebsiteSafetyQtyUseDefault
+
+		annotation SummarizationSetBy = Automatic
+
+	column WebsiteDefaultQty
+		dataType: string
+		lineageTag: d4a1b701-b479-48ea-9c22-1273ba61af7c
+		summarizeBy: none
+		sourceColumn: WebsiteDefaultQty
+
+		annotation SummarizationSetBy = Automatic
+
+	column WebsiteDefaultQtyUseDefault
+		dataType: string
+		lineageTag: c216bf17-62ad-4801-8310-1392141e62e1
+		summarizeBy: none
+		sourceColumn: WebsiteDefaultQtyUseDefault
+
+		annotation SummarizationSetBy = Automatic
+
+	column MaxQtyPerShippingPackage
+		dataType: int64
+		formatString: 0
+		lineageTag: 1917e416-107b-424a-a2c8-b6467d1d8a46
+		summarizeBy: sum
+		sourceColumn: MaxQtyPerShippingPackage
+
+		annotation SummarizationSetBy = Automatic
+
+	column AggregatePhysicalSellableQtyIncludingPhysical
+		dataType: int64
+		formatString: 0
+		lineageTag: d6549c8d-328a-4640-9ebf-8e2d287ed8a9
+		summarizeBy: sum
+		sourceColumn: AggregatePhysicalSellableQtyIncludingPhysical
+
+		annotation SummarizationSetBy = Automatic
+
+	column ReserveQtyTotal
+		dataType: int64
+		formatString: 0
+		lineageTag: b3f479fe-5fc0-4bba-bf36-464ecf0a51e3
+		summarizeBy: sum
+		sourceColumn: ReserveQtyTotal
+
+		annotation SummarizationSetBy = Automatic
+
+	column AggregateNonSellableQty
+		dataType: int64
+		formatString: 0
+		lineageTag: 93f7117b-9460-46f5-a76f-226790cbf6d4
+		summarizeBy: sum
+		sourceColumn: AggregateNonSellableQty
+
+		annotation SummarizationSetBy = Automatic
+
+	column UnbeatableSalesEnabled
+		dataType: string
+		lineageTag: d468ac2e-8a7d-4b3b-aedb-8a51ccb919c8
+		summarizeBy: none
+		sourceColumn: UnbeatableSalesEnabled
+
+		annotation SummarizationSetBy = Automatic
+
+	column ParentASIN
+		dataType: string
+		lineageTag: e6f0700f-ebac-4525-bc2b-da777edd4c78
+		summarizeBy: none
+		sourceColumn: ParentASIN
+
+		annotation SummarizationSetBy = Automatic
+
+	column ASIN
+		dataType: string
+		lineageTag: 98865db0-e625-4427-a8bf-0df5098e3455
+		summarizeBy: none
+		sourceColumn: ASIN
+
+		annotation SummarizationSetBy = Automatic
+
+	column MaxQtyPerShippingPackageEnabled
+		dataType: string
+		lineageTag: 97a11acd-baf2-4a04-a7f3-6fde43011887
+		summarizeBy: none
+		sourceColumn: MaxQtyPerShippingPackageEnabled
+
+		annotation SummarizationSetBy = Automatic
+
+	column MaxQtyShipFromSite
+		dataType: string
+		lineageTag: db4c2b0a-d453-4c6d-8a7e-ce63b67770c9
+		summarizeBy: none
+		sourceColumn: MaxQtyShipFromSite
+
+		annotation SummarizationSetBy = Automatic
+
+	column EnableZeroCostForProduct
+		dataType: string
+		lineageTag: ed1c11cb-202e-400f-b0ef-6c53bc6ea7f9
+		summarizeBy: none
+		sourceColumn: EnableZeroCostForProduct
+
+		annotation SummarizationSetBy = Automatic
+
+	column Publisher
+		dataType: string
+		lineageTag: 6dccae1d-60b1-48ac-b7a1-c87d0f1890db
+		summarizeBy: none
+		sourceColumn: Publisher
+
+		annotation SummarizationSetBy = Automatic
+
+	column ProductIDAlternate
+		dataType: string
+		lineageTag: d9284af3-5225-4db8-94e6-d19064347782
+		summarizeBy: none
+		sourceColumn: ProductIDAlternate
+
+		annotation SummarizationSetBy = Automatic
+
+	column BrandID
+		dataType: string
+		lineageTag: d6ec6f9e-f5de-4d51-9f46-499495f8008f
+		summarizeBy: none
+		sourceColumn: BrandID
+
+		annotation SummarizationSetBy = Automatic
+
+	column CostPerCase
+		dataType: string
+		lineageTag: 1bed063d-a777-4271-b7e5-fe5d6e7fd01c
+		summarizeBy: none
+		sourceColumn: CostPerCase
+
+		annotation SummarizationSetBy = Automatic
+
+	column WebsiteProductID
+		dataType: string
+		lineageTag: ebd25d49-a750-43a0-85f1-f35c88df76de
+		summarizeBy: none
+		sourceColumn: WebsiteProductID
+
+		annotation SummarizationSetBy = Automatic
+
+	column WebsiteProductIDVariantID
+		dataType: string
+		lineageTag: ad9bf411-82a4-485c-9108-d1108aa16f57
+		summarizeBy: none
+		sourceColumn: WebsiteProductIDVariantID
+
+		annotation SummarizationSetBy = Automatic
+
+	column QtySold15
+		dataType: int64
+		formatString: 0
+		lineageTag: 4b3cdf58-9951-460c-a3c9-0b7caf13e8e7
+		summarizeBy: sum
+		sourceColumn: QtySold15
+
+		annotation SummarizationSetBy = Automatic
+
+	column QtySold30
+		dataType: int64
+		formatString: 0
+		lineageTag: d4598787-93a4-4231-9357-f985330a69ac
+		summarizeBy: sum
+		sourceColumn: QtySold30
+
+		annotation SummarizationSetBy = Automatic
+
+	column QtySold60
+		dataType: int64
+		formatString: 0
+		lineageTag: 464e3e9c-f843-499d-a054-8bcf9ee8a92f
+		summarizeBy: sum
+		sourceColumn: QtySold60
+
+		annotation SummarizationSetBy = Automatic
+
+	column QtySoldYTD
+		dataType: int64
+		formatString: 0
+		lineageTag: 6df7ca74-6fbf-45d2-b378-d9a0be77ee97
+		summarizeBy: sum
+		sourceColumn: QtySoldYTD
+
+		annotation SummarizationSetBy = Automatic
+
+	column GSASchedule
+		dataType: string
+		lineageTag: a660fc11-7c73-4e2a-9128-1e7693b4651e
+		summarizeBy: none
+		sourceColumn: GSASchedule
+
+		annotation SummarizationSetBy = Automatic
+
+	column GSAContractNumber
+		dataType: string
+		lineageTag: 8cc4801b-a19a-421d-8ef8-e88eca5376c5
+		summarizeBy: none
+		sourceColumn: GSAContractNumber
+
+		annotation SummarizationSetBy = Automatic
+
+	column GSADateFrom
+		dataType: string
+		lineageTag: 3f5c5f2d-c029-472d-a06a-35728d1c173f
+		summarizeBy: none
+		sourceColumn: GSADateFrom
+
+		annotation SummarizationSetBy = Automatic
+
+	column GSADateTo
+		dataType: string
+		lineageTag: b945086b-fe31-4f18-9cc3-f42f8cbcadd8
+		summarizeBy: none
+		sourceColumn: GSADateTo
+
+		annotation SummarizationSetBy = Automatic
+
+	column GSASINNumber
+		dataType: string
+		lineageTag: e4867e1b-93f8-4199-b9b4-f35133158f3c
+		summarizeBy: none
+		sourceColumn: GSASINNumber
+
+		annotation SummarizationSetBy = Automatic
+
+	column GSAPrice
+		dataType: string
+		lineageTag: c2ed37d8-93df-4dd7-ac95-c28944ce2dc6
+		summarizeBy: none
+		sourceColumn: GSAPrice
+
+		annotation SummarizationSetBy = Automatic
+
+	column GSACountryOfOrigin
+		dataType: string
+		lineageTag: 4d2fb314-1ac6-46b0-9c96-f9735c687f7f
+		summarizeBy: none
+		sourceColumn: GSACountryOfOrigin
+
+		annotation SummarizationSetBy = Automatic
+
+	column SalePriceStartDate
+		dataType: string
+		lineageTag: f16d7caf-e2f0-4e40-a86d-5d7c1fdb0598
+		summarizeBy: none
+		sourceColumn: SalePriceStartDate
+
+		annotation SummarizationSetBy = Automatic
+
+	column SalePriceEndDate
+		dataType: string
+		lineageTag: 5e603fc4-c133-43cb-af21-77b8313a2eef
+		summarizeBy: none
+		sourceColumn: SalePriceEndDate
+
+		annotation SummarizationSetBy = Automatic
+
+	column WebsiteProductDescriptionTemplate
+		dataType: string
+		lineageTag: 55e39bf1-e623-438d-808c-11fde6ff0ac1
+		summarizeBy: none
+		sourceColumn: WebsiteProductDescriptionTemplate
+
+		annotation SummarizationSetBy = Automatic
+
+	column ShippingCostSurchargeForAlaskaHawaii
+		dataType: string
+		lineageTag: c43c039f-ed7a-4526-bd55-849d43cedf51
+		summarizeBy: none
+		sourceColumn: ShippingCostSurchargeForAlaskaHawaii
+
+		annotation SummarizationSetBy = Automatic
+
+	column OrderItemShipType
+		dataType: string
+		lineageTag: 75c604d9-e3c4-4f5c-a1fb-4eaeedea04ab
+		summarizeBy: none
+		sourceColumn: OrderItemShipType
+
+		annotation SummarizationSetBy = Automatic
+
+	column WebsiteMerchantSKU
+		dataType: string
+		lineageTag: d8f538aa-8196-4cf0-a55f-93118634ee2d
+		summarizeBy: none
+		sourceColumn: WebsiteMerchantSKU
+
+		annotation SummarizationSetBy = Automatic
+
+	column RequireToBeReturned
+		dataType: string
+		lineageTag: 1f080a41-fe7a-4587-9b01-c0b4bc5a6aca
+		summarizeBy: none
+		sourceColumn: RequireToBeReturned
+
+		annotation SummarizationSetBy = Automatic
+
+	column AggregateLastPositiveDate
+		dataType: string
+		lineageTag: 72fa9d0c-ea49-4915-8a55-b83f073d6fe1
+		summarizeBy: none
+		sourceColumn: AggregateLastPositiveDate
+
+		annotation SummarizationSetBy = Automatic
+
+	column SalesVelocity
+		dataType: string
+		lineageTag: 3f366f56-50c6-481d-a615-70d726c47e15
+		summarizeBy: none
+		sourceColumn: SalesVelocity
+
+		annotation SummarizationSetBy = Automatic
+
+	column ReOrderDays
+		dataType: string
+		lineageTag: 8be18e9f-9900-414a-80a7-203c561dba9f
+		summarizeBy: none
+		sourceColumn: ReOrderDays
+
+		annotation SummarizationSetBy = Automatic
+
+	column QtySold90
+		dataType: int64
+		formatString: 0
+		lineageTag: d7fb2dc7-07de-4556-b2fe-9aa10bf21107
+		summarizeBy: sum
+		sourceColumn: QtySold90
+
+		annotation SummarizationSetBy = Automatic
+
+	column QtySold120
+		dataType: int64
+		formatString: 0
+		lineageTag: 45b9c142-ebdd-4988-b834-90af48278c59
+		summarizeBy: sum
+		sourceColumn: QtySold120
+
+		annotation SummarizationSetBy = Automatic
+
+	column AggregatePhysicalQtyDropShipWarehouse
+		dataType: string
+		lineageTag: e5742b5c-7f9c-4415-8dbd-e1d1b58ccf1e
+		summarizeBy: none
+		sourceColumn: AggregatePhysicalQtyDropShipWarehouse
+
+		annotation SummarizationSetBy = Automatic
+
+	column SalesVelocityDate
+		dataType: string
+		lineageTag: 02c7b054-6058-4eb9-94cd-bd938e6c69f2
+		summarizeBy: none
+		sourceColumn: SalesVelocityDate
+
+		annotation SummarizationSetBy = Automatic
+
+	column WebsiteProductIDViewURLHandle
+		dataType: string
+		lineageTag: 0bc59706-f0e0-4374-bfab-6c71e060e8cf
+		summarizeBy: none
+		sourceColumn: WebsiteProductIDViewURLHandle
+
+		annotation SummarizationSetBy = Automatic
+
+	column MinimumQtyForPO
+		dataType: string
+		lineageTag: 81b82dea-45e4-4c32-8c46-2ea7cfcfaef6
+		summarizeBy: none
+		sourceColumn: MinimumQtyForPO
+
+		annotation SummarizationSetBy = Automatic
+
+	column ReStockDateEnabled
+		dataType: string
+		lineageTag: 124e4746-0eb8-43d6-82b5-20929fc1a417
+		summarizeBy: none
+		sourceColumn: ReStockDateEnabled
+
+		annotation SummarizationSetBy = Automatic
+
+	column ReStockDate
+		dataType: string
+		lineageTag: 4d1d0532-b550-479a-9647-cbedbdaae440
+		summarizeBy: none
+		sourceColumn: ReStockDate
+
+		annotation SummarizationSetBy = Automatic
+
+	column QtySold45
+		dataType: int64
+		formatString: 0
+		lineageTag: 61224493-1a66-4d45-a0c0-6d2e023c322f
+		summarizeBy: sum
+		sourceColumn: QtySold45
+
+		annotation SummarizationSetBy = Automatic
+
+	column ShippingCost_Expedited
+		dataType: double
+		lineageTag: 1d2f2f81-aace-4dc4-8f16-8b3a29af6297
+		summarizeBy: sum
+		sourceColumn: ShippingCost_Expedited
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column ShippingCost_1Day
+		dataType: double
+		lineageTag: 6f8d7e6c-8149-4929-83ee-71422acde236
+		summarizeBy: sum
+		sourceColumn: ShippingCost_1Day
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column ShippingCost_2Day
+		dataType: double
+		lineageTag: 13d79c31-e9f4-4ef7-9b5d-ee0172d5d32d
+		summarizeBy: sum
+		sourceColumn: ShippingCost_2Day
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column TaxClassWebSite
+		dataType: string
+		lineageTag: ab4a3b60-e8f7-4791-89c0-55131970c355
+		summarizeBy: none
+		sourceColumn: TaxClassWebSite
+
+		annotation SummarizationSetBy = Automatic
+
+	column LastInStockDate
+		dataType: string
+		lineageTag: 733ab294-ac4e-43d8-95fe-b1393af52eb8
+		summarizeBy: none
+		sourceColumn: LastInStockDate
+
+		annotation SummarizationSetBy = Automatic
+
+	column ShipByTruckForced
+		dataType: string
+		lineageTag: ffaf82a7-8014-4caa-ac5a-98b8b38acb6b
+		summarizeBy: none
+		sourceColumn: ShipByTruckForced
+
+		annotation SummarizationSetBy = Automatic
+
+	column OnBackOrder
+		dataType: string
+		lineageTag: 951061f5-f5ee-47c6-a827-d67bf017e324
+		summarizeBy: none
+		sourceColumn: OnBackOrder
+
+		annotation SummarizationSetBy = Automatic
+
+	column QtySoldFBA15
+		dataType: string
+		lineageTag: 2ee9bebd-338a-44f0-a66d-21c9ec208e61
+		summarizeBy: none
+		sourceColumn: QtySoldFBA15
+
+		annotation SummarizationSetBy = Automatic
+
+	column QtySoldFBA30
+		dataType: string
+		lineageTag: 412579fe-903f-45af-9d2e-0fc1b3952db7
+		summarizeBy: none
+		sourceColumn: QtySoldFBA30
+
+		annotation SummarizationSetBy = Automatic
+
+	column QtySoldFBA45
+		dataType: string
+		lineageTag: ac9f3dcf-5c2f-4442-8ff8-89a0f446c4bf
+		summarizeBy: none
+		sourceColumn: QtySoldFBA45
+
+		annotation SummarizationSetBy = Automatic
+
+	column QtySoldFBA60
+		dataType: string
+		lineageTag: 19e5e84b-3e94-4011-a919-29fe11945d52
+		summarizeBy: none
+		sourceColumn: QtySoldFBA60
+
+		annotation SummarizationSetBy = Automatic
+
+	column QtySoldFBA90
+		dataType: string
+		lineageTag: 7941d343-fd88-46d4-ab5c-c0d663d2e72a
+		summarizeBy: none
+		sourceColumn: QtySoldFBA90
+
+		annotation SummarizationSetBy = Automatic
+
+	column QtySoldFBA120
+		dataType: string
+		lineageTag: 3ad6ea46-2740-43dd-890d-9b2b4136ebfa
+		summarizeBy: none
+		sourceColumn: QtySoldFBA120
+
+		annotation SummarizationSetBy = Automatic
+
+	column QtySoldFBAYTD
+		dataType: string
+		lineageTag: c0e7f501-323d-4c4f-bf87-7767d0fb8ec7
+		summarizeBy: none
+		sourceColumn: QtySoldFBAYTD
+
+		annotation SummarizationSetBy = Automatic
+
+	column QtySoldFBA180
+		dataType: string
+		lineageTag: 16f77050-1de2-4964-bad8-2afd9fe4bc54
+		summarizeBy: none
+		sourceColumn: QtySoldFBA180
+
+		annotation SummarizationSetBy = Automatic
+
+	column QtySoldFBA365
+		dataType: string
+		lineageTag: d9785875-c82b-4bf8-ad5b-5f69cc305cba
+		summarizeBy: none
+		sourceColumn: QtySoldFBA365
+
+		annotation SummarizationSetBy = Automatic
+
+	column OrdersPlaced15
+		dataType: string
+		lineageTag: 5880fa76-baed-4854-bd69-d8a49fe6dfdf
+		summarizeBy: none
+		sourceColumn: OrdersPlaced15
+
+		annotation SummarizationSetBy = Automatic
+
+	column OrdersPlaced30
+		dataType: string
+		lineageTag: 82d8db02-dc3a-4d48-a294-85be7ad47f9a
+		summarizeBy: none
+		sourceColumn: OrdersPlaced30
+
+		annotation SummarizationSetBy = Automatic
+
+	column OrdersPlaced45
+		dataType: string
+		lineageTag: 9815d91c-62b0-48a4-891b-b3cfbc3a5342
+		summarizeBy: none
+		sourceColumn: OrdersPlaced45
+
+		annotation SummarizationSetBy = Automatic
+
+	column OrdersPlaced60
+		dataType: string
+		lineageTag: d6510bd6-68b1-4d16-bc80-0b45090a64f4
+		summarizeBy: none
+		sourceColumn: OrdersPlaced60
+
+		annotation SummarizationSetBy = Automatic
+
+	column OrdersPlaced90
+		dataType: string
+		lineageTag: 8c2ccceb-837a-479e-8b36-7de0746fcb24
+		summarizeBy: none
+		sourceColumn: OrdersPlaced90
+
+		annotation SummarizationSetBy = Automatic
+
+	column OrdersPlaced120
+		dataType: string
+		lineageTag: cbe591a2-fc9d-4ae7-b0a4-c82a7b1e66fc
+		summarizeBy: none
+		sourceColumn: OrdersPlaced120
+
+		annotation SummarizationSetBy = Automatic
+
+	column OrdersPlacedYTD
+		dataType: string
+		lineageTag: 5a576987-e662-4a2c-8014-6ebd8bbe28da
+		summarizeBy: none
+		sourceColumn: OrdersPlacedYTD
+
+		annotation SummarizationSetBy = Automatic
+
+	column AggregatePhysicalQtyFBA
+		dataType: string
+		lineageTag: 5b22b1be-bcc2-4d5f-84c5-3c207a2d2a71
+		summarizeBy: none
+		sourceColumn: AggregatePhysicalQtyFBA
+
+		annotation SummarizationSetBy = Automatic
+
+	column MaximumOrderQty
+		dataType: string
+		lineageTag: 135e0050-b054-4f66-8688-f5047b6409e1
+		summarizeBy: none
+		sourceColumn: MaximumOrderQty
+
+		annotation SummarizationSetBy = Automatic
+
+	column QtySold11thMonth
+		dataType: string
+		lineageTag: 3fb1bd2f-8ff8-4285-9b35-3340409c723c
+		summarizeBy: none
+		sourceColumn: QtySold11thMonth
+
+		annotation SummarizationSetBy = Automatic
+
+	column QtySoldFBA11thMonth
+		dataType: string
+		lineageTag: 1f00339a-ed74-451d-9b42-0b624aeae127
+		summarizeBy: none
+		sourceColumn: QtySoldFBA11thMonth
+
+		annotation SummarizationSetBy = Automatic
+
+	column LocalStorePrice
+		dataType: decimal
+		formatString: \$#,0.###############;(\$#,0.###############);\$#,0.###############
+		lineageTag: 76318c59-4ee5-46ad-9fa4-d4f93223f30b
+		summarizeBy: sum
+		sourceColumn: LocalStorePrice
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"currencyCulture":"en-US"}
+
+	column LocationRegion
+		dataType: string
+		lineageTag: c81839d5-5ff8-4bec-8618-ecc2c8003b57
+		summarizeBy: none
+		sourceColumn: LocationRegion
+
+		annotation SummarizationSetBy = Automatic
+
+	column LocationRegionMaxQtyThreshold
+		dataType: string
+		lineageTag: fbc7dc35-2ddd-4667-86fd-4ef3de9057fd
+		summarizeBy: none
+		sourceColumn: LocationRegionMaxQtyThreshold
+
+		annotation SummarizationSetBy = Automatic
+
+	column UnitOfMeasure
+		dataType: string
+		lineageTag: 015a43f9-e8d9-41f9-9ecb-37b019643989
+		summarizeBy: none
+		sourceColumn: UnitOfMeasure
+
+		annotation SummarizationSetBy = Automatic
+
+	column EAN
+		dataType: string
+		lineageTag: 4f12ae77-b427-4bd6-afd0-8014def58292
+		summarizeBy: none
+		sourceColumn: EAN
+
+		annotation SummarizationSetBy = Automatic
+
+	column GTIN
+		dataType: string
+		lineageTag: 5f872601-17b3-42c8-b330-2afd7cb04555
+		summarizeBy: none
+		sourceColumn: GTIN
+
+		annotation SummarizationSetBy = Automatic
+
+	column ISBN
+		dataType: string
+		lineageTag: c29697c4-c298-47ed-8092-7d5b5c42922a
+		summarizeBy: none
+		sourceColumn: ISBN
+
+		annotation SummarizationSetBy = Automatic
+
+	column WebsiteSortOrder
+		dataType: string
+		lineageTag: ae091b7d-e37d-4e0c-8672-cb085c5f44db
+		summarizeBy: none
+		sourceColumn: WebsiteSortOrder
+
+		annotation SummarizationSetBy = Automatic
+
+	column QtySoldFBA7
+		dataType: string
+		lineageTag: 659c745f-6879-465d-b1d5-c99bcf99dded
+		summarizeBy: none
+		sourceColumn: QtySoldFBA7
+
+		annotation SummarizationSetBy = Automatic
+
+	column ShippingCost_Int_Australia
+		dataType: string
+		lineageTag: 19945a06-0fc4-433e-ac43-1e56d97b1391
+		summarizeBy: none
+		sourceColumn: ShippingCost_Int_Australia
+
+		annotation SummarizationSetBy = Automatic
+
+	column ShippingCost_Int_Canada
+		dataType: string
+		lineageTag: 48812b70-7bf7-4452-83ed-cc0bc5b35366
+		summarizeBy: none
+		sourceColumn: ShippingCost_Int_Canada
+
+		annotation SummarizationSetBy = Automatic
+
+	column ShippingCost_Int_UK
+		dataType: string
+		lineageTag: 3f0789a0-0469-41e4-8be3-77f95082690b
+		summarizeBy: none
+		sourceColumn: ShippingCost_Int_UK
+
+		annotation SummarizationSetBy = Automatic
+
+	column BestSellerStatus
+		dataType: string
+		lineageTag: 5e0feb92-15c2-4ae2-93d0-03ff49c2cc89
+		summarizeBy: none
+		sourceColumn: BestSellerStatus
+
+		annotation SummarizationSetBy = Automatic
+
+	column EnforceMAPPrice
+		dataType: string
+		lineageTag: 72733f2e-25a6-48ae-a563-0e29ba11ce35
+		summarizeBy: none
+		sourceColumn: EnforceMAPPrice
+
+		annotation SummarizationSetBy = Automatic
+
+	column AggregatePriceDate
+		dataType: string
+		lineageTag: 2d7910b0-960d-4f4d-b531-d7a7231ca6d8
+		summarizeBy: none
+		sourceColumn: AggregatePriceDate
+
+		annotation SummarizationSetBy = Automatic
+
+	column WebSitePrice
+		dataType: string
+		lineageTag: 4864c2cb-6ae9-4e0c-bea1-46b71b69c1c9
+		summarizeBy: none
+		sourceColumn: WebSitePrice
+
+		annotation SummarizationSetBy = Automatic
+
+	column WebSitePriceUseDefault
+		dataType: string
+		lineageTag: c3001610-7f8a-490d-9075-1ef118902b74
+		summarizeBy: none
+		sourceColumn: WebSitePriceUseDefault
+
+		annotation SummarizationSetBy = Automatic
+
+	column LastTimeUpdatedForPandL
+		dataType: string
+		lineageTag: 4bee525b-214a-4f38-815a-e2c7fdcc331b
+		summarizeBy: none
+		sourceColumn: LastTimeUpdatedForPandL
+
+		annotation SummarizationSetBy = Automatic
+
+	column TotalManualReservesOrders
+		dataType: string
+		lineageTag: e052879f-d561-43db-b81b-7fe254d67c2a
+		summarizeBy: none
+		sourceColumn: TotalManualReservesOrders
+
+		annotation SummarizationSetBy = Automatic
+
+	column TotalManualReserves
+		dataType: string
+		lineageTag: ed4db9ea-ef9c-4c8a-be72-c7a0f91fa9c9
+		summarizeBy: none
+		sourceColumn: TotalManualReserves
+
+		annotation SummarizationSetBy = Automatic
+
+	column AmountSoldYTD
+		dataType: string
+		lineageTag: fbbf7c0a-6d9f-4af5-9d6e-3fc42973251d
+		summarizeBy: none
+		sourceColumn: AmountSoldYTD
+
+		annotation SummarizationSetBy = Automatic
+
+	column PercentageOfTotalSalesYTD
+		dataType: string
+		lineageTag: 36742f90-e557-498a-a82a-baa389b8aba3
+		summarizeBy: none
+		sourceColumn: PercentageOfTotalSalesYTD
+
+		annotation SummarizationSetBy = Automatic
+
+	column QtySold7
+		dataType: string
+		lineageTag: 7c67532c-f488-4b6f-927c-aa90d3e0cddd
+		summarizeBy: none
+		sourceColumn: QtySold7
+
+		annotation SummarizationSetBy = Automatic
+
+	column OrdersPlaced7
+		dataType: string
+		lineageTag: 58527ca6-da71-42b7-badd-4a687665130f
+		summarizeBy: none
+		sourceColumn: OrdersPlaced7
+
+		annotation SummarizationSetBy = Automatic
+
+	column QtySoldInstockDays7
+		dataType: string
+		lineageTag: db8ee48f-ddf1-44bd-9bd2-fca160fb928e
+		summarizeBy: none
+		sourceColumn: QtySoldInstockDays7
+
+		annotation SummarizationSetBy = Automatic
+
+	column QtySoldInstockDays15
+		dataType: string
+		lineageTag: d9e1653d-821f-4292-8d11-46ba8d864498
+		summarizeBy: none
+		sourceColumn: QtySoldInstockDays15
+
+		annotation SummarizationSetBy = Automatic
+
+	column QtySoldInstockDays30
+		dataType: string
+		lineageTag: 2de7c1af-9a67-4ebe-bf95-49a62a23ddfa
+		summarizeBy: none
+		sourceColumn: QtySoldInstockDays30
+
+		annotation SummarizationSetBy = Automatic
+
+	column QtySoldInstockDays45
+		dataType: string
+		lineageTag: c48e394f-cced-4d9b-9db6-37eb14537dc6
+		summarizeBy: none
+		sourceColumn: QtySoldInstockDays45
+
+		annotation SummarizationSetBy = Automatic
+
+	column QtySoldInstockDays60
+		dataType: string
+		lineageTag: 52bcc02e-3494-4bd8-8f2e-8aa87f3b0dc4
+		summarizeBy: none
+		sourceColumn: QtySoldInstockDays60
+
+		annotation SummarizationSetBy = Automatic
+
+	column QtySoldInstockDays90
+		dataType: string
+		lineageTag: fdde1eb4-ab00-46e7-a90a-13797ed0e7b8
+		summarizeBy: none
+		sourceColumn: QtySoldInstockDays90
+
+		annotation SummarizationSetBy = Automatic
+
+	column QtySoldInstockDays120
+		dataType: string
+		lineageTag: 96111747-48c4-4a71-a3d2-cd27c884101b
+		summarizeBy: none
+		sourceColumn: QtySoldInstockDays120
+
+		annotation SummarizationSetBy = Automatic
+
+	column QtySoldInstockDaysYTD
+		dataType: string
+		lineageTag: 2fb08f74-7d26-43dc-9bc9-aed5a3daaeb8
+		summarizeBy: none
+		sourceColumn: QtySoldInstockDaysYTD
+
+		annotation SummarizationSetBy = Automatic
+
+	column QtySoldInStockDaysFBA7
+		dataType: string
+		lineageTag: 8f6aeae9-4465-4da5-8289-62d5e748e6cf
+		summarizeBy: none
+		sourceColumn: QtySoldInStockDaysFBA7
+
+		annotation SummarizationSetBy = Automatic
+
+	column QtySoldInStockDaysFBA15
+		dataType: string
+		lineageTag: 5910b653-b377-4517-802a-dde9d71aa0a5
+		summarizeBy: none
+		sourceColumn: QtySoldInStockDaysFBA15
+
+		annotation SummarizationSetBy = Automatic
+
+	column QtySoldInStockDaysFBA30
+		dataType: string
+		lineageTag: 172c7fc5-3281-4f88-b4f2-3cbbd0912988
+		summarizeBy: none
+		sourceColumn: QtySoldInStockDaysFBA30
+
+		annotation SummarizationSetBy = Automatic
+
+	column QtySoldInStockDaysFBA45
+		dataType: string
+		lineageTag: 0278cd91-60f1-4ed0-ad10-0f52a9d9c215
+		summarizeBy: none
+		sourceColumn: QtySoldInStockDaysFBA45
+
+		annotation SummarizationSetBy = Automatic
+
+	column QtySoldInStockDaysFBA60
+		dataType: string
+		lineageTag: 5b5b6479-073b-4fe0-a884-f74ac1f9858b
+		summarizeBy: none
+		sourceColumn: QtySoldInStockDaysFBA60
+
+		annotation SummarizationSetBy = Automatic
+
+	column QtySoldInStockDaysFBA90
+		dataType: string
+		lineageTag: 4371c651-8c75-4fb4-89cf-b7648478c33b
+		summarizeBy: none
+		sourceColumn: QtySoldInStockDaysFBA90
+
+		annotation SummarizationSetBy = Automatic
+
+	column QtySoldInStockDaysFBA120
+		dataType: string
+		lineageTag: e971a561-0b99-483d-ac35-4578601bd0e6
+		summarizeBy: none
+		sourceColumn: QtySoldInStockDaysFBA120
+
+		annotation SummarizationSetBy = Automatic
+
+	column QtySoldInStockDaysFBA180
+		dataType: string
+		lineageTag: 1a265bab-9336-4774-8d22-29e400667e09
+		summarizeBy: none
+		sourceColumn: QtySoldInStockDaysFBA180
+
+		annotation SummarizationSetBy = Automatic
+
+	column QtySoldInStockDaysFBAYTD
+		dataType: string
+		lineageTag: b7d5af09-c698-4e06-924e-40323d502b24
+		summarizeBy: none
+		sourceColumn: QtySoldInStockDaysFBAYTD
+
+		annotation SummarizationSetBy = Automatic
+
+	column QtySoldInStockDaysFBA365
+		dataType: string
+		lineageTag: ac8a60fe-96bc-4c7d-af21-2ea46e35e0d6
+		summarizeBy: none
+		sourceColumn: QtySoldInStockDaysFBA365
+
+		annotation SummarizationSetBy = Automatic
+
+	column AmountSoldYTDInStockDays
+		dataType: string
+		lineageTag: 873fbf18-b8b0-4e5c-a5c4-2dc30c4d6362
+		summarizeBy: none
+		sourceColumn: AmountSoldYTDInStockDays
+
+		annotation SummarizationSetBy = Automatic
+
+	column LastSoldOn
+		dataType: string
+		lineageTag: 2f20ae13-c499-48b2-abdf-f7744c148971
+		summarizeBy: none
+		sourceColumn: LastSoldOn
+
+		annotation SummarizationSetBy = Automatic
+
+	column EnableSellingBelowCostEnabledBy
+		dataType: string
+		lineageTag: a3507cd5-de5e-471b-b495-fd11d34ae51e
+		summarizeBy: none
+		sourceColumn: EnableSellingBelowCostEnabledBy
+
+		annotation SummarizationSetBy = Automatic
+
+	column EnableSellingBelowCostEnabledOn
+		dataType: string
+		lineageTag: 73245c7a-c41f-4979-b973-74d3f595a530
+		summarizeBy: none
+		sourceColumn: EnableSellingBelowCostEnabledOn
+
+		annotation SummarizationSetBy = Automatic
+
+	column QtySold3
+		dataType: string
+		lineageTag: 8c1a8d3b-e535-4fd7-9743-a9da8936c80a
+		summarizeBy: none
+		sourceColumn: QtySold3
+
+		annotation SummarizationSetBy = Automatic
+
+	column QtySoldInstockDays3
+		dataType: string
+		lineageTag: fe5643e3-cec6-46ae-a556-aa639bf29c29
+		summarizeBy: none
+		sourceColumn: QtySoldInstockDays3
+
+		annotation SummarizationSetBy = Automatic
+
+	column QtySoldFBA3
+		dataType: string
+		lineageTag: 5eecb24d-a457-49bc-9da2-5658d1e7b9fe
+		summarizeBy: none
+		sourceColumn: QtySoldFBA3
+
+		annotation SummarizationSetBy = Automatic
+
+	column QtySoldInStockDaysFBA3
+		dataType: string
+		lineageTag: c6d12857-7aba-4bad-8f98-02ca9f99c000
+		summarizeBy: none
+		sourceColumn: QtySoldInStockDaysFBA3
+
+		annotation SummarizationSetBy = Automatic
+
+	column InStockDate3
+		dataType: string
+		lineageTag: af50cbbc-fad5-4b23-92e8-d3d7f866d8e5
+		summarizeBy: none
+		sourceColumn: InStockDate3
+
+		annotation SummarizationSetBy = Automatic
+
+	column InStockDate7
+		dataType: string
+		lineageTag: b3b08e25-5faa-406c-b8cc-f161fc0d055e
+		summarizeBy: none
+		sourceColumn: InStockDate7
+
+		annotation SummarizationSetBy = Automatic
+
+	column InStockDate15
+		dataType: string
+		lineageTag: 51912ff1-059c-4778-8038-3fca1d217c4f
+		summarizeBy: none
+		sourceColumn: InStockDate15
+
+		annotation SummarizationSetBy = Automatic
+
+	column InStockDate30
+		dataType: string
+		lineageTag: 53e7bb68-546d-4d17-8957-05891d944e07
+		summarizeBy: none
+		sourceColumn: InStockDate30
+
+		annotation SummarizationSetBy = Automatic
+
+	column InStockDate45
+		dataType: string
+		lineageTag: b618fd29-893d-4aef-9b41-bcd141e243a7
+		summarizeBy: none
+		sourceColumn: InStockDate45
+
+		annotation SummarizationSetBy = Automatic
+
+	column InStockDate60
+		dataType: string
+		lineageTag: 5516a324-3e7b-4be2-85ce-a6843afc51d8
+		summarizeBy: none
+		sourceColumn: InStockDate60
+
+		annotation SummarizationSetBy = Automatic
+
+	column InStockDate90
+		dataType: string
+		lineageTag: 38c9c325-40a2-42cb-8e76-6e607031ede2
+		summarizeBy: none
+		sourceColumn: InStockDate90
+
+		annotation SummarizationSetBy = Automatic
+
+	column InStockDate120
+		dataType: string
+		lineageTag: 67f8fedf-10eb-4b10-a001-8743f49c59a6
+		summarizeBy: none
+		sourceColumn: InStockDate120
+
+		annotation SummarizationSetBy = Automatic
+
+	column InStockDateYTD
+		dataType: string
+		lineageTag: d66a7317-c386-44f7-8ebc-24fd9af63fd7
+		summarizeBy: none
+		sourceColumn: InStockDateYTD
+
+		annotation SummarizationSetBy = Automatic
+
+	column InventoryMaxQtyForWebSiteEnabled
+		dataType: string
+		lineageTag: f1829e4a-387f-483a-94d6-0b1ec61f8027
+		summarizeBy: none
+		sourceColumn: InventoryMaxQtyForWebSiteEnabled
+
+		annotation SummarizationSetBy = Automatic
+
+	column InventoryMaxQtyForWebSite
+		dataType: string
+		lineageTag: b56fd033-d799-4b41-a699-45082e66eb50
+		summarizeBy: none
+		sourceColumn: InventoryMaxQtyForWebSite
+
+		annotation SummarizationSetBy = Automatic
+
+	column InventoryMaxQtyForWebSiteUseDefault
+		dataType: string
+		lineageTag: 025a4e89-4870-48dd-b653-69e0d8d67f32
+		summarizeBy: none
+		sourceColumn: InventoryMaxQtyForWebSiteUseDefault
+
+		annotation SummarizationSetBy = Automatic
+
+	column DisconnectFromInventoryWebSite
+		dataType: string
+		lineageTag: 335563f2-f655-4681-aeb1-1b322aafdcd2
+		summarizeBy: none
+		sourceColumn: DisconnectFromInventoryWebSite
+
+		annotation SummarizationSetBy = Automatic
+
+	column DisconnectFromShadowPersistency
+		dataType: string
+		lineageTag: 0d99aa26-dcc7-489f-a281-f0c0fec2322b
+		summarizeBy: none
+		sourceColumn: DisconnectFromShadowPersistency
+
+		annotation SummarizationSetBy = Automatic
+
+	column GrossCost
+		dataType: string
+		lineageTag: 9b621fec-40a0-4806-b1af-7059ba095366
+		summarizeBy: none
+		sourceColumn: GrossCost
+
+		annotation SummarizationSetBy = Automatic
+
+	column HasProposition65Warning
+		dataType: string
+		lineageTag: 27970f13-fea1-4358-b30b-b0b27bf27fbb
+		summarizeBy: none
+		sourceColumn: HasProposition65Warning
+
+		annotation SummarizationSetBy = Automatic
+
+	column TotalQtyNonFBA
+		dataType: int64
+		lineageTag: 899108f4-4117-4d0d-a59f-f42ce66ed123
+		summarizeBy: sum
+		sourceColumn: TotalQtyNonFBA
+
+		changedProperty = DataType
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column DoNotSendVariationImagesToWebsite
+		dataType: string
+		lineageTag: 5f2b8ed9-195b-4750-b507-320bdb48d1c5
+		summarizeBy: none
+		sourceColumn: DoNotSendVariationImagesToWebsite
+
+		annotation SummarizationSetBy = Automatic
+
+	column SendAllVariationImagesToWebsite
+		dataType: string
+		lineageTag: 4a3f2d70-91ed-4e33-b65f-3d78854e84d6
+		summarizeBy: none
+		sourceColumn: SendAllVariationImagesToWebsite
+
+		annotation SummarizationSetBy = Automatic
+
+	column AggregatePhysicalQtyDropShipWarehouseSellable
+		dataType: string
+		lineageTag: f5366357-2a71-40c8-a3fa-9c4f3dcf0987
+		summarizeBy: none
+		sourceColumn: AggregatePhysicalQtyDropShipWarehouseSellable
+
+		annotation SummarizationSetBy = Automatic
+
+	column OnOrderExpectedDeliveryDate
+		dataType: string
+		lineageTag: 2f23dec9-fe5d-4af6-908b-32167d2cd88f
+		summarizeBy: none
+		sourceColumn: OnOrderExpectedDeliveryDate
+
+		annotation SummarizationSetBy = Automatic
+
+	column AggregatePhysicalQtyFBASellable
+		dataType: string
+		lineageTag: 852797f5-981a-4076-b717-40e893289731
+		summarizeBy: none
+		sourceColumn: AggregatePhysicalQtyFBASellable
+
+		annotation SummarizationSetBy = Automatic
+
+	column ShippingTemplateIDForWebsite
+		dataType: string
+		lineageTag: 572cc80e-c365-4437-b48d-d14c75c4ad21
+		summarizeBy: none
+		sourceColumn: ShippingTemplateIDForWebsite
+
+		annotation SummarizationSetBy = Automatic
+
+	column QtySoldLastCalculatedOn
+		dataType: string
+		lineageTag: a9808d93-fe9f-4a32-bd9d-96a0453ed4be
+		summarizeBy: none
+		sourceColumn: QtySoldLastCalculatedOn
+
+		annotation SummarizationSetBy = Automatic
+
+	column QtySoldFBALastCalculatedOn
+		dataType: string
+		lineageTag: c1d8d10a-999e-48e4-bf65-73751236de05
+		summarizeBy: none
+		sourceColumn: QtySoldFBALastCalculatedOn
+
+		annotation SummarizationSetBy = Automatic
+
+	column AverageShippingCost
+		dataType: string
+		lineageTag: 8421a495-1c93-4c7b-870c-f02e02e9ee1e
+		summarizeBy: none
+		sourceColumn: AverageShippingCost
+
+		annotation SummarizationSetBy = Automatic
+
+	column AverageShippingCostDate
+		dataType: string
+		lineageTag: 5a41b926-01be-4fd8-af81-4edc59a9a486
+		summarizeBy: none
+		sourceColumn: AverageShippingCostDate
+
+		annotation SummarizationSetBy = Automatic
+
+	column Comments
+		dataType: string
+		lineageTag: 32d905db-42df-433a-b2fd-58245566e3a4
+		summarizeBy: none
+		sourceColumn: Comments
+
+		annotation SummarizationSetBy = Automatic
+
+	column AggregatePhysicalNonSellableQty
+		dataType: string
+		lineageTag: e684f692-db9a-4394-ad17-5adfb46172e8
+		summarizeBy: none
+		sourceColumn: AggregatePhysicalNonSellableQty
+
+		annotation SummarizationSetBy = Automatic
+
+	column QtySold180
+		dataType: string
+		lineageTag: 7788f9fc-b120-40ea-b63b-43f4910a6b5a
+		summarizeBy: none
+		sourceColumn: QtySold180
+
+		annotation SummarizationSetBy = Automatic
+
+	column QtySoldInstockDays180
+		dataType: string
+		lineageTag: 963ab644-bded-47ff-ae28-8469a0bbd978
+		summarizeBy: none
+		sourceColumn: QtySoldInstockDays180
+
+		annotation SummarizationSetBy = Automatic
+
+	column TaxJarProductTaxCode
+		dataType: string
+		lineageTag: ffcb34fd-8a8d-483d-b6c0-5f4399d68bf3
+		summarizeBy: none
+		sourceColumn: TaxJarProductTaxCode
+
+		annotation SummarizationSetBy = Automatic
+
+	column Proposition65WarningMessage
+		dataType: string
+		lineageTag: d7890761-f875-437e-9772-c1953f3f0fe3
+		summarizeBy: none
+		sourceColumn: Proposition65WarningMessage
+
+		annotation SummarizationSetBy = Automatic
+
+	column HasProposition65WarningLabelOnPackage
+		dataType: string
+		lineageTag: 68f1c054-d8fd-4bc3-914e-6759e45fe41f
+		summarizeBy: none
+		sourceColumn: HasProposition65WarningLabelOnPackage
+
+		annotation SummarizationSetBy = Automatic
+
+	column CaseLength
+		dataType: string
+		lineageTag: f8923a33-395f-4e5d-aeff-021b75ce7c44
+		summarizeBy: none
+		sourceColumn: CaseLength
+
+		annotation SummarizationSetBy = Automatic
+
+	column CaseWidth
+		dataType: string
+		lineageTag: 0f63ebe5-bb78-4868-af10-b1994e16917a
+		summarizeBy: none
+		sourceColumn: CaseWidth
+
+		annotation SummarizationSetBy = Automatic
+
+	column CaseHeight
+		dataType: string
+		lineageTag: a3b4cc70-7378-4307-884a-aa45be2cac56
+		summarizeBy: none
+		sourceColumn: CaseHeight
+
+		annotation SummarizationSetBy = Automatic
+
+	column CaseWeight
+		dataType: string
+		lineageTag: 1ad6d863-51ea-4490-aade-33c77ee31608
+		summarizeBy: none
+		sourceColumn: CaseWeight
+
+		annotation SummarizationSetBy = Automatic
+
+	column LastInventoryChangeDate
+		dataType: dateTime
+		formatString: Short Date
+		lineageTag: 75cd8981-1860-4553-a427-202fe0e9545d
+		summarizeBy: none
+		sourceColumn: LastInventoryChangeDate
+
+		variation Variation
+			isDefault
+			relationship: cf98fba3-b52a-4a96-83dc-2fc559b0d477
+			defaultHierarchy: LocalDateTable_8520304c-ee15-4c4a-8b08-d0e2f09a2fa3.'Date Hierarchy'
+
+		changedProperty = DataType
+
+		annotation SummarizationSetBy = Automatic
+
+	column WebsiteDefaultQtyEnabled
+		dataType: string
+		lineageTag: 55419f2d-1fb6-42c1-aaf0-167abf88425b
+		summarizeBy: none
+		sourceColumn: WebsiteDefaultQtyEnabled
+
+		annotation SummarizationSetBy = Automatic
+
+	column TotalInStockDays3
+		dataType: string
+		lineageTag: 02478376-20cd-4052-b3cc-f22d10270032
+		summarizeBy: none
+		sourceColumn: TotalInStockDays3
+
+		annotation SummarizationSetBy = Automatic
+
+	column TotalInStockDays7
+		dataType: string
+		lineageTag: 864b2ec1-70ab-40a1-8fe4-7d8c8a918484
+		summarizeBy: none
+		sourceColumn: TotalInStockDays7
+
+		annotation SummarizationSetBy = Automatic
+
+	column TotalInStockDays15
+		dataType: string
+		lineageTag: 84fe4199-a9d5-4f91-aaee-fb47e4101bb9
+		summarizeBy: none
+		sourceColumn: TotalInStockDays15
+
+		annotation SummarizationSetBy = Automatic
+
+	column TotalInStockDays30
+		dataType: string
+		lineageTag: eb96cd6e-d4d6-4f49-b3ca-5e7b299f6667
+		summarizeBy: none
+		sourceColumn: TotalInStockDays30
+
+		annotation SummarizationSetBy = Automatic
+
+	column TotalInStockDays45
+		dataType: string
+		lineageTag: acda06aa-40ba-4c3d-b8ce-2e9a320033c3
+		summarizeBy: none
+		sourceColumn: TotalInStockDays45
+
+		annotation SummarizationSetBy = Automatic
+
+	column TotalInStockDays60
+		dataType: string
+		lineageTag: 276549bf-8dff-4c00-9f8a-22aa072710d4
+		summarizeBy: none
+		sourceColumn: TotalInStockDays60
+
+		annotation SummarizationSetBy = Automatic
+
+	column TotalInStockDays90
+		dataType: string
+		lineageTag: e34122a4-6a9b-4b01-a3e9-f33b93d5758d
+		summarizeBy: none
+		sourceColumn: TotalInStockDays90
+
+		annotation SummarizationSetBy = Automatic
+
+	column TotalInStockDays120
+		dataType: string
+		lineageTag: 4391ec6e-1ebb-4397-b628-16107269e76f
+		summarizeBy: none
+		sourceColumn: TotalInStockDays120
+
+		annotation SummarizationSetBy = Automatic
+
+	column TotalInStockDays180
+		dataType: string
+		lineageTag: 6f75af14-e205-42ba-b27a-5862f27bf6f8
+		summarizeBy: none
+		sourceColumn: TotalInStockDays180
+
+		annotation SummarizationSetBy = Automatic
+
+	column TotalInStockDaysFBA3
+		dataType: string
+		lineageTag: 240cd38e-d0fc-4cb5-ac9b-1366faa99b06
+		summarizeBy: none
+		sourceColumn: TotalInStockDaysFBA3
+
+		annotation SummarizationSetBy = Automatic
+
+	column TotalInStockDaysFBA7
+		dataType: string
+		lineageTag: 41fd3b5f-556b-4adf-96d4-cb9d7c6ede04
+		summarizeBy: none
+		sourceColumn: TotalInStockDaysFBA7
+
+		annotation SummarizationSetBy = Automatic
+
+	column TotalInStockDaysFBA15
+		dataType: string
+		lineageTag: b02a2012-a339-4daa-a642-d43c8392ab1e
+		summarizeBy: none
+		sourceColumn: TotalInStockDaysFBA15
+
+		annotation SummarizationSetBy = Automatic
+
+	column TotalInStockDaysFBA30
+		dataType: string
+		lineageTag: a7a730f2-e56e-4225-8647-ea89f09e9743
+		summarizeBy: none
+		sourceColumn: TotalInStockDaysFBA30
+
+		annotation SummarizationSetBy = Automatic
+
+	column TotalInStockDaysFBA45
+		dataType: string
+		lineageTag: d145183a-0b16-40aa-9be3-8696279f824d
+		summarizeBy: none
+		sourceColumn: TotalInStockDaysFBA45
+
+		annotation SummarizationSetBy = Automatic
+
+	column TotalInStockDaysFBA60
+		dataType: string
+		lineageTag: c7773d5c-3fad-4932-92b9-8c110338b094
+		summarizeBy: none
+		sourceColumn: TotalInStockDaysFBA60
+
+		annotation SummarizationSetBy = Automatic
+
+	column TotalInStockDaysFBA90
+		dataType: string
+		lineageTag: d4a0c73c-c0b1-4a09-8eee-84351a4ddced
+		summarizeBy: none
+		sourceColumn: TotalInStockDaysFBA90
+
+		annotation SummarizationSetBy = Automatic
+
+	column TotalInStockDaysFBA120
+		dataType: string
+		lineageTag: b46cd3be-caaa-49ed-8079-f55fc8c58e7e
+		summarizeBy: none
+		sourceColumn: TotalInStockDaysFBA120
+
+		annotation SummarizationSetBy = Automatic
+
+	column TotalInStockDaysFBA180
+		dataType: string
+		lineageTag: 277dbfbe-e0cc-4ae8-9646-fb5e7f4e9528
+		summarizeBy: none
+		sourceColumn: TotalInStockDaysFBA180
+
+		annotation SummarizationSetBy = Automatic
+
+	column BigCommerceVariationOptions
+		dataType: string
+		lineageTag: 1808ad21-4370-4e62-bcd4-f496d2960cfd
+		summarizeBy: none
+		sourceColumn: BigCommerceVariationOptions
+
+		annotation SummarizationSetBy = Automatic
+
+	column QtySold365
+		dataType: string
+		lineageTag: 27c6ebae-0b71-4429-9a9a-c157c45e65b3
+		summarizeBy: none
+		sourceColumn: QtySold365
+
+		annotation SummarizationSetBy = Automatic
+
+	column QtySoldInstockDays365
+		dataType: string
+		lineageTag: 33f1e5e5-dcf4-457d-9d9b-170dcd1284bc
+		summarizeBy: none
+		sourceColumn: QtySoldInstockDays365
+
+		annotation SummarizationSetBy = Automatic
+
+	column CountryOfOrigin
+		dataType: string
+		lineageTag: 6ff7ae8b-2842-4fa0-a62f-7b209c1256e2
+		summarizeBy: none
+		sourceColumn: CountryOfOrigin
+
+		annotation SummarizationSetBy = Automatic
+
+	column WebsitePriceText
+		dataType: string
+		lineageTag: 3a668cfa-9f39-4594-a8d4-23055b9fb9a5
+		summarizeBy: none
+		sourceColumn: WebsitePriceText
+
+		annotation SummarizationSetBy = Automatic
+
+	column WebsiteShippingDescription
+		dataType: string
+		lineageTag: 9b98b9b4-bbbb-4970-9d23-dfbe53b30669
+		summarizeBy: none
+		sourceColumn: WebsiteShippingDescription
+
+		annotation SummarizationSetBy = Automatic
+
+	column WebsiteGoogle_Product_Category
+		dataType: string
+		lineageTag: 2240da82-8cd7-4925-bfb9-841fa045099c
+		summarizeBy: none
+		sourceColumn: WebsiteGoogle_Product_Category
+
+		annotation SummarizationSetBy = Automatic
+
+	column WebsiteProductKeywords
+		dataType: string
+		lineageTag: 11f8d251-7f24-4e89-a8b5-e59fcf37725b
+		summarizeBy: none
+		sourceColumn: WebsiteProductKeywords
+
+		annotation SummarizationSetBy = Automatic
+
+	column WebsiteGoogleAvailability
+		dataType: string
+		lineageTag: c3a166bc-22e1-426b-8e4a-4ff4eddc9586
+		summarizeBy: none
+		sourceColumn: WebsiteGoogleAvailability
+
+		annotation SummarizationSetBy = Automatic
+
+	column OnOrderQtyInContainer
+		dataType: string
+		lineageTag: 671a9521-097c-4a27-a254-853d6dce8e40
+		summarizeBy: none
+		sourceColumn: OnOrderQtyInContainer
+
+		annotation SummarizationSetBy = Automatic
+
+	column EstimatedContainerArrivalDate
+		dataType: string
+		lineageTag: add1cdc6-d23b-4617-82ec-9e06ac0c0603
+		summarizeBy: none
+		sourceColumn: EstimatedContainerArrivalDate
+
+		annotation SummarizationSetBy = Automatic
+
+	column TotalNonSellableBinReserves
+		dataType: string
+		lineageTag: 8fabf4cd-5226-4e33-841c-b3fe1a0ab4b8
+		summarizeBy: none
+		sourceColumn: TotalNonSellableBinReserves
+
+		annotation SummarizationSetBy = Automatic
+
+	column Cbm
+		dataType: string
+		lineageTag: e51ddb68-f11f-4c23-901f-dfc4e825cd50
+		summarizeBy: none
+		sourceColumn: Cbm
+
+		annotation SummarizationSetBy = Automatic
+
+	column DutiesPercent
+		dataType: string
+		lineageTag: 9413f7d9-f33e-4c3b-a105-f3731a6b5fc3
+		summarizeBy: none
+		sourceColumn: DutiesPercent
+
+		annotation SummarizationSetBy = Automatic
+
+	column TariffsPercent
+		dataType: string
+		lineageTag: 287764f4-3570-436f-a359-810b035a9ef3
+		summarizeBy: none
+		sourceColumn: TariffsPercent
+
+		annotation SummarizationSetBy = Automatic
+
+	column IsDigitalProduct
+		dataType: string
+		lineageTag: 6c1ff2c3-4e37-4319-8013-84e1c272df7e
+		summarizeBy: none
+		sourceColumn: IsDigitalProduct
+
+		annotation SummarizationSetBy = Automatic
+
+	column AggregatePhysicalQtyWFS
+		dataType: string
+		lineageTag: 496bf9e1-c746-4cf8-8ce6-2749bb7816a4
+		summarizeBy: none
+		sourceColumn: AggregatePhysicalQtyWFS
+
+		annotation SummarizationSetBy = Automatic
+
+	column AggregatePhysicalQtyWFSSellable
+		dataType: string
+		lineageTag: 123361c7-1d05-4fc1-a64d-e3c78cc4a8df
+		summarizeBy: none
+		sourceColumn: AggregatePhysicalQtyWFSSellable
+
+		annotation SummarizationSetBy = Automatic
+
+	column ProductID
+		dataType: string
+		lineageTag: bcc69236-54e8-4fa8-8fab-95509ac2c2bf
+		summarizeBy: none
+		sourceColumn: ProductID
+
+		annotation SummarizationSetBy = Automatic
+
+	column ImagefilePrivateSmall
+		dataType: string
+		lineageTag: 1fdcaf16-64ed-4c7e-b60a-834ef5a2fb32
+		summarizeBy: none
+		sourceColumn: ImagefilePrivateSmall
+
+		annotation SummarizationSetBy = Automatic
+
+	column ImageFilePrivateMedium
+		dataType: string
+		lineageTag: 217596b2-2495-4c6e-b9d4-ed755a1a05a8
+		summarizeBy: none
+		sourceColumn: ImageFilePrivateMedium
+
+		annotation SummarizationSetBy = Automatic
+
+	column AmazonSalesRank
+		dataType: string
+		lineageTag: ea778865-137c-4d89-9666-6a0042f0de0d
+		summarizeBy: none
+		sourceColumn: AmazonSalesRank
+
+		annotation SummarizationSetBy = Automatic
+
+	column QtyOFfSet
+		dataType: string
+		lineageTag: 97b48508-a308-4a25-a54f-adaa439a9d67
+		summarizeBy: none
+		sourceColumn: QtyOFfSet
+
+		annotation SummarizationSetBy = Automatic
+
+	column PhysicalInventoryQty
+		dataType: string
+		lineageTag: d79e01f5-1034-40c3-9e31-46abd4a352cd
+		summarizeBy: none
+		sourceColumn: PhysicalInventoryQty
+
+		annotation SummarizationSetBy = Automatic
+
+	column BrandID1
+		dataType: string
+		lineageTag: 2d3168b4-f91d-4aac-ad28-ac01788042f3
+		summarizeBy: none
+		sourceColumn: BrandID1
+
+		annotation SummarizationSetBy = Automatic
+
+	column AmazonItemType
+		dataType: string
+		lineageTag: c9215371-e4fd-4ad1-90df-25f7834ee6b8
+		summarizeBy: none
+		sourceColumn: AmazonItemType
+
+		annotation SummarizationSetBy = Automatic
+
+	column AmazonInventoryGenerated
+		dataType: string
+		lineageTag: 3ca33e8c-c02b-494b-a03f-a39649e98ea8
+		summarizeBy: none
+		sourceColumn: AmazonInventoryGenerated
+
+		annotation SummarizationSetBy = Automatic
+
+	column AmazonInventoryGeneratedOn
+		dataType: string
+		lineageTag: 259c42aa-d590-48b6-a993-5525f638ee81
+		summarizeBy: none
+		sourceColumn: AmazonInventoryGeneratedOn
+
+		annotation SummarizationSetBy = Automatic
+
+	column AdjustedCost
+		dataType: string
+		lineageTag: d672e75d-cdc9-40d6-bee4-36d800748f9d
+		summarizeBy: none
+		sourceColumn: AdjustedCost
+
+		annotation SummarizationSetBy = Automatic
+
+	column ProductConditionInHouse
+		dataType: string
+		lineageTag: 4396e0a1-6dcb-4dc4-bbf7-8091354e2fb6
+		summarizeBy: none
+		sourceColumn: ProductConditionInHouse
+
+		annotation SummarizationSetBy = Automatic
+
+	column featured
+		dataType: string
+		lineageTag: b21c26ed-a76c-4e41-8c16-c4790d3b8093
+		summarizeBy: none
+		sourceColumn: featured
+
+		annotation SummarizationSetBy = Automatic
+
+	column IsNew
+		dataType: string
+		lineageTag: a8aeecc8-00dc-4b64-b5a8-7c7a7545d586
+		summarizeBy: none
+		sourceColumn: IsNew
+
+		annotation SummarizationSetBy = Automatic
+
+	column Clearance
+		dataType: string
+		lineageTag: 55e12cf0-9bd7-492e-ab18-0500da3f64d5
+		summarizeBy: none
+		sourceColumn: Clearance
+
+		annotation SummarizationSetBy = Automatic
+
+	column Car
+		dataType: string
+		lineageTag: 1aef4e5e-7b50-4e7b-9beb-a5f16ac3d6bc
+		summarizeBy: none
+		sourceColumn: Car
+
+		annotation SummarizationSetBy = Automatic
+
+	column Boat
+		dataType: string
+		lineageTag: b5f17d13-a3d0-41bb-8bd0-1ef44cb86dc2
+		summarizeBy: none
+		sourceColumn: Boat
+
+		annotation SummarizationSetBy = Automatic
+
+	column House
+		dataType: string
+		lineageTag: 2e0e74eb-15a6-4ea0-8521-25c96537e582
+		summarizeBy: none
+		sourceColumn: House
+
+		annotation SummarizationSetBy = Automatic
+
+	column Interior
+		dataType: string
+		lineageTag: c11c5570-d1da-4693-8968-abe59abd5806
+		summarizeBy: none
+		sourceColumn: Interior
+
+		annotation SummarizationSetBy = Automatic
+
+	column TopProduct
+		dataType: string
+		lineageTag: dcf689d9-fca8-4401-b547-27c5966839c1
+		summarizeBy: none
+		sourceColumn: TopProduct
+
+		annotation SummarizationSetBy = Automatic
+
+	column AreaCoverageID
+		dataType: string
+		lineageTag: 4244df0c-5f7b-4096-ae9b-6a3862a3c9c5
+		summarizeBy: none
+		sourceColumn: AreaCoverageID
+
+		annotation SummarizationSetBy = Automatic
+
+	column Exterior
+		dataType: string
+		lineageTag: af0e94b9-40c8-4293-bcf1-85e128114895
+		summarizeBy: none
+		sourceColumn: Exterior
+
+		annotation SummarizationSetBy = Automatic
+
+	column CustomURL
+		dataType: string
+		lineageTag: ba5e1dec-4f80-4e8a-a6b7-108075ea8940
+		summarizeBy: none
+		sourceColumn: CustomURL
+
+		annotation SummarizationSetBy = Automatic
+
+	column BestSeller
+		dataType: string
+		lineageTag: dc3b6c0f-9494-4baa-bae7-3ad205478188
+		summarizeBy: none
+		sourceColumn: BestSeller
+
+		annotation SummarizationSetBy = Automatic
+
+	column SaleOfTheWeek
+		dataType: string
+		lineageTag: 424f2624-e58a-4126-9236-977b88ca8faa
+		summarizeBy: none
+		sourceColumn: SaleOfTheWeek
+
+		annotation SummarizationSetBy = Automatic
+
+	column PictureCount
+		dataType: string
+		lineageTag: 740b230b-a4d7-4c2e-99df-65f424b97713
+		summarizeBy: none
+		sourceColumn: PictureCount
+
+		annotation SummarizationSetBy = Automatic
+
+	column ProductCode
+		dataType: string
+		lineageTag: 47ce9e8f-8c26-4212-b01a-ea925387553b
+		summarizeBy: none
+		sourceColumn: ProductCode
+
+		annotation SummarizationSetBy = Automatic
+
+	column GenderID
+		dataType: string
+		lineageTag: 398c7b78-8d9e-4946-add8-f5f834a3c9bf
+		summarizeBy: none
+		sourceColumn: GenderID
+
+		annotation SummarizationSetBy = Automatic
+
+	column FaceColorID
+		dataType: string
+		lineageTag: f2eada77-f93e-44a2-bfac-e6063f0e5ac4
+		summarizeBy: none
+		sourceColumn: FaceColorID
+
+		annotation SummarizationSetBy = Automatic
+
+	column FaceStyleID
+		dataType: string
+		lineageTag: 8648cf06-b64c-424b-8d81-ee8ef2efd502
+		summarizeBy: none
+		sourceColumn: FaceStyleID
+
+		annotation SummarizationSetBy = Automatic
+
+	column FaceShapeID
+		dataType: string
+		lineageTag: fe94ca62-9740-419b-9255-1acc70f7f10f
+		summarizeBy: none
+		sourceColumn: FaceShapeID
+
+		annotation SummarizationSetBy = Automatic
+
+	column FaceSize
+		dataType: string
+		lineageTag: fd6a009c-284d-4e77-bb3f-88039a4092ae
+		summarizeBy: none
+		sourceColumn: FaceSize
+
+		annotation SummarizationSetBy = Automatic
+
+	column FaceHands
+		dataType: string
+		lineageTag: 4a28206f-bd8f-477c-a371-1bd377fed40a
+		summarizeBy: none
+		sourceColumn: FaceHands
+
+		annotation SummarizationSetBy = Automatic
+
+	column FaceHourMarkers
+		dataType: string
+		lineageTag: f9d6730b-9db4-455c-a64a-05a88e647861
+		summarizeBy: none
+		sourceColumn: FaceHourMarkers
+
+		annotation SummarizationSetBy = Automatic
+
+	column FaceMisc
+		dataType: string
+		lineageTag: 4a784e28-d649-4054-9733-33cdf5da12a2
+		summarizeBy: none
+		sourceColumn: FaceMisc
+
+		annotation SummarizationSetBy = Automatic
+
+	column BandMaterialID
+		dataType: string
+		lineageTag: 84957c83-68e1-4b85-9294-1cbe285001ab
+		summarizeBy: none
+		sourceColumn: BandMaterialID
+
+		annotation SummarizationSetBy = Automatic
+
+	column BandWristSize
+		dataType: string
+		lineageTag: 7935ab83-700e-498d-9517-eeb09b32dac8
+		summarizeBy: none
+		sourceColumn: BandWristSize
+
+		annotation SummarizationSetBy = Automatic
+
+	column BandWidth
+		dataType: string
+		lineageTag: 33a230d3-5c16-4fcf-bfff-a62d353a2907
+		summarizeBy: none
+		sourceColumn: BandWidth
+
+		annotation SummarizationSetBy = Automatic
+
+	column BandColorID
+		dataType: string
+		lineageTag: eae56c58-bb8b-46ce-9a6b-82323e4fa892
+		summarizeBy: none
+		sourceColumn: BandColorID
+
+		annotation SummarizationSetBy = Automatic
+
+	column BandClaspID
+		dataType: string
+		lineageTag: 9f404f4f-6df0-4dfa-98af-4d02c5852bf8
+		summarizeBy: none
+		sourceColumn: BandClaspID
+
+		annotation SummarizationSetBy = Automatic
+
+	column BandMisc
+		dataType: string
+		lineageTag: 077aa690-2dab-4896-a0fc-6b8b1b737a61
+		summarizeBy: none
+		sourceColumn: BandMisc
+
+		annotation SummarizationSetBy = Automatic
+
+	column WatchFeatures
+		dataType: string
+		lineageTag: 8ba0a69a-ff74-436f-99f2-06d8737e46d6
+		summarizeBy: none
+		sourceColumn: WatchFeatures
+
+		annotation SummarizationSetBy = Automatic
+
+	column MaterialId
+		dataType: string
+		lineageTag: 4ff6e74d-1e23-4342-b23c-4820eca47d63
+		summarizeBy: none
+		sourceColumn: MaterialId
+
+		annotation SummarizationSetBy = Automatic
+
+	column WatchStyleID
+		dataType: string
+		lineageTag: 3061a186-1092-4bba-8705-13f92a92b7dc
+		summarizeBy: none
+		sourceColumn: WatchStyleID
+
+		annotation SummarizationSetBy = Automatic
+
+	column BandWristSizeMin
+		dataType: string
+		lineageTag: b1b14e83-0b58-47d6-b306-4b53d738c730
+		summarizeBy: none
+		sourceColumn: BandWristSizeMin
+
+		annotation SummarizationSetBy = Automatic
+
+	column BandWristSizeMax
+		dataType: string
+		lineageTag: cca8ca98-6d3d-479e-b6f6-3f626e84ada5
+		summarizeBy: none
+		sourceColumn: BandWristSizeMax
+
+		annotation SummarizationSetBy = Automatic
+
+	column ExquisiteTimepiece
+		dataType: string
+		lineageTag: acaf56ac-d299-4a90-92d5-74a29a7b14ff
+		summarizeBy: none
+		sourceColumn: ExquisiteTimepiece
+
+		annotation SummarizationSetBy = Automatic
+
+	column Approved
+		dataType: string
+		lineageTag: 45e223b5-ea7c-4ccf-b98c-1a5184b490ea
+		summarizeBy: none
+		sourceColumn: Approved
+
+		annotation SummarizationSetBy = Automatic
+
+	column PriceTooLowToDisplay
+		dataType: string
+		lineageTag: e2f0d287-aece-4ed8-94c4-a64dce542938
+		summarizeBy: none
+		sourceColumn: PriceTooLowToDisplay
+
+		annotation SummarizationSetBy = Automatic
+
+	column FreeShipping_Removed
+		dataType: string
+		lineageTag: db65ed68-f32b-4e0a-b6d7-726a364a5481
+		summarizeBy: none
+		sourceColumn: FreeShipping_Removed
+
+		annotation SummarizationSetBy = Automatic
+
+	column InventoryTitle
+		dataType: string
+		lineageTag: 974df8fd-9cb5-4aa3-b30a-1382bc13f7ca
+		summarizeBy: none
+		sourceColumn: InventoryTitle
+
+		annotation SummarizationSetBy = Automatic
+
+	column LocationNotes
+		dataType: string
+		lineageTag: 9e9f586d-9991-4d4b-825e-c01426349c70
+		summarizeBy: none
+		sourceColumn: LocationNotes
+
+		annotation SummarizationSetBy = Automatic
+
+	column CustomProductURL
+		dataType: string
+		lineageTag: a71ed5e4-47c6-4b1d-99ee-723132901071
+		summarizeBy: none
+		sourceColumn: CustomProductURL
+
+		annotation SummarizationSetBy = Automatic
+
+	column RequireSerialNumberScanWhileShipping
+		dataType: string
+		lineageTag: 7aa35293-2ba4-49b4-84d7-ec65de33413e
+		summarizeBy: none
+		sourceColumn: RequireSerialNumberScanWhileShipping
+
+		annotation SummarizationSetBy = Automatic
+
+	column Functionality
+		dataType: string
+		lineageTag: d0b41fdc-9810-499e-9608-323d66861db1
+		summarizeBy: none
+		sourceColumn: Functionality
+
+		annotation SummarizationSetBy = Automatic
+
+	column Packaging
+		dataType: string
+		lineageTag: b87ebf80-65da-4d1a-a39c-fb0abc63a7fb
+		summarizeBy: none
+		sourceColumn: Packaging
+
+		annotation SummarizationSetBy = Automatic
+
+	column Content
+		dataType: string
+		lineageTag: 729e6183-59ca-4fa7-833e-f25e0ab26704
+		summarizeBy: none
+		sourceColumn: Content
+
+		annotation SummarizationSetBy = Automatic
+
+	column Dimensions
+		dataType: string
+		lineageTag: 88df2779-e5f6-41e0-9091-27bdb53c4059
+		summarizeBy: none
+		sourceColumn: Dimensions
+
+		annotation SummarizationSetBy = Automatic
+
+	column Missing
+		dataType: string
+		lineageTag: 73c23ffc-659c-4a57-9a4f-0421e8b33fe2
+		summarizeBy: none
+		sourceColumn: Missing
+
+		annotation SummarizationSetBy = Automatic
+
+	column ProductConditionNotes
+		dataType: string
+		lineageTag: b4841177-d5a0-43f3-84ac-83cdd570713e
+		summarizeBy: none
+		sourceColumn: ProductConditionNotes
+
+		annotation SummarizationSetBy = Automatic
+
+	column BinMaxCap
+		dataType: string
+		lineageTag: cfa39869-258c-4a56-a1b2-c4ccdf4c4616
+		summarizeBy: none
+		sourceColumn: BinMaxCap
+
+		annotation SummarizationSetBy = Automatic
+
+	column RequireDeliverySignature
+		dataType: string
+		lineageTag: 3a83814c-c0b3-448a-8a4d-af431e2ebeec
+		summarizeBy: none
+		sourceColumn: RequireDeliverySignature
+
+		annotation SummarizationSetBy = Automatic
+
+	column RequireDeliveryConfirmation
+		dataType: string
+		lineageTag: d2800298-2dd4-4713-b75a-f4766084201c
+		summarizeBy: none
+		sourceColumn: RequireDeliveryConfirmation
+
+		annotation SummarizationSetBy = Automatic
+
+	column InventoryLowStockNotified
+		dataType: string
+		lineageTag: a48dee76-8772-445d-b41d-2d9bef6ad949
+		summarizeBy: none
+		sourceColumn: InventoryLowStockNotified
+
+		annotation SummarizationSetBy = Automatic
+
+	column InventoryLowStockNotifiedOn
+		dataType: string
+		lineageTag: 9a8dd414-c9d9-4314-8705-68df9004c8ee
+		summarizeBy: none
+		sourceColumn: InventoryLowStockNotifiedOn
+
+		annotation SummarizationSetBy = Automatic
+
+	column SerialNumberLengthScanWhileShipping
+		dataType: string
+		lineageTag: f0f844c2-fffe-4671-b708-19e832f511fe
+		summarizeBy: none
+		sourceColumn: SerialNumberLengthScanWhileShipping
+
+		annotation SummarizationSetBy = Automatic
+
+	column SerialNumberLengthScanWhileShippingUseDefault
+		dataType: string
+		lineageTag: 62b65898-541f-42ae-a4f3-e833f21c7dc2
+		summarizeBy: none
+		sourceColumn: SerialNumberLengthScanWhileShippingUseDefault
+
+		annotation SummarizationSetBy = Automatic
+
+	column AppEagleEnabled
+		dataType: string
+		lineageTag: 8289691b-a090-499e-9231-07f2a7f94368
+		summarizeBy: none
+		sourceColumn: AppEagleEnabled
+
+		annotation SummarizationSetBy = Automatic
+
+	column BinRefillQty
+		dataType: string
+		lineageTag: fe2a654d-96d9-4c4c-aa0f-90d6f176747f
+		summarizeBy: none
+		sourceColumn: BinRefillQty
+
+		annotation SummarizationSetBy = Automatic
+
+	column BinRefillDays
+		dataType: string
+		lineageTag: 0674e6ff-3f25-4fbb-a8d5-b35420e43168
+		summarizeBy: none
+		sourceColumn: BinRefillDays
+
+		annotation SummarizationSetBy = Automatic
+
+	column BinBaseQty
+		dataType: string
+		lineageTag: 9b0a76f4-5d33-4815-8f58-b662024eabc7
+		summarizeBy: none
+		sourceColumn: BinBaseQty
+
+		annotation SummarizationSetBy = Automatic
+
+	column GoogleShoppingCartEnabled
+		dataType: string
+		lineageTag: 7578842c-37c0-46f9-af96-3e1b2ecff0b3
+		summarizeBy: none
+		sourceColumn: GoogleShoppingCartEnabled
+
+		annotation SummarizationSetBy = Automatic
+
+	column NumberOfBatteriesIncluded
+		dataType: string
+		lineageTag: 5b28e11f-d8cf-4ee5-bc01-c3f0f6c502af
+		summarizeBy: none
+		sourceColumn: NumberOfBatteriesIncluded
+
+		annotation SummarizationSetBy = Automatic
+
+	column ShopifyFulfillmentService
+		dataType: string
+		lineageTag: 70c6a0e1-34f0-4c3f-a64c-54a0270dfeb0
+		summarizeBy: none
+		sourceColumn: ShopifyFulfillmentService
+
+		annotation SummarizationSetBy = Automatic
+
+	column WebsiteDefaultVisibility
+		dataType: string
+		lineageTag: 1496ab53-9d92-471b-8347-98d151035d18
+		summarizeBy: none
+		sourceColumn: WebsiteDefaultVisibility
+
+		annotation SummarizationSetBy = Automatic
+
+	column IsExpirable
+		dataType: string
+		lineageTag: d92c0e6b-8bc3-4c15-9c55-20109baacbcc
+		summarizeBy: none
+		sourceColumn: IsExpirable
+
+		annotation SummarizationSetBy = Automatic
+
+	column LastAutoUpdatedFromAmazonReportsOn
+		dataType: string
+		lineageTag: eb620eda-f989-4f3a-9459-b464854a88a2
+		summarizeBy: none
+		sourceColumn: LastAutoUpdatedFromAmazonReportsOn
+
+		annotation SummarizationSetBy = Automatic
+
+	column WebsiteLayoutName
+		dataType: string
+		lineageTag: ba6444b1-7c56-4e49-b479-78e310c58225
+		summarizeBy: none
+		sourceColumn: WebsiteLayoutName
+
+		annotation SummarizationSetBy = Automatic
+
+	column CHECK_Item_OOS = ```
+			
+			IF(Product[AggregateQty] <= 0, 1, 0)
+			
+			```
+		formatString: 0
+		displayFolder: 1Measures/Columns
+		lineageTag: 7713d176-f89d-415f-b8da-538bbb985a46
+		summarizeBy: sum
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Product Active Status' = RELATED(PRODUCTSTATUS_MAPPINGS[PRODUCTSTATUS_MAPPINGS])
+		displayFolder: 1Measures/Columns
+		lineageTag: 7552a086-a9fd-4750-b287-4e316e9a0486
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column Is_New_Zero_Stock_SKU_OLD = ```
+			--any SKU that has zero inventory and does not have an order that exists in bvc_OrderItem
+			'Product'[AggregateQty] = 0 &&
+			ISBLANK(RELATED('Shipped_ProductIDs'[ProductID]))
+			
+			```
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		displayFolder: 1Measures/Columns
+		lineageTag: d7aaafc5-d870-4c03-a1d3-c56e00471686
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column FirstImageURL = ```
+			
+			CALCULATE(
+			    MAX(SELLERCLOUD_PRODUCT_IMAGES[First Image URL]),
+			    FILTER(
+			        SELLERCLOUD_PRODUCT_IMAGES,
+			        SELLERCLOUD_PRODUCT_IMAGES[ProductID] = 'Product'[ID]
+			    )
+			)
+			
+			```
+		displayFolder: 1Measures/Columns
+		lineageTag: abcdf0ae-e615-46ce-b6c5-513114082c0c
+		dataCategory: ImageUrl
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	/// This calculated column checks each product and:
+	/// 
+	/// Finds the most recent purchase order date for that product.
+	/// 
+	/// Gets the quantity on order for that date only if the PO wasn’t cancelled.
+	/// 
+	/// If no valid (non-cancelled) PO exists, it returns 0.
+	/// 
+	/// This way, we avoid counting cancelled POs while still retaining all products in the table.
+	/// 
+	column PO_QtyOnOrder_Show_Blanks = ```
+			
+			VAR ProductID = 'Product'[ID]
+			VAR LatestDate =
+			    CALCULATE(
+			        MAX('MERGED_PO_ITEMS_TABLE'[CreatedOn]),
+			        'MERGED_PO_ITEMS_TABLE'[ProductID] = ProductID
+			    )
+			VAR Qty = 
+			    CALCULATE(
+			        MAX('MERGED_PO_ITEMS_TABLE'[Qty_On_Order]),
+			        'MERGED_PO_ITEMS_TABLE'[ProductID] = ProductID &&
+			        'MERGED_PO_ITEMS_TABLE'[CreatedOn] = LatestDate &&
+			        'MERGED_PO_ITEMS_TABLE'[PO_STATUS_MAPPINGS] <> "Cancelled"
+			    )
+			RETURN
+			    COALESCE(Qty, 0)
+			
+			```
+		dataType: int64
+		formatString: 0
+		displayFolder: 1Measures/Columns
+		lineageTag: 05207bca-f2af-4d9f-96cc-9fa6ea3dae4b
+		summarizeBy: sum
+
+		changedProperty = DataType
+
+		annotation SummarizationSetBy = Automatic
+
+	column Is_Zero_Stock_NoRecentOrders = ```
+			
+			'Product'[AggregateQty] = 0 &&
+			ISBLANK(RELATED('Recently_Ordered_ProductIDs'[ProductID]))
+			
+			```
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		displayFolder: 1Measures/Columns
+		lineageTag: 6c00fcb6-5548-41c9-aa7e-9642159f185e
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column CHECK_Negative_Inventory = ```
+			
+			IF('Product'[AggregateQty] < 0, 1, 0)
+			
+			```
+		formatString: 0
+		displayFolder: 1Measures/Columns
+		lineageTag: c00684db-206b-444d-bb56-4432b2c552e1
+		summarizeBy: sum
+
+		annotation SummarizationSetBy = Automatic
+
+	column Has_Inventory = ```
+			IF ( Product[AggregateQty] > 0, 1, 0 )
+			
+			```
+		formatString: 0
+		displayFolder: 1Measures/Columns
+		lineageTag: 4f3070fa-c65a-4643-982a-4ef842ab3478
+		summarizeBy: sum
+
+		annotation SummarizationSetBy = Automatic
+
+	column Has_Positive_Inventory = ```
+			
+			Product[AggregateQty] > 0
+			
+			```
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		displayFolder: 1Measures/Columns
+		lineageTag: 5b58017e-df51-4c43-9967-5c7e6f991e60
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column Has_Order_Last_12M = ```
+			
+			VAR CutoffDate =
+			    EDATE ( TODAY(), -12 )
+			VAR OrdersLast12M =
+			    COUNTROWS (
+			        FILTER (
+			            RELATEDTABLE ( bvc_OrderItem ),
+			            bvc_OrderItem[TimeOfOrder] > CutoffDate
+			                && bvc_OrderItem[TimeOfOrder] <= TODAY()
+			        )
+			    )
+			RETURN
+			OrdersLast12M > 0
+			
+			```
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		displayFolder: 1Measures/Columns
+		lineageTag: 156291ab-e8a9-48db-913f-32c7626567b3
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column FLAG_Inv_NoOrders_Last_12M = ```
+			//shadows and bundles removed
+			IF (
+			    Product[Has_Positive_Inventory]
+			        && NOT Product[Has_Order_Last_12M]
+			        && COALESCE ( Product[ShadowOf], "" ) = ""
+			        && 'Product'[IsBundle] <> TRUE(),
+			    1,
+			    0
+			)
+			
+			```
+		formatString: 0
+		displayFolder: 1Measures/Columns
+		lineageTag: ce615cbc-ac5e-4448-a5e6-f13a1e2edd80
+		summarizeBy: sum
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Product = m
+		mode: import
+		source =
+				let
+				    Source = Sql.Databases("10.13.0.206"),
+				    SC = Source{[Name="SC"]}[Data],
+				    dbo_Product = SC{[Schema="dbo",Item="Product"]}[Data],
+				    #"Changed Type" = Table.TransformColumnTypes(dbo_Product,{{"ID", type text}, {"ProductName", type text}, {"ProductTypeID", type text}, {"ListPrice", Currency.Type}, {"SitePrice", Currency.Type}, {"SiteCost", Currency.Type}, {"MetaKeywords", type text}, {"MetaDescription", type text}, {"MetaTitle", type text}, {"TaxExempt", type text}, {"TaxClass", type text}, {"NonShipping", type text}, {"ShipSeparately", type text}, {"DropShipMode", type text}, {"Status", type text}, {"ImageFileSmall", type text}, {"ImageFileMedium", type text}, {"CreationDate", type datetime}, {"MinimumQty", type text}, {"ParentID", type text}, {"VariantDisplayMode", type text}, {"InventoryAvailableQty", Int64.Type}, {"InventoryLowStockNotice", type text}, {"InventoryStatus", type text}, {"InventoryNotAvailableStatus", type text}, {"InventoryNotAvailableMessage", type text}, {"ShortDescription", type text}, {"LongDescription", type text}, {"ManufacturerID", type text}, {"VendorID", type text}, {"GiftWrapAllowed", type logical}, {"ExtraShipFee", type text}, {"IsBundle", type logical}, {"Weight", type number}, {"WeightUnits", type text}, {"Rating", type text}, {"Priority", type text}, {"IsEndOfLife", type text}, {"LastCost", Currency.Type}, {"AverageCost", Currency.Type}, {"StorePrice", Currency.Type}, {"DateModified", type datetime}, {"ModifiedBy", type text}, {"DateCreated", type datetime}, {"CreatedBy", type text}, {"EbayPrice", type text}, {"EbayStatus", type text}, {"EbayListed", type text}, {"EbayLastListDate", type text}, {"EbayLastModifiedDate", type text}, {"Researched", type text}, {"LastResearchDate", type text}, {"ResearchedBy", type text}, {"Watch", type text}, {"PriceGrabberURL", type text}, {"EbayListedBy", type text}, {"EBayHighPrice", type text}, {"EbayLowPrice", type text}, {"WatchFrequency", type text}, {"eBaySaleQty", type text}, {"EbayPostpone", type text}, {"IsToBuy", type text}, {"IsBackOrder", type text}, {"AmazonPrice", type text}, {"MaxDiscountPrice", type text}, {"IsUserDefinedPrice", type text}, {"EstimatedCost", Currency.Type}, {"ShippingCost", Currency.Type}, {"ShippingPrice", Currency.Type}, {"ShippingPriceEbay", type text}, {"EbayListingFee", type text}, {"EbayListingFeeUserDefined", type text}, {"EbayTransactionFee", type text}, {"EbayTransactionFeeUserDefined", type text}, {"PaypalFee", type text}, {"PaypalFeeUserDefined", type text}, {"MaxDiscountPricePercentage", type text}, {"MaxDiscountPriceUserDefined", type text}, {"EbayListingFeePercentage", type text}, {"EbayTransactionFeePercentage", type text}, {"PaypalFeePercentage", type text}, {"PriceLevel", type text}, {"ToBeResearched", type text}, {"bPromote", type text}, {"WebEnabled", type text}, {"TotalLocationQty", type text}, {"InBundlePrice", type text}, {"WeightOz", type text}, {"CompanyID", type text}, {"PackageWeightLbs", type number}, {"PackageWeightOz", type number}, {"ManufacturerSKU", type text}, {"WeightVerified", type text}, {"ShadowOf", type text}, {"ExportedForBuyDotCom", type text}, {"BuyDotComPrice", type text}, {"NewEggPrice", type text}, {"InventoryLastNotifiedOn", type text}, {"ExportedForNewEgg", type text}, {"ExportedToBuyDotComDate", type text}, {"WholeSalePrice", type text}, {"BuyDotComEnabled", type text}, {"NewEggEnabled", type text}, {"MagentoEnabled", type text}, {"ExportedForMagento", type text}, {"ColorID", type text}, {"SizeID", type text}, {"StyleID", type text}, {"ExportedForAmazon", type text}, {"ProductSource", type text}, {"ProductSourceSKU", type text}, {"ProductMasterSKU", type text}, {"CustomTitle", type text}, {"SearsEnabled", type text}, {"ExportedForSears", type text}, {"SearchResultsTitle", type text}, {"ShippingPackageTypeID", type text}, {"BingEnabled", type text}, {"PriceGrabberEnabled", type text}, {"CashBackEnabled", type text}, {"ExpectedAvailableDate", type text}, {"CustomMessage", type text}, {"Commission", type text}, {"NewEggPriceUseDefault", type text}, {"NewEggSafetyQuantity", type text}, {"NewEggSafetyQuantityUseDefault", type text}, {"HandlingFeeUseDefault", type text}, {"HandlingFeeFixedAmount", type text}, {"HandlingFeePricePercentage", type text}, {"FreeShipping", type logical}, {"ShippingDomesticOnly", type logical}, {"MaximumShippingPackages", type text}, {"ExportedForNewEggOn", type text}, {"ExportedForMagentoOn", type text}, {"OnOrder", type text}, {"InventoryDependantOption", type text}, {"OverStockEnabled", type logical}, {"ExportedForOverStock", type logical}, {"NexTagEnabled", type text}, {"GoogleBaseEnabled", type text}, {"ReOrderQty", type text}, {"QtyPerCase", type number}, {"RequireShippertoAcknowledgeWarning", type text}, {"RequireShipperToInputInformation", type text}, {"ShippingCustomInstructions", type text}, {"ShippingCustomWarning", type text}, {"MagentoSafetyQuantity", type text}, {"MagentoSafetyQuantityUseDefault", type text}, {"Purchaser", type text}, {"IsSubComponentScanRequired", type text}, {"BuyDotComCategoryID", type text}, {"InventoryAuditDate", type text}, {"IsPricesConverted", type text}, {"PricesLastConvertedOn", type text}, {"PricesConvertedToCurrency", type text}, {"ASIN1", type text}, {"DefaultKitParentProductID", type text}, {"GiftMessageAllowed", type text}, {"MAPPrice", type text}, {"ShippingCarrier", type text}, {"ShippingMethod", type text}, {"QtyPerPalet", Int64.Type}, {"ClientID", type text}, {"SalePrice", Currency.Type}, {"ShippingRuleID", type text}, {"DealerNet", type text}, {"DealerDiscount", type text}, {"DealerDiscountFromDate", type text}, {"DealerDiscountToDate", type text}, {"DealerDiscountVendorID", type text}, {"CoOp", type text}, {"UseMapPriceForWebsite", type text}, {"MagentoLastUpdatedOn", type text}, {"AggregateQty", Int64.Type}, {"EnableSellingBelowCost", type text}, {"IsPriceFallEnabled", type text}, {"IsExportedForPriceFall", type text}, {"ExportedForPriceFallOn", type text}, {"NetWorkSolutionsProductID", type text}, {"SalesManCost", type text}, {"AggregatePhysicalQty", Int64.Type}, {"AggregateLastDate", type text}, {"InventoryDate", type text}, {"TrackInventoryChanges", type text}, {"VendorFeedVendorID", type text}, {"VendorFeedLastReceivedOn", type text}, {"ShipByTruck", type text}, {"WebsiteSafetyQty", type text}, {"WebsiteSafetyQtyUseDefault", type text}, {"WebsiteDefaultQty", type text}, {"WebsiteDefaultQtyUseDefault", type text}, {"MaxQtyPerShippingPackage", Int64.Type}, {"AggregatePhysicalSellableQtyIncludingPhysical", Int64.Type}, {"ReserveQtyTotal", Int64.Type}, {"AggregateNonSellableQty", Int64.Type}, {"UnbeatableSalesEnabled", type text}, {"ParentASIN", type text}, {"ASIN", type text}, {"MaxQtyPerShippingPackageEnabled", type text}, {"MaxQtyShipFromSite", type text}, {"EnableZeroCostForProduct", type text}, {"Publisher", type text}, {"ProductIDAlternate", type text}, {"BrandID", type text}, {"CostPerCase", type text}, {"WebsiteProductID", type text}, {"WebsiteProductIDVariantID", type text}, {"QtySold15", Int64.Type}, {"QtySold30", Int64.Type}, {"QtySold60", Int64.Type}, {"QtySoldYTD", Int64.Type}, {"GSASchedule", type text}, {"GSAContractNumber", type text}, {"GSADateFrom", type text}, {"GSADateTo", type text}, {"GSASINNumber", type text}, {"GSAPrice", type text}, {"GSACountryOfOrigin", type text}, {"SalePriceStartDate", type text}, {"SalePriceEndDate", type text}, {"WebsiteProductDescriptionTemplate", type text}, {"ShippingCostSurchargeForAlaskaHawaii", type text}, {"OrderItemShipType", type text}, {"WebsiteMerchantSKU", type text}, {"RequireToBeReturned", type text}, {"AggregateLastPositiveDate", type text}, {"SalesVelocity", type text}, {"ReOrderDays", type text}, {"QtySold90", Int64.Type}, {"QtySold120", Int64.Type}, {"AggregatePhysicalQtyDropShipWarehouse", type text}, {"SalesVelocityDate", type text}, {"WebsiteProductIDViewURLHandle", type text}, {"MinimumQtyForPO", type text}, {"ReStockDateEnabled", type text}, {"ReStockDate", type text}, {"QtySold45", Int64.Type}, {"ShippingCost_Expedited", type number}, {"ShippingCost_1Day", type number}, {"ShippingCost_2Day", type number}, {"TaxClassWebSite", type text}, {"LastInStockDate", type text}, {"ShipByTruckForced", type text}, {"OnBackOrder", type text}, {"QtySoldFBA15", type text}, {"QtySoldFBA30", type text}, {"QtySoldFBA45", type text}, {"QtySoldFBA60", type text}, {"QtySoldFBA90", type text}, {"QtySoldFBA120", type text}, {"QtySoldFBAYTD", type text}, {"QtySoldFBA180", type text}, {"QtySoldFBA365", type text}, {"OrdersPlaced15", type text}, {"OrdersPlaced30", type text}, {"OrdersPlaced45", type text}, {"OrdersPlaced60", type text}, {"OrdersPlaced90", type text}, {"OrdersPlaced120", type text}, {"OrdersPlacedYTD", type text}, {"AggregatePhysicalQtyFBA", type text}, {"MaximumOrderQty", type text}, {"QtySold11thMonth", type text}, {"QtySoldFBA11thMonth", type text}, {"LocalStorePrice", Currency.Type}, {"LocationRegion", type text}, {"LocationRegionMaxQtyThreshold", type text}, {"UnitOfMeasure", type text}, {"EAN", type text}, {"GTIN", type text}, {"ISBN", type text}, {"WebsiteSortOrder", type text}, {"QtySoldFBA7", type text}, {"ShippingCost_Int_Australia", type text}, {"ShippingCost_Int_Canada", type text}, {"ShippingCost_Int_UK", type text}, {"BestSellerStatus", type text}, {"EnforceMAPPrice", type text}, {"AggregatePriceDate", type text}, {"WebSitePrice", type text}, {"WebSitePriceUseDefault", type text}, {"LastTimeUpdatedForPandL", type text}, {"TotalManualReservesOrders", type text}, {"TotalManualReserves", type text}, {"AmountSoldYTD", type text}, {"PercentageOfTotalSalesYTD", type text}, {"QtySold7", type text}, {"OrdersPlaced7", type text}, {"QtySoldInstockDays7", type text}, {"QtySoldInstockDays15", type text}, {"QtySoldInstockDays30", type text}, {"QtySoldInstockDays45", type text}, {"QtySoldInstockDays60", type text}, {"QtySoldInstockDays90", type text}, {"QtySoldInstockDays120", type text}, {"QtySoldInstockDaysYTD", type text}, {"QtySoldInStockDaysFBA7", type text}, {"QtySoldInStockDaysFBA15", type text}, {"QtySoldInStockDaysFBA30", type text}, {"QtySoldInStockDaysFBA45", type text}, {"QtySoldInStockDaysFBA60", type text}, {"QtySoldInStockDaysFBA90", type text}, {"QtySoldInStockDaysFBA120", type text}, {"QtySoldInStockDaysFBA180", type text}, {"QtySoldInStockDaysFBAYTD", type text}, {"QtySoldInStockDaysFBA365", type text}, {"AmountSoldYTDInStockDays", type text}, {"LastSoldOn", type text}, {"EnableSellingBelowCostEnabledBy", type text}, {"EnableSellingBelowCostEnabledOn", type text}, {"QtySold3", type text}, {"QtySoldInstockDays3", type text}, {"QtySoldFBA3", type text}, {"QtySoldInStockDaysFBA3", type text}, {"InStockDate3", type text}, {"InStockDate7", type text}, {"InStockDate15", type text}, {"InStockDate30", type text}, {"InStockDate45", type text}, {"InStockDate60", type text}, {"InStockDate90", type text}, {"InStockDate120", type text}, {"InStockDateYTD", type text}, {"InventoryMaxQtyForWebSiteEnabled", type text}, {"InventoryMaxQtyForWebSite", type text}, {"InventoryMaxQtyForWebSiteUseDefault", type text}, {"DisconnectFromInventoryWebSite", type text}, {"DisconnectFromShadowPersistency", type text}, {"GrossCost", type text}, {"HasProposition65Warning", type text}, {"TotalQtyNonFBA", type number}, {"DoNotSendVariationImagesToWebsite", type text}, {"SendAllVariationImagesToWebsite", type text}, {"AggregatePhysicalQtyDropShipWarehouseSellable", type text}, {"OnOrderExpectedDeliveryDate", type text}, {"AggregatePhysicalQtyFBASellable", type text}, {"ShippingTemplateIDForWebsite", type text}, {"QtySoldLastCalculatedOn", type text}, {"QtySoldFBALastCalculatedOn", type text}, {"AverageShippingCost", type text}, {"AverageShippingCostDate", type text}, {"Comments", type text}, {"AggregatePhysicalNonSellableQty", type text}, {"QtySold180", type text}, {"QtySoldInstockDays180", type text}, {"TaxJarProductTaxCode", type text}, {"Proposition65WarningMessage", type text}, {"HasProposition65WarningLabelOnPackage", type text}, {"CaseLength", type text}, {"CaseWidth", type text}, {"CaseHeight", type text}, {"CaseWeight", type text}, {"LastInventoryChangeDate", type text}, {"WebsiteDefaultQtyEnabled", type text}, {"TotalInStockDays3", type text}, {"TotalInStockDays7", type text}, {"TotalInStockDays15", type text}, {"TotalInStockDays30", type text}, {"TotalInStockDays45", type text}, {"TotalInStockDays60", type text}, {"TotalInStockDays90", type text}, {"TotalInStockDays120", type text}, {"TotalInStockDays180", type text}, {"TotalInStockDaysFBA3", type text}, {"TotalInStockDaysFBA7", type text}, {"TotalInStockDaysFBA15", type text}, {"TotalInStockDaysFBA30", type text}, {"TotalInStockDaysFBA45", type text}, {"TotalInStockDaysFBA60", type text}, {"TotalInStockDaysFBA90", type text}, {"TotalInStockDaysFBA120", type text}, {"TotalInStockDaysFBA180", type text}, {"BigCommerceVariationOptions", type text}, {"QtySold365", type text}, {"QtySoldInstockDays365", type text}, {"CountryOfOrigin", type text}, {"WebsitePriceText", type text}, {"WebsiteShippingDescription", type text}, {"WebsiteGoogle_Product_Category", type text}, {"WebsiteProductKeywords", type text}, {"WebsiteGoogleAvailability", type text}, {"OnOrderQtyInContainer", type text}, {"EstimatedContainerArrivalDate", type text}, {"TotalNonSellableBinReserves", type text}, {"Cbm", type text}, {"DutiesPercent", type text}, {"TariffsPercent", type text}, {"IsDigitalProduct", type text}, {"AggregatePhysicalQtyWFS", type text}, {"AggregatePhysicalQtyWFSSellable", type text}, {"ProductID", type text}, {"ImagefilePrivateSmall", type text}, {"ImageFilePrivateMedium", type text}, {"AmazonSalesRank", type text}, {"QtyOFfSet", type text}, {"PhysicalInventoryQty", type text}, {"BrandID1", type text}, {"AmazonItemType", type text}, {"AmazonInventoryGenerated", type text}, {"AmazonInventoryGeneratedOn", type text}, {"AdjustedCost", type text}, {"ProductConditionInHouse", type text}, {"featured", type text}, {"IsNew", type text}, {"Clearance", type text}, {"Car", type text}, {"Boat", type text}, {"House", type text}, {"Interior", type text}, {"TopProduct", type text}, {"AreaCoverageID", type text}, {"Exterior", type text}, {"CustomURL", type text}, {"BestSeller", type text}, {"SaleOfTheWeek", type text}, {"PictureCount", type text}, {"ProductCode", type text}, {"GenderID", type text}, {"FaceColorID", type text}, {"FaceStyleID", type text}, {"FaceShapeID", type text}, {"FaceSize", type text}, {"FaceHands", type text}, {"FaceHourMarkers", type text}, {"FaceMisc", type text}, {"BandMaterialID", type text}, {"BandWristSize", type text}, {"BandWidth", type text}, {"BandColorID", type text}, {"BandClaspID", type text}, {"BandMisc", type text}, {"WatchFeatures", type text}, {"MaterialId", type text}, {"WatchStyleID", type text}, {"BandWristSizeMin", type text}, {"BandWristSizeMax", type text}, {"ExquisiteTimepiece", type text}, {"Approved", type text}, {"PriceTooLowToDisplay", type text}, {"FreeShipping_Removed", type text}, {"InventoryTitle", type text}, {"LocationNotes", type text}, {"CustomProductURL", type text}, {"RequireSerialNumberScanWhileShipping", type text}, {"Functionality", type text}, {"Packaging", type text}, {"Content", type text}, {"Dimensions", type text}, {"Missing", type text}, {"ProductConditionNotes", type text}, {"BinMaxCap", type text}, {"RequireDeliverySignature", type text}, {"RequireDeliveryConfirmation", type text}, {"InventoryLowStockNotified", type text}, {"InventoryLowStockNotifiedOn", type text}, {"SerialNumberLengthScanWhileShipping", type text}, {"SerialNumberLengthScanWhileShippingUseDefault", type text}, {"AppEagleEnabled", type text}, {"BinRefillQty", type text}, {"BinRefillDays", type text}, {"BinBaseQty", type text}, {"GoogleShoppingCartEnabled", type text}, {"NumberOfBatteriesIncluded", type text}, {"ShopifyFulfillmentService", type text}, {"WebsiteDefaultVisibility", type text}, {"IsExpirable", type text}, {"LastAutoUpdatedFromAmazonReportsOn", type text}, {"WebsiteLayoutName", type text}})
+				in
+				    #"Changed Type"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

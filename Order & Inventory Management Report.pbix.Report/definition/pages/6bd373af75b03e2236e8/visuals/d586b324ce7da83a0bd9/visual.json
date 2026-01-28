@@ -1,0 +1,17 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.5.0/schema.json",
+  "name": "d586b324ce7da83a0bd9",
+  "position": {
+    "x": 1012.9411764705883,
+    "y": 0,
+    "z": 16000,
+    "height": 230.58823529411765,
+    "width": 278.8235294117647,
+    "tabOrder": 10000
+  },
+  "visualGroup": {
+    "displayName": "Expanded Filters Pane",
+    "groupMode": "ScaleMode"
+  },
+  "isHidden": true
+}

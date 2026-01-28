@@ -1,0 +1,33 @@
+table OrderSource
+	lineageTag: f524050a-8d48-43f6-9059-8a0580309105
+
+	column OrderSource
+		dataType: int64
+		formatString: 0
+		lineageTag: b8313785-e3b1-4e15-8a49-7ce99e0d2ee5
+		summarizeBy: none
+		sourceColumn: OrderSource
+
+		annotation SummarizationSetBy = Automatic
+
+	column Description
+		dataType: string
+		lineageTag: ec098a46-c927-4acd-b586-b5b047c89970
+		summarizeBy: none
+		sourceColumn: Description
+
+		annotation SummarizationSetBy = Automatic
+
+	partition OrderSource-cc1e58fc-189d-4c18-8515-c12b9ef0464d = m
+		mode: import
+		source =
+				let
+				    Source = Sql.Database("10.13.0.206", "SC"),
+				    dbo_OrderSource = Source{[Schema="dbo",Item="OrderSource"]}[Data]
+				in
+				    dbo_OrderSource
+
+	annotation PBI_QueryRelationships = {"columnCount":2,"keyColumnNames":["OrderSource"],"queryRelationships":[],"columnIdentities":["Server.Database\\/2/SQL/sgp;SC/dbo/OrderSource.{OrderSource,0}","Server.Database\\/2/SQL/sgp;SC/dbo/OrderSource.{Description,1}"],"ColumnCount":2,"KeyColumnNames":["OrderSource"],"ColumnIdentities":["Server.Database\\/2/SQL/sgp;SC/dbo/OrderSource.{OrderSource,0}","Server.Database\\/2/SQL/sgp;SC/dbo/OrderSource.{Description,1}"],"RelationshipInfo":[]}
+
+	annotation PBI_ResultType = Table
+

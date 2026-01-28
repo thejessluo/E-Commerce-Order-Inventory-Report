@@ -1,0 +1,63 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/page/2.0.0/schema.json",
+  "name": "1f56295ac14d9cc4bd22",
+  "displayName": "NEGATIVE INVENTORY",
+  "displayOption": "ActualSize",
+  "height": 810,
+  "width": 900,
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "0a46f94a639d9e97190d",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "BVC_ORDER"
+              }
+            },
+            "Property": "ID"
+          }
+        },
+        "type": "Categorical",
+        "howCreated": "Drillthrough"
+      }
+    ]
+  },
+  "pageBinding": {
+    "name": "0f6c88bd13d731a90036",
+    "type": "Drillthrough",
+    "parameters": [
+      {
+        "name": "64fed3efd9570841ad0b",
+        "boundFilter": "0a46f94a639d9e97190d",
+        "fieldExpr": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "BVC_ORDER"
+              }
+            },
+            "Property": "ID"
+          }
+        }
+      }
+    ]
+  },
+  "objects": {
+    "outspacePane": [
+      {
+        "properties": {
+          "width": {
+            "expr": {
+              "Literal": {
+                "Value": "295L"
+              }
+            }
+          }
+        }
+      }
+    ]
+  },
+  "visibility": "HiddenInViewMode"
+}

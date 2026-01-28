@@ -1,0 +1,231 @@
+table Product_Sales_Spike_Flag
+	lineageTag: fd2e4d7f-dc44-46db-808b-d4f8e082fe8c
+
+	column ProductID
+		lineageTag: 4c8615ec-25f1-4b9a-85d9-7dcfb2c4579e
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: Product_Daily_Sales[ProductID]
+
+		annotation SummarizationSetBy = Automatic
+
+	column Max7DayQty
+		formatString: 0
+		lineageTag: 5f6fb672-f57b-4488-8665-ff2be2156f5c
+		summarizeBy: sum
+		isNameInferred
+		sourceColumn: [Max7DayQty]
+
+		annotation SummarizationSetBy = Automatic
+
+	column YesterdayQty
+		formatString: 0
+		lineageTag: 25445d24-3dda-4826-9056-616e60eb29cc
+		summarizeBy: sum
+		isNameInferred
+		sourceColumn: [YesterdayQty]
+
+		annotation SummarizationSetBy = Automatic
+
+	column SalesSpike_Flag
+		formatString: 0
+		lineageTag: 27aafaec-0b09-46bd-b377-bffa02c1f3a3
+		summarizeBy: sum
+		isNameInferred
+		sourceColumn: [SalesSpike_Flag]
+
+		annotation SummarizationSetBy = Automatic
+
+	column Min7DayQty
+		formatString: 0
+		lineageTag: 52f88316-67db-4ec1-a490-1cbe59d07788
+		summarizeBy: sum
+		isNameInferred
+		sourceColumn: [Min7DayQty]
+
+		annotation SummarizationSetBy = Automatic
+
+	column Total7DayQty
+		formatString: 0
+		lineageTag: a8964428-fb39-433b-b5dc-8a4b1eedbfa1
+		summarizeBy: sum
+		isNameInferred
+		sourceColumn: [Total7DayQty]
+
+		annotation SummarizationSetBy = Automatic
+
+	column Avg7DayQty
+		formatString: 0.0
+		lineageTag: 625dae21-348c-4c0f-8903-825e652ae3b4
+		summarizeBy: sum
+		isNameInferred
+		sourceColumn: [Avg7DayQty]
+
+		annotation SummarizationSetBy = Automatic
+
+	column Max7DayQtyDate
+		formatString: Long Date
+		lineageTag: ca5aec64-4476-40ed-baa5-c2c893759dfe
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [Max7DayQtyDate]
+
+		variation Variation
+			isDefault
+			relationship: 56d98ddc-f203-45ad-bf35-bd1fded5c9de
+			defaultHierarchy: LocalDateTable_27cab98b-c344-4366-b529-0de63a2e2ea2.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column YesterdayDate
+		formatString: Short Date
+		lineageTag: 94641f0e-8b7a-4581-9c15-c324a9adee64
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [YesterdayDate]
+
+		variation Variation
+			isDefault
+			relationship: 38c60f13-18fc-4556-9d9e-56ea45d69ab8
+			defaultHierarchy: LocalDateTable_30ec2b54-a6a5-471a-86b6-801d933b237a.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column Prior7DayStartDate
+		formatString: Short Date
+		lineageTag: 625fb9c1-f01d-4e40-8541-f928d9fd40e6
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [Prior7DayStartDate]
+
+		variation Variation
+			isDefault
+			relationship: 3775df09-120c-48dc-8356-40e8c265cc60
+			defaultHierarchy: LocalDateTable_be7e6926-be04-4297-8deb-0fb935016693.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column Prior7DayEndDate
+		formatString: Short Date
+		lineageTag: 9eb9d012-a166-48c5-a740-61e6ae8d1e96
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [Prior7DayEndDate]
+
+		variation Variation
+			isDefault
+			relationship: 88c62fdb-5018-419c-9dc0-413290e6e74f
+			defaultHierarchy: LocalDateTable_ad0cdb69-e4a8-4d8f-a210-dc22eb768334.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	partition Product_Sales_Spike_Flag = calculated
+		mode: import
+		source = ```
+				
+				VAR LatestDate = CALCULATE(MAX(Product_Daily_Sales[SaleDate]))
+				VAR Yesterday = LatestDate - 1
+				VAR Prior7Start = Yesterday - 6
+				
+				RETURN
+				ADDCOLUMNS(
+				    SUMMARIZE(
+				        Product_Daily_Sales,
+				        Product_Daily_Sales[ProductID]
+				    ),
+				
+				    // Max daily qty in prior 7 days
+				    "Max7DayQty",
+				        CALCULATE(
+				            MAX(Product_Daily_Sales[DailyQty]),
+				            Product_Daily_Sales[SaleDate] >= Prior7Start,
+				            Product_Daily_Sales[SaleDate] < Yesterday
+				        ),
+				
+				    // Date of Max qty
+				    "Max7DayQtyDate",
+				    VAR MaxQty =
+				        CALCULATE(
+				            MAX(Product_Daily_Sales[DailyQty]),
+				            Product_Daily_Sales[SaleDate] >= Prior7Start &&
+				            Product_Daily_Sales[SaleDate] < Yesterday
+				        )
+				    RETURN
+				        CALCULATE(
+				            MAX(Product_Daily_Sales[SaleDate]),
+				            FILTER(
+				                Product_Daily_Sales,
+				                Product_Daily_Sales[SaleDate] >= Prior7Start &&
+				                Product_Daily_Sales[SaleDate] < Yesterday &&
+				                Product_Daily_Sales[DailyQty] = MaxQty
+				            )
+				        ),
+				
+				    // Min daily qty in prior 7 days
+				    "Min7DayQty",
+				        CALCULATE(
+				            MIN(Product_Daily_Sales[DailyQty]),
+				            Product_Daily_Sales[SaleDate] >= Prior7Start,
+				            Product_Daily_Sales[SaleDate] < Yesterday
+				        ),
+				
+				    // Total qty in prior 7 days
+				    "Total7DayQty",
+				        CALCULATE(
+				            SUM(Product_Daily_Sales[DailyQty]),
+				            Product_Daily_Sales[SaleDate] >= Prior7Start,
+				            Product_Daily_Sales[SaleDate] < Yesterday
+				        ),
+				
+				    // Average qty
+				    "Avg7DayQty",
+				    DIVIDE(
+				        CALCULATE(
+				            SUM(Product_Daily_Sales[DailyQty]),
+				            Product_Daily_Sales[SaleDate] >= Prior7Start,
+				            Product_Daily_Sales[SaleDate] < Yesterday
+				        ),
+				        7
+				    ),
+				
+				    // Yesterday's sales
+				    "YesterdayQty",
+				        CALCULATE(
+				            SUM(Product_Daily_Sales[DailyQty]),
+				            Product_Daily_Sales[SaleDate] = Yesterday
+				        ),
+				
+				    // Date fields
+				    "YesterdayDate", Yesterday,
+				    "Prior7DayStartDate", Prior7Start,
+				    "Prior7DayEndDate", Yesterday - 1,
+				
+				    // Spike flag
+				    "SalesSpike_Flag",
+				        VAR Max7Day =
+				            CALCULATE(
+				                MAX(Product_Daily_Sales[DailyQty]),
+				                Product_Daily_Sales[SaleDate] >= Prior7Start,
+				                Product_Daily_Sales[SaleDate] < Yesterday
+				            )
+				        VAR Yest =
+				            CALCULATE(
+				                SUM(Product_Daily_Sales[DailyQty]),
+				                Product_Daily_Sales[SaleDate] = Yesterday
+				            )
+				        RETURN
+				            IF(Max7Day > 0 && Yest >= 2 * Max7Day, 1, 0)
+				)
+				
+				```
+
+	annotation PBI_Id = 1c301d36121d44a7986c5081897dce25
+

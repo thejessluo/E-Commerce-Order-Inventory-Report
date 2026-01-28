@@ -1,0 +1,50 @@
+table prm_UnitsSold_Revenue
+	isHidden
+	lineageTag: 2d6e86cc-ddc1-4a7e-afff-4c832ede7c37
+
+	column prm_UnitsSold_Revenue
+		isHidden
+		lineageTag: 45c88bd5-d3e1-40c1-a20b-a804b3c143e5
+		summarizeBy: none
+		sourceColumn: [Value1]
+		sortByColumn: 'prm_UnitsSold_Revenue Order'
+
+		relatedColumnDetails
+			groupByColumn: 'prm_UnitsSold_Revenue Fields'
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'prm_UnitsSold_Revenue Fields'
+		isHidden
+		lineageTag: 199bdb94-3f3d-4db0-bf97-b04af5f7590d
+		summarizeBy: none
+		sourceColumn: [Value2]
+		sortByColumn: 'prm_UnitsSold_Revenue Order'
+
+		extendedProperty ParameterMetadata =
+				{
+				  "version": 3,
+				  "kind": 2
+				}
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'prm_UnitsSold_Revenue Order'
+		isHidden
+		formatString: 0
+		lineageTag: d81f8953-6d39-4eed-a162-6f96a289eb30
+		summarizeBy: sum
+		sourceColumn: [Value3]
+
+		annotation SummarizationSetBy = Automatic
+
+	partition prm_UnitsSold_Revenue = calculated
+		mode: import
+		source =
+				{
+				    ("Revenue ($)", NAMEOF('MeasuresTable'[SUM_Revenue]), 0),
+				    ("Units Sold", NAMEOF('MeasuresTable'[SUM_UnitsSold]), 1)
+				}
+
+	annotation PBI_Id = 9a89ad3500474b59a8e71d2498c23a40
+

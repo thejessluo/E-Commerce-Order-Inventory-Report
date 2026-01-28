@@ -1,0 +1,16 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.5.0/schema.json",
+  "name": "594c5eab97c8eac34900",
+  "position": {
+    "x": 223.49639383980934,
+    "y": 437.5,
+    "z": 10000,
+    "height": 106.25,
+    "width": 173.75,
+    "tabOrder": 6000
+  },
+  "visualGroup": {
+    "displayName": "Days of Stock",
+    "groupMode": "ScaleMode"
+  }
+}

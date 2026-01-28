@@ -1,0 +1,17 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.5.0/schema.json",
+  "name": "fa22b2359812b03ac804",
+  "position": {
+    "x": 774.31565904371234,
+    "y": 186.631371177285,
+    "z": 2000,
+    "height": 158.57142857142858,
+    "width": 218.57142857142858,
+    "tabOrder": 6000
+  },
+  "visualGroup": {
+    "displayName": "RECENT ZERO STOCKS",
+    "groupMode": "ScaleMode"
+  },
+  "isHidden": true
+}

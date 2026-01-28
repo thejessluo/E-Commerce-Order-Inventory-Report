@@ -1,0 +1,63 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/page/2.0.0/schema.json",
+  "name": "ReportSection9714a1e86d23c138b449",
+  "displayName": "AGING OPEN ORDERS",
+  "displayOption": "ActualSize",
+  "height": 810,
+  "width": 1500,
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "0a46f94a639d9e97190d",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "BVC_ORDER"
+              }
+            },
+            "Property": "ID"
+          }
+        },
+        "type": "Categorical",
+        "howCreated": "Drillthrough"
+      }
+    ]
+  },
+  "pageBinding": {
+    "name": "a2872db2090a29639bde",
+    "type": "Drillthrough",
+    "parameters": [
+      {
+        "name": "64fed3efd9570841ad0b",
+        "boundFilter": "0a46f94a639d9e97190d",
+        "fieldExpr": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "BVC_ORDER"
+              }
+            },
+            "Property": "ID"
+          }
+        }
+      }
+    ]
+  },
+  "objects": {
+    "outspacePane": [
+      {
+        "properties": {
+          "width": {
+            "expr": {
+              "Literal": {
+                "Value": "209L"
+              }
+            }
+          }
+        }
+      }
+    ]
+  },
+  "visibility": "HiddenInViewMode"
+}

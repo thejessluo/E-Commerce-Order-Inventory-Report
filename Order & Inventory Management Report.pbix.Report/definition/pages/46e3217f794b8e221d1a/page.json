@@ -1,0 +1,10 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/page/2.0.0/schema.json",
+  "name": "46e3217f794b8e221d1a",
+  "displayName": "Aging Open Order Tooltip",
+  "displayOption": "ActualSize",
+  "height": 200,
+  "width": 250,
+  "visibility": "HiddenInViewMode",
+  "type": "Tooltip"
+}
