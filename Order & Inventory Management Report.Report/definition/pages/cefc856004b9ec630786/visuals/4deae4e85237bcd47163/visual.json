@@ -1,0 +1,64 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.5.0/schema.json",
+  "name": "4deae4e85237bcd47163",
+  "position": {
+    "x": 5,
+    "y": 50,
+    "z": 1000,
+    "height": 143,
+    "width": 240,
+    "tabOrder": 1000
+  },
+  "visual": {
+    "visualType": "textbox",
+    "objects": {
+      "general": [
+        {
+          "properties": {
+            "paragraphs": [
+              {
+                "textRuns": [
+                  {
+                    "value": "A: The Days of Stock formula calculates \"how many days the current stock will last based on how fast we’ve been selling.\"",
+                    "textStyle": {
+                      "fontFamily": "DIN"
+                    }
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": ""
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "As a formula: ",
+                    "textStyle": {
+                      "fontFamily": "DIN"
+                    }
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "Days of Stock Remaining = Qty available / (Units sold / days in date range)",
+                    "textStyle": {
+                      "fontFamily": "DIN",
+                      "fontStyle": "italic"
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

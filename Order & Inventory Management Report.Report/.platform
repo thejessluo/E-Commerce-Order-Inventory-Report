@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "Report",
+    "displayName": "Order & Inventory Management Report"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "27977495-0081-46f4-87b6-9027c4915705"
+  }
+}

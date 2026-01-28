@@ -1,0 +1,17 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.5.0/schema.json",
+  "name": "b6ee5318a8fd22a8eeaa",
+  "position": {
+    "x": 0,
+    "y": 109.04000000006084,
+    "z": 9500,
+    "height": 82.471111111151657,
+    "width": 109.72756496625512,
+    "tabOrder": 0
+  },
+  "visualGroup": {
+    "displayName": "ADN by Company",
+    "groupMode": "ScaleMode"
+  },
+  "parentGroupName": "6b0fb4b2034751db701c"
+}

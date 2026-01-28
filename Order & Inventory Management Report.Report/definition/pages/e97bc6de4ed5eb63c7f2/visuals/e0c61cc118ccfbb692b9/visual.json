@@ -1,0 +1,501 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.5.0/schema.json",
+  "name": "e0c61cc118ccfbb692b9",
+  "position": {
+    "x": 461.66666666666669,
+    "y": 76.666666666666671,
+    "z": 4000,
+    "height": 385,
+    "width": 946.66666666666674,
+    "tabOrder": 3000
+  },
+  "visual": {
+    "visualType": "pivotTable",
+    "query": {
+      "queryState": {
+        "Rows": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "BVC_ORDER"
+                    }
+                  },
+                  "Property": "OrderSource - CompanyName"
+                }
+              },
+              "queryRef": "BVC_ORDER.OrderSource - CompanyName",
+              "nativeQueryRef": "OrderSource - CompanyName",
+              "active": true
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "BVC_ORDER"
+                    }
+                  },
+                  "Property": "ID"
+                }
+              },
+              "queryRef": "BVC_ORDER.ID",
+              "nativeQueryRef": "Order ID",
+              "active": false,
+              "displayName": "Order ID"
+            }
+          ]
+        },
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "BVC_ORDER"
+                    }
+                  },
+                  "Property": "COUNT_Orders"
+                }
+              },
+              "queryRef": "BVC_ORDER.COUNT_Orders",
+              "nativeQueryRef": "# of Orders",
+              "displayName": "# of Orders"
+            },
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "bvc_OrderItem"
+                        }
+                      },
+                      "Property": "AdjustedSitePrice"
+                    }
+                  },
+                  "Function": 0
+                }
+              },
+              "queryRef": "Sum(bvc_OrderItem.AdjustedSitePrice)",
+              "nativeQueryRef": "$ Amount",
+              "displayName": "$ Amount"
+            },
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "BVC_ORDER"
+                        }
+                      },
+                      "Property": "Ship Date"
+                    }
+                  },
+                  "Function": 4
+                }
+              },
+              "queryRef": "Min(BVC_ORDER.ShipDate - Copy)",
+              "nativeQueryRef": "Latest Ship Date1"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Measure": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "BVC_ORDER"
+                  }
+                },
+                "Property": "COUNT_Orders"
+              }
+            },
+            "direction": "Descending"
+          }
+        ]
+      }
+    },
+    "expansionStates": [
+      {
+        "roles": [
+          "Rows"
+        ],
+        "levels": [
+          {
+            "queryRefs": [
+              "BVC_ORDER.OrderSource - CompanyName"
+            ],
+            "isCollapsed": true,
+            "identityKeys": [
+              {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "BVC_ORDER"
+                    }
+                  },
+                  "Property": "OrderSource - CompanyName"
+                }
+              }
+            ],
+            "isPinned": true
+          },
+          {
+            "queryRefs": [
+              "BVC_ORDER.ID"
+            ],
+            "isCollapsed": true,
+            "identityKeys": [
+              {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "BVC_ORDER"
+                    }
+                  },
+                  "Property": "ID"
+                }
+              }
+            ],
+            "isPinned": true
+          }
+        ],
+        "root": {}
+      }
+    ],
+    "objects": {
+      "values": [
+        {
+          "properties": {
+            "fontSize": {
+              "expr": {
+                "Literal": {
+                  "Value": "13D"
+                }
+              }
+            },
+            "backColorSecondary": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "Literal": {
+                      "Value": "'#EAF4FF'"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      ],
+      "columnHeaders": [
+        {
+          "properties": {
+            "fontSize": {
+              "expr": {
+                "Literal": {
+                  "Value": "13D"
+                }
+              }
+            },
+            "bold": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "fontColor": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "ThemeDataColor": {
+                      "ColorId": 0,
+                      "Percent": 0
+                    }
+                  }
+                }
+              }
+            },
+            "backColor": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "Literal": {
+                      "Value": "'#252423'"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      ],
+      "rowHeaders": [
+        {
+          "properties": {
+            "fontSize": {
+              "expr": {
+                "Literal": {
+                  "Value": "13D"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "columnWidth": [
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "121.33333584506863D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "Sum(bvc_OrderItem.AdjustedSitePrice)"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "376.74971818858813D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "BVC_ORDER.OrderSource - CompanyName"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "114.68732380460061D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "BVC_ORDER.COUNT_Orders"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "145.6666624873988D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "Min(BVC_ORDER.ShipDate - Copy)"
+          }
+        }
+      ],
+      "blankRows": [
+        {
+          "properties": {
+            "showBlankRows": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "visualContainerObjects": {
+      "stylePreset": [
+        {
+          "properties": {
+            "name": {
+              "expr": {
+                "Literal": {
+                  "Value": "'AlternatingRowsNew'"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  },
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "0b804e81844aee04b100",
+        "ordinal": 0,
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "BVC_ORDER"
+              }
+            },
+            "Property": "UserDefined_PaymentReceived"
+          }
+        },
+        "type": "Categorical",
+        "howCreated": "User"
+      },
+      {
+        "name": "814bb567330aee3d5219",
+        "ordinal": 1,
+        "field": {
+          "Aggregation": {
+            "Expression": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "bvc_Order_Property_UserDefined"
+                  }
+                },
+                "Property": "PAYMENTNAME"
+              }
+            },
+            "Function": 3
+          }
+        },
+        "type": "Advanced",
+        "howCreated": "User"
+      },
+      {
+        "name": "0039a1d186d8ecb3301e",
+        "ordinal": 2,
+        "field": {
+          "Aggregation": {
+            "Expression": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "bvc_Order_Property_UserDefined"
+                  }
+                },
+                "Property": "PAYMENTCHECKNUMBER"
+              }
+            },
+            "Function": 4
+          }
+        },
+        "type": "Advanced",
+        "howCreated": "User"
+      },
+      {
+        "name": "68b31d6a7efa679c7984",
+        "ordinal": 3,
+        "field": {
+          "Aggregation": {
+            "Expression": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "bvc_Order_Property_UserDefined"
+                  }
+                },
+                "Property": "PAYMENTDAY"
+              }
+            },
+            "Function": 4
+          }
+        },
+        "type": "Advanced",
+        "howCreated": "User"
+      },
+      {
+        "name": "9f6537ab98f95dbfe41e",
+        "ordinal": 4,
+        "field": {
+          "Aggregation": {
+            "Expression": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "bvc_Order_Property_UserDefined"
+                  }
+                },
+                "Property": "PAYMENTAMOUNT"
+              }
+            },
+            "Function": 0
+          }
+        },
+        "type": "Advanced",
+        "howCreated": "User"
+      },
+      {
+        "name": "a9682c8ac89de770a74b",
+        "ordinal": 5,
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "BVC_ORDER"
+              }
+            },
+            "Property": "OrderSource - CompanyName"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "d53107e61ab961631e02",
+        "ordinal": 6,
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "BVC_ORDER"
+              }
+            },
+            "Property": "ID"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "87a6c8f77095c581621a",
+        "ordinal": 7,
+        "field": {
+          "Aggregation": {
+            "Expression": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "bvc_OrderItem"
+                  }
+                },
+                "Property": "AdjustedSitePrice"
+              }
+            },
+            "Function": 0
+          }
+        },
+        "type": "Advanced"
+      }
+    ],
+    "filterSortOrder": "Custom"
+  }
+}

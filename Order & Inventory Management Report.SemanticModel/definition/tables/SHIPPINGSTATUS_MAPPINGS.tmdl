@@ -1,0 +1,39 @@
+table SHIPPINGSTATUS_MAPPINGS
+	isHidden
+	lineageTag: fe5d3b6b-578a-4fc1-8886-c91dee236f65
+
+	column SHIPPINGSTATUS
+		dataType: string
+		isHidden
+		lineageTag: 79fb47c7-2a84-4fb3-848d-1612d1d17c8f
+		summarizeBy: none
+		sourceColumn: SHIPPINGSTATUS
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column SHIPPINGSTATUS_MAPPING
+		dataType: string
+		isHidden
+		lineageTag: da7786c2-3cc9-4cfe-9ec8-7fe0cd4a8945
+		summarizeBy: none
+		sourceColumn: SHIPPINGSTATUS_MAPPING
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	partition SHIPPINGSTATUS_MAPPINGS = m
+		mode: import
+		source =
+				let
+				    Source = Snowflake.Databases("zo76507.west-europe.azure.snowflakecomputing.com","WH_XSMALL_83818"),
+				    DATAHAWK_WRITABLE_83818_Database = Source{[Name="DATAHAWK_WRITABLE_83818",Kind="Database"]}[Data],
+				    SELLERCLOUD_DATA_Schema = DATAHAWK_WRITABLE_83818_Database{[Name="SELLERCLOUD_DATA",Kind="Schema"]}[Data],
+				    SHIPPINGSTATUS_MAPPINGS_Table = SELLERCLOUD_DATA_Schema{[Name="SHIPPINGSTATUS_MAPPINGS",Kind="Table"]}[Data]
+				in
+				    SHIPPINGSTATUS_MAPPINGS_Table
+
+	changedProperty = IsHidden
+

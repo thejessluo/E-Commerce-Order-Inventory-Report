@@ -1,0 +1,1890 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/bookmark/2.0.0/schema.json",
+  "displayName": "RESET - Open Orders DB",
+  "name": "aeb0731032b00e48a441",
+  "options": {
+    "targetVisualNames": [
+      "db28b5f5b636ad08cbe1",
+      "4d8d5a885e9ce11379d7",
+      "78655cdd999ce46d8a51",
+      "17c30e1d07ebb640392d",
+      "bf3fd610452d8173556a",
+      "87cdd6b8976197ad3878",
+      "17c3ca7bc2b00d0856a4"
+    ]
+  },
+  "explorationState": {
+    "version": "1.3",
+    "activeSection": "260b912012dc8072c408",
+    "filters": {
+      "byExpr": [
+        {
+          "name": "8807038e850e3e3d0230",
+          "type": "Advanced",
+          "filter": {
+            "Version": 2,
+            "From": [
+              {
+                "Name": "b",
+                "Entity": "BVC_ORDER",
+                "Type": 0
+              }
+            ],
+            "Where": [
+              {
+                "Condition": {
+                  "Not": {
+                    "Expression": {
+                      "Comparison": {
+                        "ComparisonKind": 0,
+                        "Left": {
+                          "Column": {
+                            "Expression": {
+                              "SourceRef": {
+                                "Source": "b"
+                              }
+                            },
+                            "Property": "Order Status"
+                          }
+                        },
+                        "Right": {
+                          "Literal": {
+                            "Value": "'Cancelled'"
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            ]
+          },
+          "expression": {
+            "Column": {
+              "Expression": {
+                "SourceRef": {
+                  "Entity": "BVC_ORDER"
+                }
+              },
+              "Property": "Order Status"
+            }
+          },
+          "howCreated": 1
+        },
+        {
+          "name": "cf472c2003365318d321",
+          "type": "Categorical",
+          "filter": {
+            "Version": 2,
+            "From": [
+              {
+                "Name": "p",
+                "Entity": "Product",
+                "Type": 0
+              }
+            ],
+            "Where": [
+              {
+                "Condition": {
+                  "In": {
+                    "Expressions": [
+                      {
+                        "Column": {
+                          "Expression": {
+                            "SourceRef": {
+                              "Source": "p"
+                            }
+                          },
+                          "Property": "Product Active Status"
+                        }
+                      }
+                    ],
+                    "Values": [
+                      [
+                        {
+                          "Literal": {
+                            "Value": "'Active'"
+                          }
+                        }
+                      ]
+                    ]
+                  }
+                }
+              }
+            ]
+          },
+          "expression": {
+            "Column": {
+              "Expression": {
+                "SourceRef": {
+                  "Entity": "Product"
+                }
+              },
+              "Property": "Product Active Status"
+            }
+          },
+          "howCreated": 1
+        },
+        {
+          "name": "60e8980a82b9bd9e29ac",
+          "type": "Advanced",
+          "filter": {
+            "Version": 2,
+            "From": [
+              {
+                "Name": "m",
+                "Entity": "MERGED_PO_ITEMS_TABLE",
+                "Type": 0
+              }
+            ],
+            "Where": [
+              {
+                "Condition": {
+                  "Not": {
+                    "Expression": {
+                      "Comparison": {
+                        "ComparisonKind": 0,
+                        "Left": {
+                          "Column": {
+                            "Expression": {
+                              "SourceRef": {
+                                "Source": "m"
+                              }
+                            },
+                            "Property": "PO_STATUS_MAPPINGS"
+                          }
+                        },
+                        "Right": {
+                          "Literal": {
+                            "Value": "'Cancelled'"
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            ]
+          },
+          "expression": {
+            "Column": {
+              "Expression": {
+                "SourceRef": {
+                  "Entity": "MERGED_PO_ITEMS_TABLE"
+                }
+              },
+              "Property": "PO_STATUS_MAPPINGS"
+            }
+          },
+          "howCreated": 1
+        },
+        {
+          "name": "0e552e1d79cfda1e6f7c",
+          "type": "Advanced",
+          "filter": {
+            "Version": 2,
+            "From": [
+              {
+                "Name": "b",
+                "Entity": "BVC_ORDER",
+                "Type": 0
+              }
+            ],
+            "Where": [
+              {
+                "Condition": {
+                  "Not": {
+                    "Expression": {
+                      "Comparison": {
+                        "ComparisonKind": 0,
+                        "Left": {
+                          "Column": {
+                            "Expression": {
+                              "SourceRef": {
+                                "Source": "b"
+                              }
+                            },
+                            "Property": "CustomerServiceStatus"
+                          }
+                        },
+                        "Right": {
+                          "Literal": {
+                            "Value": "11L"
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            ]
+          },
+          "expression": {
+            "Column": {
+              "Expression": {
+                "SourceRef": {
+                  "Entity": "BVC_ORDER"
+                }
+              },
+              "Property": "CustomerServiceStatus"
+            }
+          },
+          "howCreated": 1
+        }
+      ]
+    },
+    "sections": {
+      "260b912012dc8072c408": {
+        "visualContainers": {
+          "d8569cc8f8e714b59101": {
+            "filters": {
+              "byExpr": [
+                {
+                  "name": "0219982716031617489c",
+                  "type": "Advanced",
+                  "expression": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "BVC_ORDER"
+                        }
+                      },
+                      "Property": "COUNT_Aging_Open_Orders"
+                    }
+                  },
+                  "howCreated": 0
+                }
+              ]
+            },
+            "singleVisual": {
+              "visualType": "card",
+              "objects": {},
+              "orderBy": [
+                {
+                  "Direction": 2,
+                  "Expression": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "BVC_ORDER"
+                        }
+                      },
+                      "Property": "COUNT_Aging_Open_Orders"
+                    }
+                  }
+                }
+              ]
+            }
+          },
+          "d7311af76b5d33f9c9c0": {
+            "singleVisual": {
+              "visualType": "actionButton",
+              "objects": {}
+            }
+          },
+          "732e8b3db0e6b2bde063": {
+            "filters": {
+              "byExpr": [
+                {
+                  "name": "5c697470a70282e90ce2",
+                  "type": "Advanced",
+                  "expression": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "MeasuresTable"
+                        }
+                      },
+                      "Property": "EMPTY_MEASURE"
+                    }
+                  },
+                  "howCreated": 0
+                }
+              ]
+            },
+            "singleVisual": {
+              "visualType": "card",
+              "objects": {}
+            }
+          },
+          "0a0b45d1ad10c64e0dd4": {
+            "singleVisual": {
+              "visualType": "actionButton",
+              "objects": {}
+            }
+          },
+          "315c876ae800c9e274c2": {
+            "filters": {
+              "byExpr": [
+                {
+                  "name": "eaae40400a8db9b69a8b",
+                  "type": "Advanced",
+                  "expression": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "MeasuresTable"
+                        }
+                      },
+                      "Property": "EMPTY_MEASURE"
+                    }
+                  },
+                  "howCreated": 0
+                }
+              ]
+            },
+            "singleVisual": {
+              "visualType": "card",
+              "objects": {}
+            }
+          },
+          "654d4d107b5a9884a4d7": {
+            "singleVisual": {
+              "visualType": "actionButton",
+              "objects": {}
+            }
+          },
+          "cd63465c05ed0eb5ece3": {
+            "singleVisual": {
+              "visualType": "textbox",
+              "objects": {}
+            }
+          },
+          "45232b8f3214006ee374": {
+            "filters": {
+              "byExpr": [
+                {
+                  "name": "03cb773ff1ea473ae31b",
+                  "type": "Advanced",
+                  "expression": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "MeasuresTable"
+                        }
+                      },
+                      "Property": "EMPTY_MEASURE"
+                    }
+                  },
+                  "howCreated": 0
+                }
+              ]
+            },
+            "singleVisual": {
+              "visualType": "card",
+              "objects": {}
+            }
+          },
+          "beb1506079d170c95a75": {
+            "singleVisual": {
+              "visualType": "actionButton",
+              "objects": {}
+            }
+          },
+          "634bbb977ce64008db48": {
+            "singleVisual": {
+              "visualType": "textbox",
+              "objects": {}
+            }
+          },
+          "26adbaf8354ad41c2768": {
+            "filters": {
+              "byExpr": [
+                {
+                  "name": "3336176b7013a89f3547",
+                  "type": "Categorical",
+                  "filter": {
+                    "Version": 2,
+                    "From": [
+                      {
+                        "Name": "b",
+                        "Entity": "BVC_ORDER",
+                        "Type": 0
+                      }
+                    ],
+                    "Where": [
+                      {
+                        "Condition": {
+                          "In": {
+                            "Expressions": [
+                              {
+                                "Column": {
+                                  "Expression": {
+                                    "SourceRef": {
+                                      "Source": "b"
+                                    }
+                                  },
+                                  "Property": "Is_Aging_Open_Order_Flag"
+                                }
+                              }
+                            ],
+                            "Values": [
+                              [
+                                {
+                                  "Literal": {
+                                    "Value": "true"
+                                  }
+                                }
+                              ]
+                            ]
+                          }
+                        }
+                      }
+                    ]
+                  },
+                  "expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "BVC_ORDER"
+                        }
+                      },
+                      "Property": "Is_Aging_Open_Order_Flag"
+                    }
+                  },
+                  "howCreated": 1
+                },
+                {
+                  "name": "ae80156ad5d8ea196ba2",
+                  "type": "Categorical",
+                  "expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "bvc_Orderr"
+                        }
+                      },
+                      "Property": "eBaySellingManagerSalesRecordNumber"
+                    }
+                  },
+                  "howCreated": 1
+                },
+                {
+                  "name": "d53cdda6ad51b46b1d04",
+                  "type": "Advanced",
+                  "expression": {
+                    "Aggregation": {
+                      "Expression": {
+                        "Column": {
+                          "Expression": {
+                            "SourceRef": {
+                              "Entity": "bvc_Package"
+                            }
+                          },
+                          "Property": "DeliveryStatus_Mapping"
+                        }
+                      },
+                      "Function": 3
+                    }
+                  },
+                  "howCreated": 1
+                },
+                {
+                  "name": "88b9edc233d3676deec5",
+                  "type": "Categorical",
+                  "expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "bvc_OrderItem"
+                        }
+                      },
+                      "Property": "DisplayName"
+                    }
+                  },
+                  "howCreated": 1
+                },
+                {
+                  "name": "b55847f14d5e91097891",
+                  "type": "Categorical",
+                  "expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "bvc_Orderr"
+                        }
+                      },
+                      "Property": "OrderSouce - CompanyName"
+                    }
+                  },
+                  "howCreated": 1
+                },
+                {
+                  "name": "6e522d43c2ebe574351a",
+                  "type": "Categorical",
+                  "expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "bvc_OrderItem"
+                        }
+                      },
+                      "Property": "ProductID"
+                    }
+                  },
+                  "howCreated": 0
+                },
+                {
+                  "name": "9f09cc459132d19701a0",
+                  "type": "Advanced",
+                  "expression": {
+                    "Aggregation": {
+                      "Expression": {
+                        "Column": {
+                          "Expression": {
+                            "SourceRef": {
+                              "Entity": "bvc_OrderItem"
+                            }
+                          },
+                          "Property": "Qty"
+                        }
+                      },
+                      "Function": 0
+                    }
+                  },
+                  "howCreated": 1
+                },
+                {
+                  "name": "ea526e0408056d2334a0",
+                  "type": "Categorical",
+                  "expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "bvc_Orderr"
+                        }
+                      },
+                      "Property": "ShippingMethodSelected"
+                    }
+                  },
+                  "howCreated": 1
+                },
+                {
+                  "name": "7b7d6bc57902eac73775",
+                  "type": "Advanced",
+                  "expression": {
+                    "Aggregation": {
+                      "Expression": {
+                        "Column": {
+                          "Expression": {
+                            "SourceRef": {
+                              "Entity": "bvc_Package"
+                            }
+                          },
+                          "Property": "TrackingNumber"
+                        }
+                      },
+                      "Function": 3
+                    }
+                  },
+                  "howCreated": 1
+                },
+                {
+                  "name": "6e840611002ae366c40c",
+                  "type": "Advanced",
+                  "expression": {
+                    "Aggregation": {
+                      "Expression": {
+                        "Column": {
+                          "Expression": {
+                            "SourceRef": {
+                              "Entity": "bvc_OrderItem"
+                            }
+                          },
+                          "Property": "AdjustedSitePrice"
+                        }
+                      },
+                      "Function": 1
+                    }
+                  },
+                  "howCreated": 1
+                },
+                {
+                  "name": "fca3cda1d3317cc989e6",
+                  "type": "Categorical",
+                  "expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Warehouse"
+                        }
+                      },
+                      "Property": "Name"
+                    }
+                  },
+                  "howCreated": 1
+                },
+                {
+                  "name": "dffa92f387f0c4099535",
+                  "type": "Advanced",
+                  "expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "BVC_ORDER"
+                        }
+                      },
+                      "Property": "ID"
+                    }
+                  },
+                  "howCreated": 0
+                },
+                {
+                  "name": "2b454d27c5ce996f8312",
+                  "type": "Categorical",
+                  "expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "BVC_ORDER"
+                        }
+                      },
+                      "Property": "RecordCreatedOn"
+                    }
+                  },
+                  "howCreated": 0
+                },
+                {
+                  "name": "f18bc0cd7a447c63949e",
+                  "type": "Categorical",
+                  "expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "BVC_ORDER"
+                        }
+                      },
+                      "Property": "TimeOfOrder"
+                    }
+                  },
+                  "howCreated": 1
+                },
+                {
+                  "name": "e3d0d245b71419bb0f94",
+                  "type": "Categorical",
+                  "expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "SHIPPINGSTATUS_MAPPINGS"
+                        }
+                      },
+                      "Property": "SHIPPINGSTATUS_MAPPING"
+                    }
+                  },
+                  "howCreated": 1
+                },
+                {
+                  "name": "6a3a6e3fce160d8609da",
+                  "type": "Categorical",
+                  "expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "BVC_ORDER"
+                        }
+                      },
+                      "Property": "OrderSource - CompanyName"
+                    }
+                  },
+                  "howCreated": 0
+                },
+                {
+                  "name": "31c2d72b79405128fe5e",
+                  "type": "Categorical",
+                  "expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "BVC_ORDER"
+                        }
+                      },
+                      "Property": "ShippingMethodSelected"
+                    }
+                  },
+                  "howCreated": 0
+                },
+                {
+                  "name": "87c19f9bce9704324dbe",
+                  "type": "Categorical",
+                  "expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "bvc_OrderItem"
+                        }
+                      },
+                      "Property": "Warehouse Name"
+                    }
+                  },
+                  "howCreated": 0
+                },
+                {
+                  "name": "7a9cfd5617417f3bb4c3",
+                  "type": "Advanced",
+                  "expression": {
+                    "Aggregation": {
+                      "Expression": {
+                        "Column": {
+                          "Expression": {
+                            "SourceRef": {
+                              "Entity": "BVC_ORDER"
+                            }
+                          },
+                          "Property": "ID"
+                        }
+                      },
+                      "Function": 2
+                    }
+                  },
+                  "howCreated": 0
+                }
+              ]
+            },
+            "singleVisual": {
+              "visualType": "tableEx",
+              "objects": {}
+            }
+          },
+          "70c909f63a4075ee2a56": {
+            "filters": {
+              "byExpr": [
+                {
+                  "name": "c4ee963b24e745a60321",
+                  "type": "Advanced",
+                  "expression": {
+                    "Aggregation": {
+                      "Expression": {
+                        "Column": {
+                          "Expression": {
+                            "SourceRef": {
+                              "Entity": "BVC_ORDER"
+                            }
+                          },
+                          "Property": "RecordCreatedOn"
+                        }
+                      },
+                      "Function": 4
+                    }
+                  },
+                  "howCreated": 0
+                }
+              ]
+            },
+            "singleVisual": {
+              "visualType": "card",
+              "objects": {},
+              "orderBy": [
+                {
+                  "Direction": 1,
+                  "Expression": {
+                    "Aggregation": {
+                      "Expression": {
+                        "Column": {
+                          "Expression": {
+                            "SourceRef": {
+                              "Entity": "BVC_ORDER"
+                            }
+                          },
+                          "Property": "RecordCreatedOn"
+                        }
+                      },
+                      "Function": 4
+                    }
+                  }
+                }
+              ]
+            }
+          },
+          "4d8d5a885e9ce11379d7": {
+            "singleVisual": {
+              "visualType": "pageNavigator",
+              "objects": {}
+            }
+          },
+          "78655cdd999ce46d8a51": {
+            "singleVisual": {
+              "visualType": "shape",
+              "objects": {}
+            }
+          },
+          "17c30e1d07ebb640392d": {
+            "singleVisual": {
+              "visualType": "image",
+              "objects": {}
+            }
+          },
+          "bf3fd610452d8173556a": {
+            "singleVisual": {
+              "visualType": "image",
+              "objects": {}
+            }
+          },
+          "87cdd6b8976197ad3878": {
+            "filters": {
+              "byExpr": [
+                {
+                  "name": "08056208360fedd6e377",
+                  "type": "Advanced",
+                  "expression": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "MeasuresTable"
+                        }
+                      },
+                      "Property": "Last_RecordCreatedOn_Date"
+                    }
+                  },
+                  "howCreated": 0
+                }
+              ]
+            },
+            "singleVisual": {
+              "visualType": "card",
+              "objects": {},
+              "orderBy": [
+                {
+                  "Direction": 1,
+                  "Expression": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "MeasuresTable"
+                        }
+                      },
+                      "Property": "Last_RecordCreatedOn_Date"
+                    }
+                  }
+                }
+              ]
+            }
+          },
+          "17c3ca7bc2b00d0856a4": {
+            "singleVisual": {
+              "visualType": "actionButton",
+              "objects": {}
+            }
+          },
+          "58438dae7d015249ac92": {
+            "singleVisual": {
+              "visualType": "textbox",
+              "objects": {}
+            }
+          },
+          "8099e5f44dd7a5cb8c64": {
+            "filters": {
+              "byExpr": [
+                {
+                  "name": "256277c6eae4a8d59f7a",
+                  "type": "Categorical",
+                  "expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "BVC_ORDER"
+                        }
+                      },
+                      "Property": "RecordCreatedOn - Copy"
+                    }
+                  },
+                  "howCreated": 0
+                },
+                {
+                  "name": "b2891f4ee9d886337375",
+                  "type": "Advanced",
+                  "expression": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "BVC_ORDER"
+                        }
+                      },
+                      "Property": "COUNT_Aging_Open_Orders"
+                    }
+                  },
+                  "howCreated": 0
+                }
+              ]
+            },
+            "singleVisual": {
+              "visualType": "clusteredColumnChart",
+              "objects": {},
+              "orderBy": [
+                {
+                  "Direction": 1,
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "BVC_ORDER"
+                        }
+                      },
+                      "Property": "RecordCreatedOn - Copy"
+                    }
+                  }
+                }
+              ],
+              "activeProjections": {
+                "Category": [
+                  {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "BVC_ORDER"
+                        }
+                      },
+                      "Property": "RecordCreatedOn - Copy"
+                    }
+                  }
+                ]
+              }
+            }
+          },
+          "fb70631c0b3017b03cbe": {
+            "singleVisual": {
+              "visualType": "shape",
+              "objects": {}
+            }
+          },
+          "7caa19295388a4aa09a1": {
+            "singleVisual": {
+              "visualType": "image",
+              "objects": {}
+            }
+          },
+          "20bc9eacda54e32b9301": {
+            "filters": {
+              "byExpr": [
+                {
+                  "name": "81c29018fa17efb01bfc",
+                  "type": "Categorical",
+                  "expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "BVC_ORDER"
+                        }
+                      },
+                      "Property": "RecordCreatedOn - Copy"
+                    }
+                  },
+                  "howCreated": 0
+                }
+              ]
+            },
+            "singleVisual": {
+              "visualType": "slicer",
+              "objects": {
+                "merge": {
+                  "general": [
+                    {
+                      "properties": {
+                        "filter": {
+                          "filter": {
+                            "Version": 2,
+                            "From": [
+                              {
+                                "Name": "b1",
+                                "Entity": "BVC_ORDER",
+                                "Type": 0
+                              }
+                            ],
+                            "Where": [
+                              {
+                                "Condition": {
+                                  "Between": {
+                                    "Expression": {
+                                      "Column": {
+                                        "Expression": {
+                                          "SourceRef": {
+                                            "Source": "b1"
+                                          }
+                                        },
+                                        "Property": "RecordCreatedOn - Copy"
+                                      }
+                                    },
+                                    "LowerBound": {
+                                      "DateSpan": {
+                                        "Expression": {
+                                          "DateAdd": {
+                                            "Expression": {
+                                              "DateAdd": {
+                                                "Expression": {
+                                                  "Now": {}
+                                                },
+                                                "Amount": 1,
+                                                "TimeUnit": 0
+                                              }
+                                            },
+                                            "Amount": -4,
+                                            "TimeUnit": 1
+                                          }
+                                        },
+                                        "TimeUnit": 0
+                                      }
+                                    },
+                                    "UpperBound": {
+                                      "DateSpan": {
+                                        "Expression": {
+                                          "Now": {}
+                                        },
+                                        "TimeUnit": 0
+                                      }
+                                    }
+                                  }
+                                }
+                              }
+                            ]
+                          }
+                        }
+                      }
+                    }
+                  ],
+                  "data": [
+                    {
+                      "properties": {
+                        "relativeRange": {
+                          "expr": {
+                            "Literal": {
+                              "Value": "'Last'"
+                            }
+                          }
+                        },
+                        "relativePeriod": {
+                          "expr": {
+                            "Literal": {
+                              "Value": "'Weeks'"
+                            }
+                          }
+                        },
+                        "relativeDuration": {
+                          "expr": {
+                            "Literal": {
+                              "Value": "4D"
+                            }
+                          }
+                        },
+                        "mode": {
+                          "expr": {
+                            "Literal": {
+                              "Value": "'Relative'"
+                            }
+                          }
+                        }
+                      }
+                    }
+                  ],
+                  "dateRange": [
+                    {
+                      "properties": {
+                        "includeToday": {
+                          "expr": {
+                            "Literal": {
+                              "Value": "true"
+                            }
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              },
+              "orderBy": [
+                {
+                  "Direction": 1,
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "BVC_ORDER"
+                        }
+                      },
+                      "Property": "RecordCreatedOn - Copy"
+                    }
+                  }
+                }
+              ],
+              "activeProjections": {
+                "Values": [
+                  {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "BVC_ORDER"
+                        }
+                      },
+                      "Property": "RecordCreatedOn - Copy"
+                    }
+                  }
+                ]
+              }
+            }
+          },
+          "b19debd661b6e9288d60": {
+            "filters": {
+              "byExpr": [
+                {
+                  "name": "0ae92151ba9be07910b5",
+                  "type": "Categorical",
+                  "expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "BVC_ORDER"
+                        }
+                      },
+                      "Property": "OrderSource - CompanyName"
+                    }
+                  },
+                  "howCreated": 0
+                }
+              ]
+            },
+            "singleVisual": {
+              "visualType": "slicer",
+              "objects": {
+                "merge": {
+                  "data": [
+                    {
+                      "properties": {
+                        "mode": {
+                          "expr": {
+                            "Literal": {
+                              "Value": "'Dropdown'"
+                            }
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              },
+              "activeProjections": {
+                "Values": [
+                  {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "BVC_ORDER"
+                        }
+                      },
+                      "Property": "OrderSource - CompanyName"
+                    }
+                  }
+                ]
+              }
+            }
+          },
+          "489f5dd6da18c5a94880": {
+            "singleVisual": {
+              "visualType": "shape",
+              "objects": {}
+            }
+          },
+          "43d8dff57340005eb41d": {
+            "singleVisual": {
+              "visualType": "image",
+              "objects": {}
+            }
+          },
+          "e972a6c4ea88d060ba79": {
+            "filters": {
+              "byExpr": [
+                {
+                  "name": "d0c03f87a02c02785767",
+                  "type": "Categorical",
+                  "expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "BVC_ORDER"
+                        }
+                      },
+                      "Property": "OrderSource - CompanyName"
+                    }
+                  },
+                  "howCreated": 1
+                },
+                {
+                  "name": "47f64d60b53db2b95a34",
+                  "type": "Advanced",
+                  "expression": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "BVC_ORDER"
+                        }
+                      },
+                      "Property": "COUNT_Aging_Dropship_None"
+                    }
+                  },
+                  "howCreated": 0
+                }
+              ]
+            },
+            "singleVisual": {
+              "visualType": "card",
+              "objects": {},
+              "orderBy": [
+                {
+                  "Direction": 2,
+                  "Expression": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "BVC_ORDER"
+                        }
+                      },
+                      "Property": "COUNT_Aging_Dropship_None"
+                    }
+                  }
+                }
+              ]
+            }
+          },
+          "4745968629a4390a5c6b": {
+            "filters": {
+              "byExpr": [
+                {
+                  "name": "3f5ccf6341240879e87b",
+                  "type": "Categorical",
+                  "filter": {
+                    "Version": 2,
+                    "From": [
+                      {
+                        "Name": "b",
+                        "Entity": "BVC_ORDER",
+                        "Type": 0
+                      }
+                    ],
+                    "Where": [
+                      {
+                        "Condition": {
+                          "In": {
+                            "Expressions": [
+                              {
+                                "Column": {
+                                  "Expression": {
+                                    "SourceRef": {
+                                      "Source": "b"
+                                    }
+                                  },
+                                  "Property": "CHECK_AGING_DROPSHIP_NONE"
+                                }
+                              }
+                            ],
+                            "Values": [
+                              [
+                                {
+                                  "Literal": {
+                                    "Value": "true"
+                                  }
+                                }
+                              ]
+                            ]
+                          }
+                        }
+                      }
+                    ]
+                  },
+                  "expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "BVC_ORDER"
+                        }
+                      },
+                      "Property": "CHECK_AGING_DROPSHIP_NONE"
+                    }
+                  },
+                  "howCreated": 1
+                },
+                {
+                  "name": "6a3a6e3fce160d8609da",
+                  "type": "Categorical",
+                  "expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "BVC_ORDER"
+                        }
+                      },
+                      "Property": "OrderSource - CompanyName"
+                    }
+                  },
+                  "howCreated": 0
+                },
+                {
+                  "name": "9f09cc459132d19701a0",
+                  "type": "Advanced",
+                  "expression": {
+                    "Aggregation": {
+                      "Expression": {
+                        "Column": {
+                          "Expression": {
+                            "SourceRef": {
+                              "Entity": "bvc_OrderItem"
+                            }
+                          },
+                          "Property": "Qty"
+                        }
+                      },
+                      "Function": 0
+                    }
+                  },
+                  "howCreated": 1
+                },
+                {
+                  "name": "fca3cda1d3317cc989e6",
+                  "type": "Categorical",
+                  "expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Warehouse"
+                        }
+                      },
+                      "Property": "Name"
+                    }
+                  },
+                  "howCreated": 1
+                },
+                {
+                  "name": "dffa92f387f0c4099535",
+                  "type": "Advanced",
+                  "expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "BVC_ORDER"
+                        }
+                      },
+                      "Property": "ID"
+                    }
+                  },
+                  "howCreated": 0
+                },
+                {
+                  "name": "2b454d27c5ce996f8312",
+                  "type": "Categorical",
+                  "expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "BVC_ORDER"
+                        }
+                      },
+                      "Property": "RecordCreatedOn"
+                    }
+                  },
+                  "howCreated": 0
+                },
+                {
+                  "name": "31c2d72b79405128fe5e",
+                  "type": "Categorical",
+                  "expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "BVC_ORDER"
+                        }
+                      },
+                      "Property": "ShippingMethodSelected"
+                    }
+                  },
+                  "howCreated": 1
+                },
+                {
+                  "name": "b1e4278c4e3126099d60",
+                  "type": "Categorical",
+                  "expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "BVC_ORDER"
+                        }
+                      },
+                      "Property": "DropshipStatus_Mapping"
+                    }
+                  },
+                  "howCreated": 0
+                },
+                {
+                  "name": "3605142f4c6d69391a32",
+                  "type": "Advanced",
+                  "expression": {
+                    "Aggregation": {
+                      "Expression": {
+                        "Column": {
+                          "Expression": {
+                            "SourceRef": {
+                              "Entity": "BVC_ORDER"
+                            }
+                          },
+                          "Property": "ID"
+                        }
+                      },
+                      "Function": 2
+                    }
+                  },
+                  "howCreated": 0
+                },
+                {
+                  "name": "2d6ac6455af6e3ede241",
+                  "type": "Categorical",
+                  "expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "BVC_ORDER"
+                        }
+                      },
+                      "Property": "Order Status"
+                    }
+                  },
+                  "howCreated": 0
+                }
+              ]
+            },
+            "singleVisual": {
+              "visualType": "tableEx",
+              "objects": {},
+              "orderBy": [
+                {
+                  "Direction": 1,
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "BVC_ORDER"
+                        }
+                      },
+                      "Property": "DropshipStatus_Mapping"
+                    }
+                  }
+                }
+              ]
+            }
+          },
+          "96b6748ded167df90006": {
+            "filters": {
+              "byExpr": [
+                {
+                  "name": "b6174d68c1e9359c680d",
+                  "type": "Categorical",
+                  "expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "BVC_ORDER"
+                        }
+                      },
+                      "Property": "RecordCreatedOn - Copy"
+                    }
+                  },
+                  "howCreated": 0
+                },
+                {
+                  "name": "85324b6e741662be481f",
+                  "type": "Advanced",
+                  "expression": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "BVC_ORDER"
+                        }
+                      },
+                      "Property": "COUNT_Aging_Dropship_None"
+                    }
+                  },
+                  "howCreated": 0
+                }
+              ]
+            },
+            "singleVisual": {
+              "visualType": "clusteredColumnChart",
+              "objects": {},
+              "orderBy": [
+                {
+                  "Direction": 1,
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "BVC_ORDER"
+                        }
+                      },
+                      "Property": "RecordCreatedOn - Copy"
+                    }
+                  }
+                }
+              ],
+              "activeProjections": {
+                "Category": [
+                  {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "BVC_ORDER"
+                        }
+                      },
+                      "Property": "RecordCreatedOn - Copy"
+                    }
+                  }
+                ]
+              }
+            }
+          },
+          "cc62e8511500f495b701": {
+            "filters": {
+              "byExpr": [
+                {
+                  "name": "311329474c5ad17837fd",
+                  "type": "Advanced",
+                  "expression": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "BVC_ORDER"
+                        }
+                      },
+                      "Property": "COUNT_Shipped_Yesterday"
+                    }
+                  },
+                  "howCreated": 0
+                }
+              ]
+            },
+            "singleVisual": {
+              "visualType": "card",
+              "objects": {},
+              "orderBy": [
+                {
+                  "Direction": 2,
+                  "Expression": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "BVC_ORDER"
+                        }
+                      },
+                      "Property": "COUNT_Shipped_Yesterday"
+                    }
+                  }
+                }
+              ]
+            }
+          },
+          "a1b4f90af88ad24ae8ab": {
+            "singleVisual": {
+              "visualType": "actionButton",
+              "objects": {}
+            }
+          },
+          "80e2cdc085f810489e1e": {
+            "filters": {
+              "byExpr": [
+                {
+                  "name": "6eac99dd6b0bac935d50",
+                  "type": "Advanced",
+                  "expression": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "BVC_ORDER"
+                        }
+                      },
+                      "Property": "COUNT_Total_Open_Orders"
+                    }
+                  },
+                  "howCreated": 0
+                }
+              ]
+            },
+            "singleVisual": {
+              "visualType": "card",
+              "objects": {},
+              "orderBy": [
+                {
+                  "Direction": 2,
+                  "Expression": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "BVC_ORDER"
+                        }
+                      },
+                      "Property": "COUNT_Total_Open_Orders"
+                    }
+                  }
+                }
+              ]
+            }
+          },
+          "875f37f62492b455f208": {
+            "singleVisual": {
+              "visualType": "actionButton",
+              "objects": {}
+            }
+          },
+          "8b85019d108ac28ace44": {
+            "filters": {
+              "byExpr": [
+                {
+                  "name": "bf5064a093b9f8c0f9de",
+                  "type": "Advanced",
+                  "filter": {
+                    "Version": 2,
+                    "From": [
+                      {
+                        "Name": "m1",
+                        "Entity": "MERGED_PO_ITEMS_TABLE",
+                        "Type": 0
+                      }
+                    ],
+                    "Where": [
+                      {
+                        "Condition": {
+                          "Not": {
+                            "Expression": {
+                              "Comparison": {
+                                "ComparisonKind": 0,
+                                "Left": {
+                                  "Aggregation": {
+                                    "Expression": {
+                                      "Column": {
+                                        "Expression": {
+                                          "SourceRef": {
+                                            "Source": "m1"
+                                          }
+                                        },
+                                        "Property": "PurchaseID"
+                                      }
+                                    },
+                                    "Function": 4
+                                  }
+                                },
+                                "Right": {
+                                  "Literal": {
+                                    "Value": "null"
+                                  }
+                                }
+                              }
+                            }
+                          }
+                        }
+                      }
+                    ]
+                  },
+                  "expression": {
+                    "Aggregation": {
+                      "Expression": {
+                        "Column": {
+                          "Expression": {
+                            "SourceRef": {
+                              "Entity": "MERGED_PO_ITEMS_TABLE"
+                            }
+                          },
+                          "Property": "PurchaseID"
+                        }
+                      },
+                      "Function": 4
+                    }
+                  },
+                  "howCreated": 1
+                },
+                {
+                  "name": "619a7c6a2bff4125723e",
+                  "type": "Advanced",
+                  "filter": {
+                    "Version": 2,
+                    "From": [
+                      {
+                        "Name": "m",
+                        "Entity": "MeasuresTable",
+                        "Type": 0
+                      }
+                    ],
+                    "Where": [
+                      {
+                        "Condition": {
+                          "Not": {
+                            "Expression": {
+                              "Comparison": {
+                                "ComparisonKind": 0,
+                                "Left": {
+                                  "Measure": {
+                                    "Expression": {
+                                      "SourceRef": {
+                                        "Source": "m"
+                                      }
+                                    },
+                                    "Property": "Duplicate_COUNT_Aging_Open_Orders_By_OrderItem_FLAG"
+                                  }
+                                },
+                                "Right": {
+                                  "Literal": {
+                                    "Value": "null"
+                                  }
+                                }
+                              }
+                            }
+                          }
+                        }
+                      }
+                    ]
+                  },
+                  "expression": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "MeasuresTable"
+                        }
+                      },
+                      "Property": "Duplicate_COUNT_Aging_Open_Orders_By_OrderItem_FLAG"
+                    }
+                  },
+                  "howCreated": 0
+                },
+                {
+                  "name": "0fd6020065f194a06f33",
+                  "type": "Categorical",
+                  "expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Product"
+                        }
+                      },
+                      "Property": "ID"
+                    }
+                  },
+                  "howCreated": 0
+                },
+                {
+                  "name": "c11c3e3948b4b7fb7222",
+                  "type": "Advanced",
+                  "expression": {
+                    "Aggregation": {
+                      "Expression": {
+                        "Column": {
+                          "Expression": {
+                            "SourceRef": {
+                              "Entity": "Product"
+                            }
+                          },
+                          "Property": "AggregateQty"
+                        }
+                      },
+                      "Function": 0
+                    }
+                  },
+                  "howCreated": 0
+                },
+                {
+                  "name": "1772023d5a53c1c2ba53",
+                  "type": "Advanced",
+                  "expression": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "MERGED_PO_ITEMS_TABLE"
+                        }
+                      },
+                      "Property": "Latest_PO"
+                    }
+                  },
+                  "howCreated": 0
+                },
+                {
+                  "name": "85f759fe7078e2f43e71",
+                  "type": "Advanced",
+                  "expression": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "MERGED_PO_ITEMS_TABLE"
+                        }
+                      },
+                      "Property": "LatestCreatedOn"
+                    }
+                  },
+                  "howCreated": 0
+                },
+                {
+                  "name": "89d44d6d58c53a8b311c",
+                  "type": "Advanced",
+                  "expression": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "MERGED_PO_ITEMS_TABLE"
+                        }
+                      },
+                      "Property": "PO_Status_Latest"
+                    }
+                  },
+                  "howCreated": 0
+                },
+                {
+                  "name": "4f80897389656786e133",
+                  "type": "Advanced",
+                  "expression": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "MERGED_PO_ITEMS_TABLE"
+                        }
+                      },
+                      "Property": "Latest_QtyOnOrder"
+                    }
+                  },
+                  "howCreated": 0
+                }
+              ]
+            },
+            "singleVisual": {
+              "visualType": "tableEx",
+              "objects": {}
+            }
+          }
+        },
+        "visualContainerGroups": {
+          "db28b5f5b636ad08cbe1": {
+            "isHidden": false
+          },
+          "41ee869c92ec38e624eb": {
+            "isHidden": false
+          },
+          "06e9b048c9a0c5c47064": {
+            "isHidden": true
+          },
+          "83e3fbf44b3394b8c032": {
+            "isHidden": false
+          },
+          "4f2b2159f0bae8c4039f": {
+            "isHidden": false
+          }
+        }
+      }
+    },
+    "objects": {
+      "merge": {
+        "outspacePane": [
+          {
+            "properties": {
+              "expanded": {
+                "expr": {
+                  "Literal": {
+                    "Value": "true"
+                  }
+                }
+              }
+            }
+          }
+        ]
+      }
+    }
+  }
+}

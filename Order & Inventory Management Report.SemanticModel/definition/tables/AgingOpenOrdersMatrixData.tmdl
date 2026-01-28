@@ -1,0 +1,46 @@
+table AgingOpenOrdersMatrixData
+	lineageTag: 859d6508-4d9f-494e-b216-ffaa69b6c8c3
+
+	column ProductID
+		lineageTag: 5d44ce98-f0cf-4db4-9819-da6f0200a9f2
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [ProductID]
+
+		annotation SummarizationSetBy = Automatic
+
+	column OrderID
+		lineageTag: 7a511288-95da-450d-a03e-107b18995636
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [OrderID]
+
+		annotation SummarizationSetBy = Automatic
+
+	column SKU_OrderID_Key
+		lineageTag: 9a79c789-8acf-46ec-b866-07a44cff7da1
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [SKU_OrderID_Key]
+
+		annotation SummarizationSetBy = Automatic
+
+	partition AgingOpenOrdersMatrixData = calculated
+		mode: import
+		source = ```
+				
+				SELECTCOLUMNS(
+				    FILTER(
+				        'bvc_OrderItem',
+				        'bvc_OrderItem'[FLAG_Aging_Open_Order_ORDERITEM] = 1
+				    ),
+				    "ProductID", 'bvc_OrderItem'[ProductID],
+				    "OrderID", 'bvc_OrderItem'[OrderID],
+				    "SKU_OrderID_Key", 
+				        'bvc_OrderItem'[ProductID] & " | " & 'bvc_OrderItem'[OrderID]
+				)
+				
+				```
+
+	annotation PBI_Id = 848314e79746412eb490963c510f6429
+

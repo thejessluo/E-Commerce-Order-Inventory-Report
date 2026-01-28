@@ -1,0 +1,50 @@
+table STATES_REGION
+	isHidden
+	lineageTag: b70a8d98-e449-4f52-8477-507d5c001b46
+
+	column STATE
+		dataType: string
+		isHidden
+		lineageTag: c63d8785-eca2-4f10-9222-90a6b432522c
+		summarizeBy: none
+		sourceColumn: STATE
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column ABBREVIATION
+		dataType: string
+		isHidden
+		lineageTag: 76c77284-96c4-4e60-a401-fe9c7f17ab41
+		summarizeBy: none
+		sourceColumn: ABBREVIATION
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column REGION
+		dataType: string
+		isHidden
+		lineageTag: f9b88fa1-6171-4cb4-a709-60017eaabe30
+		summarizeBy: none
+		sourceColumn: REGION
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	partition STATES_REGION = m
+		mode: import
+		source =
+				let
+				    Source = Snowflake.Databases("zo76507.west-europe.azure.snowflakecomputing.com","WH_XSMALL_83818",[Implementation="2.0"]),
+				    DATAHAWK_WRITABLE_83818_Database = Source{[Name="DATAHAWK_WRITABLE_83818",Kind="Database"]}[Data],
+				    SELLERCLOUD_DATA_Schema = DATAHAWK_WRITABLE_83818_Database{[Name="SELLERCLOUD_DATA",Kind="Schema"]}[Data],
+				    STATES_REGION_Table = SELLERCLOUD_DATA_Schema{[Name="STATES_REGION",Kind="Table"]}[Data]
+				in
+				    STATES_REGION_Table
+
+	changedProperty = IsHidden
+

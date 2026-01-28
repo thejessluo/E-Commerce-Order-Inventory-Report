@@ -1,0 +1,23 @@
+table Shipped_ProductIDs
+	isHidden
+	lineageTag: b3d206fb-ef9c-4229-8c4a-ee2f3738e475
+
+	column ProductID
+		isHidden
+		lineageTag: b7fac8b2-109f-496e-af9e-3e10cf9f211c
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [ProductID]
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Shipped_ProductIDs = calculated
+		mode: import
+		source = ```
+				--All distinct SKUs from the bvc_OrderItem table. Used in the New Zero Stock SKUs calculations (any SKU that has zero inventory and does not have an order that exists in bvc_OrderItem)
+				DISTINCT(SELECTCOLUMNS('bvc_OrderItem', "ProductID", 'bvc_OrderItem'[ProductID]))
+				
+				```
+
+	annotation PBI_Id = a7a6c60b65d04e908d3dcf7b5e526c52
+

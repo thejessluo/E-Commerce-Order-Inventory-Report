@@ -1,0 +1,652 @@
+/// Left Outer Join of the 'PurchaseItem' and 'vw_PurchaseOrderFullText' tables from Sellercloud database based on [ID] and [PurchaseItemID].
+table MERGED_PO_ITEMS_TABLE
+	lineageTag: e099adaf-c3b5-4fb0-bdf1-290b99816891
+
+	measure LatestCreatedOn = ```
+			
+			MAX('MERGED_PO_ITEMS_TABLE'[CreatedOn])
+			
+			```
+		formatString: Short Date
+		displayFolder: 1.Columns/Measures
+		lineageTag: f72bcf35-bc08-4f83-a965-141639d08fc9
+
+	measure PO_Status_Latest = ```
+			
+			VAR LatestDate =
+			    CALCULATE(
+			        MAX('MERGED_PO_ITEMS_TABLE'[CreatedOn])
+			    )
+			RETURN
+			    CALCULATE(
+			        MAX('MERGED_PO_ITEMS_TABLE'[PO_STATUS_MAPPINGS]),
+			        'MERGED_PO_ITEMS_TABLE'[CreatedOn] = LatestDate
+			    )
+			
+			```
+		displayFolder: 1.Columns/Measures
+		lineageTag: 9280dbe7-9927-4cc3-95c4-595eb024c022
+
+	measure Latest_PO = MAX('MERGED_PO_ITEMS_TABLE'[PurchaseID])
+		displayFolder: 1.Columns/Measures
+		lineageTag: d2300f59-c55e-4800-aab2-fd37b4f1a8b9
+
+	measure Latest_QtyOnOrder = ```
+			
+			VAR LatestDate =
+			    CALCULATE(
+			        MAX('MERGED_PO_ITEMS_TABLE'[CreatedOn])
+			    )
+			RETURN
+			    CALCULATE(
+			        MAX('MERGED_PO_ITEMS_TABLE'[Qty_On_Order]),
+			        'MERGED_PO_ITEMS_TABLE'[CreatedOn] = LatestDate
+			    )
+			
+			```
+		formatString: 0
+		displayFolder: 1.Columns/Measures
+		lineageTag: 20461e4b-9710-4c35-bbf9-8e6ff4757dde
+
+	measure Latest_PO_SPL_Schaefer = ```
+			
+			CALCULATE(
+			    MAX('MERGED_PO_ITEMS_TABLE'[PurchaseID]),
+			    'MERGED_PO_ITEMS_TABLE'[Default Warehouse Name] = "SPL Schaefer"
+			)
+			
+			```
+		displayFolder: 1.Columns/Measures
+		lineageTag: dbfa4004-7dd6-42b0-848f-c6c1a4edae4b
+
+	measure Latest_QtyOnOrder_SPL_Schaefer = ```
+			
+			VAR LatestDate =
+			    CALCULATE(
+			        MAX('MERGED_PO_ITEMS_TABLE'[CreatedOn]),
+			        'MERGED_PO_ITEMS_TABLE'[Default Warehouse Name] = "SPL Schaefer"
+			    )
+			RETURN
+			    CALCULATE(
+			        MAX('MERGED_PO_ITEMS_TABLE'[Qty_On_Order]),
+			        'MERGED_PO_ITEMS_TABLE'[CreatedOn] = LatestDate &&
+			        'MERGED_PO_ITEMS_TABLE'[Default Warehouse Name] = "SPL Schaefer"
+			    )
+			
+			```
+		formatString: 0
+		displayFolder: 1.Columns/Measures
+		lineageTag: 99411e68-db5c-45f9-9120-c04bcc34b5ae
+
+	measure LatestCreatedOn_SPL_Schaefer = ```
+			
+			CALCULATE(
+			    MAX('MERGED_PO_ITEMS_TABLE'[CreatedOn]),
+			    'MERGED_PO_ITEMS_TABLE'[Default Warehouse Name] = "SPL Schaefer"
+			)
+			
+			```
+		formatString: General Date
+		displayFolder: 1.Columns/Measures
+		lineageTag: a1868ce9-509a-4070-8326-be4eecc68020
+
+	measure Latest_PO_Status_SPL_Schaefer = ```
+			
+			VAR LatestDate =
+			    CALCULATE(
+			        MAX('MERGED_PO_ITEMS_TABLE'[CreatedOn]),
+			        'MERGED_PO_ITEMS_TABLE'[Default Warehouse Name] = "SPL Schaefer"
+			    )
+			RETURN
+			    CALCULATE(
+			        MAX('MERGED_PO_ITEMS_TABLE'[PO_STATUS_MAPPINGS]),
+			        'MERGED_PO_ITEMS_TABLE'[CreatedOn] = LatestDate &&
+			        'MERGED_PO_ITEMS_TABLE'[Default Warehouse Name] = "SPL Schaefer"
+			    )
+			
+			```
+		displayFolder: 1.Columns/Measures
+		lineageTag: 237c1421-fb60-44ca-bf11-6f2ab8a13183
+
+	measure Latest_QtyOrdered = ```
+			
+			VAR LatestDate =
+			    CALCULATE(
+			        MAX('MERGED_PO_ITEMS_TABLE'[CreatedOn])
+			    )
+			RETURN
+			    CALCULATE(
+			        MAX('MERGED_PO_ITEMS_TABLE'[QtyOrdered]),
+			        'MERGED_PO_ITEMS_TABLE'[CreatedOn] = LatestDate
+			    )
+			
+			```
+		formatString: 0
+		displayFolder: 1.Columns/Measures
+		lineageTag: 12f54c82-73f8-449b-987e-049aef7a5789
+
+	column PurchaseItem_ID
+		dataType: string
+		lineageTag: 5c2af637-2bee-413e-97ff-ffb7b7bbba4f
+		summarizeBy: none
+		sourceColumn: PurchaseItem_ID
+
+		changedProperty = DataType
+
+		annotation SummarizationSetBy = Automatic
+
+	column PurchaseID
+		dataType: string
+		lineageTag: 3ae6b854-5d9e-4191-b789-8ea1aaae536b
+		summarizeBy: none
+		sourceColumn: PurchaseID
+
+		changedProperty = DataType
+
+		annotation SummarizationSetBy = Automatic
+
+	column ProductID
+		dataType: string
+		lineageTag: ec2cc993-3145-43d6-abd5-c170ae9a93e2
+		summarizeBy: none
+		sourceColumn: ProductID
+
+		annotation SummarizationSetBy = Automatic
+
+	column ProductName
+		dataType: string
+		lineageTag: e26a027b-12a3-4594-ac39-19f7eb6bf964
+		summarizeBy: none
+		sourceColumn: ProductName
+
+		annotation SummarizationSetBy = Automatic
+
+	column QtyOrdered
+		dataType: int64
+		formatString: 0
+		lineageTag: 9c18bc6a-a222-46ba-a9dc-b028e476b47b
+		summarizeBy: sum
+		sourceColumn: QtyOrdered
+
+		annotation SummarizationSetBy = Automatic
+
+	column QtyReceived
+		dataType: int64
+		formatString: 0
+		lineageTag: c0409c7a-5aee-456e-b06d-e409932bebc6
+		summarizeBy: sum
+		sourceColumn: QtyReceived
+
+		annotation SummarizationSetBy = Automatic
+
+	column QtyReceivedToDate
+		dataType: int64
+		formatString: 0
+		lineageTag: dcb8a694-b0af-4826-8ca5-bf2d673a3387
+		summarizeBy: sum
+		sourceColumn: QtyReceivedToDate
+
+		annotation SummarizationSetBy = Automatic
+
+	column UnitPrice
+		dataType: double
+		formatString: \$#,0.00;(\$#,0.00);\$#,0.00
+		lineageTag: ce288faf-cb04-40dc-abd9-e9c61062406f
+		summarizeBy: sum
+		sourceColumn: UnitPrice
+
+		annotation SummarizationSetBy = Automatic
+
+	column Status
+		dataType: int64
+		formatString: 0
+		lineageTag: ee3dfb11-46a9-452f-8b50-0c88fa5463e4
+		summarizeBy: sum
+		sourceColumn: Status
+
+		annotation SummarizationSetBy = Automatic
+
+	column Total
+		dataType: double
+		formatString: \$#,0.00;(\$#,0.00);\$#,0.00
+		lineageTag: 7bc5ce9d-4678-46e8-b4dc-2e2e4452b737
+		summarizeBy: sum
+		sourceColumn: Total
+
+		annotation SummarizationSetBy = Automatic
+
+	column UpdatedOn
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: b24addbe-228a-42e0-84ac-e539d3b4db3a
+		summarizeBy: none
+		sourceColumn: UpdatedOn
+
+		variation Variation
+			isDefault
+			relationship: 7ab43fc1-7919-4a66-8f08-a0d2d34dec5d
+			defaultHierarchy: LocalDateTable_1e704554-a45d-4933-8f21-3fa0f937fa64.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	column UpdatedBy
+		dataType: int64
+		formatString: 0
+		lineageTag: 04bcc376-39bc-4435-a77f-4705574d06f1
+		summarizeBy: sum
+		sourceColumn: UpdatedBy
+
+		annotation SummarizationSetBy = Automatic
+
+	column DiscountValue
+		dataType: double
+		lineageTag: 9b793d9c-161a-4d9e-a65b-a78bd583ab28
+		summarizeBy: sum
+		sourceColumn: DiscountValue
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column DiscountType
+		dataType: int64
+		formatString: 0
+		lineageTag: 4ac17e7c-dbde-4e6a-9dfb-bdd421fa562d
+		summarizeBy: sum
+		sourceColumn: DiscountType
+
+		annotation SummarizationSetBy = Automatic
+
+	column AdjustedPrice
+		dataType: double
+		lineageTag: 1850286e-eb8d-462f-a76c-7c187b0382b1
+		summarizeBy: sum
+		sourceColumn: AdjustedPrice
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column QtyPerCase
+		dataType: int64
+		formatString: 0
+		lineageTag: 423f1608-9441-4e68-8880-d41dfb9498e3
+		summarizeBy: sum
+		sourceColumn: QtyPerCase
+
+		annotation SummarizationSetBy = Automatic
+
+	column DefaultWarehouseID
+		dataType: int64
+		formatString: 0
+		lineageTag: 552627ee-dd3c-4dc9-9f11-717fa73210dc
+		summarizeBy: none
+		sourceColumn: DefaultWarehouseID
+
+		annotation SummarizationSetBy = Automatic
+
+	column CoOpPrice
+		dataType: double
+		lineageTag: 465250ce-516b-45b5-a1e8-c70b2467db6e
+		summarizeBy: sum
+		sourceColumn: CoOpPrice
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column DropShipFee
+		dataType: double
+		lineageTag: b56a6ee2-f8bc-4e27-b0cc-ae01070ef655
+		summarizeBy: sum
+		sourceColumn: DropShipFee
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column MultiDiscountTotal
+		dataType: double
+		lineageTag: 201050d6-39ab-4383-89c4-ac32daa5ea75
+		summarizeBy: sum
+		sourceColumn: MultiDiscountTotal
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column ExpectedDeliveryDate
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 6c15b663-ceba-4cae-baed-2a50ad35e731
+		summarizeBy: none
+		sourceColumn: ExpectedDeliveryDate
+
+		variation Variation
+			isDefault
+			relationship: ed493f0f-2be0-4608-b6b4-d08fb9ecc236
+			defaultHierarchy: LocalDateTable_ef93904d-d4a5-4c03-a495-c00a5103d2ea.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	column ExtraCostPerUnit
+		dataType: double
+		lineageTag: 6b654c10-cc8c-4445-83f3-eb6e659dc709
+		summarizeBy: sum
+		sourceColumn: ExtraCostPerUnit
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column AdjustedPriceAfterMultiDiscount
+		dataType: double
+		lineageTag: 183df927-5346-4a0c-8324-44837a6b6616
+		summarizeBy: sum
+		sourceColumn: AdjustedPriceAfterMultiDiscount
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column PreSaleQty
+		dataType: int64
+		formatString: 0
+		lineageTag: 43c91b82-31d6-45c9-a893-c096bcac33cd
+		summarizeBy: sum
+		sourceColumn: PreSaleQty
+
+		annotation SummarizationSetBy = Automatic
+
+	column PreSaleDate
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 65940ae6-bd17-41a5-a3d0-405438454b95
+		summarizeBy: none
+		sourceColumn: PreSaleDate
+
+		variation Variation
+			isDefault
+			relationship: 0cacf1a5-8c7e-43c2-8f9a-939b50541e44
+			defaultHierarchy: LocalDateTable_cc72fb38-76ab-4ff5-b6e9-62415bb1b8ee.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	column FBAAllocationQty
+		dataType: int64
+		formatString: 0
+		lineageTag: abaf8080-f1e2-480f-8c5f-5439411a117d
+		summarizeBy: sum
+		sourceColumn: FBAAllocationQty
+
+		annotation SummarizationSetBy = Automatic
+
+	column CostPerCase
+		dataType: double
+		lineageTag: b561fcb9-8ce8-429f-bc44-e7540f4c4a1c
+		summarizeBy: sum
+		sourceColumn: CostPerCase
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column CaseQtyOrdered
+		dataType: int64
+		formatString: 0
+		lineageTag: 8c2650b3-ef97-49f2-a1f5-8a7fba5063f6
+		summarizeBy: sum
+		sourceColumn: CaseQtyOrdered
+
+		annotation SummarizationSetBy = Automatic
+
+	column POItemNotes
+		dataType: string
+		lineageTag: d4283d92-5253-4cc7-a464-cef2c61c3bcc
+		summarizeBy: none
+		sourceColumn: POItemNotes
+
+		annotation SummarizationSetBy = Automatic
+
+	column RelatedOrderID
+		dataType: int64
+		formatString: 0
+		lineageTag: 929363e6-fe23-45e9-b66a-55e7d03e9c52
+		summarizeBy: count
+		sourceColumn: RelatedOrderID
+
+		annotation SummarizationSetBy = Automatic
+
+	column RelatedOrderItemID
+		dataType: int64
+		formatString: 0
+		lineageTag: 57503cbb-fca7-45ca-ac50-0feb454e0506
+		summarizeBy: count
+		sourceColumn: RelatedOrderItemID
+
+		annotation SummarizationSetBy = Automatic
+
+	column RelatedOrderItemKitItemID
+		dataType: int64
+		formatString: 0
+		lineageTag: d25e7f1c-9a40-4573-a6c6-a7425e34cded
+		summarizeBy: count
+		sourceColumn: RelatedOrderItemKitItemID
+
+		annotation SummarizationSetBy = Automatic
+
+	column ProductIDOriginalAdded
+		dataType: string
+		lineageTag: 53acda20-425d-4f90-9183-1fb707461541
+		summarizeBy: none
+		sourceColumn: ProductIDOriginalAdded
+
+		annotation SummarizationSetBy = Automatic
+
+	column ProductQtyOriginalAdded
+		dataType: int64
+		formatString: 0
+		lineageTag: 760a6a47-c218-434c-9288-30943eab8ff9
+		summarizeBy: sum
+		sourceColumn: ProductQtyOriginalAdded
+
+		annotation SummarizationSetBy = Automatic
+
+	column PreSellQuantityEnabled
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 8b0d11bd-2f32-461a-b594-6e52e21103b1
+		summarizeBy: none
+		sourceColumn: PreSellQuantityEnabled
+
+		annotation SummarizationSetBy = Automatic
+
+	column PreSellQuantity
+		dataType: int64
+		formatString: 0
+		lineageTag: 18124c58-472c-4880-964d-95d8df02aa0d
+		summarizeBy: sum
+		sourceColumn: PreSellQuantity
+
+		annotation SummarizationSetBy = Automatic
+
+	column QtyPaid
+		dataType: int64
+		formatString: 0
+		lineageTag: 460c6b1c-a041-438a-845d-c7a6006e84fa
+		summarizeBy: sum
+		sourceColumn: QtyPaid
+
+		annotation SummarizationSetBy = Automatic
+
+	column POItemNotesLocal
+		dataType: string
+		lineageTag: 7ef1f587-2ada-4ad6-9b2f-421df1ae8875
+		summarizeBy: none
+		sourceColumn: POItemNotesLocal
+
+		annotation SummarizationSetBy = Automatic
+
+	column OriginalPOItemID
+		dataType: int64
+		formatString: 0
+		lineageTag: 007f5536-883b-4ac0-bb22-a8555de25a74
+		summarizeBy: count
+		sourceColumn: OriginalPOItemID
+
+		annotation SummarizationSetBy = Automatic
+
+	column ExtraCostPOBasedPerUnit
+		dataType: double
+		lineageTag: 8888c9df-540d-42a2-827e-0c89452a3247
+		summarizeBy: sum
+		sourceColumn: ExtraCostPOBasedPerUnit
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column CreditMemoQtyPicked
+		dataType: int64
+		formatString: 0
+		lineageTag: e0f05ec7-a083-4159-a951-c777deb902e0
+		summarizeBy: sum
+		sourceColumn: CreditMemoQtyPicked
+
+		annotation SummarizationSetBy = Automatic
+
+	column ReceiveCounter
+		dataType: int64
+		formatString: 0
+		lineageTag: 2e046cd3-e450-4390-93cf-0b02a12a73d2
+		summarizeBy: sum
+		sourceColumn: ReceiveCounter
+
+		annotation SummarizationSetBy = Automatic
+
+	column DefaultWarehouseBinID
+		dataType: int64
+		formatString: 0
+		lineageTag: e81406d3-f665-49e4-9685-38c9882159d4
+		summarizeBy: count
+		sourceColumn: DefaultWarehouseBinID
+
+		annotation SummarizationSetBy = Automatic
+
+	column OriginalPurchaseID
+		dataType: int64
+		formatString: 0
+		lineageTag: 5338bf06-74fa-441d-b70a-c28824f75488
+		summarizeBy: count
+		sourceColumn: OriginalPurchaseID
+
+		annotation SummarizationSetBy = Automatic
+
+	column VendorID
+		dataType: string
+		lineageTag: f86e4ec0-7fb1-4afc-866f-a9c7854698a4
+		summarizeBy: none
+		sourceColumn: VendorID
+
+		annotation SummarizationSetBy = Automatic
+
+	column VendorInvoiceNumber
+		dataType: string
+		lineageTag: 5201cb4a-eecc-4907-86a6-6bc6f39d5e31
+		summarizeBy: none
+		sourceColumn: VendorInvoiceNumber
+
+		annotation SummarizationSetBy = Automatic
+
+	column UPC
+		dataType: string
+		lineageTag: b2aa18a1-80f7-4c4c-a22e-e2da6d2d0ef7
+		summarizeBy: none
+		sourceColumn: UPC
+
+		annotation SummarizationSetBy = Automatic
+
+	column CompanyName
+		dataType: string
+		lineageTag: f83f9b7e-6e75-4296-80b4-feed862544a6
+		summarizeBy: none
+		sourceColumn: CompanyName
+
+		annotation SummarizationSetBy = Automatic
+
+	column CreatedOn
+		dataType: dateTime
+		formatString: Short Date
+		lineageTag: e0a95c40-e01c-49a7-8c28-47d2d16a1dab
+		summarizeBy: none
+		sourceColumn: CreatedOn
+
+		variation Variation
+			isDefault
+			relationship: 8ff5d9ec-5076-45dc-91b4-41db86e848ef
+			defaultHierarchy: LocalDateTable_d2dd2a7b-1e63-40b9-a8aa-3574259e5bbf.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	column CompanyID
+		dataType: int64
+		formatString: 0
+		lineageTag: 7e6ed455-5ac4-486d-95c8-86d76d9f9b2c
+		summarizeBy: count
+		sourceColumn: CompanyID
+
+		annotation SummarizationSetBy = Automatic
+
+	column Qty_On_Order = [QtyOrdered] - [QtyReceived] //Qty of items that have been shipped but not yet received
+		formatString: 0
+		displayFolder: 1.Columns/Measures
+		lineageTag: fa0eb798-51aa-445e-a0f3-d5fbdc6a8f6e
+		summarizeBy: sum
+
+		annotation SummarizationSetBy = Automatic
+
+	column PO_STATUS_MAPPINGS = RELATED(Purchase[PO_STATUS_MAPPINGS])
+		displayFolder: 1.Columns/Measures
+		lineageTag: fa05f13c-6cc5-4188-bf41-815f9ebf7c56
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Default Warehouse Name' = RELATED(Warehouse[Name])
+		displayFolder: 1.Columns/Measures
+		lineageTag: 1728ac99-f4ab-4eed-96af-cdc445db6c5a
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column FLAG_PO_UnitPrice_LessThan1 = ```
+			
+			IF(
+			    'MERGED_PO_ITEMS_TABLE'[UnitPrice] < 1 &&
+			    YEAR('MERGED_PO_ITEMS_TABLE'[CreatedOn]) = 2025,
+			    1,
+			    0
+			)
+			
+			```
+		formatString: 0
+		displayFolder: 1.Columns/Measures
+		lineageTag: 5deb8c64-58f5-497e-8b7b-f1f29b7bb58b
+		summarizeBy: sum
+
+		annotation SummarizationSetBy = Automatic
+
+	partition MERGED_PO_ITEMS_TABLE = m
+		mode: import
+		source =
+				let
+				    Source = Table.NestedJoin(PurchaseItem, {"ID"}, vw_PurchaseOrderFullText, {"PurchaseItemID"}, "vw_PurchaseOrderFullText", JoinKind.LeftOuter),
+				    #"Expanded vw_PurchaseOrderFullText" = Table.ExpandTableColumn(Source, "vw_PurchaseOrderFullText", {"OriginalPurchaseID", "VendorID", "VendorInvoiceNumber", "UPC", "CompanyName", "CreatedOn", "CompanyID"}, {"OriginalPurchaseID", "VendorID", "VendorInvoiceNumber", "UPC", "CompanyName", "CreatedOn", "CompanyID"}),
+				    #"Renamed Columns" = Table.RenameColumns(#"Expanded vw_PurchaseOrderFullText",{{"ID", "PurchaseItem_ID"}})
+				in
+				    #"Renamed Columns"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

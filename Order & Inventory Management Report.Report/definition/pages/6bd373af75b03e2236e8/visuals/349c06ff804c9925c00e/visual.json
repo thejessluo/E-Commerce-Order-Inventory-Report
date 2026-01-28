@@ -1,0 +1,31 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.5.0/schema.json",
+  "name": "349c06ff804c9925c00e",
+  "position": {
+    "x": 244.08822130221955,
+    "y": 140.0735294117647,
+    "z": 3000,
+    "height": 130.58823529411765,
+    "width": 221.1764705882353,
+    "tabOrder": 14000
+  },
+  "visualGroup": {
+    "displayName": "DaysOfStock<15 Count",
+    "groupMode": "ScaleMode",
+    "objects": {
+      "background": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,172 @@
+table Warehouse
+	lineageTag: 46705461-a367-423c-b5e8-0c63e556b3c2
+
+	column ID
+		dataType: int64
+		formatString: 0
+		lineageTag: 7d8c2f37-91c7-4f42-8618-604baa02a1fe
+		summarizeBy: none
+		sourceColumn: ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column Name
+		dataType: string
+		lineageTag: c63460d9-e3e1-47d2-b874-959d9861e4b8
+		summarizeBy: none
+		sourceColumn: Name
+
+		annotation SummarizationSetBy = Automatic
+
+	column ClientID
+		dataType: int64
+		formatString: 0
+		lineageTag: 9ff8ecab-c73f-41b8-b148-7c5a6caf942f
+		summarizeBy: count
+		sourceColumn: ClientID
+
+		annotation SummarizationSetBy = Automatic
+
+	column CreatedBy
+		dataType: int64
+		formatString: 0
+		lineageTag: 09795177-fb1c-4d7d-b385-107101e6f028
+		summarizeBy: sum
+		sourceColumn: CreatedBy
+
+		annotation SummarizationSetBy = Automatic
+
+	column CreatedOn
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: a7cb4bd7-3bbc-4265-ad7e-e9f56b8d8ef1
+		summarizeBy: none
+		sourceColumn: CreatedOn
+
+		variation Variation
+			isDefault
+			relationship: 0736b1fc-49fa-46b1-a381-8566306496b3
+			defaultHierarchy: LocalDateTable_1d6408ac-7275-4c80-81ae-3263669a4e27.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	column IsDefault
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: ff943e0a-c871-4f2f-ae18-fed97deda45a
+		summarizeBy: none
+		sourceColumn: IsDefault
+
+		annotation SummarizationSetBy = Automatic
+
+	column IsSellAble
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 723ce887-6fdc-4be9-a22e-6cfe4140200e
+		summarizeBy: none
+		sourceColumn: IsSellAble
+
+		annotation SummarizationSetBy = Automatic
+
+	column WarehouseType
+		dataType: int64
+		formatString: 0
+		lineageTag: e965e4f7-f043-480a-a495-afaa094dc12a
+		summarizeBy: sum
+		sourceColumn: WarehouseType
+
+		annotation SummarizationSetBy = Automatic
+
+	column WarehouseAddress
+		dataType: string
+		lineageTag: 7f8ca5ba-53c7-417a-ae8e-d5e6ac2f2b28
+		summarizeBy: none
+		sourceColumn: WarehouseAddress
+
+		annotation SummarizationSetBy = Automatic
+
+	column QBWarehouseName
+		dataType: string
+		lineageTag: 668d8414-77d6-4b5b-8561-6f7988db8a5a
+		summarizeBy: none
+		sourceColumn: QBWarehouseName
+
+		annotation SummarizationSetBy = Automatic
+
+	column AllowUseQtyForFBAShipments
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 07a3b574-00b1-4b5b-8552-91dece64c66b
+		summarizeBy: none
+		sourceColumn: AllowUseQtyForFBAShipments
+
+		annotation SummarizationSetBy = Automatic
+
+	column EnforceBins
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: ac0573c4-345b-4933-834a-bb6b0c7b1e64
+		summarizeBy: none
+		sourceColumn: EnforceBins
+
+		annotation SummarizationSetBy = Automatic
+
+	column DropShipCentralWarehouseCode
+		dataType: string
+		lineageTag: 627c3fb7-1e4b-4803-b11f-df61cc7ab634
+		summarizeBy: none
+		sourceColumn: DropShipCentralWarehouseCode
+
+		annotation SummarizationSetBy = Automatic
+
+	column IsDisabled
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 9fdfafaa-dbf2-45e4-a18b-ad08d591b93c
+		summarizeBy: none
+		sourceColumn: IsDisabled
+
+		annotation SummarizationSetBy = Automatic
+
+	column IgnoreInventoryWhenCalculatingAverageCost
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 2f324280-f835-4e49-85d1-3589aebbf925
+		summarizeBy: none
+		sourceColumn: IgnoreInventoryWhenCalculatingAverageCost
+
+		annotation SummarizationSetBy = Automatic
+
+	column EnforceBinsEnabledOn
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 3fd01011-245d-460f-af2c-49a6d3277dc0
+		summarizeBy: none
+		sourceColumn: EnforceBinsEnabledOn
+
+		variation Variation
+			isDefault
+			relationship: 0e40a3a3-246b-4fc1-9576-f5eab32c5afe
+			defaultHierarchy: LocalDateTable_705a2d02-3e2a-4da7-acb0-bd763837b141.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	column DoNotGenerateInstockPandL
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: a19a7518-3e1f-43e4-a9cb-c0b032463f2c
+		summarizeBy: none
+		sourceColumn: DoNotGenerateInstockPandL
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Warehouse = m
+		mode: import
+		source =
+				let
+				    Source = Sql.Databases("10.13.0.206"),
+				    SC = Source{[Name="SC"]}[Data],
+				    dbo_Warehouse = SC{[Schema="dbo",Item="Warehouse"]}[Data]
+				in
+				    dbo_Warehouse
+

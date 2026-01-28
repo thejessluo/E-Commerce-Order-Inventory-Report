@@ -1,0 +1,159 @@
+model Model
+	culture: en-US
+	defaultPowerBIDataSourceVersion: powerBI_V3
+	sourceQueryCulture: en-US
+	dataAccessOptions
+		legacyRedirects
+		returnErrorValuesAsNull
+
+annotation __PBI_TimeIntelligenceEnabled = 1
+
+annotation PBI_QueryOrder = ["OrderSource","MeasureTable","Amazon_Merchants","bvc_OrderItem","bvc_Package","Warehouse","Product","bvc_Product_InventoryLog","PurchaseItem","vw_PurchaseOrderFullText","Purchase","PO_STATUS_MAPPINGS","RECEIVEDSTATUS_MAPPINGS","MERGED_PO_ITEMS_TABLE","BVC_ORDER","DELIVERYSTATUS_MAPPINGS","SHIPPINGSTATUS_MAPPINGS","STATUSCODE_MAPPINGS","SELLERCLOUD_PRODUCT_IMAGES","RMAItem","RMA","ORDERSTATUS_MAPPINGS","PRODUCTSTATUS_MAPPINGS","STATES_REGION","ProductWarehouse","Inventory_PandL","DROPSHIPSTATUS_MAPPINGS","bvc_Order_Property_UserDefined"]
+
+annotation PBI_ProTooling = ["DaxQueryView_Desktop","DevMode"]
+
+annotation PBI_RemovedChildren = [{"remoteItemId":{"foreignKeyRelationship":{"fromTableLocalLineageTag":"6717a66b-5fcd-4044-8a0e-8a2333f87596","fromColumnLocalLineageTag":"88aaa0aa-cd17-4088-be83-1ffefcb2e34f","toTableLocalLineageTag":"b0f0a38c-0b0e-4773-af74-0864798a9078","toColumnLocalLineageTag":"1ec6e4ab-cce3-4877-92fd-f2099fab4f63"}},"objectType":"Relationship"}]
+
+ref table DateTableTemplate_69e0c5b1-c843-419c-a40f-b726092a6c4e
+ref table OrderSource
+ref table Amazon_Merchants
+ref table LocalDateTable_b81106a4-614c-4620-87d9-1090a6028abd
+ref table LocalDateTable_b0f7befb-a315-4504-ad74-b7dcfa2204c9
+ref table LocalDateTable_5fc55ee2-9215-4ddd-9762-ab6306c2bbc1
+ref table LocalDateTable_1c5934aa-0696-4c49-a7bb-26c9d7cd4dbc
+ref table LocalDateTable_d2399b2e-86dd-4f49-8aeb-8ffde1db850a
+ref table LocalDateTable_2aa005a5-8d40-498e-aa43-f764443d5139
+ref table LocalDateTable_79697572-8925-4c87-9525-591dbd6c34fd
+ref table LocalDateTable_25b30f97-4398-4df6-b856-918a5efd4e6e
+ref table LocalDateTable_d8cede15-2eb4-475f-b409-1de36c6d8e8d
+ref table LocalDateTable_965c95f4-cf3d-4cb4-a0c0-c09afaf63995
+ref table LocalDateTable_df8ab239-1016-4524-9922-9bf2201828e7
+ref table LocalDateTable_c606f62e-29d6-4e9c-828d-129cb7d349b8
+ref table LocalDateTable_4d5a7667-7039-4e35-9f81-e2c15c3cf207
+ref table LocalDateTable_07929841-00c2-450a-9302-e0b368bdfb51
+ref table LocalDateTable_937e5fa6-b1e6-48fd-9c22-3749bd28a91d
+ref table LocalDateTable_5bb17fe4-35fc-4bb0-b3f7-09fd2a239de3
+ref table LocalDateTable_ae725863-defd-4bc1-bd21-3ece5afafbff
+ref table LocalDateTable_073704bb-d851-4cba-8b4f-4ced3a47d10a
+ref table bvc_OrderItem
+ref table LocalDateTable_45861314-5e4a-415e-a2e1-4704f3adc9c3
+ref table LocalDateTable_2e558a39-8553-4ad1-92f8-4dd0894a21a4
+ref table LocalDateTable_3a6565e8-d6c2-4815-ab53-81255a4741f3
+ref table LocalDateTable_82974398-3b0c-4e7f-8e8c-7791726bcaa1
+ref table LocalDateTable_76e5826f-d9d9-427f-8afb-83bb9d1d0fd5
+ref table LocalDateTable_7ffb6311-4d8d-42d6-8302-540a213ff75f
+ref table LocalDateTable_f4df6e6b-5608-44a6-bfc2-bff96e020d86
+ref table LocalDateTable_93c2c625-e01a-4f57-9bc8-ccddfc44f794
+ref table LocalDateTable_e36ad7ff-f150-40c8-b3eb-083a6036476b
+ref table LocalDateTable_3a15cde4-8f05-47d3-9ba6-22202c32f038
+ref table LocalDateTable_e4180eb2-4883-4afe-bb36-12e1892e6933
+ref table LocalDateTable_997fc0a0-15a1-4a92-8f6d-049569ec83b5
+ref table LocalDateTable_232252a9-b660-4945-ac88-742816a957ca
+ref table LocalDateTable_4cb39db2-24d1-4259-b9e0-760486eee4b5
+ref table LocalDateTable_00ce6c0a-cf86-467f-af7a-56f3dfd4d5dc
+ref table bvc_Package
+ref table LocalDateTable_b47855c2-8651-4ff4-9fea-9e942940924c
+ref table LocalDateTable_feccbffd-a582-415a-80c3-6de9543773de
+ref table Warehouse
+ref table LocalDateTable_1d6408ac-7275-4c80-81ae-3263669a4e27
+ref table LocalDateTable_705a2d02-3e2a-4da7-acb0-bd763837b141
+ref table Product
+ref table LocalDateTable_b11ed0d8-cb78-4b2d-b4d6-c20944838fae
+ref table LocalDateTable_dc6ad71f-d8b9-42f5-8982-f9d103420f83
+ref table LocalDateTable_8520304c-ee15-4c4a-8b08-d0e2f09a2fa3
+ref table MeasuresTable
+ref table bvc_Product_InventoryLog
+ref table LocalDateTable_4022267d-6c08-4132-8269-9a0b7b74153e
+ref table PurchaseItem
+ref table LocalDateTable_de685071-b67c-402b-b9fb-80f086ae0ce6
+ref table LocalDateTable_5f1bf702-b5eb-4e97-8037-79578a3c62f8
+ref table LocalDateTable_0028bc40-5978-4805-b395-e30a16037baf
+ref table vw_PurchaseOrderFullText
+ref table LocalDateTable_d705d5ed-ffc8-4e3b-ac1f-3721e2750aaa
+ref table Purchase
+ref table LocalDateTable_a6d4fcd8-9e30-40a5-816c-28af633a1c29
+ref table LocalDateTable_3511fc83-b929-4b2b-ab54-076abc7088a4
+ref table LocalDateTable_27ce484f-0855-458e-b797-9f1666449d94
+ref table LocalDateTable_5a1e6a24-973f-4e07-8148-26a2aa0b69f8
+ref table LocalDateTable_4e825b14-d4a2-4a79-b7db-0041b033b8ec
+ref table LocalDateTable_4dc02e08-e2bf-437f-9b4f-4cb738db4775
+ref table LocalDateTable_b740804c-0f9f-4d24-8880-821db6da9224
+ref table LocalDateTable_554f6daf-d60b-496c-84a6-b554c63834fa
+ref table LocalDateTable_90895644-4e7f-4f97-b5c4-6a75caa539d3
+ref table LocalDateTable_10de15a8-5871-4f72-be63-af2038084bf6
+ref table LocalDateTable_7b8f4ecb-537c-4028-ba5d-c4bbcc97b3bb
+ref table LocalDateTable_25cac92f-15dc-4e5a-bf7f-aad6e7e6726a
+ref table LocalDateTable_9bd3abc8-5616-4299-9fe6-55c242fad907
+ref table LocalDateTable_fc229a7e-8792-46dd-b288-f0f0598268d1
+ref table PO_STATUS_MAPPINGS
+ref table RECEIVEDSTATUS_MAPPINGS
+ref table MERGED_PO_ITEMS_TABLE
+ref table LocalDateTable_1e704554-a45d-4933-8f21-3fa0f937fa64
+ref table LocalDateTable_ef93904d-d4a5-4c03-a495-c00a5103d2ea
+ref table LocalDateTable_cc72fb38-76ab-4ff5-b6e9-62415bb1b8ee
+ref table LocalDateTable_d2dd2a7b-1e63-40b9-a8aa-3574259e5bbf
+ref table BVC_ORDER
+ref table LocalDateTable_a03057e1-d2b0-47e9-b14d-928ae70f96fd
+ref table LocalDateTable_70a33bb6-fe92-4229-b3b4-01497c5219fe
+ref table LocalDateTable_4c00524b-9992-4659-bded-a72798acb0a5
+ref table LocalDateTable_1c08633b-1690-4fb3-bbe1-1943317426fc
+ref table LocalDateTable_6d42cf5b-c624-40f7-954f-8dae71d91bb3
+ref table LocalDateTable_bebdc8e9-282e-47db-b29c-3b2aa3410fb8
+ref table LocalDateTable_30084f1f-636d-4dc0-b29b-25de2f7d23eb
+ref table LocalDateTable_c7d93aab-df9d-4505-ae2c-c7730aa7a543
+ref table LocalDateTable_1f09f48d-dfb8-46ba-938d-75b73b504a80
+ref table LocalDateTable_e6162206-6136-42ee-847b-d598db9c1973
+ref table LocalDateTable_a4562e8f-6c21-4a5e-acb4-67a6ea730bbb
+ref table DELIVERYSTATUS_MAPPINGS
+ref table SHIPPINGSTATUS_MAPPINGS
+ref table STATUSCODE_MAPPINGS
+ref table LocalDateTable_ef1787a9-f766-4eac-9ff8-1cc27d249a8d
+ref table LocalDateTable_5de523a0-6534-4ff4-a81b-a597a6a9e4d9
+ref table SELLERCLOUD_PRODUCT_IMAGES
+ref table RMAItem
+ref table LocalDateTable_152c527b-e028-451d-9f30-a04cac326338
+ref table RMA
+ref table LocalDateTable_a8902aa4-9288-4f67-aa7e-b3e53fe02448
+ref table LocalDateTable_faedb591-cbce-46c2-a638-aa498319c937
+ref table LocalDateTable_7d2f0235-9e95-4a6e-bf54-3021771d87a2
+ref table LocalDateTable_7fa346ad-1836-418f-8738-c2ab143b40be
+ref table LocalDateTable_ad2646d5-037b-4ca4-a5ec-2a4ad0e1ba1a
+ref table LocalDateTable_cb1f77cc-3aab-48fe-8418-d5e96bcfd410
+ref table DateTable
+ref table LocalDateTable_fc785518-de41-47a5-9008-b2d4290a95f3
+ref table RMA_MonthOffsets
+ref table prm_UnitsSold_Revenue
+ref table ORDERSTATUS_MAPPINGS
+ref table PRODUCTSTATUS_MAPPINGS
+ref table STATES_REGION
+ref table LocalDateTable_57a84fcb-2bc2-4cdd-92be-d3e3034a58c5
+ref table LocalDateTable_4a5a4b63-94ef-4c40-b20b-d49f55af390a
+ref table OLD_TBL_Product_Sales_Spike_Flag
+ref table ProductWarehouse
+ref table LocalDateTable_8c6fd50f-b88b-4223-90fe-8f1e4cbf0391
+ref table Inventory_PandL
+ref table LocalDateTable_51b17aef-026b-422f-bba4-db1487f21301
+ref table LocalDateTable_1f0d237c-773b-41ec-b822-5bf2f4ac1f1c
+ref table LocalDateTable_2bf7fcda-341e-4746-8da8-ad07b143e623
+ref table LocalDateTable_7dc81dcf-b31c-474f-951e-83cf7ff0eda1
+ref table Product_Daily_Sales
+ref table Product_Sales_Spike_Flag
+ref table SpikeMultiplier
+ref table DuplicatesCheck
+ref table Shipped_ProductIDs
+ref table Recently_Ordered_ProductIDs
+ref table OrderID_Warehouse_Map
+ref table DROPSHIPSTATUS_MAPPINGS
+ref table LocalDateTable_27cab98b-c344-4366-b529-0de63a2e2ea2
+ref table LocalDateTable_30ec2b54-a6a5-471a-86b6-801d933b237a
+ref table LocalDateTable_be7e6926-be04-4297-8deb-0fb935016693
+ref table LocalDateTable_ad0cdb69-e4a8-4d8f-a210-dc22eb768334
+ref table LocalDateTable_4ca393f6-986e-4700-b418-107916b24cf7
+ref table AgingOpenOrdersMatrixData
+ref table LocalDateTable_f7068cb5-aa72-4559-afd1-fd9118661686
+ref table bvc_Order_Property_UserDefined
+ref table LocalDateTable_4d7c222d-5820-45a4-8f8d-85177b48c5c7
+ref table LocalDateTable_7488abfc-b5dc-4811-b25b-d751b72b7107
+
+ref cultureInfo en-US
+

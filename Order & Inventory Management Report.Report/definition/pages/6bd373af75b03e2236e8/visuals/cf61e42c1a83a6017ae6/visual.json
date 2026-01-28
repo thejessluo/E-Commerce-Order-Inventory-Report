@@ -1,0 +1,16 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.5.0/schema.json",
+  "name": "cf61e42c1a83a6017ae6",
+  "position": {
+    "x": 748.30749924012946,
+    "y": 152.6945592234095,
+    "z": 10000,
+    "height": 130,
+    "width": 250,
+    "tabOrder": 9000
+  },
+  "visualGroup": {
+    "displayName": "ZERO STOCK SKUs",
+    "groupMode": "ScaleMode"
+  }
+}

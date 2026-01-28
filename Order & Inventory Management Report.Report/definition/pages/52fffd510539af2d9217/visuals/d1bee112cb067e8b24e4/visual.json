@@ -1,0 +1,2460 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.5.0/schema.json",
+  "name": "d1bee112cb067e8b24e4",
+  "position": {
+    "x": 452.70270270270271,
+    "y": 77.027027027027032,
+    "z": 4000,
+    "height": 732.43243243243239,
+    "width": 962.16216216216219,
+    "tabOrder": 3000
+  },
+  "visual": {
+    "visualType": "tableEx",
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "SELLERCLOUD_PRODUCT_IMAGES"
+                    }
+                  },
+                  "Property": "First Image URL"
+                }
+              },
+              "queryRef": "SELLERCLOUD_PRODUCT_IMAGES.First Image URL",
+              "nativeQueryRef": "First Image URL",
+              "displayName": "Image"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "bvc_OrderItem"
+                    }
+                  },
+                  "Property": "ProductID"
+                }
+              },
+              "queryRef": "bvc_OrderItem.ProductID",
+              "nativeQueryRef": "SKU",
+              "displayName": "SKU"
+            },
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "bvc_OrderItem"
+                        }
+                      },
+                      "Property": "DisplayName"
+                    }
+                  },
+                  "Function": 3
+                }
+              },
+              "queryRef": "bvc_OrderItem.DisplayName",
+              "nativeQueryRef": "Item Name",
+              "displayName": "Item Name"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Product_Sales_Spike_Flag"
+                    }
+                  },
+                  "Property": "Total7DayQty"
+                }
+              },
+              "queryRef": "Product_Sales_Spike_Flag.Total7DayQty",
+              "nativeQueryRef": "Total7Day Units Sold",
+              "displayName": "Total7Day Units Sold"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Product_Sales_Spike_Flag"
+                    }
+                  },
+                  "Property": "Avg7DayQty"
+                }
+              },
+              "queryRef": "Product_Sales_Spike_Flag.Avg7DayQty",
+              "nativeQueryRef": "Avg7Day Units Sold",
+              "displayName": "Avg7Day Units Sold"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Product_Sales_Spike_Flag"
+                    }
+                  },
+                  "Property": "Max7DayQty"
+                }
+              },
+              "queryRef": "Product_Sales_Spike_Flag.Max7DayQty",
+              "nativeQueryRef": "Max7Day Units Sold",
+              "displayName": "Max7Day Units Sold"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Product_Sales_Spike_Flag"
+                    }
+                  },
+                  "Property": "YesterdayQty"
+                }
+              },
+              "queryRef": "Product_Sales_Spike_Flag.YesterdayQty",
+              "nativeQueryRef": "Yesterday Units Sold",
+              "displayName": "Yesterday Units Sold"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "bvc_OrderItem"
+                    }
+                  },
+                  "Property": "AggregateQty"
+                }
+              },
+              "queryRef": "Sum(bvc_OrderItem.AggregateQty)",
+              "nativeQueryRef": "Current Inventory",
+              "displayName": "Current Inventory"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "MeasuresTable"
+                    }
+                  },
+                  "Property": "DaysofStock_SalesSpike"
+                }
+              },
+              "queryRef": "MeasuresTable.DaysofStock_SalesSpike",
+              "nativeQueryRef": "Days of Stock",
+              "displayName": "Days of Stock"
+            },
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "bvc_OrderItem"
+                        }
+                      },
+                      "Property": "ProductID"
+                    }
+                  },
+                  "Function": 2
+                }
+              },
+              "queryRef": "Count(bvc_OrderItem.ProductID)",
+              "nativeQueryRef": "#",
+              "displayName": "#"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Measure": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "MeasuresTable"
+                  }
+                },
+                "Property": "DaysofStock_SalesSpike"
+              }
+            },
+            "direction": "Ascending"
+          }
+        ]
+      }
+    },
+    "objects": {
+      "grid": [
+        {
+          "properties": {
+            "gridVertical": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "gridVerticalColor": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "ThemeDataColor": {
+                      "ColorId": 0,
+                      "Percent": -0.3
+                    }
+                  }
+                }
+              }
+            },
+            "imageHeight": {
+              "expr": {
+                "Literal": {
+                  "Value": "65D"
+                }
+              }
+            },
+            "imageWidth": {
+              "expr": {
+                "Literal": {
+                  "Value": "70D"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "columnWidth": [
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "154.42379182156134D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "data": [
+              {
+                "scopeId": {
+                  "Comparison": {
+                    "ComparisonKind": 0,
+                    "Left": {
+                      "Column": {
+                        "Expression": {
+                          "SourceRef": {
+                            "Entity": "bvc_Orderr"
+                          }
+                        },
+                        "Property": "OrderSouce - CompanyName"
+                      }
+                    },
+                    "Right": {
+                      "Literal": {
+                        "Value": "null"
+                      }
+                    }
+                  }
+                }
+              }
+            ]
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "131.1784252970757D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "data": [
+              {
+                "scopeId": {
+                  "Comparison": {
+                    "ComparisonKind": 0,
+                    "Left": {
+                      "Column": {
+                        "Expression": {
+                          "SourceRef": {
+                            "Entity": "bvc_Orderr"
+                          }
+                        },
+                        "Property": "OrderSouce - CompanyName"
+                      }
+                    },
+                    "Right": {
+                      "Literal": {
+                        "Value": "'BedBathAndBeyond - Tzumi Electronics'"
+                      }
+                    }
+                  }
+                }
+              }
+            ]
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "120.19329807522227D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "data": [
+              {
+                "scopeId": {
+                  "Comparison": {
+                    "ComparisonKind": 0,
+                    "Left": {
+                      "Column": {
+                        "Expression": {
+                          "SourceRef": {
+                            "Entity": "bvc_Orderr"
+                          }
+                        },
+                        "Property": "OrderSouce - CompanyName"
+                      }
+                    },
+                    "Right": {
+                      "Literal": {
+                        "Value": "'BestBuyDS - Tzumi Electronics'"
+                      }
+                    }
+                  }
+                }
+              }
+            ]
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "148.88475836431226D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "data": [
+              {
+                "scopeId": {
+                  "Comparison": {
+                    "ComparisonKind": 0,
+                    "Left": {
+                      "Column": {
+                        "Expression": {
+                          "SourceRef": {
+                            "Entity": "bvc_Orderr"
+                          }
+                        },
+                        "Property": "OrderSouce - CompanyName"
+                      }
+                    },
+                    "Right": {
+                      "Literal": {
+                        "Value": "'GrouponMarketplace - Tzumi Electronics'"
+                      }
+                    }
+                  }
+                }
+              }
+            ]
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "97.62452918302648D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "data": [
+              {
+                "scopeId": {
+                  "Comparison": {
+                    "ComparisonKind": 0,
+                    "Left": {
+                      "Column": {
+                        "Expression": {
+                          "SourceRef": {
+                            "Entity": "bvc_Orderr"
+                          }
+                        },
+                        "Property": "OrderSouce - CompanyName"
+                      }
+                    },
+                    "Right": {
+                      "Literal": {
+                        "Value": "'HomeDepot - Tzumi Alerts'"
+                      }
+                    }
+                  }
+                }
+              }
+            ]
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "118.29738607869267D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "data": [
+              {
+                "scopeId": {
+                  "Comparison": {
+                    "ComparisonKind": 0,
+                    "Left": {
+                      "Column": {
+                        "Expression": {
+                          "SourceRef": {
+                            "Entity": "bvc_Orderr"
+                          }
+                        },
+                        "Property": "OrderSouce - CompanyName"
+                      }
+                    },
+                    "Right": {
+                      "Literal": {
+                        "Value": "'HomeDepot - Tzumi Electronics'"
+                      }
+                    }
+                  }
+                }
+              }
+            ]
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "115.7100323100631D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "data": [
+              {
+                "scopeId": {
+                  "Comparison": {
+                    "ComparisonKind": 0,
+                    "Left": {
+                      "Column": {
+                        "Expression": {
+                          "SourceRef": {
+                            "Entity": "bvc_Orderr"
+                          }
+                        },
+                        "Property": "OrderSouce - CompanyName"
+                      }
+                    },
+                    "Right": {
+                      "Literal": {
+                        "Value": "'Amazon - Tzumi Electronics'"
+                      }
+                    }
+                  }
+                }
+              }
+            ]
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "124.36802973977694D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "data": [
+              {
+                "scopeId": {
+                  "Comparison": {
+                    "ComparisonKind": 0,
+                    "Left": {
+                      "Column": {
+                        "Expression": {
+                          "SourceRef": {
+                            "Entity": "bvc_Orderr"
+                          }
+                        },
+                        "Property": "OrderSouce - CompanyName"
+                      }
+                    },
+                    "Right": {
+                      "Literal": {
+                        "Value": "'Local Store - Tzumi Customer Support'"
+                      }
+                    }
+                  }
+                }
+              }
+            ]
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "94.38289061546963D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "data": [
+              {
+                "scopeId": {
+                  "Comparison": {
+                    "ComparisonKind": 0,
+                    "Left": {
+                      "Column": {
+                        "Expression": {
+                          "SourceRef": {
+                            "Entity": "bvc_Orderr"
+                          }
+                        },
+                        "Property": "OrderSouce - CompanyName"
+                      }
+                    },
+                    "Right": {
+                      "Literal": {
+                        "Value": "'Local Store - Tzumi Alerts'"
+                      }
+                    }
+                  }
+                }
+              }
+            ]
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "115.05576208178438D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "data": [
+              {
+                "scopeId": {
+                  "Comparison": {
+                    "ComparisonKind": 0,
+                    "Left": {
+                      "Column": {
+                        "Expression": {
+                          "SourceRef": {
+                            "Entity": "bvc_Orderr"
+                          }
+                        },
+                        "Property": "OrderSouce - CompanyName"
+                      }
+                    },
+                    "Right": {
+                      "Literal": {
+                        "Value": "'Local Store - Tzumi Electronics'"
+                      }
+                    }
+                  }
+                }
+              }
+            ]
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "131.21188989555304D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "data": [
+              {
+                "scopeId": {
+                  "Comparison": {
+                    "ComparisonKind": 0,
+                    "Left": {
+                      "Column": {
+                        "Expression": {
+                          "SourceRef": {
+                            "Entity": "bvc_Orderr"
+                          }
+                        },
+                        "Property": "OrderSouce - CompanyName"
+                      }
+                    },
+                    "Right": {
+                      "Literal": {
+                        "Value": "'Local Store - Tzumi Home Depot CA'"
+                      }
+                    }
+                  }
+                }
+              }
+            ]
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "94.86617746902637D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "data": [
+              {
+                "scopeId": {
+                  "Comparison": {
+                    "ComparisonKind": 0,
+                    "Left": {
+                      "Column": {
+                        "Expression": {
+                          "SourceRef": {
+                            "Entity": "bvc_Orderr"
+                          }
+                        },
+                        "Property": "OrderSouce - CompanyName"
+                      }
+                    },
+                    "Right": {
+                      "Literal": {
+                        "Value": "'Local Store - Tzumi Snappy'"
+                      }
+                    }
+                  }
+                }
+              }
+            ]
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "113.81412085494604D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "data": [
+              {
+                "scopeId": {
+                  "Comparison": {
+                    "ComparisonKind": 0,
+                    "Left": {
+                      "Column": {
+                        "Expression": {
+                          "SourceRef": {
+                            "Entity": "bvc_Orderr"
+                          }
+                        },
+                        "Property": "OrderSouce - CompanyName"
+                      }
+                    },
+                    "Right": {
+                      "Literal": {
+                        "Value": "'Overstock - Tzumi Electronics'"
+                      }
+                    }
+                  }
+                }
+              }
+            ]
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "95.38288171395303D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "data": [
+              {
+                "scopeId": {
+                  "Comparison": {
+                    "ComparisonKind": 0,
+                    "Left": {
+                      "Column": {
+                        "Expression": {
+                          "SourceRef": {
+                            "Entity": "bvc_Orderr"
+                          }
+                        },
+                        "Property": "OrderSouce - CompanyName"
+                      }
+                    },
+                    "Right": {
+                      "Literal": {
+                        "Value": "'Target - Tzumi Electronics'"
+                      }
+                    }
+                  }
+                }
+              }
+            ]
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "116.71789579188824D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "data": [
+              {
+                "scopeId": {
+                  "Comparison": {
+                    "ComparisonKind": 0,
+                    "Left": {
+                      "Column": {
+                        "Expression": {
+                          "SourceRef": {
+                            "Entity": "bvc_Orderr"
+                          }
+                        },
+                        "Property": "OrderSouce - CompanyName"
+                      }
+                    },
+                    "Right": {
+                      "Literal": {
+                        "Value": "'Walmart - Tzumi Electronics'"
+                      }
+                    }
+                  }
+                }
+              }
+            ]
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "141.55761923492165D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "data": [
+              {
+                "scopeId": {
+                  "Comparison": {
+                    "ComparisonKind": 0,
+                    "Left": {
+                      "Column": {
+                        "Expression": {
+                          "SourceRef": {
+                            "Entity": "bvc_Orderr"
+                          }
+                        },
+                        "Property": "OrderSouce - CompanyName"
+                      }
+                    },
+                    "Right": {
+                      "Literal": {
+                        "Value": "'Walmart Marketplace - Tzumi Electronics'"
+                      }
+                    }
+                  }
+                }
+              }
+            ]
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "103.57248508444094D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "data": [
+              {
+                "scopeId": {
+                  "Comparison": {
+                    "ComparisonKind": 0,
+                    "Left": {
+                      "Column": {
+                        "Expression": {
+                          "SourceRef": {
+                            "Entity": "bvc_Orderr"
+                          }
+                        },
+                        "Property": "OrderSouce - CompanyName"
+                      }
+                    },
+                    "Right": {
+                      "Literal": {
+                        "Value": "'Wayfair - Tzumi Electronics'"
+                      }
+                    }
+                  }
+                }
+              }
+            ]
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "76.84757203681623D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "data": [
+              {
+                "scopeId": {
+                  "Comparison": {
+                    "ComparisonKind": 0,
+                    "Left": {
+                      "Column": {
+                        "Expression": {
+                          "SourceRef": {
+                            "Entity": "bvc_Orderr"
+                          }
+                        },
+                        "Property": "OrderSouce - CompanyName"
+                      }
+                    },
+                    "Right": {
+                      "Literal": {
+                        "Value": "'Website - Tzumi BJs'"
+                      }
+                    }
+                  }
+                }
+              }
+            ]
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "101.22675399501287D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "data": [
+              {
+                "scopeId": {
+                  "Comparison": {
+                    "ComparisonKind": 0,
+                    "Left": {
+                      "Column": {
+                        "Expression": {
+                          "SourceRef": {
+                            "Entity": "bvc_Orderr"
+                          }
+                        },
+                        "Property": "OrderSouce - CompanyName"
+                      }
+                    },
+                    "Right": {
+                      "Literal": {
+                        "Value": "'Website - Tzumi Costco'"
+                      }
+                    }
+                  }
+                }
+              }
+            ]
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "118.65799700995564D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "data": [
+              {
+                "scopeId": {
+                  "Comparison": {
+                    "ComparisonKind": 0,
+                    "Left": {
+                      "Column": {
+                        "Expression": {
+                          "SourceRef": {
+                            "Entity": "bvc_Orderr"
+                          }
+                        },
+                        "Property": "OrderSouce - CompanyName"
+                      }
+                    },
+                    "Right": {
+                      "Literal": {
+                        "Value": "'Website - Tzumi Costco CA'"
+                      }
+                    }
+                  }
+                }
+              }
+            ]
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "126.40147478575972D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "data": [
+              {
+                "scopeId": {
+                  "Comparison": {
+                    "ComparisonKind": 0,
+                    "Left": {
+                      "Column": {
+                        "Expression": {
+                          "SourceRef": {
+                            "Entity": "bvc_Orderr"
+                          }
+                        },
+                        "Property": "OrderSouce - CompanyName"
+                      }
+                    },
+                    "Right": {
+                      "Literal": {
+                        "Value": "'Website - Tzumi Customer Support'"
+                      }
+                    }
+                  }
+                }
+              }
+            ]
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "115.8996186669375D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "data": [
+              {
+                "scopeId": {
+                  "Comparison": {
+                    "ComparisonKind": 0,
+                    "Left": {
+                      "Column": {
+                        "Expression": {
+                          "SourceRef": {
+                            "Entity": "bvc_Orderr"
+                          }
+                        },
+                        "Property": "OrderSouce - CompanyName"
+                      }
+                    },
+                    "Right": {
+                      "Literal": {
+                        "Value": "'Website - Tzumi Electronics'"
+                      }
+                    }
+                  }
+                }
+              }
+            ]
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "111.46840148698885D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "data": [
+              {
+                "scopeId": {
+                  "Comparison": {
+                    "ComparisonKind": 0,
+                    "Left": {
+                      "Column": {
+                        "Expression": {
+                          "SourceRef": {
+                            "Entity": "bvc_Orderr"
+                          }
+                        },
+                        "Property": "OrderSouce - CompanyName"
+                      }
+                    },
+                    "Right": {
+                      "Literal": {
+                        "Value": "'Website - Tzumi JCPenney'"
+                      }
+                    }
+                  }
+                }
+              }
+            ]
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "88.46687252207886D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "data": [
+              {
+                "scopeId": {
+                  "Comparison": {
+                    "ComparisonKind": 0,
+                    "Left": {
+                      "Column": {
+                        "Expression": {
+                          "SourceRef": {
+                            "Entity": "bvc_Orderr"
+                          }
+                        },
+                        "Property": "OrderSouce - CompanyName"
+                      }
+                    },
+                    "Right": {
+                      "Literal": {
+                        "Value": "'Website - Tzumi Kohls'"
+                      }
+                    }
+                  }
+                }
+              }
+            ]
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "92.89962825278809D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "data": [
+              {
+                "scopeId": {
+                  "Comparison": {
+                    "ComparisonKind": 0,
+                    "Left": {
+                      "Column": {
+                        "Expression": {
+                          "SourceRef": {
+                            "Entity": "bvc_Orderr"
+                          }
+                        },
+                        "Property": "OrderSouce - CompanyName"
+                      }
+                    },
+                    "Right": {
+                      "Literal": {
+                        "Value": "'Website - Tzumi Kroger'"
+                      }
+                    }
+                  }
+                }
+              }
+            ]
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "88.89963393207478D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "data": [
+              {
+                "scopeId": {
+                  "Comparison": {
+                    "ComparisonKind": 0,
+                    "Left": {
+                      "Column": {
+                        "Expression": {
+                          "SourceRef": {
+                            "Entity": "bvc_Orderr"
+                          }
+                        },
+                        "Property": "OrderSouce - CompanyName"
+                      }
+                    },
+                    "Right": {
+                      "Literal": {
+                        "Value": "'Website - Tzumi Lowes'"
+                      }
+                    }
+                  }
+                }
+              }
+            ]
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "93.46841206321045D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "data": [
+              {
+                "scopeId": {
+                  "Comparison": {
+                    "ComparisonKind": 0,
+                    "Left": {
+                      "Column": {
+                        "Expression": {
+                          "SourceRef": {
+                            "Entity": "bvc_Orderr"
+                          }
+                        },
+                        "Property": "OrderSouce - CompanyName"
+                      }
+                    },
+                    "Right": {
+                      "Literal": {
+                        "Value": "'Website - Tzumi Macys'"
+                      }
+                    }
+                  }
+                }
+              }
+            ]
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "113.33087527144113D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "data": [
+              {
+                "scopeId": {
+                  "Comparison": {
+                    "ComparisonKind": 0,
+                    "Left": {
+                      "Column": {
+                        "Expression": {
+                          "SourceRef": {
+                            "Entity": "bvc_Orderr"
+                          }
+                        },
+                        "Property": "OrderSouce - CompanyName"
+                      }
+                    },
+                    "Right": {
+                      "Literal": {
+                        "Value": "'Website - Tzumi Nordstrom'"
+                      }
+                    }
+                  }
+                }
+              }
+            ]
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "129.64309791136304D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "data": [
+              {
+                "scopeId": {
+                  "Comparison": {
+                    "ComparisonKind": 0,
+                    "Left": {
+                      "Column": {
+                        "Expression": {
+                          "SourceRef": {
+                            "Entity": "bvc_Orderr"
+                          }
+                        },
+                        "Property": "OrderSouce - CompanyName"
+                      }
+                    },
+                    "Right": {
+                      "Literal": {
+                        "Value": "'Website - Tzumi Nordstrom Full Line'"
+                      }
+                    }
+                  }
+                }
+              }
+            ]
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "107.05476307923125D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "data": [
+              {
+                "scopeId": {
+                  "Comparison": {
+                    "ComparisonKind": 0,
+                    "Left": {
+                      "Column": {
+                        "Expression": {
+                          "SourceRef": {
+                            "Entity": "bvc_Orderr"
+                          }
+                        },
+                        "Property": "OrderSouce - CompanyName"
+                      }
+                    },
+                    "Right": {
+                      "Literal": {
+                        "Value": "'Website - Tzumi Removal Orders'"
+                      }
+                    }
+                  }
+                }
+              }
+            ]
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "76.69428863626024D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "data": [
+              {
+                "scopeId": {
+                  "Comparison": {
+                    "ComparisonKind": 0,
+                    "Left": {
+                      "Column": {
+                        "Expression": {
+                          "SourceRef": {
+                            "Entity": "bvc_Orderr"
+                          }
+                        },
+                        "Property": "OrderSouce - CompanyName"
+                      }
+                    },
+                    "Right": {
+                      "Literal": {
+                        "Value": "'Website - Tzumi Saks'"
+                      }
+                    }
+                  }
+                }
+              }
+            ]
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "101.73976766939141D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "data": [
+              {
+                "scopeId": {
+                  "Comparison": {
+                    "ComparisonKind": 0,
+                    "Left": {
+                      "Column": {
+                        "Expression": {
+                          "SourceRef": {
+                            "Entity": "bvc_Orderr"
+                          }
+                        },
+                        "Property": "OrderSouce - CompanyName"
+                      }
+                    },
+                    "Right": {
+                      "Literal": {
+                        "Value": "'Website - Tzumi Saks Off'"
+                      }
+                    }
+                  }
+                }
+              }
+            ]
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "105.57249626244453D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "data": [
+              {
+                "scopeId": {
+                  "Comparison": {
+                    "ComparisonKind": 0,
+                    "Left": {
+                      "Column": {
+                        "Expression": {
+                          "SourceRef": {
+                            "Entity": "bvc_Orderr"
+                          }
+                        },
+                        "Property": "OrderSouce - CompanyName"
+                      }
+                    },
+                    "Right": {
+                      "Literal": {
+                        "Value": "'Website - Tzumi Sams Club'"
+                      }
+                    }
+                  }
+                }
+              }
+            ]
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "95.89963096251327D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "data": [
+              {
+                "scopeId": {
+                  "Comparison": {
+                    "ComparisonKind": 0,
+                    "Left": {
+                      "Column": {
+                        "Expression": {
+                          "SourceRef": {
+                            "Entity": "bvc_Orderr"
+                          }
+                        },
+                        "Property": "OrderSouce - CompanyName"
+                      }
+                    },
+                    "Right": {
+                      "Literal": {
+                        "Value": "'Website - Tzumi Snappy'"
+                      }
+                    }
+                  }
+                }
+              }
+            ]
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "106.89744090587459D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "data": [
+              {
+                "scopeId": {
+                  "Comparison": {
+                    "ComparisonKind": 0,
+                    "Left": {
+                      "Column": {
+                        "Expression": {
+                          "SourceRef": {
+                            "Entity": "bvc_Orderr"
+                          }
+                        },
+                        "Property": "OrderSouce - CompanyName"
+                      }
+                    },
+                    "Right": {
+                      "Literal": {
+                        "Value": "'Website - Tzumi Snappy Canada'"
+                      }
+                    }
+                  }
+                }
+              }
+            ]
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "74.03492910247134D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "data": [
+              {
+                "scopeId": {
+                  "Comparison": {
+                    "ComparisonKind": 0,
+                    "Left": {
+                      "Column": {
+                        "Expression": {
+                          "SourceRef": {
+                            "Entity": "bvc_Orderr"
+                          }
+                        },
+                        "Property": "OrderSouce - CompanyName"
+                      }
+                    },
+                    "Right": {
+                      "Literal": {
+                        "Value": "'Website - Tzumi SPO'"
+                      }
+                    }
+                  }
+                }
+              }
+            ]
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "109.48963209869464D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "data": [
+              {
+                "scopeId": {
+                  "Comparison": {
+                    "ComparisonKind": 0,
+                    "Left": {
+                      "Column": {
+                        "Expression": {
+                          "SourceRef": {
+                            "Entity": "bvc_Orderr"
+                          }
+                        },
+                        "Property": "OrderSouce - CompanyName"
+                      }
+                    },
+                    "Right": {
+                      "Literal": {
+                        "Value": "'Website - Tzumi Walmart CA'"
+                      }
+                    }
+                  }
+                }
+              }
+            ]
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "85.38291235682834D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "data": [
+              {
+                "scopeId": {
+                  "Comparison": {
+                    "ComparisonKind": 0,
+                    "Left": {
+                      "Column": {
+                        "Expression": {
+                          "SourceRef": {
+                            "Entity": "bvc_Orderr"
+                          }
+                        },
+                        "Property": "OrderSouce - CompanyName"
+                      }
+                    },
+                    "Right": {
+                      "Literal": {
+                        "Value": "'WFS - Tzumi Electronics'"
+                      }
+                    }
+                  }
+                }
+              }
+            ]
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "119.13210164168454D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "data": [
+              {
+                "scopeId": {
+                  "Comparison": {
+                    "ComparisonKind": 0,
+                    "Left": {
+                      "Column": {
+                        "Expression": {
+                          "SourceRef": {
+                            "Entity": "bvc_Orderr"
+                          }
+                        },
+                        "Property": "OrderSouce - CompanyName"
+                      }
+                    },
+                    "Right": {
+                      "Literal": {
+                        "Value": "'Wholesale - Tzumi Customer Support'"
+                      }
+                    }
+                  }
+                }
+              }
+            ]
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "116.8276277749128D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "data": [
+              {
+                "scopeId": {
+                  "Comparison": {
+                    "ComparisonKind": 0,
+                    "Left": {
+                      "Column": {
+                        "Expression": {
+                          "SourceRef": {
+                            "Entity": "bvc_Orderr"
+                          }
+                        },
+                        "Property": "OrderSouce - CompanyName"
+                      }
+                    },
+                    "Right": {
+                      "Literal": {
+                        "Value": "'Wholesale - Tzumi Electronics'"
+                      }
+                    }
+                  }
+                }
+              }
+            ]
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "120.87092296279063D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "data": [
+              {
+                "scopeId": {
+                  "Comparison": {
+                    "ComparisonKind": 0,
+                    "Left": {
+                      "Column": {
+                        "Expression": {
+                          "SourceRef": {
+                            "Entity": "bvc_Orderr"
+                          }
+                        },
+                        "Property": "OrderSouce - CompanyName"
+                      }
+                    },
+                    "Right": {
+                      "Literal": {
+                        "Value": "'Wholesale - Tzumi Removal Orders'"
+                      }
+                    }
+                  }
+                }
+              }
+            ]
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "84.62454196002247D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "data": [
+              {
+                "scopeId": {
+                  "Comparison": {
+                    "ComparisonKind": 0,
+                    "Left": {
+                      "Column": {
+                        "Expression": {
+                          "SourceRef": {
+                            "Entity": "bvc_Orderr"
+                          }
+                        },
+                        "Property": "OrderSouce - CompanyName"
+                      }
+                    },
+                    "Right": {
+                      "Literal": {
+                        "Value": "'Wholesale - Tzumi Woot'"
+                      }
+                    }
+                  }
+                }
+              }
+            ]
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "135.83271973715682D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "data": [
+              {
+                "scopeId": {
+                  "Comparison": {
+                    "ComparisonKind": 0,
+                    "Left": {
+                      "Column": {
+                        "Expression": {
+                          "SourceRef": {
+                            "Entity": "bvc_Orderr"
+                          }
+                        },
+                        "Property": "OrderSouce - CompanyName"
+                      }
+                    },
+                    "Right": {
+                      "Literal": {
+                        "Value": "'HomeDepot - Tzumi Home Depot CA'"
+                      }
+                    }
+                  }
+                }
+              }
+            ]
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "83.17472612516156D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "data": [
+              {
+                "scopeId": {
+                  "Comparison": {
+                    "ComparisonKind": 0,
+                    "Left": {
+                      "Column": {
+                        "Expression": {
+                          "SourceRef": {
+                            "Entity": "bvc_Orderr"
+                          }
+                        },
+                        "Property": "OrderSouce - CompanyName"
+                      }
+                    },
+                    "Right": {
+                      "Literal": {
+                        "Value": "'Kohls - Tzumi Kohls'"
+                      }
+                    }
+                  }
+                }
+              }
+            ]
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "274.561245802947D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "bvc_OrderItem.DisplayName"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "84.11111240749018D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "SELLERCLOUD_PRODUCT_IMAGES.First Image URL"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "89.88889335419749D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "bvc_OrderItem.ProductID"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "81D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "Product_Sales_Spike_Flag.Max7DayQty"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "82D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "Product_Sales_Spike_Flag.YesterdayQty"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "82D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "Product_Sales_Spike_Flag.Total7DayQty"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "76D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "Product_Sales_Spike_Flag.Avg7DayQty"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "31.063163170505344D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "Count(bvc_OrderItem.ProductID)"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "72.07519055206897D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "Sum(bvc_OrderItem.AggregateQty)"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "63.98859054182117D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "MeasuresTable.DaysofStock_SalesSpike"
+          }
+        }
+      ],
+      "values": [
+        {
+          "properties": {
+            "bold": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            },
+            "fontSize": {
+              "expr": {
+                "Literal": {
+                  "Value": "11D"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "columnHeaders": [
+        {
+          "properties": {
+            "autoSizeColumnWidth": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            },
+            "bold": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "fontSize": {
+              "expr": {
+                "Literal": {
+                  "Value": "11D"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "columnFormatting": [
+        {
+          "properties": {
+            "backColor": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "Literal": {
+                      "Value": "'#D7E3FF'"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "Product_Sales_Spike_Flag.Max7DayQty"
+          }
+        },
+        {
+          "properties": {
+            "backColor": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "Literal": {
+                      "Value": "'#B7CDFF'"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "Product_Sales_Spike_Flag.YesterdayQty"
+          }
+        },
+        {
+          "properties": {
+            "fontColor": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "ThemeDataColor": {
+                      "ColorId": 0,
+                      "Percent": 0
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "Count(bvc_OrderItem.ProductID)"
+          }
+        },
+        {
+          "properties": {
+            "backColor": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "Literal": {
+                      "Value": "'#AABCFF'"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "MeasuresTable.DaysofStock_SalesSpike"
+          }
+        },
+        {
+          "properties": {
+            "styleTotal": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "styleValues": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            },
+            "fontColor": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "Literal": {
+                      "Value": "'#252423'"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "bvc_OrderItem.DisplayName"
+          }
+        }
+      ]
+    },
+    "visualContainerObjects": {
+      "stylePreset": [
+        {
+          "properties": {
+            "name": {
+              "expr": {
+                "Literal": {
+                  "Value": "'AlternatingRowsNew'"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  },
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "cfd1ec1c028d226a73c1",
+        "ordinal": 0,
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "MeasuresTable"
+              }
+            },
+            "Property": "Dynamic_SalesSpike_Flag"
+          }
+        },
+        "type": "Advanced",
+        "filter": {
+          "Version": 2,
+          "From": [
+            {
+              "Name": "m",
+              "Entity": "MeasuresTable",
+              "Type": 0
+            }
+          ],
+          "Where": [
+            {
+              "Condition": {
+                "Comparison": {
+                  "ComparisonKind": 0,
+                  "Left": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Source": "m"
+                        }
+                      },
+                      "Property": "Dynamic_SalesSpike_Flag"
+                    }
+                  },
+                  "Right": {
+                    "Literal": {
+                      "Value": "1L"
+                    }
+                  }
+                }
+              }
+            }
+          ]
+        },
+        "howCreated": "User"
+      },
+      {
+        "name": "527c9ab5cb06039de590",
+        "ordinal": 1,
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Product"
+              }
+            },
+            "Property": "ID"
+          }
+        },
+        "type": "Advanced",
+        "filter": {
+          "Version": 2,
+          "From": [
+            {
+              "Name": "p",
+              "Entity": "Product",
+              "Type": 0
+            }
+          ],
+          "Where": [
+            {
+              "Condition": {
+                "Not": {
+                  "Expression": {
+                    "Comparison": {
+                      "ComparisonKind": 0,
+                      "Left": {
+                        "Column": {
+                          "Expression": {
+                            "SourceRef": {
+                              "Source": "p"
+                            }
+                          },
+                          "Property": "ID"
+                        }
+                      },
+                      "Right": {
+                        "Literal": {
+                          "Value": "null"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          ]
+        },
+        "howCreated": "User"
+      },
+      {
+        "name": "a171fbb452d727e3a9d2",
+        "ordinal": 2,
+        "field": {
+          "Aggregation": {
+            "Expression": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "bvc_OrderItem"
+                  }
+                },
+                "Property": "DisplayName"
+              }
+            },
+            "Function": 4
+          }
+        },
+        "type": "Advanced",
+        "filter": {
+          "Version": 2,
+          "From": [
+            {
+              "Name": "b1",
+              "Entity": "bvc_OrderItem",
+              "Type": 0
+            }
+          ],
+          "Where": [
+            {
+              "Condition": {
+                "Not": {
+                  "Expression": {
+                    "Comparison": {
+                      "ComparisonKind": 0,
+                      "Left": {
+                        "Aggregation": {
+                          "Expression": {
+                            "Column": {
+                              "Expression": {
+                                "SourceRef": {
+                                  "Source": "b1"
+                                }
+                              },
+                              "Property": "DisplayName"
+                            }
+                          },
+                          "Function": 4
+                        }
+                      },
+                      "Right": {
+                        "Literal": {
+                          "Value": "null"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          ]
+        },
+        "howCreated": "User"
+      },
+      {
+        "name": "7511e6fb401477649d60",
+        "ordinal": 3,
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Product_Sales_Spike_Flag"
+              }
+            },
+            "Property": "Avg7DayQty"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "2a93dbbd51d031440d0d",
+        "ordinal": 4,
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "SELLERCLOUD_PRODUCT_IMAGES"
+              }
+            },
+            "Property": "First Image URL"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "465d4611012e9739dd4a",
+        "ordinal": 5,
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Product_Sales_Spike_Flag"
+              }
+            },
+            "Property": "Max7DayQty"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "1f84e9a0ba10458a077d",
+        "ordinal": 6,
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Product_Sales_Spike_Flag"
+              }
+            },
+            "Property": "Min7DayQty"
+          }
+        },
+        "type": "Advanced",
+        "howCreated": "User"
+      },
+      {
+        "name": "72184d4524cbd60e6e28",
+        "ordinal": 7,
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "bvc_OrderItem"
+              }
+            },
+            "Property": "ProductID"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "042edd6e85a215826902",
+        "ordinal": 8,
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Product_Sales_Spike_Flag"
+              }
+            },
+            "Property": "Total7DayQty"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "6403e8dc10242c15b0d0",
+        "ordinal": 9,
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Product_Sales_Spike_Flag"
+              }
+            },
+            "Property": "YesterdayQty"
+          }
+        },
+        "type": "Advanced"
+      }
+    ],
+    "filterSortOrder": "Custom"
+  }
+}

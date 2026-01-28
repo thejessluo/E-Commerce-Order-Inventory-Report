@@ -1,0 +1,200 @@
+table Inventory_PandL
+	lineageTag: 58bbee45-9426-439c-9480-d6f75851e865
+
+	column ProductID
+		dataType: string
+		lineageTag: da052388-fd10-4dcb-b68b-11ccf28a72f6
+		summarizeBy: none
+		sourceColumn: ProductID
+
+		annotation SummarizationSetBy = Automatic
+
+	column WarehouseID
+		dataType: int64
+		formatString: 0
+		lineageTag: 81d33439-f74d-463b-b7bb-fe1547dc1609
+		summarizeBy: none
+		sourceColumn: WarehouseID
+
+		annotation SummarizationSetBy = Automatic
+
+	column Date
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 921abb06-5554-465c-9258-238aa8756a06
+		summarizeBy: none
+		sourceColumn: Date
+
+		variation Variation
+			isDefault
+			relationship: f4263e50-556d-4d2f-91c2-7fa2589040ae
+			defaultHierarchy: LocalDateTable_51b17aef-026b-422f-bba4-db1487f21301.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	column InventoryAvailableQty
+		dataType: int64
+		formatString: 0
+		lineageTag: 48c1e5a9-ddb0-4cfd-9f1b-92595ced7e12
+		summarizeBy: sum
+		sourceColumn: InventoryAvailableQty
+
+		annotation SummarizationSetBy = Automatic
+
+	column ReservedQty
+		dataType: int64
+		formatString: 0
+		lineageTag: b0be130a-52c0-4e18-986d-b99154ece484
+		summarizeBy: sum
+		sourceColumn: ReservedQty
+
+		annotation SummarizationSetBy = Automatic
+
+	column PhysicalInventoryQty
+		dataType: int64
+		formatString: 0
+		lineageTag: c8315a50-b128-4b46-b404-56aa6d1034bf
+		summarizeBy: sum
+		sourceColumn: PhysicalInventoryQty
+
+		annotation SummarizationSetBy = Automatic
+
+	column Cost
+		dataType: double
+		lineageTag: d7775716-7d04-4faf-9c2d-dfa5fdb4e96c
+		summarizeBy: sum
+		sourceColumn: Cost
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column CostType
+		dataType: int64
+		formatString: 0
+		lineageTag: 1c9cf495-1621-426e-983c-69d29916d69e
+		summarizeBy: sum
+		sourceColumn: CostType
+
+		annotation SummarizationSetBy = Automatic
+
+	column InventoryValuation
+		dataType: double
+		lineageTag: 45eddf0b-e0a7-4849-abc5-b02c4bf40250
+		summarizeBy: sum
+		sourceColumn: InventoryValuation
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column LastCost
+		dataType: double
+		lineageTag: b2e3b009-bc41-461d-a1ba-80f5baa3b225
+		summarizeBy: sum
+		sourceColumn: LastCost
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column SiteCost
+		dataType: double
+		lineageTag: cc2f4a09-9db5-4eca-83c2-d7739f19c4a0
+		summarizeBy: sum
+		sourceColumn: SiteCost
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column AvgCost
+		dataType: double
+		lineageTag: ed1cbfd6-447c-48bd-970e-d448439bd67b
+		summarizeBy: sum
+		sourceColumn: AvgCost
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 0-30
+		dataType: int64
+		formatString: 0
+		lineageTag: f590fab7-c6f1-4fe5-905c-86de834813fd
+		summarizeBy: sum
+		sourceColumn: 0-30
+
+		annotation SummarizationSetBy = Automatic
+
+	column 31-60
+		dataType: int64
+		formatString: 0
+		lineageTag: 00c5a172-8fb1-4c76-ae2c-ffac21e72d39
+		summarizeBy: sum
+		sourceColumn: 31-60
+
+		annotation SummarizationSetBy = Automatic
+
+	column 61-90
+		dataType: int64
+		formatString: 0
+		lineageTag: d1ef5ef5-0dd6-4bfc-8854-af3ff6209e92
+		summarizeBy: sum
+		sourceColumn: 61-90
+
+		annotation SummarizationSetBy = Automatic
+
+	column 91-
+		dataType: int64
+		formatString: 0
+		lineageTag: d6c0f22b-3b05-4a6b-b455-1f2c6764b400
+		summarizeBy: sum
+		sourceColumn: 91-
+
+		annotation SummarizationSetBy = Automatic
+
+	column SitePrice
+		dataType: double
+		lineageTag: df6c772c-5027-47df-af4d-91ee21c5a752
+		summarizeBy: sum
+		sourceColumn: SitePrice
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column RetailValue
+		dataType: double
+		lineageTag: 0abdc294-68f5-4224-9ce8-e61184c64fc7
+		summarizeBy: sum
+		sourceColumn: RetailValue
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Warehouse Name' = RELATED(Warehouse[Name])
+		lineageTag: ac4ed932-cc61-499f-af9f-899e19af8302
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Inventory_PandL = m
+		mode: import
+		source =
+				let
+				    Source = Sql.Database("10.13.0.206", "SC"),
+				    FilteredQuery = Value.NativeQuery(Source, "
+				        SELECT *
+				        FROM dbo.Inventory_PandL
+				        WHERE [Date] >= DATEADD(YEAR, -1, GETDATE())
+				    "),
+				    #"Sorted Rows" = Table.Sort(FilteredQuery,{{"Date", Order.Ascending}})
+				in
+				    #"Sorted Rows"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

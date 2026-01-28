@@ -1,0 +1,16 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.5.0/schema.json",
+  "name": "6d1bd7697c89f9a769ea",
+  "position": {
+    "x": 747.41292398561814,
+    "y": 280.18329599479404,
+    "z": 9000,
+    "height": 128.95869191049914,
+    "width": 125.47332185886401,
+    "tabOrder": 18000
+  },
+  "visualGroup": {
+    "displayName": "OLD SKUS OOS",
+    "groupMode": "ScaleMode"
+  }
+}

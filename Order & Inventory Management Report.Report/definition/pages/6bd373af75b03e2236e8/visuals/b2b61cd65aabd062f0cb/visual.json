@@ -1,0 +1,16 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.5.0/schema.json",
+  "name": "b2b61cd65aabd062f0cb",
+  "position": {
+    "x": 1042.5,
+    "y": 140,
+    "z": 11000,
+    "height": 128.75,
+    "width": 220,
+    "tabOrder": 16000
+  },
+  "visualGroup": {
+    "displayName": "SHAEFER",
+    "groupMode": "ScaleMode"
+  }
+}

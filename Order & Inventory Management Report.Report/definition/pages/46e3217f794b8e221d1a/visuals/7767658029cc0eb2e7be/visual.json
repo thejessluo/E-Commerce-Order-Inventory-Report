@@ -1,0 +1,214 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.5.0/schema.json",
+  "name": "7767658029cc0eb2e7be",
+  "position": {
+    "x": 0,
+    "y": 30,
+    "z": 1000,
+    "height": 170,
+    "width": 250,
+    "tabOrder": 1000
+  },
+  "visual": {
+    "visualType": "textbox",
+    "objects": {
+      "general": [
+        {
+          "properties": {
+            "paragraphs": [
+              {
+                "textRuns": [
+                  {
+                    "value": "A:",
+                    "textStyle": {
+                      "fontWeight": "bold",
+                      "fontFamily": "DIN",
+                      "fontSize": "9pt"
+                    }
+                  },
+                  {
+                    "value": " An \"Aging Open Order\" is any order that was ",
+                    "textStyle": {
+                      "fontFamily": "DIN",
+                      "fontSize": "9pt"
+                    }
+                  },
+                  {
+                    "value": "created before 2:30pm yesterday",
+                    "textStyle": {
+                      "fontWeight": "bold",
+                      "fontFamily": "DIN",
+                      "fontSize": "9pt"
+                    }
+                  },
+                  {
+                    "value": " and is still ",
+                    "textStyle": {
+                      "fontFamily": "DIN",
+                      "fontSize": "9pt"
+                    }
+                  },
+                  {
+                    "value": "unshipped ",
+                    "textStyle": {
+                      "fontWeight": "bold",
+                      "fontFamily": "DIN",
+                      "fontSize": "9pt"
+                    }
+                  },
+                  {
+                    "value": "by the ",
+                    "textStyle": {
+                      "fontFamily": "DIN",
+                      "fontSize": "9pt"
+                    }
+                  },
+                  {
+                    "value": "warehouse",
+                    "textStyle": {
+                      "fontWeight": "bold",
+                      "fontFamily": "DIN",
+                      "fontSize": "9pt"
+                    }
+                  },
+                  {
+                    "value": ". Removes Dropship None orders.",
+                    "textStyle": {
+                      "fontFamily": "DIN",
+                      "fontSize": "9pt"
+                    }
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": ""
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "On Mondays, this range extends back to orders created the previous Friday at 2:30pm instead, to account for weekends. ",
+                    "textStyle": {
+                      "fontFamily": "DIN",
+                      "fontSize": "9pt"
+                    }
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": ""
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "AKA - any orders where [",
+                    "textStyle": {
+                      "fontFamily": "DIN",
+                      "fontSize": "9pt"
+                    }
+                  },
+                  {
+                    "value": "ShipDate] ",
+                    "textStyle": {
+                      "fontFamily": "DIN",
+                      "fontStyle": "italic",
+                      "fontSize": "9pt"
+                    }
+                  },
+                  {
+                    "value": "is Blank ",
+                    "textStyle": {
+                      "fontFamily": "DIN",
+                      "fontSize": "9pt"
+                    }
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "AND ",
+                    "textStyle": {
+                      "fontFamily": "DIN",
+                      "fontSize": "9pt"
+                    }
+                  },
+                  {
+                    "value": "[",
+                    "textStyle": {
+                      "fontSize": "9pt"
+                    }
+                  },
+                  {
+                    "value": "RecordCreatedOn",
+                    "textStyle": {
+                      "fontStyle": "italic",
+                      "fontSize": "9pt"
+                    }
+                  },
+                  {
+                    "value": "] < [",
+                    "textStyle": {
+                      "fontSize": "9pt"
+                    }
+                  },
+                  {
+                    "value": "CutoffDateTime",
+                    "textStyle": {
+                      "fontStyle": "italic",
+                      "fontSize": "9pt"
+                    }
+                  },
+                  {
+                    "value": "] ",
+                    "textStyle": {
+                      "fontSize": "9pt"
+                    }
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "AND [",
+                    "textStyle": {
+                      "fontSize": "9pt"
+                    }
+                  },
+                  {
+                    "value": "DropshipStatus",
+                    "textStyle": {
+                      "fontStyle": "italic",
+                      "fontSize": "9pt"
+                    }
+                  },
+                  {
+                    "value": "]",
+                    "textStyle": {
+                      "fontSize": "9pt"
+                    }
+                  },
+                  {
+                    "value": " <> None",
+                    "textStyle": {
+                      "fontStyle": "italic",
+                      "fontSize": "9pt"
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

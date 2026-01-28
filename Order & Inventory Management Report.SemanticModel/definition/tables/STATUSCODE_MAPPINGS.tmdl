@@ -1,0 +1,39 @@
+table STATUSCODE_MAPPINGS
+	isHidden
+	lineageTag: 60b4bc41-d66a-448d-91ce-7f7ed6736647
+
+	column STATUSCODE
+		dataType: string
+		isHidden
+		lineageTag: 5b51fad6-ab7a-4da5-afb4-b54597225f58
+		summarizeBy: none
+		sourceColumn: STATUSCODE
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column STATUSCODE_MAPPING
+		dataType: string
+		isHidden
+		lineageTag: 9ba306f2-fe50-4eb3-8d96-75197a4c9e32
+		summarizeBy: none
+		sourceColumn: STATUSCODE_MAPPING
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	partition STATUSCODE_MAPPINGS = m
+		mode: import
+		source =
+				let
+				    Source = Snowflake.Databases("zo76507.west-europe.azure.snowflakecomputing.com","WH_XSMALL_83818"),
+				    DATAHAWK_WRITABLE_83818_Database = Source{[Name="DATAHAWK_WRITABLE_83818",Kind="Database"]}[Data],
+				    SELLERCLOUD_DATA_Schema = DATAHAWK_WRITABLE_83818_Database{[Name="SELLERCLOUD_DATA",Kind="Schema"]}[Data],
+				    STATUSCODE_MAPPINGS_Table = SELLERCLOUD_DATA_Schema{[Name="STATUSCODE_MAPPINGS",Kind="Table"]}[Data]
+				in
+				    STATUSCODE_MAPPINGS_Table
+
+	changedProperty = IsHidden
+

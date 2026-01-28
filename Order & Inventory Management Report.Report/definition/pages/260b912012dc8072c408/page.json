@@ -1,0 +1,23 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/page/2.0.0/schema.json",
+  "name": "260b912012dc8072c408",
+  "displayName": "🖥️ Open Orders Dashboard",
+  "displayOption": "ActualSize",
+  "height": 810,
+  "width": 1440,
+  "objects": {
+    "outspacePane": [
+      {
+        "properties": {
+          "width": {
+            "expr": {
+              "Literal": {
+                "Value": "260L"
+              }
+            }
+          }
+        }
+      }
+    ]
+  }
+}

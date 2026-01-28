@@ -1,0 +1,262 @@
+table RMA
+	lineageTag: df679a22-a276-45ec-85fd-6bc5c0928505
+
+	column ID
+		dataType: int64
+		formatString: 0
+		lineageTag: 1823cba0-2e8b-4e41-99a8-2b20f32751fb
+		summarizeBy: none
+		sourceColumn: ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column CreatedBy
+		dataType: int64
+		formatString: 0
+		lineageTag: 8972d678-ff4a-4818-abd6-f98e2a3c45ec
+		summarizeBy: sum
+		sourceColumn: CreatedBy
+
+		annotation SummarizationSetBy = Automatic
+
+	column CreatedOn
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 48fc0a20-5554-4f9f-a9d6-6918bcaed44a
+		summarizeBy: none
+		sourceColumn: CreatedOn
+
+		variation Variation
+			isDefault
+			relationship: 7f8f6915-646d-4c4c-9072-1f1c897e3d50
+			defaultHierarchy: LocalDateTable_a8902aa4-9288-4f67-aa7e-b3e53fe02448.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	column StatusCode
+		dataType: int64
+		formatString: 0
+		lineageTag: 2de3f8b8-148a-499a-a173-48695d2c7a73
+		summarizeBy: count
+		sourceColumn: StatusCode
+
+		annotation SummarizationSetBy = Automatic
+
+	column CustomerID
+		dataType: int64
+		formatString: 0
+		lineageTag: 1e577503-e572-4f4c-923f-c80e8464d4ea
+		summarizeBy: count
+		sourceColumn: CustomerID
+
+		annotation SummarizationSetBy = Automatic
+
+	column LastUpdatedOn
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 1044a401-01ef-40f9-994c-10da609fc94a
+		summarizeBy: none
+		sourceColumn: LastUpdatedOn
+
+		variation Variation
+			isDefault
+			relationship: f01dd361-169e-4366-8bca-1e77149405b4
+			defaultHierarchy: LocalDateTable_faedb591-cbce-46c2-a638-aa498319c937.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	column LastUpdatedBy
+		dataType: int64
+		formatString: 0
+		lineageTag: d348a392-27db-45ed-bc98-debcf78dd672
+		summarizeBy: sum
+		sourceColumn: LastUpdatedBy
+
+		annotation SummarizationSetBy = Automatic
+
+	column VendorRMANumber
+		dataType: string
+		lineageTag: 697bbf83-9bbe-4e19-b9d3-cee06d78bc49
+		summarizeBy: none
+		sourceColumn: VendorRMANumber
+
+		annotation SummarizationSetBy = Automatic
+
+	column CreditMemoID
+		dataType: int64
+		formatString: 0
+		lineageTag: 20f73494-afe2-4a0b-9527-4648fb421f76
+		summarizeBy: count
+		sourceColumn: CreditMemoID
+
+		annotation SummarizationSetBy = Automatic
+
+	column ShipViaSourceRMAID
+		dataType: string
+		lineageTag: a7a2d06c-604c-42cc-9944-1a9ff65f2d2f
+		summarizeBy: none
+		sourceColumn: ShipViaSourceRMAID
+
+		annotation SummarizationSetBy = Automatic
+
+	column ShipViaSourceRMAUpdatedOn
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: ecb026ac-123b-40fa-ad41-887a5fbfc7af
+		summarizeBy: none
+		sourceColumn: ShipViaSourceRMAUpdatedOn
+
+		variation Variation
+			isDefault
+			relationship: 0165c9df-0357-4f00-9429-0f57bfcdefc6
+			defaultHierarchy: LocalDateTable_7d2f0235-9e95-4a6e-bf54-3021771d87a2.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	column ClosedOn
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: f49e80ef-f646-448b-a261-5d0258f1b096
+		summarizeBy: none
+		sourceColumn: ClosedOn
+
+		variation Variation
+			isDefault
+			relationship: cfd27c59-2464-4559-a81a-64c809085564
+			defaultHierarchy: LocalDateTable_7fa346ad-1836-418f-8738-c2ab143b40be.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	column ReceivedOn
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 8d942de1-1b46-4973-a4d7-9b4cd54e82cf
+		summarizeBy: none
+		sourceColumn: ReceivedOn
+
+		variation Variation
+			isDefault
+			relationship: 8bad67d5-ab25-4635-ba24-11e3dffb588c
+			defaultHierarchy: LocalDateTable_ad2646d5-037b-4ca4-a5ec-2a4ad0e1ba1a.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	column ReceivedBy
+		dataType: int64
+		formatString: 0
+		lineageTag: 1677242a-09b7-4ce7-ac38-e0f82292885a
+		summarizeBy: sum
+		sourceColumn: ReceivedBy
+
+		annotation SummarizationSetBy = Automatic
+
+	column ARSLabelNumber
+		dataType: string
+		lineageTag: b8a41872-8c4f-4a7e-990a-3c14281f5672
+		summarizeBy: none
+		sourceColumn: ARSLabelNumber
+
+		annotation SummarizationSetBy = Automatic
+
+	column OrderSourceAcknowledged
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 862f82bb-6f6f-47f1-bb02-a83f525834d6
+		summarizeBy: none
+		sourceColumn: OrderSourceAcknowledged
+
+		annotation SummarizationSetBy = Automatic
+
+	column OrderSourceAcknowledgedOn
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 6cf08009-b529-4611-9ea4-9bc8f663c860
+		summarizeBy: none
+		sourceColumn: OrderSourceAcknowledgedOn
+
+		variation Variation
+			isDefault
+			relationship: eb74d3cc-26a2-4d0e-9dea-5e5834364747
+			defaultHierarchy: LocalDateTable_cb1f77cc-3aab-48fe-8418-d5e96bcfd410.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	column IsExported
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: a3c964b0-8457-46d6-9eaf-b23dc5825202
+		summarizeBy: none
+		sourceColumn: IsExported
+
+		annotation SummarizationSetBy = Automatic
+
+	column QBExported
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: bd662031-ff62-4564-87f2-1a2b4c1a1f4a
+		summarizeBy: none
+		sourceColumn: QBExported
+
+		annotation SummarizationSetBy = Automatic
+
+	column HasAlert
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: f6c8cfef-8800-4ac8-ac13-8b3885225596
+		summarizeBy: none
+		sourceColumn: HasAlert
+
+		annotation SummarizationSetBy = Automatic
+
+	column AlertMessage
+		dataType: string
+		lineageTag: 1c508f1a-fc6a-4f76-9275-83067b57fbd5
+		summarizeBy: none
+		sourceColumn: AlertMessage
+
+		annotation SummarizationSetBy = Automatic
+
+	column TrackingNumber
+		dataType: string
+		lineageTag: 81d1f291-a326-4e5c-9601-588d60bf15e6
+		summarizeBy: none
+		sourceColumn: TrackingNumber
+
+		annotation SummarizationSetBy = Automatic
+
+	column CreatedForOrderID
+		dataType: int64
+		formatString: 0
+		lineageTag: e67ef954-935d-41be-9434-b6a1c88cbd47
+		summarizeBy: count
+		sourceColumn: CreatedForOrderID
+
+		annotation SummarizationSetBy = Automatic
+
+	column ApprovalStatus
+		dataType: int64
+		formatString: 0
+		lineageTag: 293e18fe-aba4-44b9-851e-97221aa05a46
+		summarizeBy: sum
+		sourceColumn: ApprovalStatus
+
+		annotation SummarizationSetBy = Automatic
+
+	column IsSubmittedToPVX
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: add0de89-f765-4dd2-8853-899c740d7ec3
+		summarizeBy: none
+		sourceColumn: IsSubmittedToPVX
+
+		annotation SummarizationSetBy = Automatic
+
+	partition RMA = m
+		mode: import
+		source =
+				let
+				    Source = Sql.Database("10.13.0.206", "SC"),
+				    dbo_RMA = Source{[Schema="dbo",Item="RMA"]}[Data]
+				in
+				    dbo_RMA
+

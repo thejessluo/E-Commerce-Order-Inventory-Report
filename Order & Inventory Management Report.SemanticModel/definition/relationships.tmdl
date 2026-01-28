@@ -1,0 +1,651 @@
+relationship 584d53e4-a241-49e5-b43a-aefd5b6c1a28
+	joinOnDateBehavior: datePartOnly
+	fromColumn: Amazon_Merchants.LastUpdatedOn
+	toColumn: LocalDateTable_b81106a4-614c-4620-87d9-1090a6028abd.Date
+
+relationship 8592b1fd-e4db-4e21-801c-95eb77e64279
+	joinOnDateBehavior: datePartOnly
+	fromColumn: Amazon_Merchants.OverStockAuthenticatedOn
+	toColumn: LocalDateTable_b0f7befb-a315-4504-ad74-b7dcfa2204c9.Date
+
+relationship 3943c50e-0632-49dc-8f25-31637cf23f70
+	joinOnDateBehavior: datePartOnly
+	fromColumn: Amazon_Merchants.LinkShare_FeedLastGeneratedOn
+	toColumn: LocalDateTable_5fc55ee2-9215-4ddd-9762-ab6306c2bbc1.Date
+
+relationship f3a2043b-cc76-4234-b3bb-31fb85cece80
+	joinOnDateBehavior: datePartOnly
+	fromColumn: Amazon_Merchants.OrderDownloadDateLimitAmazon
+	toColumn: LocalDateTable_1c5934aa-0696-4c49-a7bb-26c9d7cd4dbc.Date
+
+relationship cfdca4b8-b62e-442a-a996-a14ed28c8f1a
+	joinOnDateBehavior: datePartOnly
+	fromColumn: Amazon_Merchants.FlickrAuthenticatedOn
+	toColumn: LocalDateTable_d2399b2e-86dd-4f49-8aeb-8ffde1db850a.Date
+
+relationship 8d2f998f-e719-4f11-8df6-be9b7365dcec
+	joinOnDateBehavior: datePartOnly
+	fromColumn: Amazon_Merchants.eBayOrderDownloadDateLimit
+	toColumn: LocalDateTable_2aa005a5-8d40-498e-aa43-f764443d5139.Date
+
+relationship ffde3c72-f86e-4ee1-8d6f-ffee04adb0f8
+	joinOnDateBehavior: datePartOnly
+	fromColumn: Amazon_Merchants.NetworkSolutionsTokenVerifiedOn
+	toColumn: LocalDateTable_79697572-8925-4c87-9525-591dbd6c34fd.Date
+
+relationship a9e1ec98-a06c-421e-af7e-6a40f45c4ed1
+	joinOnDateBehavior: datePartOnly
+	fromColumn: Amazon_Merchants.NetworkSolutionsTokenExpiresOn
+	toColumn: LocalDateTable_25b30f97-4398-4df6-b856-918a5efd4e6e.Date
+
+relationship 0b0ff558-960d-494b-8fbf-caa3581ce663
+	joinOnDateBehavior: datePartOnly
+	fromColumn: Amazon_Merchants.WebSiteOrderCreateLimitDate
+	toColumn: LocalDateTable_d8cede15-2eb4-475f-b409-1de36c6d8e8d.Date
+
+relationship c7e35723-d7ab-489c-8c3f-e8c51da4046d
+	joinOnDateBehavior: datePartOnly
+	fromColumn: Amazon_Merchants.OverStock_OrderDownloadDateLimitDate
+	toColumn: LocalDateTable_965c95f4-cf3d-4cb4-a0c0-c09afaf63995.Date
+
+relationship 6fec2c40-d637-43cd-94f6-bbab441dd233
+	joinOnDateBehavior: datePartOnly
+	fromColumn: Amazon_Merchants.NewEggDotComOrderDownloadLimitDate
+	toColumn: LocalDateTable_df8ab239-1016-4524-9922-9bf2201828e7.Date
+
+relationship 7ca3bbb6-f89e-4550-855a-c534d0d73b10
+	joinOnDateBehavior: datePartOnly
+	fromColumn: Amazon_Merchants.BuyDotComAPIIssuedOn
+	toColumn: LocalDateTable_c606f62e-29d6-4e9c-828d-129cb7d349b8.Date
+
+relationship 151bf9a5-df14-40b6-8293-84a91eca73bf
+	joinOnDateBehavior: datePartOnly
+	fromColumn: Amazon_Merchants.BuyDotComAPIExpiresOn
+	toColumn: LocalDateTable_4d5a7667-7039-4e35-9f81-e2c15c3cf207.Date
+
+relationship af608fbb-e541-408d-ac30-eff9d1216e58
+	joinOnDateBehavior: datePartOnly
+	fromColumn: Amazon_Merchants.AmazonMWSAuthTokenExpiresOn
+	toColumn: LocalDateTable_07929841-00c2-450a-9302-e0b368bdfb51.Date
+
+relationship c9d91199-e081-4996-a263-459210abbbd7
+	joinOnDateBehavior: datePartOnly
+	fromColumn: Amazon_Merchants.YahooOrderDownloadLimitDate
+	toColumn: LocalDateTable_937e5fa6-b1e6-48fd-9c22-3749bd28a91d.Date
+
+relationship 119f54b7-5bed-4ad1-a548-cb0846f308fb
+	joinOnDateBehavior: datePartOnly
+	fromColumn: Amazon_Merchants.AmazonAdvertisingAPITokenExpireOn
+	toColumn: LocalDateTable_5bb17fe4-35fc-4bb0-b3f7-09fd2a239de3.Date
+
+relationship acd8c1d1-3c06-4e10-b60f-632aa778f6b1
+	joinOnDateBehavior: datePartOnly
+	fromColumn: Amazon_Merchants.AmazonAdvertisingAPITokenReceivedOn
+	toColumn: LocalDateTable_ae725863-defd-4bc1-bd21-3ece5afafbff.Date
+
+relationship eed08250-27b7-4e02-9c73-a981c97d65ac
+	joinOnDateBehavior: datePartOnly
+	fromColumn: Amazon_Merchants.SearsOrderDownloadLimitDate
+	toColumn: LocalDateTable_073704bb-d851-4cba-8b4f-4ced3a47d10a.Date
+
+relationship d146d514-c3bc-409e-857e-d2dea3fb41ef
+	joinOnDateBehavior: datePartOnly
+	fromColumn: bvc_OrderItem.BackOrderActionDate
+	toColumn: LocalDateTable_45861314-5e4a-415e-a2e1-4704f3adc9c3.Date
+
+relationship b6b1f018-d149-4084-b12f-bd2a4ffe9dfb
+	joinOnDateBehavior: datePartOnly
+	fromColumn: bvc_OrderItem.EstimatedTimeArrival
+	toColumn: LocalDateTable_2e558a39-8553-4ad1-92f8-4dd0894a21a4.Date
+
+relationship 6301330f-36a6-42b5-81d7-d503b00bff1d
+	joinOnDateBehavior: datePartOnly
+	fromColumn: bvc_OrderItem.FeedBackReminderSent
+	toColumn: LocalDateTable_3a6565e8-d6c2-4815-ab53-81255a4741f3.Date
+
+relationship b92fb18c-2d21-4747-b181-71c573ecdc71
+	joinOnDateBehavior: datePartOnly
+	fromColumn: bvc_OrderItem.BackOrderDate
+	toColumn: LocalDateTable_82974398-3b0c-4e7f-8e8c-7791726bcaa1.Date
+
+relationship 6b53107e-b444-4eda-8155-2c386f87378b
+	joinOnDateBehavior: datePartOnly
+	fromColumn: bvc_OrderItem.EstimatedShipDate
+	toColumn: LocalDateTable_76e5826f-d9d9-427f-8afb-83bb9d1d0fd5.Date
+
+relationship ff840857-c9b1-4c78-91c1-58747dedbe30
+	joinOnDateBehavior: datePartOnly
+	fromColumn: bvc_OrderItem.FeedbackLeftOn
+	toColumn: LocalDateTable_7ffb6311-4d8d-42d6-8302-540a213ff75f.Date
+
+relationship 76ce0063-56e4-4ad7-94df-9d136cb3e5f5
+	joinOnDateBehavior: datePartOnly
+	fromColumn: bvc_OrderItem.DropShippedOn
+	toColumn: LocalDateTable_f4df6e6b-5608-44a6-bfc2-bff96e020d86.Date
+
+relationship 578b3f06-d83f-4b03-a03f-dbc5867d6c85
+	joinOnDateBehavior: datePartOnly
+	fromColumn: bvc_OrderItem.FeedBackLastFailureOn
+	toColumn: LocalDateTable_93c2c625-e01a-4f57-9bc8-ccddfc44f794.Date
+
+relationship a240782c-b8eb-4151-bb30-0419b63a6362
+	joinOnDateBehavior: datePartOnly
+	fromColumn: bvc_OrderItem.SrcUpdatedForItemShippingOn
+	toColumn: LocalDateTable_e36ad7ff-f150-40c8-b3eb-083a6036476b.Date
+
+relationship 9f7c02a0-96ba-49a0-978a-da3b030d246e
+	joinOnDateBehavior: datePartOnly
+	fromColumn: bvc_OrderItem.BatchExportedDateTime
+	toColumn: LocalDateTable_3a15cde4-8f05-47d3-9ba6-22202c32f038.Date
+
+relationship 16669110-c5e8-42fc-903c-5b8e2a4c2ca8
+	joinOnDateBehavior: datePartOnly
+	fromColumn: bvc_OrderItem.BatchExportDeliveryDateTime
+	toColumn: LocalDateTable_e4180eb2-4883-4afe-bb36-12e1892e6933.Date
+
+relationship c0b5b6c2-d1c0-43ff-be58-2f7c96aca757
+	joinOnDateBehavior: datePartOnly
+	fromColumn: bvc_OrderItem.BatchExportReturnDateTime
+	toColumn: LocalDateTable_997fc0a0-15a1-4a92-8f6d-049569ec83b5.Date
+
+relationship df5d2fcf-13f2-4d6c-b8a7-84477b293539
+	joinOnDateBehavior: datePartOnly
+	fromColumn: bvc_OrderItem.WholesaleConfirmShipDate
+	toColumn: LocalDateTable_232252a9-b660-4945-ac88-742816a957ca.Date
+
+relationship ca421e39-7f16-4eed-a269-7aefbb11c0bf
+	joinOnDateBehavior: datePartOnly
+	fromColumn: bvc_OrderItem.WholesaleBackOrderShipDate
+	toColumn: LocalDateTable_4cb39db2-24d1-4259-b9e0-760486eee4b5.Date
+
+relationship 3bc29b5c-bcae-4b47-ad68-4710a2b3db1f
+	joinOnDateBehavior: datePartOnly
+	fromColumn: bvc_OrderItem.OrderItemShipDate
+	toColumn: LocalDateTable_00ce6c0a-cf86-467f-af7a-56f3dfd4d5dc.Date
+
+relationship 855c473c-1cf9-4112-9046-3222ba0dc884
+	joinOnDateBehavior: datePartOnly
+	fromColumn: bvc_Package.ShipDate
+	toColumn: LocalDateTable_b47855c2-8651-4ff4-9fea-9e942940924c.Date
+
+relationship e21b45bd-14f5-4d53-a20e-ee3b103f99c0
+	joinOnDateBehavior: datePartOnly
+	fromColumn: bvc_Package.DeliveryDate
+	toColumn: LocalDateTable_feccbffd-a582-415a-80c3-6de9543773de.Date
+
+relationship 0736b1fc-49fa-46b1-a381-8566306496b3
+	joinOnDateBehavior: datePartOnly
+	fromColumn: Warehouse.CreatedOn
+	toColumn: LocalDateTable_1d6408ac-7275-4c80-81ae-3263669a4e27.Date
+
+relationship 0e40a3a3-246b-4fc1-9576-f5eab32c5afe
+	joinOnDateBehavior: datePartOnly
+	fromColumn: Warehouse.EnforceBinsEnabledOn
+	toColumn: LocalDateTable_705a2d02-3e2a-4da7-acb0-bd763837b141.Date
+
+relationship 25ad30d4-88ae-4619-8c73-919b3db1f27c
+	fromColumn: bvc_OrderItem.ShipFromWareHouseID
+	toColumn: Warehouse.ID
+
+relationship a80f0202-78b6-3a26-ea8b-044afad787e7
+	fromColumn: bvc_OrderItem.ProductID
+	toColumn: Product.ID
+
+relationship c12d2ef5-8bf6-4319-9ccc-6b3c61fbbcfd
+	joinOnDateBehavior: datePartOnly
+	fromColumn: Product.AggregateLastDate
+	toColumn: LocalDateTable_b11ed0d8-cb78-4b2d-b4d6-c20944838fae.Date
+
+relationship 336e79a1-690a-412d-b81a-396eddf8de65
+	joinOnDateBehavior: datePartOnly
+	fromColumn: Product.DateModified
+	toColumn: LocalDateTable_dc6ad71f-d8b9-42f5-8982-f9d103420f83.Date
+
+relationship cf98fba3-b52a-4a96-83dc-2fc559b0d477
+	joinOnDateBehavior: datePartOnly
+	fromColumn: Product.LastInventoryChangeDate
+	toColumn: LocalDateTable_8520304c-ee15-4c4a-8b08-d0e2f09a2fa3.Date
+
+relationship 74add57d-11fa-4e4d-a065-936fe38d9bc7
+	joinOnDateBehavior: datePartOnly
+	fromColumn: bvc_Product_InventoryLog.LogDate
+	toColumn: LocalDateTable_4022267d-6c08-4132-8269-9a0b7b74153e.Date
+
+relationship d40e3a5c-5e16-474e-bd88-386f921b7219
+	joinOnDateBehavior: datePartOnly
+	fromColumn: PurchaseItem.UpdatedOn
+	toColumn: LocalDateTable_de685071-b67c-402b-b9fb-80f086ae0ce6.Date
+
+relationship ee448df5-9efe-407e-8e85-4b53b903e2a9
+	joinOnDateBehavior: datePartOnly
+	fromColumn: PurchaseItem.ExpectedDeliveryDate
+	toColumn: LocalDateTable_5f1bf702-b5eb-4e97-8037-79578a3c62f8.Date
+
+relationship 159754ac-c66b-45ab-838d-6424a4a6d3de
+	joinOnDateBehavior: datePartOnly
+	fromColumn: PurchaseItem.PreSaleDate
+	toColumn: LocalDateTable_0028bc40-5978-4805-b395-e30a16037baf.Date
+
+relationship d5d5273a-c2b2-4b91-8fa7-9ba96d4f0878
+	joinOnDateBehavior: datePartOnly
+	fromColumn: vw_PurchaseOrderFullText.CreatedOn
+	toColumn: LocalDateTable_d705d5ed-ffc8-4e3b-ac1f-3721e2750aaa.Date
+
+relationship cf5068ea-606b-4370-88c4-3c30a3b9d40c
+	joinOnDateBehavior: datePartOnly
+	fromColumn: Purchase.CreatedOn
+	toColumn: LocalDateTable_a6d4fcd8-9e30-40a5-816c-28af633a1c29.Date
+
+relationship 1d4ef573-bed4-4860-9645-e536913d8ef8
+	joinOnDateBehavior: datePartOnly
+	fromColumn: Purchase.DateOrdered
+	toColumn: LocalDateTable_3511fc83-b929-4b2b-ab54-076abc7088a4.Date
+
+relationship e1a5823b-f7e0-472e-abd5-a33311983a9f
+	joinOnDateBehavior: datePartOnly
+	fromColumn: Purchase.LastRevisedOn
+	toColumn: LocalDateTable_27ce484f-0855-458e-b797-9f1666449d94.Date
+
+relationship 0040b8a4-77a4-4478-8773-68107f650829
+	joinOnDateBehavior: datePartOnly
+	fromColumn: Purchase.ShippedOn
+	toColumn: LocalDateTable_5a1e6a24-973f-4e07-8148-26a2aa0b69f8.Date
+
+relationship 3452e4b1-8b23-4c01-89c1-de91a9caea65
+	joinOnDateBehavior: datePartOnly
+	fromColumn: Purchase.ExpectedDeliveryDate
+	toColumn: LocalDateTable_4e825b14-d4a2-4a79-b7db-0041b033b8ec.Date
+
+relationship e2162394-914a-44f2-afbc-9d90d1317202
+	joinOnDateBehavior: datePartOnly
+	fromColumn: Purchase.EmailSentOn
+	toColumn: LocalDateTable_4dc02e08-e2bf-437f-9b4f-4cb738db4775.Date
+
+relationship 79152cd9-4182-473b-a7da-f8fb31c7c1e4
+	joinOnDateBehavior: datePartOnly
+	fromColumn: Purchase.ApprovedOn
+	toColumn: LocalDateTable_b740804c-0f9f-4d24-8880-821db6da9224.Date
+
+relationship e894e387-1d67-4ed6-b356-24951183441d
+	joinOnDateBehavior: datePartOnly
+	fromColumn: Purchase.InvoiceDate
+	toColumn: LocalDateTable_554f6daf-d60b-496c-84a6-b554c63834fa.Date
+
+relationship 9661b6b9-2188-480e-ac71-f439ecc31a84
+	joinOnDateBehavior: datePartOnly
+	fromColumn: Purchase.POManuallyClosedOn
+	toColumn: LocalDateTable_90895644-4e7f-4f97-b5c4-6a75caa539d3.Date
+
+relationship b1cf7988-0639-4a64-916e-314d1cfdb555
+	joinOnDateBehavior: datePartOnly
+	fromColumn: Purchase.CancelledOn
+	toColumn: LocalDateTable_10de15a8-5871-4f72-be63-af2038084bf6.Date
+
+relationship 4b49eda4-24d3-4f2a-abe6-7536911bc0cb
+	joinOnDateBehavior: datePartOnly
+	fromColumn: Purchase.CancelByDate
+	toColumn: LocalDateTable_7b8f4ecb-537c-4028-ba5d-c4bbcc97b3bb.Date
+
+relationship 7037ae43-fec3-4783-91cc-16979635d94e
+	joinOnDateBehavior: datePartOnly
+	fromColumn: Purchase.ExportedOn
+	toColumn: LocalDateTable_25cac92f-15dc-4e5a-bf7f-aad6e7e6726a.Date
+
+relationship 62d747cf-ff94-4de6-8b91-7caf687c049f
+	joinOnDateBehavior: datePartOnly
+	fromColumn: Purchase.ReceiveLockAcquiredUntil
+	toColumn: LocalDateTable_9bd3abc8-5616-4299-9fe6-55c242fad907.Date
+
+relationship 6301fd84-434b-425c-9d34-e52e147ca0a4
+	joinOnDateBehavior: datePartOnly
+	fromColumn: Purchase.RequestedOn
+	toColumn: LocalDateTable_fc229a7e-8792-46dd-b288-f0f0598268d1.Date
+
+relationship 43154dbd-fd67-eba4-f551-2d68ebbb2a20
+	fromColumn: Purchase.Status
+	toColumn: PO_STATUS_MAPPINGS.PO_STATUS_CODE
+
+relationship 4a93d12c-4ba0-bacc-e141-ca62bfcc0ebc
+	fromColumn: Purchase.ReceivingStatus
+	toColumn: RECEIVEDSTATUS_MAPPINGS.RECEIVINGSTATUS
+
+relationship 7ab43fc1-7919-4a66-8f08-a0d2d34dec5d
+	joinOnDateBehavior: datePartOnly
+	fromColumn: MERGED_PO_ITEMS_TABLE.UpdatedOn
+	toColumn: LocalDateTable_1e704554-a45d-4933-8f21-3fa0f937fa64.Date
+
+relationship ed493f0f-2be0-4608-b6b4-d08fb9ecc236
+	joinOnDateBehavior: datePartOnly
+	fromColumn: MERGED_PO_ITEMS_TABLE.ExpectedDeliveryDate
+	toColumn: LocalDateTable_ef93904d-d4a5-4c03-a495-c00a5103d2ea.Date
+
+relationship 0cacf1a5-8c7e-43c2-8f9a-939b50541e44
+	joinOnDateBehavior: datePartOnly
+	fromColumn: MERGED_PO_ITEMS_TABLE.PreSaleDate
+	toColumn: LocalDateTable_cc72fb38-76ab-4ff5-b6e9-62415bb1b8ee.Date
+
+relationship 8ff5d9ec-5076-45dc-91b4-41db86e848ef
+	joinOnDateBehavior: datePartOnly
+	fromColumn: MERGED_PO_ITEMS_TABLE.CreatedOn
+	toColumn: LocalDateTable_d2dd2a7b-1e63-40b9-a8aa-3574259e5bbf.Date
+
+relationship 4c0bbc7e-4004-30a8-44f1-82ec28b1db46
+	fromColumn: MERGED_PO_ITEMS_TABLE.ProductID
+	toColumn: Product.ID
+
+relationship df25a80f-4bf4-893d-04a3-546ff0285452
+	fromColumn: MERGED_PO_ITEMS_TABLE.PurchaseID
+	toColumn: Purchase.ID
+
+relationship c7bf880f-1285-4147-bfb6-f12949827224
+	joinOnDateBehavior: datePartOnly
+	fromColumn: BVC_ORDER.TimeOfOrder
+	toColumn: LocalDateTable_a03057e1-d2b0-47e9-b14d-928ae70f96fd.Date
+
+relationship 7d14d0a5-222a-4c52-9bee-0e5759911928
+	joinOnDateBehavior: datePartOnly
+	fromColumn: BVC_ORDER.LastUpdated
+	toColumn: LocalDateTable_70a33bb6-fe92-4229-b3b4-01497c5219fe.Date
+
+relationship 331c6fc0-e01c-4030-a00f-818c27cc0c86
+	joinOnDateBehavior: datePartOnly
+	fromColumn: BVC_ORDER.SrcUpdatedOnForShipping
+	toColumn: LocalDateTable_4c00524b-9992-4659-bded-a72798acb0a5.Date
+
+relationship 7da70c4f-c648-4373-a98d-d494e784ba98
+	joinOnDateBehavior: datePartOnly
+	fromColumn: BVC_ORDER.RecordCreatedOn
+	toColumn: LocalDateTable_1c08633b-1690-4fb3-bbe1-1943317426fc.Date
+
+relationship 51bfd948-240e-4c2b-92eb-b39aa6813ede
+	joinOnDateBehavior: datePartOnly
+	fromColumn: BVC_ORDER.TimeOfOrderOriginal
+	toColumn: LocalDateTable_6d42cf5b-c624-40f7-954f-8dae71d91bb3.Date
+
+relationship b2d34ffb-2a85-4ad6-a8b0-6e9b29436098
+	joinOnDateBehavior: datePartOnly
+	fromColumn: BVC_ORDER.ShipDate
+	toColumn: LocalDateTable_bebdc8e9-282e-47db-b29c-3b2aa3410fb8.Date
+
+relationship 7c1c5985-79f6-40d5-a53c-8405fa844172
+	joinOnDateBehavior: datePartOnly
+	fromColumn: BVC_ORDER.OrderShippingPromiseDate
+	toColumn: LocalDateTable_30084f1f-636d-4dc0-b29b-25de2f7d23eb.Date
+
+relationship 6106b6c0-046a-4857-a0d7-3c3aef42cae4
+	joinOnDateBehavior: datePartOnly
+	fromColumn: BVC_ORDER.SettlementDataAvailableDate
+	toColumn: LocalDateTable_c7d93aab-df9d-4505-ae2c-c7730aa7a543.Date
+
+relationship f446ee87-ff9b-4ee3-a43d-bea21c02bef7
+	joinOnDateBehavior: datePartOnly
+	fromColumn: BVC_ORDER.EstimatedDeliveryDate
+	toColumn: LocalDateTable_1f09f48d-dfb8-46ba-938d-75b73b504a80.Date
+
+relationship c9a24575-c00b-4011-a1a7-d15092380df2
+	joinOnDateBehavior: datePartOnly
+	fromColumn: BVC_ORDER.UnShippedOn
+	toColumn: LocalDateTable_e6162206-6136-42ee-847b-d598db9c1973.Date
+
+relationship b90f6855-effb-451f-930d-447f17d061ec
+	joinOnDateBehavior: datePartOnly
+	fromColumn: BVC_ORDER.LastShipDataDate
+	toColumn: LocalDateTable_a4562e8f-6c21-4a5e-acb4-67a6ea730bbb.Date
+
+relationship 08f54834-e4d0-1839-835d-f8e938814b98
+	fromColumn: BVC_ORDER.CompanyID
+	toColumn: Amazon_Merchants.ID
+
+relationship e3a8accf-ae3f-2f67-5246-bdaf3fb6bd92
+	fromColumn: BVC_ORDER.OrderSource
+	toColumn: OrderSource.OrderSource
+
+relationship 628898f7-6d62-3a5d-4fc3-929678264615
+	fromColumn: bvc_OrderItem.OrderID
+	toColumn: BVC_ORDER.ID
+
+relationship e069fa4c-1258-33b7-0495-c9c3a594bf21
+	fromColumn: BVC_ORDER.StatusCode
+	toColumn: STATUSCODE_MAPPINGS.STATUSCODE
+
+relationship 3632ac84-39d3-7c91-ea4a-6d1870766aa3
+	fromColumn: BVC_ORDER.ShippingStatus
+	toColumn: SHIPPINGSTATUS_MAPPINGS.SHIPPINGSTATUS
+
+relationship 7a43e262-47b1-ce75-9d5c-d3fc1004a981
+	fromColumn: bvc_Package.DeliveryStatus
+	toColumn: DELIVERYSTATUS_MAPPINGS.DELIVERYSTATUS
+
+relationship 3480e3ee-9c7d-4cb2-a64a-f24de3e4142d
+	joinOnDateBehavior: datePartOnly
+	fromColumn: BVC_ORDER.'RecordCreatedOn - Copy'
+	toColumn: LocalDateTable_ef1787a9-f766-4eac-9ff8-1cc27d249a8d.Date
+
+relationship 71abe06e-4442-4fde-a4ec-6bac2f557b1e
+	joinOnDateBehavior: datePartOnly
+	fromColumn: BVC_ORDER.'Ship Date'
+	toColumn: LocalDateTable_5de523a0-6534-4ff4-a81b-a597a6a9e4d9.Date
+
+relationship ccb2c925-d6ed-dfa5-eb90-878b219d7e44
+	fromColumn: bvc_OrderItem.ProductID
+	toColumn: SELLERCLOUD_PRODUCT_IMAGES.PRODUCTID
+
+relationship 29cc6456-461a-137b-37a2-40ef709f3ff9
+	fromColumn: MERGED_PO_ITEMS_TABLE.ProductID
+	toColumn: SELLERCLOUD_PRODUCT_IMAGES.PRODUCTID
+
+relationship 14da510b-5b86-419f-beb4-74f426e9cd55
+	joinOnDateBehavior: datePartOnly
+	fromColumn: RMAItem.ArrivedOn
+	toColumn: LocalDateTable_152c527b-e028-451d-9f30-a04cac326338.Date
+
+relationship 7f8f6915-646d-4c4c-9072-1f1c897e3d50
+	joinOnDateBehavior: datePartOnly
+	fromColumn: RMA.CreatedOn
+	toColumn: LocalDateTable_a8902aa4-9288-4f67-aa7e-b3e53fe02448.Date
+
+relationship f01dd361-169e-4366-8bca-1e77149405b4
+	joinOnDateBehavior: datePartOnly
+	fromColumn: RMA.LastUpdatedOn
+	toColumn: LocalDateTable_faedb591-cbce-46c2-a638-aa498319c937.Date
+
+relationship 0165c9df-0357-4f00-9429-0f57bfcdefc6
+	joinOnDateBehavior: datePartOnly
+	fromColumn: RMA.ShipViaSourceRMAUpdatedOn
+	toColumn: LocalDateTable_7d2f0235-9e95-4a6e-bf54-3021771d87a2.Date
+
+relationship cfd27c59-2464-4559-a81a-64c809085564
+	joinOnDateBehavior: datePartOnly
+	fromColumn: RMA.ClosedOn
+	toColumn: LocalDateTable_7fa346ad-1836-418f-8738-c2ab143b40be.Date
+
+relationship 8bad67d5-ab25-4635-ba24-11e3dffb588c
+	joinOnDateBehavior: datePartOnly
+	fromColumn: RMA.ReceivedOn
+	toColumn: LocalDateTable_ad2646d5-037b-4ca4-a5ec-2a4ad0e1ba1a.Date
+
+relationship eb74d3cc-26a2-4d0e-9dea-5e5834364747
+	joinOnDateBehavior: datePartOnly
+	fromColumn: RMA.OrderSourceAcknowledgedOn
+	toColumn: LocalDateTable_cb1f77cc-3aab-48fe-8418-d5e96bcfd410.Date
+
+relationship 6c9a1578-cb97-4e0f-802d-34da124251a4
+	fromColumn: Purchase.CompanyID
+	toColumn: Amazon_Merchants.ID
+
+	annotation PBI_IsFromSource = FS
+
+relationship f21dbddf-bdcd-4290-8c4a-897813f0f74b
+	joinOnDateBehavior: datePartOnly
+	fromColumn: DateTable.Date
+	toColumn: LocalDateTable_fc785518-de41-47a5-9008-b2d4290a95f3.Date
+
+relationship 7bdfa048-16fe-295c-4848-b1b6439e9e16
+	fromColumn: BVC_ORDER.'TimeOfOrder - Copy'
+	toColumn: DateTable.Date
+
+relationship 0d689307-fd98-9349-814f-04af3fdb6f5c
+	fromColumn: RMAItem.OriginalOrderItemID
+	toColumn: bvc_OrderItem.ID
+
+relationship 51a5b588-01d4-5821-67cf-b5212c11bbfc
+	fromColumn: RMAItem.RMAID
+	toColumn: RMA.ID
+
+relationship 83bd1a70-125e-c427-18d6-0ffafad689df
+	fromColumn: Product.Status
+	toColumn: PRODUCTSTATUS_MAPPINGS.PRODUCTSTATUS
+
+relationship 28546874-acdd-1824-6489-22fbc3997d46
+	fromColumn: BVC_ORDER.StatusCode
+	toColumn: ORDERSTATUS_MAPPINGS.ORDERSTATUS
+
+relationship f0fb878b-5e3c-c860-6fa9-986d6cebe3f7
+	fromColumn: bvc_Product_InventoryLog.ProductID
+	toColumn: Product.ID
+
+relationship ff92436e-9ca4-b35b-8b1a-ffa466e431b0
+	fromColumn: bvc_Product_InventoryLog.WarehouseID
+	toColumn: Warehouse.ID
+
+relationship ef2feffe-2eff-4d94-a8f9-75adcf0def91
+	joinOnDateBehavior: datePartOnly
+	fromColumn: bvc_OrderItem.TimeofOrder
+	toColumn: LocalDateTable_57a84fcb-2bc2-4cdd-92be-d3e3034a58c5.Date
+
+relationship 1b4fd607-cc56-4e8f-bf8f-3b81b490159d
+	joinOnDateBehavior: datePartOnly
+	fromColumn: bvc_OrderItem.RecordCreatedOn
+	toColumn: LocalDateTable_4a5a4b63-94ef-4c40-b20b-d49f55af390a.Date
+
+relationship 4303e156-624b-4d57-95a7-1c9da403e8c0
+	joinOnDateBehavior: datePartOnly
+	fromColumn: ProductWarehouse.PhysicalInventoryDate
+	toColumn: LocalDateTable_8c6fd50f-b88b-4223-90fe-8f1e4cbf0391.Date
+
+relationship f4263e50-556d-4d2f-91c2-7fa2589040ae
+	joinOnDateBehavior: datePartOnly
+	fromColumn: Inventory_PandL.Date
+	toColumn: LocalDateTable_51b17aef-026b-422f-bba4-db1487f21301.Date
+
+relationship d2dd3b63-f353-4d91-98c6-f4d9f0429e7c
+	joinOnDateBehavior: datePartOnly
+	fromColumn: bvc_Package.'ShipDate - Copy'
+	toColumn: LocalDateTable_1f0d237c-773b-41ec-b822-5bf2f4ac1f1c.Date
+
+relationship 5849bbc8-a726-9c44-cfa6-f022cc56a5e6
+	fromColumn: Inventory_PandL.WarehouseID
+	toColumn: Warehouse.ID
+
+relationship c4d3dcca-99c8-826b-52b9-c635722e2fa0
+	fromColumn: ProductWarehouse.WarehouseID
+	toColumn: Warehouse.ID
+
+relationship 500173f8-c8f9-7194-0bfb-bc7ee8edb72c
+	fromColumn: ProductWarehouse.ProductID
+	toColumn: Product.ID
+
+relationship d2c54da7-abe1-6b6a-0e65-0e24a998e9d2
+	fromColumn: Inventory_PandL.ProductID
+	toColumn: Product.ID
+
+relationship e76da045-acd2-414e-9976-d74badc0c2e2
+	joinOnDateBehavior: datePartOnly
+	fromColumn: Product.CreationDate
+	toColumn: LocalDateTable_2bf7fcda-341e-4746-8da8-ad07b143e623.Date
+
+relationship e803ebed-9a80-4fe3-ad29-7d4ed27aa891
+	joinOnDateBehavior: datePartOnly
+	fromColumn: Product.DateCreated
+	toColumn: LocalDateTable_7dc81dcf-b31c-474f-951e-83cf7ff0eda1.Date
+
+relationship 0e934259-6496-0702-fbaf-12d01eee7aae
+	fromColumn: bvc_OrderItem.ProductID
+	toColumn: OLD_TBL_Product_Sales_Spike_Flag.ProductID
+
+relationship e060726b-d336-0408-a861-b9792f95c840
+	fromColumn: BVC_ORDER.DropShipStatus
+	toColumn: DROPSHIPSTATUS_MAPPINGS.DROPSHIP_STATUS
+
+relationship 56d98ddc-f203-45ad-bf35-bd1fded5c9de
+	joinOnDateBehavior: datePartOnly
+	fromColumn: Product_Sales_Spike_Flag.Max7DayQtyDate
+	toColumn: LocalDateTable_27cab98b-c344-4366-b529-0de63a2e2ea2.Date
+
+relationship 38c60f13-18fc-4556-9d9e-56ea45d69ab8
+	joinOnDateBehavior: datePartOnly
+	fromColumn: Product_Sales_Spike_Flag.YesterdayDate
+	toColumn: LocalDateTable_30ec2b54-a6a5-471a-86b6-801d933b237a.Date
+
+relationship 3775df09-120c-48dc-8356-40e8c265cc60
+	joinOnDateBehavior: datePartOnly
+	fromColumn: Product_Sales_Spike_Flag.Prior7DayStartDate
+	toColumn: LocalDateTable_be7e6926-be04-4297-8deb-0fb935016693.Date
+
+relationship 88c62fdb-5018-419c-9dc0-413290e6e74f
+	joinOnDateBehavior: datePartOnly
+	fromColumn: Product_Sales_Spike_Flag.Prior7DayEndDate
+	toColumn: LocalDateTable_ad0cdb69-e4a8-4d8f-a210-dc22eb768334.Date
+
+relationship d7b7d048-de70-d3a3-64cd-5d5f4dc5a244
+	crossFilteringBehavior: bothDirections
+	fromCardinality: one
+	fromColumn: Recently_Ordered_ProductIDs.ProductID
+	toColumn: Product.ID
+
+relationship d5b9284a-76b1-5dc5-9c27-2e499f145b13
+	crossFilteringBehavior: bothDirections
+	fromCardinality: one
+	fromColumn: Shipped_ProductIDs.ProductID
+	toColumn: Product.ID
+
+relationship 222349ec-355d-4164-8da0-5e402c534589
+	joinOnDateBehavior: datePartOnly
+	fromColumn: Product_Daily_Sales.SaleDate
+	toColumn: LocalDateTable_4ca393f6-986e-4700-b418-107916b24cf7.Date
+
+relationship 4c43fa39-aaba-1af5-bb67-26050dc0c986
+	fromColumn: bvc_OrderItem.ProductID
+	toColumn: Product_Sales_Spike_Flag.ProductID
+
+relationship e4559512-c19c-49aa-86dd-0e0869ae0825
+	joinOnDateBehavior: datePartOnly
+	fromColumn: DuplicatesCheck.SaleDate
+	toColumn: LocalDateTable_f7068cb5-aa72-4559-afd1-fd9118661686.Date
+
+relationship c1eaee1a-063f-1cd4-245c-7c35d812d970
+	fromColumn: bvc_Package.OrderID
+	toColumn: OrderID_Warehouse_Map.OrderID
+
+relationship f0162f70-164c-0b9f-71a0-1361c0b631bb
+	fromColumn: AgingOpenOrdersMatrixData.ProductID
+	toColumn: Product.ID
+
+relationship 2401e2f4-bfb1-7a18-b23d-3539d9449e1a
+	fromColumn: AgingOpenOrdersMatrixData.OrderID
+	toColumn: BVC_ORDER.ID
+
+relationship e1a65a8e-eef2-28ff-4bd7-bc55b51b5251
+	fromColumn: bvc_Package.OrderItemID
+	toColumn: bvc_OrderItem.ID
+
+relationship eb87740f-3fed-fd56-099b-d68257dadb27
+	fromColumn: MERGED_PO_ITEMS_TABLE.DefaultWarehouseID
+	toColumn: Warehouse.ID
+
+relationship 02f3ad83-7cdb-4a44-bd19-dbcc622f5fc3
+	joinOnDateBehavior: datePartOnly
+	fromColumn: bvc_Order_Property_UserDefined.PAYMENTDAY
+	toColumn: LocalDateTable_4d7c222d-5820-45a4-8f8d-85177b48c5c7.Date
+
+relationship 03514268-87f9-5e4a-63b6-d4f6136d7d44
+	crossFilteringBehavior: bothDirections
+	fromCardinality: one
+	fromColumn: bvc_Order_Property_UserDefined.OrderID
+	toColumn: BVC_ORDER.ID
+
+relationship e495b7c2-422f-46e5-8c97-ef24dad51f6b
+	joinOnDateBehavior: datePartOnly
+	fromColumn: bvc_OrderItem.ShipDate
+	toColumn: LocalDateTable_7488abfc-b5dc-4811-b25b-d751b72b7107.Date
+

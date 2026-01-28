@@ -1,0 +1,38 @@
+table RMA_MonthOffsets
+	isHidden
+	lineageTag: 20d26eee-42c7-45fd-ac68-e2845a6890c6
+
+	column Value
+		isHidden
+		formatString: 0
+		lineageTag: c32e162e-d034-4f2c-ac1c-654512c9606c
+		summarizeBy: sum
+		isNameInferred
+		sourceColumn: [Value]
+
+		annotation SummarizationSetBy = Automatic
+
+	column Label
+		isHidden
+		lineageTag: dbe7ea48-eb7d-40c8-974a-cf8a1c503e64
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [Label]
+		sortByColumn: Value
+
+		annotation SummarizationSetBy = Automatic
+
+	partition RMA_MonthOffsets = calculated
+		mode: import
+		source = ```
+				
+				ADDCOLUMNS(
+				    GENERATESERIES(0, 5, 1),  // 0 = most recent 30 days, 1 = 30–60 days ago, etc.
+				    "Label", 
+				    "Return Rate (D-" & [Value] * 30 & " – D-" & ([Value] + 1) * 30 & ")"
+				)
+				
+				```
+
+	annotation PBI_Id = 4f2c2d7c5bca49e6ad818068f6d72204
+

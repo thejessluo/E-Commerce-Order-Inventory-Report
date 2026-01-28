@@ -1,0 +1,570 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.5.0/schema.json",
+  "name": "8b85019d108ac28ace44",
+  "position": {
+    "x": 218,
+    "y": 626,
+    "z": 14000,
+    "height": 184,
+    "width": 612,
+    "tabOrder": 10000
+  },
+  "visual": {
+    "visualType": "tableEx",
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Product"
+                    }
+                  },
+                  "Property": "ID"
+                }
+              },
+              "queryRef": "Product.ID",
+              "nativeQueryRef": "SKU",
+              "displayName": "SKU"
+            },
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Product"
+                        }
+                      },
+                      "Property": "AggregateQty"
+                    }
+                  },
+                  "Function": 0
+                }
+              },
+              "queryRef": "Sum(Product.AggregateQty)",
+              "nativeQueryRef": "Inventory Qty",
+              "displayName": "Inventory Qty"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "MeasuresTable"
+                    }
+                  },
+                  "Property": "COUNT_Aging_Open_Orders_By_OrderItem_FLAG"
+                }
+              },
+              "queryRef": "MeasuresTable.COUNT_Aging_Open_Orders_By_OrderItem_FLAG",
+              "nativeQueryRef": "# AO Orders",
+              "displayName": "# AO Orders"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "MERGED_PO_ITEMS_TABLE"
+                    }
+                  },
+                  "Property": "Latest_PO"
+                }
+              },
+              "queryRef": "MERGED PURCHASE ITEM INFO.Latest_PO",
+              "nativeQueryRef": "Latest PO #",
+              "displayName": "Latest PO #"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "MERGED_PO_ITEMS_TABLE"
+                    }
+                  },
+                  "Property": "LatestCreatedOn"
+                }
+              },
+              "queryRef": "MERGED PURCHASE ITEM INFO.LatestCreatedOn",
+              "nativeQueryRef": "PO Created On",
+              "displayName": "PO Created On"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "MERGED_PO_ITEMS_TABLE"
+                    }
+                  },
+                  "Property": "PO_Status_Latest"
+                }
+              },
+              "queryRef": "MERGED PURCHASE ITEM INFO.PO_Status_Latest",
+              "nativeQueryRef": "PO Status",
+              "displayName": "PO Status"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "MERGED_PO_ITEMS_TABLE"
+                    }
+                  },
+                  "Property": "Latest_QtyOnOrder"
+                }
+              },
+              "queryRef": "MERGED PURCHASE ITEM INFO.Latest_QtyOnOrder",
+              "nativeQueryRef": "Qty On Order",
+              "displayName": "Qty On Order"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Measure": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "MeasuresTable"
+                  }
+                },
+                "Property": "COUNT_Aging_Open_Orders_By_OrderItem_FLAG"
+              }
+            },
+            "direction": "Descending"
+          }
+        ]
+      }
+    },
+    "objects": {
+      "columnWidth": [
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "84.12339984101695D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "Sum(Product.AggregateQty)"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "94.97081543103235D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "MERGED PURCHASE ITEM INFO.LatestCreatedOn"
+          }
+        },
+        {
+          "properties": {},
+          "selector": {
+            "metadata": "MERGED PURCHASE ITEM INFO.Latest_PO"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "82.29471763210557D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "MERGED PURCHASE ITEM INFO.Latest_QtyOnOrder"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "73.96835354288817D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "PO_STATUS_MAPPINGS.PO_Status_Latest"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "77.79049738273045D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "MERGED PURCHASE ITEM INFO.PO_Status_Latest"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "80D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "MeasuresTable.COUNT_Aging_Open_Orders_By_OrderItem_FLAG"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "90D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "Product.ID"
+          }
+        }
+      ],
+      "total": [
+        {
+          "properties": {
+            "fontFamily": {
+              "expr": {
+                "Literal": {
+                  "Value": "'wf_standard-font, helvetica, arial, sans-serif'"
+                }
+              }
+            },
+            "fontSize": {
+              "expr": {
+                "Literal": {
+                  "Value": "11D"
+                }
+              }
+            },
+            "fontColor": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "ThemeDataColor": {
+                      "ColorId": 1,
+                      "Percent": 0.6
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      ],
+      "values": [
+        {
+          "properties": {
+            "fontFamily": {
+              "expr": {
+                "Literal": {
+                  "Value": "'wf_standard-font, helvetica, arial, sans-serif'"
+                }
+              }
+            },
+            "fontSize": {
+              "expr": {
+                "Literal": {
+                  "Value": "11D"
+                }
+              }
+            },
+            "backColorSecondary": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "Literal": {
+                      "Value": "'#EBF5FF'"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      ],
+      "columnHeaders": [
+        {
+          "properties": {
+            "fontFamily": {
+              "expr": {
+                "Literal": {
+                  "Value": "'wf_standard-font, helvetica, arial, sans-serif'"
+                }
+              }
+            },
+            "bold": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "visualContainerObjects": {
+      "stylePreset": [
+        {
+          "properties": {
+            "name": {
+              "expr": {
+                "Literal": {
+                  "Value": "'AlternatingRowsNew'"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "title": [
+        {
+          "properties": {
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Aging Open Orders by SKU & PO'"
+                }
+              }
+            },
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "bold": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "fontColor": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "ThemeDataColor": {
+                      "ColorId": 2,
+                      "Percent": 0
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  },
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "fd445fc525168d89e291",
+        "ordinal": 0,
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "MeasuresTable"
+              }
+            },
+            "Property": "COUNT_Aging_Open_Orders_By_OrderItem_FLAG"
+          }
+        },
+        "type": "Advanced",
+        "filter": {
+          "Version": 2,
+          "From": [
+            {
+              "Name": "m",
+              "Entity": "MeasuresTable",
+              "Type": 0
+            }
+          ],
+          "Where": [
+            {
+              "Condition": {
+                "Not": {
+                  "Expression": {
+                    "Comparison": {
+                      "ComparisonKind": 0,
+                      "Left": {
+                        "Measure": {
+                          "Expression": {
+                            "SourceRef": {
+                              "Source": "m"
+                            }
+                          },
+                          "Property": "COUNT_Aging_Open_Orders_By_OrderItem_FLAG"
+                        }
+                      },
+                      "Right": {
+                        "Literal": {
+                          "Value": "null"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          ]
+        }
+      },
+      {
+        "name": "41556d480b895fd0b816",
+        "ordinal": 1,
+        "field": {
+          "Aggregation": {
+            "Expression": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "MERGED_PO_ITEMS_TABLE"
+                  }
+                },
+                "Property": "PurchaseID"
+              }
+            },
+            "Function": 4
+          }
+        },
+        "type": "Advanced",
+        "howCreated": "User"
+      },
+      {
+        "name": "f07febe50fa7e692ffc8",
+        "ordinal": 2,
+        "field": {
+          "Aggregation": {
+            "Expression": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "Product"
+                  }
+                },
+                "Property": "AggregateQty"
+              }
+            },
+            "Function": 0
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "4aab0f1382bc4cba56f3",
+        "ordinal": 3,
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "MERGED_PO_ITEMS_TABLE"
+              }
+            },
+            "Property": "Latest_PO"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "00720b6d97ea233734e1",
+        "ordinal": 4,
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "MERGED_PO_ITEMS_TABLE"
+              }
+            },
+            "Property": "LatestCreatedOn"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "ead425abb2d6842ceeba",
+        "ordinal": 5,
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "MERGED_PO_ITEMS_TABLE"
+              }
+            },
+            "Property": "PO_Status_Latest"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "deb97d6417b8d07e23e2",
+        "ordinal": 6,
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "MERGED_PO_ITEMS_TABLE"
+              }
+            },
+            "Property": "Latest_QtyOnOrder"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "00a788361b4ea647d674",
+        "ordinal": 7,
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Product"
+              }
+            },
+            "Property": "ID"
+          }
+        },
+        "type": "Categorical"
+      }
+    ],
+    "filterSortOrder": "Custom"
+  }
+}

@@ -1,0 +1,31 @@
+table Recently_Ordered_ProductIDs
+	isHidden
+	lineageTag: 27d1f79f-a309-4363-b33a-0d1ff865f1dd
+
+	column ProductID
+		isHidden
+		lineageTag: f6ce30ac-1758-4b4a-bc8c-eb7b5551074e
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [ProductID]
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Recently_Ordered_ProductIDs = calculated
+		mode: import
+		source = ```
+				--table used to calculate zero-stock SKUs that have not had an order in the last 4 weeks
+				DISTINCT(
+				    SELECTCOLUMNS(
+				        FILTER(
+				            'bvc_OrderItem',
+				            'bvc_OrderItem'[RecordCreatedOn] >= TODAY() - 28
+				        ),
+				        "ProductID", 'bvc_OrderItem'[ProductID]
+				    )
+				)
+				
+				```
+
+	annotation PBI_Id = 5dce372cfce548939b9c0174704303d1
+

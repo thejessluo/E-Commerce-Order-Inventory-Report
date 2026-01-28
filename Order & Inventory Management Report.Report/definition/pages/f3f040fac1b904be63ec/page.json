@@ -1,0 +1,23 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/page/2.0.0/schema.json",
+  "name": "f3f040fac1b904be63ec",
+  "displayName": "WSR - Walmart",
+  "displayOption": "ActualSize",
+  "height": 810,
+  "width": 1280,
+  "objects": {
+    "outspacePane": [
+      {
+        "properties": {
+          "width": {
+            "expr": {
+              "Literal": {
+                "Value": "257L"
+              }
+            }
+          }
+        }
+      }
+    ]
+  }
+}

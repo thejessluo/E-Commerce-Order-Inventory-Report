@@ -1,0 +1,278 @@
+/// Shows daily inventory broken down by item and warehouse.
+table ProductWarehouse
+	lineageTag: 58fd5dfe-6307-4f7d-89ca-9c10b9ae6bcd
+
+	measure LatestWarehouseInventoryQty = ```
+			
+			VAR LatestDate =
+			    CALCULATE(
+			        MAX(ProductWarehouse[PhysicalInventoryDate])
+			    )
+			RETURN
+			    CALCULATE(
+			        MAX(ProductWarehouse[InventoryAvailableQty]),
+			        ProductWarehouse[PhysicalInventoryDate] = LatestDate
+			    )
+			
+			```
+		formatString: 0
+		displayFolder: 1Columns/Measures
+		lineageTag: 63fa3821-2065-47b8-94f2-da3bb0cf7ccb
+
+	measure LatestWFSWarehouseInventoryQty = ```
+			
+			VAR LatestDate =
+			    CALCULATE(
+			        MAX(ProductWarehouse[PhysicalInventoryDate]),
+			        ProductWarehouse[Warehouse Name] = "WFS Warehouse"
+			    )
+			RETURN
+			    CALCULATE(
+			        MAX(ProductWarehouse[InventoryAvailableQty]),
+			        ProductWarehouse[PhysicalInventoryDate] = LatestDate,
+			        ProductWarehouse[Warehouse Name] = "WFS Warehouse"
+			    ) 
+			
+			```
+		formatString: 0
+		displayFolder: 1Columns/Measures
+		lineageTag: 1163a908-6419-4bb0-913b-cb1eca88bee9
+
+	measure LatestSchaeferWarehouseInventoryQty = ```
+			
+			VAR LatestDate =
+			    CALCULATE(
+			        MAX(ProductWarehouse[PhysicalInventoryDate]),
+			        ProductWarehouse[Warehouse Name] = "SPL Shaefer"
+			    )
+			RETURN
+			    CALCULATE(
+			        MAX(ProductWarehouse[InventoryAvailableQty]),
+			        ProductWarehouse[PhysicalInventoryDate] = LatestDate,
+			        ProductWarehouse[Warehouse Name] = "SPL Shaefer"
+			    ) 
+			
+			```
+		formatString: 0
+		displayFolder: 1Columns/Measures
+		lineageTag: f896eba5-69bc-40b5-8050-6367ec299350
+
+	measure Total_LatestWarehouseInventoryQty = ```
+			
+			SUMX(
+			    VALUES(ProductWarehouse[ProductID]),
+			    VAR LatestDate =
+			        CALCULATE(
+			            MAX(ProductWarehouse[PhysicalInventoryDate])
+			        )
+			    RETURN
+			        CALCULATE(
+			            MAX(ProductWarehouse[InventoryAvailableQty]),
+			            ProductWarehouse[PhysicalInventoryDate] = LatestDate
+			        )
+			)
+			
+			```
+		formatString: 0
+		displayFolder: 1Columns/Measures
+		lineageTag: bf243e36-e2c4-499e-a31a-bb84af8dbd73
+
+	measure Total_LatestInventoryQty_SPL_Schaefer = ```
+			
+			SUMX(
+			    VALUES(ProductWarehouse[ProductID]),
+			    VAR LatestDate =
+			        CALCULATE(
+			            MAX(ProductWarehouse[PhysicalInventoryDate]),
+			            ProductWarehouse[Warehouse Name] = "SPL Schaefer"
+			        )
+			    RETURN
+			        CALCULATE(
+			            MAX(ProductWarehouse[InventoryAvailableQty]),
+			            ProductWarehouse[PhysicalInventoryDate] = LatestDate &&
+			            ProductWarehouse[Warehouse Name] = "SPL Schaefer"
+			        )
+			)
+			
+			```
+		formatString: 0
+		displayFolder: 1Columns/Measures
+		lineageTag: 6f69836b-f4cd-48b5-bd56-6831408d8f82
+
+	measure Count_Products_With_SPL_Schaefer_Inventory = ```
+			
+			COUNTROWS(
+			    FILTER(
+			        VALUES(ProductWarehouse[ProductID]),
+			        VAR LatestDate =
+			            CALCULATE(
+			                MAX(ProductWarehouse[PhysicalInventoryDate]),
+			                ProductWarehouse[Warehouse Name] = "SPL Schaefer"
+			            )
+			        VAR InventoryQty =
+			            CALCULATE(
+			                MAX(ProductWarehouse[InventoryAvailableQty]),
+			                ProductWarehouse[Warehouse Name] = "SPL Schaefer" &&
+			                ProductWarehouse[PhysicalInventoryDate] = LatestDate
+			            )
+			        RETURN
+			            NOT ISBLANK(InventoryQty) && InventoryQty > 1
+			    )
+			) + 0
+			
+			```
+		formatString: 0
+		displayFolder: 1Columns/Measures
+		lineageTag: 9fa95bce-a1c7-4862-adb5-2f03249d27f8
+
+	column ProductID
+		dataType: string
+		lineageTag: 995f3fde-584a-4d5b-900f-a9468bf1c6e1
+		summarizeBy: none
+		sourceColumn: ProductID
+
+		annotation SummarizationSetBy = Automatic
+
+	column WarehouseID
+		dataType: int64
+		formatString: 0
+		lineageTag: 0feeb9c6-0d72-4eb1-8ceb-470bfbdd3f82
+		summarizeBy: none
+		sourceColumn: WarehouseID
+
+		annotation SummarizationSetBy = Automatic
+
+	column InventoryAvailableQty
+		dataType: int64
+		formatString: 0
+		lineageTag: 00bbbdaa-d537-4f31-8003-ca75df79b474
+		summarizeBy: sum
+		sourceColumn: InventoryAvailableQty
+
+		annotation SummarizationSetBy = Automatic
+
+	column OffsetQty
+		dataType: int64
+		formatString: 0
+		lineageTag: eded63f4-ce27-4c26-aeb9-2db5eeab1cac
+		summarizeBy: sum
+		sourceColumn: OffsetQty
+
+		annotation SummarizationSetBy = Automatic
+
+	column PhysicalInventoryQty
+		dataType: int64
+		formatString: 0
+		lineageTag: 40ac7186-861c-4a59-8fb0-ec0e69fbaa3f
+		summarizeBy: sum
+		sourceColumn: PhysicalInventoryQty
+
+		annotation SummarizationSetBy = Automatic
+
+	column PhysicalInventoryDate
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 4de3b062-d1ca-4d46-8419-af134acb6dba
+		summarizeBy: none
+		sourceColumn: PhysicalInventoryDate
+
+		variation Variation
+			isDefault
+			relationship: 4303e156-624b-4d57-95a7-1c9da403e8c0
+			defaultHierarchy: LocalDateTable_8c6fd50f-b88b-4223-90fe-8f1e4cbf0391.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	column LastUpdateReason
+		dataType: string
+		lineageTag: 940726e4-7be5-4f2d-8cca-deec21cde47f
+		summarizeBy: none
+		sourceColumn: LastUpdateReason
+
+		annotation SummarizationSetBy = Automatic
+
+	column ReservedQty
+		dataType: int64
+		formatString: 0
+		lineageTag: 4abfeeac-d22a-45f8-ba02-13550aa2a3f3
+		summarizeBy: sum
+		sourceColumn: ReservedQty
+
+		annotation SummarizationSetBy = Automatic
+
+	column NonSellableBinQty
+		dataType: int64
+		formatString: 0
+		lineageTag: 9fa63990-4d50-4a49-a49e-448a7cceb236
+		summarizeBy: sum
+		sourceColumn: NonSellableBinQty
+
+		annotation SummarizationSetBy = Automatic
+
+	column AggregateInventoryAvailableQtyIncludingShadows
+		dataType: int64
+		formatString: 0
+		lineageTag: f9578460-ac8a-4273-ba7b-1d0ceb659706
+		summarizeBy: sum
+		sourceColumn: AggregateInventoryAvailableQtyIncludingShadows
+
+		annotation SummarizationSetBy = Automatic
+
+	column AggregateInventoryReservedQtyIncludingShadows
+		dataType: int64
+		formatString: 0
+		lineageTag: 6559b527-7d35-44df-97b7-acb5a54c924f
+		summarizeBy: sum
+		sourceColumn: AggregateInventoryReservedQtyIncludingShadows
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Warehouse Name' = RELATED(Warehouse[Name])
+		displayFolder: 1Columns/Measures
+		lineageTag: 10614250-d5a8-4f72-9722-bb011b653002
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column Flag_Has_Inventory_SPL_Schaefer = ```
+			
+			VAR CurrentProduct = ProductWarehouse[ProductID]
+			VAR LatestDate =
+			    CALCULATE(
+			        MAX(ProductWarehouse[PhysicalInventoryDate]),
+			        ProductWarehouse[ProductID] = CurrentProduct,
+			        ProductWarehouse[Warehouse Name] = "SPL Schaefer"
+			    )
+			VAR LatestQty =
+			    CALCULATE(
+			        MAX(ProductWarehouse[InventoryAvailableQty]),
+			        ProductWarehouse[ProductID] = CurrentProduct,
+			        ProductWarehouse[Warehouse Name] = "SPL Schaefer",
+			        ProductWarehouse[PhysicalInventoryDate] = LatestDate
+			    )
+			RETURN
+			    IF(
+			        ProductWarehouse[Warehouse Name] = "SPL Schaefer" &&
+			        ProductWarehouse[PhysicalInventoryDate] = LatestDate &&
+			        LatestQty > 1,
+			        1,
+			        0
+			    )
+			
+			```
+		formatString: 0
+		displayFolder: 1Columns/Measures
+		lineageTag: b2c9a825-b4ac-4542-97df-db6a31188963
+		summarizeBy: sum
+
+		annotation SummarizationSetBy = Automatic
+
+	partition ProductWarehouse = m
+		mode: import
+		source =
+				let
+				    Source = Sql.Database("10.13.0.206", "SC"),
+				    dbo_ProductWarehouse = Source{[Schema="dbo",Item="ProductWarehouse"]}[Data]
+				in
+				    dbo_ProductWarehouse
+

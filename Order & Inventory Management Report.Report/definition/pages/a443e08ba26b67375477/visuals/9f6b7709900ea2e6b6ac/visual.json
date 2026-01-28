@@ -1,0 +1,150 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.5.0/schema.json",
+  "name": "9f6b7709900ea2e6b6ac",
+  "position": {
+    "x": 0,
+    "y": 33.333333333333336,
+    "z": 1000,
+    "height": 166.66666666666666,
+    "width": 250,
+    "tabOrder": 1000
+  },
+  "visual": {
+    "visualType": "textbox",
+    "objects": {
+      "general": [
+        {
+          "properties": {
+            "paragraphs": [
+              {
+                "textRuns": [
+                  {
+                    "value": "A:",
+                    "textStyle": {
+                      "fontWeight": "bold",
+                      "fontFamily": "DIN"
+                    }
+                  },
+                  {
+                    "value": " An \"Aging Dropship Order\" is any order that was ",
+                    "textStyle": {
+                      "fontFamily": "DIN"
+                    }
+                  },
+                  {
+                    "value": "created more than 2 hours ago",
+                    "textStyle": {
+                      "fontWeight": "bold",
+                      "fontFamily": "DIN"
+                    }
+                  },
+                  {
+                    "value": ", where the ",
+                    "textStyle": {
+                      "fontFamily": "DIN"
+                    }
+                  },
+                  {
+                    "value": "Dropship Status is still None.",
+                    "textStyle": {
+                      "fontWeight": "bold",
+                      "fontFamily": "DIN"
+                    }
+                  },
+                  {
+                    "value": " This ",
+                    "textStyle": {
+                      "fontFamily": "DIN"
+                    }
+                  },
+                  {
+                    "value": "excludes any WFS",
+                    "textStyle": {
+                      "fontWeight": "bold",
+                      "fontFamily": "DIN"
+                    }
+                  },
+                  {
+                    "value": " orders. ",
+                    "textStyle": {
+                      "fontFamily": "DIN"
+                    }
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": ""
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "AKA - any orders where ",
+                    "textStyle": {
+                      "fontFamily": "DIN"
+                    }
+                  },
+                  {
+                    "value": "''["
+                  },
+                  {
+                    "value": "DropshipStatus_Mapping",
+                    "textStyle": {
+                      "fontStyle": "italic"
+                    }
+                  },
+                  {
+                    "value": "] = \"None\""
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "AND "
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "["
+                  },
+                  {
+                    "value": "RecordCreatedOn",
+                    "textStyle": {
+                      "fontStyle": "italic"
+                    }
+                  },
+                  {
+                    "value": "] more than 2 hours ago"
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "AND ["
+                  },
+                  {
+                    "value": "OrderSource - CompanyName",
+                    "textStyle": {
+                      "fontStyle": "italic"
+                    }
+                  },
+                  {
+                    "value": "] is NOT \"WFS - Tzumi Electronics\""
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

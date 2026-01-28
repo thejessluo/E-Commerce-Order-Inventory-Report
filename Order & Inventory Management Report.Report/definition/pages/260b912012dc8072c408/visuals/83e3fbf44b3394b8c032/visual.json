@@ -1,0 +1,16 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.5.0/schema.json",
+  "name": "83e3fbf44b3394b8c032",
+  "position": {
+    "x": 904.749755859375,
+    "y": 32.5,
+    "z": 7000,
+    "height": 88.75,
+    "width": 143.75,
+    "tabOrder": 11000
+  },
+  "visualGroup": {
+    "displayName": "ORDERS SHIPPED YESTERDAY",
+    "groupMode": "ScaleMode"
+  }
+}

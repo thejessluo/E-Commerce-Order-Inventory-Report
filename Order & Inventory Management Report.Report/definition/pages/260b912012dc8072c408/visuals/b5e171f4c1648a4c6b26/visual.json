@@ -1,0 +1,17 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.5.0/schema.json",
+  "name": "b5e171f4c1648a4c6b26",
+  "position": {
+    "x": 109.39059332152101,
+    "y": 109.81662004887943,
+    "z": 9250,
+    "height": 80.844586083982549,
+    "width": 115.2,
+    "tabOrder": 1000
+  },
+  "visualGroup": {
+    "displayName": "ADN by Warehouse",
+    "groupMode": "ScaleMode"
+  },
+  "parentGroupName": "6b0fb4b2034751db701c"
+}

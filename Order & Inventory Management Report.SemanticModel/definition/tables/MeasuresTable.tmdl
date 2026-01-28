@@ -1,0 +1,903 @@
+table MeasuresTable
+	lineageTag: 958df3f6-1b5e-4269-a0c0-48194503070c
+
+	measure DaysOfStock_SCRestock =
+			
+			VAR TotalQtyAvailable = SUM('Product'[AggregateQty])
+			VAR TotalUnitsSold = SUM('bvc_OrderItem'[Qty])
+			VAR DaysInRange =
+			    DATEDIFF(
+			        MIN('BVC_ORDER'[Ship Date]),
+			        MAX('BVC_ORDER'[Ship Date]),
+			        DAY
+			    ) + 1
+			RETURN
+			    IF(
+			        DaysInRange > 0 && TotalUnitsSold > 0,
+			        TotalQtyAvailable / (TotalUnitsSold / DaysInRange),
+			        BLANK()
+			    )
+			/*  Days of Stock Remaining = Qty available / (Units sold / days in date range)
+			"‘Product’[AggregateQty] / (‘bvc_OrderItem’[Qty] / ‘bvc_Order’[ShipDate - Copy])" */
+		formatString: 0.0
+		lineageTag: fa178fdd-b1f0-494c-bac3-0e5bd08be66d
+
+	measure COUNT_ZeroStock_Items =
+			
+			CALCULATE(
+			    SUM(Product[CHECK_Item_OOS]),
+			    FILTER(
+			        bvc_OrderItem,
+			        bvc_OrderItem[Qty] >= 1
+			    ),
+			    FILTER(
+			        BVC_ORDER,
+			        BVC_ORDER[Ship Date] IN VALUES(BVC_ORDER[Ship Date])
+			    )
+			) + 0
+			// The measure will respect the slicer for the date range (bvc_Order[ShipDate - Copy]) and dynamically adjust the count of OOS items that meet the Qty <= 1 condition
+			//CALCULATE: Adjusts the context of the calculation dynamically based on filters.
+			//Calculates the SUM of CHECK_Item_OOS in the Product table.
+			//First FILTER:Ensures that only rows in bvc_OrderItem where Qty >= 1 are included in the calculation.
+			//Second FILTER: Applies the selected date range from the slicer on bvc_Order[ShipDate - Copy].
+			//IN VALUES: Matches the bvc_Order[ShipDate - Copy] within the slicer selection dynamically.
+		lineageTag: fe6a2e92-7964-4bfa-a7a9-9ae75973b589
+
+	measure COUNT_Items_DaysOfStock_15_or_Below = ```
+			
+			CALCULATE(
+			    COUNTROWS('Product'),
+			    FILTER(
+			        'Product',
+			        [DaysOfStock_SCRestock] <= 15 && NOT(ISBLANK([DaysOfStock_SCRestock]))
+			    )
+			)
+			
+			```
+		formatString: 0
+		lineageTag: b63f080e-4f11-4112-9b12-16f4322427bf
+
+	measure TotalOOSItems_All = ```
+			
+			CALCULATE(
+			    SUM(Product[CHECK_Item_OOS]),
+			    ALLSELECTED(BVC_ORDER[Ship Date])
+			)
+			
+			```
+		formatString: 0
+		lineageTag: ec1d357c-a8e5-489f-a536-2ffb157a4b4e
+
+	measure Last_RecordCreatedOn_Date = ```
+			
+			MAX('BVC_ORDER'[RecordCreatedOn - Copy])
+			
+			```
+		formatString: Short Date
+		lineageTag: 35ea1e15-c3fb-4fcd-b79e-5e6fc789fa72
+
+	measure WFS_Max_Weekly_Sales = ```
+			
+			VAR WeeklySales =
+			    SUMMARIZE (
+			        'BVC_ORDER',
+			        'BVC_ORDER'[RelativeWeek],  // Group by pre-calculated weeks
+			        "TotalSales", SUM ( 'bvc_OrderItem'[Qty] )
+			    )
+			RETURN
+			    MAXX ( WeeklySales, [TotalSales] )
+			
+			```
+		formatString: 0
+		lineageTag: d0e0aa5a-942f-472d-b48f-3f7bbff5c351
+
+	measure WFS_Min_Weekly_Sales = ```
+			//min weekly sales not including 0s
+			VAR WeeklySales =
+			    SUMMARIZE (
+			        'BVC_ORDER',
+			        'BVC_ORDER'[RelativeWeek],  // Group by pre-calculated weeks
+			        "TotalSales", SUM ( 'bvc_OrderItem'[Qty] )
+			    )
+			RETURN
+			    MINX ( WeeklySales, [TotalSales] )
+			
+			```
+		formatString: 0
+		lineageTag: 7ff7f081-09d8-4bb2-a1c6-e8b6a2ef9c3e
+
+	measure WFS_Avg_Weekly_Sales = ```
+			
+			VAR WeeklySales =
+			    SUMMARIZE (
+			        'BVC_ORDER',
+			        'BVC_ORDER'[RelativeWeek],  // Group by pre-calculated weeks
+			        "TotalSales", SUM ( 'bvc_OrderItem'[Qty] )  // Total sales per week
+			    )
+			
+			VAR TotalWeeks = COUNTROWS ( WeeklySales )  // Count the number of weeks
+			VAR TotalSales = SUMX ( WeeklySales, [TotalSales] )  // Sum all weekly totals
+			
+			RETURN
+			    DIVIDE ( TotalSales, TotalWeeks, 0 )  // Avoid division by zero
+			
+			```
+		formatString: 0
+		lineageTag: abb6632e-0ab4-4d65-b347-f6d98c667d08
+
+		annotation PBI_FormatHint = {"isDecimal":true}
+
+	measure Min_Weekly_Sales = ```
+			//shows 0s 
+			VAR MinWeek = MINX ( FILTER ( ALL ( 'BVC_ORDER'[RelativeWeek] ), 'BVC_ORDER'[RelativeWeek] >= -7 ), 'BVC_ORDER'[RelativeWeek] )  
+			VAR MaxWeek = MAXX ( 'BVC_ORDER', 'BVC_ORDER'[RelativeWeek] )  
+			
+			VAR AllWeeks =
+			    ADDCOLUMNS (
+			        GENERATESERIES ( MinWeek, MaxWeek, 1 ),
+			        "TotalSales",
+			        VAR CurrentWeek = [Value]
+			        RETURN
+			            CALCULATE ( SUM ( 'bvc_OrderItem'[Qty] ), 'BVC_ORDER'[RelativeWeek] = CurrentWeek )
+			    )
+			
+			VAR MinSales = MINX ( AllWeeks, IF ( ISBLANK ( [TotalSales] ), 0, [TotalSales] ) )
+			
+			RETURN
+			    MinSales
+			
+			```
+		formatString: 0
+		lineageTag: 5642b65e-6df0-42b0-ae99-cf0b2fc813f1
+
+	measure WFS_Projection_30_Days_Range_Weekly = ```
+			
+			VAR WeeklySales =
+			    // Group by relative week and calculate total weekly sales
+			    SUMMARIZE (
+			        'bvc_Order',
+			        'bvc_Order'[RelativeWeek],
+			        "TotalSales", SUM ( 'bvc_OrderItem'[Qty] )
+			    )
+			
+			VAR MinWeeklySales =
+			    // Find the minimum weekly total
+			    MINX ( WeeklySales, [TotalSales] )
+			
+			VAR MaxWeeklySales =
+			    // Find the maximum weekly total
+			    MAXX ( WeeklySales, [TotalSales] )
+			
+			VAR WeeksIn30Days = 30 / 7  // Approx. 4.29 weeks in 30 days
+			
+			VAR MinProjection = MinWeeklySales * WeeksIn30Days
+			VAR MaxProjection = MaxWeeklySales * WeeksIn30Days
+			
+			RETURN
+			    // Format as "[Min - Max]"
+			    FORMAT ( MinProjection, "#,##0" ) & " - " & FORMAT ( MaxProjection, "#,##0" )
+			
+			```
+		lineageTag: 3b55911a-eac7-4f32-acb3-a39907f7a8ea
+
+	measure WFS_Projected_Sales_30_Days_Weekly = ```
+			
+			VAR WeeklySales =
+			    // Group by relative week and calculate total weekly sales
+			    SUMMARIZE (
+			        'bvc_Order',
+			        'bvc_Order'[RelativeWeek],
+			        "TotalSales", SUM ( 'bvc_OrderItem'[Qty] )
+			    )
+			
+			VAR WeeksCount =
+			    // Count number of weeks in the slicer selection
+			    COUNTROWS ( WeeklySales )
+			
+			VAR TotalSales =
+			    // Sum all weekly sales
+			    SUMX ( WeeklySales, [TotalSales] )
+			
+			VAR AvgWeeklySales =
+			    // Calculate average weekly sales
+			    DIVIDE ( TotalSales, WeeksCount, 0 )
+			
+			VAR WeeksIn30Days = 30 / 7  // Approx. 4.29 weeks in 30 days
+			
+			VAR Projection = AvgWeeklySales * WeeksIn30Days
+			
+			RETURN
+			    Projection
+			
+			```
+		formatString: 0
+		lineageTag: 9d3712cd-8aa5-4d55-b5ed-973e39cdba49
+
+		annotation PBI_FormatHint = {"isDecimal":true}
+
+	measure COUNT_Aging_Open_Orders_By_Warehouse_BIGMEASURE = ```
+			//works as expected but is slow
+			VAR AgingOrders =
+			    FILTER(
+			        'BVC_ORDER',
+			        'BVC_ORDER'[Is_Aging_Open_Order_Flag] = TRUE
+			    )
+			
+			RETURN
+			CALCULATE(
+			    DISTINCTCOUNT('BVC_ORDER'[ID]),
+			    AgingOrders,
+			    CROSSFILTER('bvc_OrderItem'[OrderID], 'BVC_ORDER'[ID], BOTH)
+			)
+			
+			```
+		formatString: 0
+		lineageTag: 1c24eb4a-9192-4f87-8807-3316a2035b25
+
+	measure COUNT_Aging_Open_Orders_By_OrderItem_FLAG = ```
+			
+			CALCULATE(
+			    DISTINCTCOUNT('bvc_OrderItem'[OrderID]), 
+			    FILTER(
+			        'bvc_OrderItem',
+			        'bvc_OrderItem'[FLAG_Aging_Open_Order_ORDERITEM] = 1
+			    )
+			)
+			
+			```
+		formatString: 0
+		lineageTag: 85c35260-02fc-4696-8ce3-76f154c2c7a5
+
+	measure Duplicate_COUNT_Aging_Open_Orders_By_OrderItem_FLAG = ```
+			
+			CALCULATE(
+			    DISTINCTCOUNT('bvc_OrderItem'[OrderID]), 
+			    FILTER(
+			        'bvc_OrderItem',
+			        'bvc_OrderItem'[FLAG_Aging_Open_Order_ORDERITEM] = 1
+			    )
+			)
+			
+			```
+		formatString: 0
+		lineageTag: af37eefa-48fa-49d3-9c3a-e904ee0e0309
+
+	measure COUNT_DeliveryStatus_Unshipped = ```
+			
+			CALCULATE(
+			    COUNTROWS('bvc_Package'),
+			    'bvc_Package'[DeliveryStatus_Mapping] IN {
+			        "Unshipped", 
+			        "TrackingQueryFailedOnce", 
+			        "TrackingQueryFailedTwice", 
+			        "TrackingQueryFailedThrice"
+			    }
+			)
+			
+			```
+		formatString: 0
+		lineageTag: 8acbc23d-1b9c-4f83-a419-5b183b7af45e
+
+	measure COUNT_ShippingStatus_Shipped = ```
+			
+			CALCULATE(
+			    COUNTROWS('bvc_Package'),
+			    'bvc_Package'[DeliveryStatus_Mapping] IN {
+			        "Shipped"
+			    }
+			)
+			
+			```
+		formatString: 0
+		lineageTag: 19ebe517-4aed-4289-b03b-3ecc4fbf5d29
+
+	measure COUNT_NoCarrierScan_Items = ```
+			
+			CALCULATE(
+			    DISTINCTCOUNT(bvc_Package[OrderID]),
+			    FILTER(
+			        bvc_Package,
+			        bvc_Package[DeliveryStatus_Mapping] IN {
+			            "Unshipped", 
+			            "TrackingQueryFailedOnce", 
+			            "TrackingQueryFailedTwice", 
+			            "TrackingQueryFailedThrice"
+			        } &&
+			        bvc_Package[ShippingStatus_Mapping] = "FullyShipped" &&
+			        TRUNC(bvc_Package[ShipDate]) <> TODAY()
+			    ),
+			    'OrderID_Warehouse_Map'[Warehouse] <> "WFS Warehouse",
+			    'BVC_ORDER'[ShippingCarrier] IN { "FedEx", "UPS" }
+			)
+			
+			```
+		formatString: 0
+		lineageTag: eb3fdbe0-69a2-4dcc-b309-2cac60c04901
+
+	measure 'RMA Return Rate' = ```
+			
+			DIVIDE(
+			    SUM(RMAItem[QtyReturned]),
+			    SUM(bvc_OrderItem[Qty]),
+			    0
+			)
+			
+			```
+		formatString: 0%;-0%;0%
+		lineageTag: 02ab055e-57a5-4551-8aca-cdbd878f1396
+
+	measure 'RMA Return Rate (D-0 - D-30)' = ```
+			
+			VAR MaxDate = 
+			    CALCULATE(
+			        MAX('BVC_ORDER'[TimeOfOrder - Copy]),
+			        REMOVEFILTERS('BVC_ORDER')
+			    )
+			VAR StartDate = MaxDate - 30
+			
+			RETURN
+			CALCULATE(
+			    DIVIDE(
+			        SUM(RMAItem[QtyReturned]),
+			        SUM(bvc_OrderItem[Qty]),
+			        0
+			    ),
+			    'BVC_ORDER'[TimeOfOrder - Copy] >= StartDate &&
+			    'BVC_ORDER'[TimeOfOrder - Copy] <= MaxDate
+			)
+			
+			```
+		formatString: 0%;-0%;0%
+		lineageTag: 6c57dfa7-cbfc-406b-a681-ac0f613c4369
+
+	measure 'RMA Return Rate (D-30 - D-60)' = ```
+			
+			VAR MaxDate = 
+			    CALCULATE(
+			        MAX('BVC_ORDER'[TimeOfOrder - Copy]),
+			        REMOVEFILTERS('BVC_ORDER')
+			    )
+			VAR StartDate = MaxDate - 60
+			VAR EndDate = MaxDate - 30
+			
+			RETURN
+			CALCULATE(
+			    DIVIDE(
+			        SUM(RMAItem[QtyReturned]),
+			        SUM(bvc_OrderItem[Qty]),
+			        0
+			    ),
+			    'BVC_ORDER'[TimeOfOrder - Copy] >= StartDate &&
+			    'BVC_ORDER'[TimeOfOrder - Copy] < EndDate
+			)
+			
+			```
+		formatString: 0%;-0%;0%
+		lineageTag: f307cd30-425d-4bfc-82b8-37a36123cddc
+
+	measure 'RMA Return Rate (Dynamic)' = ```
+			
+			VAR SelectedOffset = SELECTEDVALUE(RMA_MonthOffsets[Value], 0)
+			VAR MaxDate = CALCULATE(MAX('BVC_ORDER'[TimeOfOrder - Copy]), REMOVEFILTERS('BVC_ORDER'))
+			VAR StartDate = MaxDate - (SelectedOffset + 1) * 30
+			VAR EndDate = MaxDate - SelectedOffset * 30
+			
+			RETURN
+			CALCULATE(
+			    DIVIDE(SUM(RMAItem[QtyReturned]), SUM(bvc_OrderItem[Qty]), 0),
+			    'BVC_ORDER'[TimeOfOrder - Copy] >= StartDate &&
+			    'BVC_ORDER'[TimeOfOrder - Copy] < EndDate
+			)
+			
+			```
+		formatString: 0%;-0%;0%
+		lineageTag: aab3cd5b-1de5-48f5-a95c-b011aef6760e
+
+	measure 'RMA Return Rate (by Offset)' = ```
+			
+			VAR SelectedOffset = SELECTEDVALUE(RMA_MonthOffsets[Value])
+			VAR MaxDate = CALCULATE(MAX('BVC_ORDER'[TimeOfOrder - Copy]), REMOVEFILTERS('BVC_ORDER'))
+			VAR StartDate = MaxDate - (SelectedOffset + 1) * 30
+			VAR EndDate = MaxDate - SelectedOffset * 30
+			
+			RETURN
+			IF(
+			    NOT ISBLANK(SelectedOffset),
+			    CALCULATE(
+			        DIVIDE(SUM(RMAItem[QtyReturned]), SUM(bvc_OrderItem[Qty]), 0),
+			        'BVC_ORDER'[TimeOfOrder - Copy] >= StartDate &&
+			        'BVC_ORDER'[TimeOfOrder - Copy] < EndDate
+			    )
+			)
+			
+			```
+		formatString: 0%;-0%;0%
+		lineageTag: 372defac-f778-410b-bbb4-4a551e05205d
+
+	measure 'RMA Return Rate (D-60 - D-90)' = ```
+			
+			VAR MaxDate = 
+			    CALCULATE(
+			        MAX('BVC_ORDER'[TimeOfOrder - Copy]),
+			        REMOVEFILTERS('BVC_ORDER')
+			    )
+			VAR StartDate = MaxDate - 90
+			VAR EndDate = MaxDate - 60
+			
+			RETURN
+			CALCULATE(
+			    DIVIDE(
+			        SUM(RMAItem[QtyReturned]),
+			        SUM(bvc_OrderItem[Qty]),
+			        0
+			    ),
+			    'BVC_ORDER'[TimeOfOrder - Copy] >= StartDate &&
+			    'BVC_ORDER'[TimeOfOrder - Copy] < EndDate
+			)
+			
+			```
+		formatString: 0%;-0%;0%
+		lineageTag: 01764b15-5a56-4c7f-b687-d24a4f52e3f4
+
+	measure 'RMA Return Rate (D-90 - D-120)' = ```
+			
+			VAR MaxDate = 
+			    CALCULATE(
+			        MAX('BVC_ORDER'[TimeOfOrder - Copy]),
+			        REMOVEFILTERS('BVC_ORDER')
+			    )
+			VAR StartDate = MaxDate - 120
+			VAR EndDate = MaxDate - 90
+			
+			RETURN
+			CALCULATE(
+			    DIVIDE(
+			        SUM(RMAItem[QtyReturned]),
+			        SUM(bvc_OrderItem[Qty]),
+			        0
+			    ),
+			    'BVC_ORDER'[TimeOfOrder - Copy] >= StartDate &&
+			    'BVC_ORDER'[TimeOfOrder - Copy] < EndDate
+			)
+			
+			```
+		formatString: 0%;-0%;0%
+		lineageTag: d291baa3-dbed-48b3-b02f-4ba8dc3be3bb
+
+	measure 'RMA Return Rate (D-120 - D-150)' = ```
+			
+			VAR MaxDate = 
+			    CALCULATE(
+			        MAX('BVC_ORDER'[TimeOfOrder - Copy]),
+			        REMOVEFILTERS('BVC_ORDER')
+			    )
+			VAR StartDate = MaxDate - 150
+			VAR EndDate = MaxDate - 120
+			
+			RETURN
+			CALCULATE(
+			    DIVIDE(
+			        SUM(RMAItem[QtyReturned]),
+			        SUM(bvc_OrderItem[Qty]),
+			        0
+			    ),
+			    'BVC_ORDER'[TimeOfOrder - Copy] >= StartDate &&
+			    'BVC_ORDER'[TimeOfOrder - Copy] < EndDate
+			)
+			
+			```
+		formatString: 0%;-0%;0%
+		lineageTag: 3fb57624-dd32-4a52-9e9a-1f4d97b54756
+
+	measure 'RMA Return Rate (D-150 - D-180)' = ```
+			
+			VAR MaxDate = 
+			    CALCULATE(
+			        MAX('BVC_ORDER'[TimeOfOrder - Copy]),
+			        REMOVEFILTERS('BVC_ORDER')
+			    )
+			VAR StartDate = MaxDate - 180
+			VAR EndDate = MaxDate - 150
+			
+			RETURN
+			CALCULATE(
+			    DIVIDE(
+			        SUM(RMAItem[QtyReturned]),
+			        SUM(bvc_OrderItem[Qty]),
+			        0
+			    ),
+			    'BVC_ORDER'[TimeOfOrder - Copy] >= StartDate &&
+			    'BVC_ORDER'[TimeOfOrder - Copy] < EndDate
+			)
+			
+			```
+		formatString: 0%;-0%;0%
+		lineageTag: 8dc7ff08-ff1e-4b8a-b32b-326363646c55
+
+	measure SUM_UnitsSold = SUM(bvc_OrderItem[Qty])
+		formatString: 0
+		lineageTag: e8ee0793-8f1b-4f94-a729-a86315a31cb2
+
+	measure SUM_Revenue = SUM(bvc_OrderItem[AdjustedSitePrice])
+		formatString: \$#,0;(\$#,0);\$#,0
+		lineageTag: 73f5026c-d52a-4a79-b230-6c920584d086
+
+		annotation PBI_FormatHint = {"currencyCulture":"en-US"}
+
+	measure EMPTY_MEASURE = " "
+		lineageTag: 0c13d5a1-3001-44d3-bb77-089ca330da39
+
+	measure Count_Sales_Spike_Products = ```
+			
+			CALCULATE(
+			    DISTINCTCOUNT(bvc_OrderItem[ProductID]),
+			    bvc_OrderItem[SalesSpike_Flag] = 1
+			)
+			
+			```
+		formatString: 0
+		lineageTag: 4ae018bb-3bfa-48bb-be66-247fd2213f9f
+
+	measure WFS_Avg_Daily_Sales_LastWeek = ```
+			
+			VAR EndDate = TODAY() - 1  // D-1 (yesterday)
+			VAR StartDate = EndDate - 6  // D-8 (7 days total: D-8 to D-1)
+			
+			RETURN
+			    CALCULATE(
+			        AVERAGEX(
+			            VALUES('BVC_ORDER'[RecordCreatedOn - Copy]),
+			            CALCULATE(SUM('bvc_OrderItem'[Qty]))
+			        ),
+			        'BVC_ORDER'[RecordCreatedOn - Copy] >= StartDate,
+			        'BVC_ORDER'[RecordCreatedOn - Copy] <= EndDate
+			    )
+			
+			```
+		formatString: 0
+		lineageTag: 246ff7db-b164-4534-b53d-e82372921b76
+
+		annotation PBI_FormatHint = {"isDecimal":true}
+
+	measure WFS_Total_Units_Sold_Last_7_Days = ```
+			
+			VAR EndDate = TODAY() - 1  // D-1 (yesterday)
+			VAR StartDate = EndDate - 6  // D-8 (7 days total: D-8 to D-1)
+			
+			RETURN
+			    CALCULATE(
+			        SUM('bvc_OrderItem'[Qty]),
+			        'BVC_ORDER'[RecordCreatedOn - Copy] >= StartDate,
+			        'BVC_ORDER'[RecordCreatedOn - Copy] <= EndDate
+			    )
+			
+			```
+		formatString: 0
+		lineageTag: 63ba3de4-cbd8-4a68-b628-48df2455aff6
+
+	measure WFS_Min_Daily_Sales_Last_7_Days = ```
+			
+			VAR EndDate = TODAY() - 1  // D-1 (yesterday)
+			VAR StartDate = EndDate - 6  // D-8
+			
+			RETURN
+			    MINX(
+			        FILTER(
+			            ADDCOLUMNS(
+			                VALUES('BVC_ORDER'[RecordCreatedOn - Copy]),
+			                "DailySales", CALCULATE(SUM('bvc_OrderItem'[Qty]))
+			            ),
+			            'BVC_ORDER'[RecordCreatedOn - Copy] >= StartDate &&
+			            'BVC_ORDER'[RecordCreatedOn - Copy] <= EndDate
+			        ),
+			        [DailySales]
+			    )
+			
+			```
+		formatString: 0
+		lineageTag: dd27b5d6-39c1-4bfc-a027-afdbf93ff5f5
+
+	measure WFS_Max_Daily_Sales_Last_7_Days = ```
+			
+			VAR EndDate = TODAY() - 1  // D-1 (yesterday)
+			VAR StartDate = EndDate - 6  // D-8
+			
+			RETURN
+			    MAXX(
+			        FILTER(
+			            ADDCOLUMNS(
+			                VALUES('BVC_ORDER'[RecordCreatedOn - Copy]),
+			                "DailySales", CALCULATE(SUM('bvc_OrderItem'[Qty]))
+			            ),
+			            'BVC_ORDER'[RecordCreatedOn - Copy] >= StartDate &&
+			            'BVC_ORDER'[RecordCreatedOn - Copy] <= EndDate
+			        ),
+			        [DailySales]
+			    )
+			
+			```
+		formatString: 0
+		lineageTag: 791d7af1-8192-4202-9255-a09a1fa95276
+
+	measure WFS_Projected_Sales_30_Days_Daily = ```
+			
+			[WFS_Avg_Daily_Sales_LastWeek] * 30
+			
+			```
+		formatString: 0
+		lineageTag: 8ae0ddcd-bb1c-4f2c-937b-9223de5c2e3d
+
+		annotation PBI_FormatHint = {"isDecimal":true}
+
+	measure WFS_Projection_30_Days_Range_Daily = ```
+			
+			VAR DailySales =
+			    SUMMARIZE (
+			        'bvc_Order',
+			        'bvc_Order'[RecordCreatedOn - Copy],
+			        "TotalSales", SUM('bvc_OrderItem'[Qty])
+			    )
+			
+			VAR MinDailySales = MINX(DailySales, [TotalSales])
+			VAR MaxDailySales = MAXX(DailySales, [TotalSales])
+			
+			VAR MinProjection = MinDailySales * 30
+			VAR MaxProjection = MaxDailySales * 30
+			
+			RETURN
+			    FORMAT(MinProjection, "#,##0") & " - " & FORMAT(MaxProjection, "#,##0")
+			
+			```
+		lineageTag: 21f9d03a-8f44-4259-bafc-ebcbec760a6e
+
+	measure RMA_Return_Rate_7DayRollingAvg = ```
+			
+			VAR CurrentDate = MAX('BVC_ORDER'[TimeofOrder - Copy])  // Get current context date
+			VAR StartDate = CurrentDate - 6                         // Define 7-day window start
+			RETURN
+			    CALCULATE(
+			        DIVIDE(
+			            SUM(RMAItem[QtyReturned]),                  // Total returned qty
+			            SUM(bvc_OrderItem[Qty])                     // Total ordered qty
+			        ),
+			        'BVC_ORDER'[TimeofOrder - Copy] >= StartDate &&
+			        'BVC_ORDER'[TimeofOrder - Copy] <= CurrentDate  // Filter to 7-day window
+			    )
+			
+			```
+		formatString: 0%;-0%;0%
+		lineageTag: af91833d-4e2a-42af-8f3b-3168bfb46388
+
+	measure WFS_Weekly_Restock_Delta = [WFS_Projected_Sales_30_Days_Weekly] - [LatestWFSWarehouseInventoryQty]
+		formatString: 0
+		lineageTag: 82db4ee2-f83b-4316-8359-f81412a2ec65
+
+		annotation PBI_FormatHint = {"isDecimal":true}
+
+	measure WFS_Daily_Restock_Delta = [WFS_Projected_Sales_30_Days_Daily] - [LatestWFSWarehouseInventoryQty]
+		formatString: 0
+		lineageTag: 8147ae0a-c2fc-4b35-b99d-cff23916ad47
+
+		annotation PBI_FormatHint = {"isDecimal":true}
+
+	measure COUNT_Newer_Zero_Stock_SKUs = ```
+			
+			CALCULATE(
+			    COUNTROWS('Product'),
+			    'Product'[Is_Zero_Stock_NoRecentOrders] = TRUE()
+			)
+			
+			```
+		formatString: 0
+		lineageTag: 40ea459c-9a19-4350-9820-7d1bf7e2a4c2
+
+	measure Dynamic_SalesSpike_Flag = ```
+			
+			VAR Multiplier = SELECTEDVALUE(SpikeMultiplier[Multiplier], 2)
+			
+			VAR MaxQty = MAX(Product_Sales_Spike_Flag[Max7DayQty])
+			VAR YestQty = MAX(Product_Sales_Spike_Flag[YesterdayQty])
+			
+			RETURN
+			IF(
+			    NOT ISBLANK(MaxQty) &&
+			    YestQty >= Multiplier * MaxQty,
+			    1,
+			    0
+			)
+			
+			```
+		formatString: 0
+		lineageTag: 22b8a520-175f-49ef-bd14-30bf1ea3e539
+
+	measure Missing_Order_Items = ```
+			
+			CALCULATE(
+			    COUNTROWS(bvc_OrderItem),
+			    ISBLANK(bvc_OrderItem[RecordCreatedOn])
+			)
+			
+			```
+		formatString: 0
+		lineageTag: 46fb0b08-c00e-4715-819b-60f1bee53fde
+
+	measure SalesSpike_DateRange = ```
+			
+			VAR Prior7Start =
+			    CALCULATE(
+			        MIN(Product_Sales_Spike_Flag[Prior7DayStartDate])
+			    )
+			VAR Prior7End =
+			    CALCULATE(
+			        MIN(Product_Sales_Spike_Flag[Prior7DayEndDate])
+			    )
+			RETURN "Prior Week: " &
+			FORMAT(Prior7Start, "M/dd") & " – " & FORMAT(Prior7End, "M/dd")
+			
+			```
+		lineageTag: 6b553e54-4fcd-4b6b-b687-10a85f3e72ec
+
+	measure SalesSpike_DateYesterday = ```
+			
+			VAR Yest =
+			    CALCULATE(
+			        MIN(Product_Sales_Spike_Flag[YesterdayDate])
+			    )
+			RETURN "Yesterday: " & 
+			FORMAT(Yest, "M/d/yyyy")  // or "mmm dd" if you prefer shorter format
+			
+			```
+		lineageTag: 7df51796-201a-43b1-95ad-361fac9e08ae
+
+	measure Count_Sales_Spike_Products_Max = ```
+			
+			CALCULATE(
+			    DISTINCTCOUNT(Product_Sales_Spike_Flag[ProductID]),
+			    Product_Sales_Spike_Flag[SalesSpike_Flag] = 1
+			)
+			
+			```
+		formatString: 0
+		lineageTag: e5dafed0-f725-4c1b-a32f-1b232f232409
+
+	measure DaysofStock_SalesSpike = ```
+			
+			DIVIDE(
+			    AVERAGE('bvc_OrderItem'[AggregateQty]),
+			    SUM('Product_Sales_Spike_Flag'[YesterdayQty])
+			)
+			
+			```
+		formatString: 0
+		lineageTag: 2be7b2f9-5f10-4b35-a849-ae96511e8999
+
+		annotation PBI_FormatHint = {"isDecimal":true}
+
+	measure COUNT_Open_Orders_By_ProductID_FLAG = ```
+			
+			CALCULATE(
+			    DISTINCTCOUNT('bvc_OrderItem'[OrderID]), 
+			    FILTER(
+			        'bvc_OrderItem',
+			        'bvc_OrderItem'[Open_Order_Flag] = 1
+			    )
+			)
+			
+			```
+		formatString: 0
+		lineageTag: 0ee763d4-2075-4202-8daf-79754ade6be7
+
+	measure Count_NotReceived_POs_Over1WeekOld = ```
+			
+			CALCULATE (
+			    DISTINCTCOUNT ( Purchase[ID] ),
+			    Purchase[Flag_NotReceived_Over1WeekOld] = 1,
+			    CROSSFILTER (
+			        Purchase[ID],
+			        MERGED_PO_ITEMS_TABLE[PurchaseID],
+			        BOTH
+			    )
+			) + 0
+			
+			```
+		formatString: 0
+		lineageTag: c60005a6-df0a-4c87-9657-c6b354eea9f8
+
+	measure Count_PO_UnitPrice_LessThan1 = ```
+			
+			SUM ( 'MERGED_PO_ITEMS_TABLE'[FLAG_PO_UnitPrice_LessThan1] ) + 0
+			
+			```
+		formatString: 0
+		lineageTag: e0783147-4d40-404c-b03f-482585ef94d7
+
+	measure CurrentInventory = ```
+			
+			SUM ( Product[AggregateQty] )
+			
+			```
+		formatString: 0
+		lineageTag: b15c476b-b207-4d44-bbd9-f67cd0243147
+
+	measure OrdersLast12M = ```
+			
+			VAR Cutoff = EDATE ( TODAY(), -12 )
+			RETURN
+			CALCULATE (
+			    DISTINCTCOUNT ( bvc_Order[ID] ),
+			    // Map the current Product context to order lines
+			    TREATAS ( VALUES ( Product[ProductID] ), bvc_OrderItem[ProductID] ),
+			    // Limit to the last 12 months
+			    FILTER (
+			        ALL ( bvc_Order ),
+			        bvc_Order[TimeofOrder] >= Cutoff
+			            && bvc_Order[TimeofOrder] < TODAY()
+			    )
+			)
+			
+			```
+		formatString: 0
+		lineageTag: 9b0a8bd0-a18a-424a-aaf6-193cfafc9fd8
+
+	measure Count_SKUs_With_Inventory = ```
+			
+			COUNTROWS (
+			    FILTER (
+			        Product,
+			        Product[AggregateQty] > 0
+			    )
+			)
+			
+			```
+		formatString: 0
+		lineageTag: 74261f30-1e09-401e-89d6-db5288d1b056
+
+	measure Count_SKUs_Inv_NoOrders_12M_Shadows_Remove = ```
+			
+			COUNTROWS (
+			    FILTER (
+			        Product,
+			        Product[Has_Positive_Inventory]
+			            && NOT Product[Has_Order_Last_12M]
+			            && COALESCE ( Product[ShadowOf], "" ) = "" //cells aren't actually blank, just an empty string, so have to specifically filter those out
+			            && 'Product'[IsBundle] <> TRUE()
+			    )
+			)
+			
+			```
+		formatString: 0
+		lineageTag: b9a2a2e8-3389-4d34-bb8f-6ca012b3f58a
+
+	measure COUNT_Aging_Dropship_None_Orders_By_OrderItem_FLAG = ```
+			
+			CALCULATE(
+			    DISTINCTCOUNT('bvc_OrderItem'[OrderID]), 
+			    FILTER(
+			        'bvc_OrderItem',
+			        'bvc_OrderItem'[FLAG_Aging_Dropship_None_ORDERITEM] = 1
+			    )
+			)
+			
+			```
+		formatString: 0
+		lineageTag: 98c7b6c4-4da4-4ca3-90a9-3f2be8f3b066
+
+	column Placeholder
+		isHidden
+		lineageTag: 0f033f3c-89cf-4f6a-b5bf-4a9403f0d1d5
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [Placeholder]
+
+		annotation SummarizationSetBy = Automatic
+
+	partition MeasuresTable = calculated
+		mode: import
+		source =
+				DATATABLE(
+				    "Placeholder", STRING,
+				    { { "Only for measures" } }
+				)
+
+	annotation PBI_Id = c4b4bcceb47a4f57a3f3c719861b3e6d
+

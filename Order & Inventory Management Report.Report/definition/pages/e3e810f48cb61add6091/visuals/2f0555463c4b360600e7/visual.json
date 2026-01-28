@@ -1,0 +1,609 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.5.0/schema.json",
+  "name": "2f0555463c4b360600e7",
+  "position": {
+    "x": 378.75,
+    "y": 58.75,
+    "z": 0,
+    "height": 751.25,
+    "width": 1073.75,
+    "tabOrder": 0
+  },
+  "visual": {
+    "visualType": "tableEx",
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "bvc_OrderItem"
+                    }
+                  },
+                  "Property": "ProductID"
+                }
+              },
+              "queryRef": "bvc_OrderItem.ProductID",
+              "nativeQueryRef": "ProductID"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "SELLERCLOUD_PRODUCT_IMAGES"
+                    }
+                  },
+                  "Property": "First Image URL"
+                }
+              },
+              "queryRef": "SELLERCLOUD_PRODUCT_IMAGES.First Image URL",
+              "nativeQueryRef": "Image",
+              "displayName": "Image"
+            },
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "bvc_OrderItem"
+                        }
+                      },
+                      "Property": "DisplayName"
+                    }
+                  },
+                  "Function": 3
+                }
+              },
+              "queryRef": "bvc_OrderItem.DisplayName",
+              "nativeQueryRef": "First DisplayName"
+            },
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "bvc_OrderItem"
+                        }
+                      },
+                      "Property": "Qty"
+                    }
+                  },
+                  "Function": 0
+                }
+              },
+              "queryRef": "Sum(bvc_OrderItem.Qty)",
+              "nativeQueryRef": "Qty Sold",
+              "displayName": "Qty Sold"
+            },
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "RMAItem"
+                        }
+                      },
+                      "Property": "QtyReturned"
+                    }
+                  },
+                  "Function": 0
+                }
+              },
+              "queryRef": "Sum(RMAItem.QtyReturned)",
+              "nativeQueryRef": "Qty Returned",
+              "displayName": "Qty Returned"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "MeasuresTable"
+                    }
+                  },
+                  "Property": "RMA Return Rate"
+                }
+              },
+              "queryRef": "MeasuresTable.RMA Return Rate",
+              "nativeQueryRef": "Overall RMA Return Rate",
+              "displayName": "Overall RMA Return Rate"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "MeasuresTable"
+                    }
+                  },
+                  "Property": "RMA Return Rate (D-0 - D-30)"
+                }
+              },
+              "queryRef": "MeasuresTable.RMA Return Rate (D-0 - D-30)",
+              "nativeQueryRef": "RMA Return Rate (D-0 - D-30)"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "MeasuresTable"
+                    }
+                  },
+                  "Property": "RMA Return Rate (D-30 - D-60)"
+                }
+              },
+              "queryRef": "MeasuresTable.RMA Return Rate (D-30 - D-60)",
+              "nativeQueryRef": "(D-30 - D-60)",
+              "displayName": "(D-30 - D-60)"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "MeasuresTable"
+                    }
+                  },
+                  "Property": "RMA Return Rate (D-60 - D-90)"
+                }
+              },
+              "queryRef": "MeasuresTable.RMA Return Rate (D-60 - D-90)",
+              "nativeQueryRef": "(D-60 - D-90)",
+              "displayName": "(D-60 - D-90)"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "MeasuresTable"
+                    }
+                  },
+                  "Property": "RMA Return Rate (D-90 - D-120)"
+                }
+              },
+              "queryRef": "MeasuresTable.RMA Return Rate (D-90 - D-120)",
+              "nativeQueryRef": "(D-90 - D-120)",
+              "displayName": "(D-90 - D-120)"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "MeasuresTable"
+                    }
+                  },
+                  "Property": "RMA Return Rate (D-120 - D-150)"
+                }
+              },
+              "queryRef": "MeasuresTable.RMA Return Rate (D-120 - D-150)",
+              "nativeQueryRef": "(D-120 - D-150)",
+              "displayName": "(D-120 - D-150)"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "MeasuresTable"
+                    }
+                  },
+                  "Property": "RMA Return Rate (D-150 - D-180)"
+                }
+              },
+              "queryRef": "MeasuresTable.RMA Return Rate (D-150 - D-180)",
+              "nativeQueryRef": "(D-150 - D-180)",
+              "displayName": "(D-150 - D-180)"
+            }
+          ]
+        }
+      }
+    },
+    "objects": {
+      "columnWidth": [
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "266.9903614259403D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "bvc_OrderItem.DisplayName"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "93.30670119536865D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "MeasuresTable.RMA Return Rate"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "104.73912012180801D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "MeasuresTable.RMA Return Rate (D-0 - D-30)"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "54.98449933238632D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "MeasuresTable.RMA Return Rate (D-30 - D-60)"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "56.173309466293034D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "MeasuresTable.RMA Return Rate (D-60 - D-90)"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "65.98155522854783D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "MeasuresTable.RMA Return Rate (D-90 - D-120)"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "65.79479349334974D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "MeasuresTable.RMA Return Rate (D-120 - D-150)"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "62.16831274414988D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "MeasuresTable.RMA Return Rate (D-150 - D-180)"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "70.28570153987161D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "Sum(RMAItem.QtyReturned)"
+          }
+        }
+      ],
+      "columnFormatting": [
+        {
+          "properties": {
+            "backColor": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "Literal": {
+                      "Value": "'#9DDEFF'"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "MeasuresTable.RMA Return Rate (D-0 - D-30)"
+          }
+        },
+        {
+          "properties": {
+            "backColor": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "Literal": {
+                      "Value": "'#A4E3FF'"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "MeasuresTable.RMA Return Rate (D-30 - D-60)"
+          }
+        },
+        {
+          "properties": {
+            "backColor": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "Literal": {
+                      "Value": "'#AFE5FF'"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "MeasuresTable.RMA Return Rate (D-60 - D-90)"
+          }
+        },
+        {
+          "properties": {
+            "backColor": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "Literal": {
+                      "Value": "'#BBE8FF'"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "MeasuresTable.RMA Return Rate (D-90 - D-120)"
+          }
+        },
+        {
+          "properties": {
+            "backColor": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "Literal": {
+                      "Value": "'#C7ECFF'"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "MeasuresTable.RMA Return Rate (D-120 - D-150)"
+          }
+        },
+        {
+          "properties": {
+            "backColor": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "Literal": {
+                      "Value": "'#D6F1FF'"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "MeasuresTable.RMA Return Rate (D-150 - D-180)"
+          }
+        }
+      ]
+    },
+    "visualContainerObjects": {
+      "stylePreset": [
+        {
+          "properties": {
+            "name": {
+              "expr": {
+                "Literal": {
+                  "Value": "'AlternatingRowsNew'"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  },
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "106129056cba789f392f",
+        "ordinal": 0,
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "bvc_OrderItem"
+              }
+            },
+            "Property": "AdjustedSitePrice"
+          }
+        },
+        "type": "Advanced",
+        "howCreated": "User"
+      },
+      {
+        "name": "83b436cc44d8fd3033d2",
+        "ordinal": 1,
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "bvc_OrderItem"
+              }
+            },
+            "Property": "DisplayName"
+          }
+        },
+        "type": "Categorical",
+        "howCreated": "User"
+      },
+      {
+        "name": "66ea9b0af614499d217b",
+        "ordinal": 2,
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "SELLERCLOUD_PRODUCT_IMAGES"
+              }
+            },
+            "Property": "First Image URL"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "9e7a7606b4bcf2dd29ea",
+        "ordinal": 3,
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "BVC_ORDER"
+              }
+            },
+            "Property": "OrderSource - CompanyName"
+          }
+        },
+        "type": "Categorical",
+        "howCreated": "User"
+      },
+      {
+        "name": "1f21fb54c4186ffe0269",
+        "ordinal": 4,
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "bvc_OrderItem"
+              }
+            },
+            "Property": "ProductID"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "c4edf7646a76ae84f845",
+        "ordinal": 5,
+        "field": {
+          "Aggregation": {
+            "Expression": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "bvc_OrderItem"
+                  }
+                },
+                "Property": "Qty"
+              }
+            },
+            "Function": 0
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "1e8aa349e407ae6ef38f",
+        "ordinal": 6,
+        "field": {
+          "Aggregation": {
+            "Expression": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "RMAItem"
+                  }
+                },
+                "Property": "QtyReturned"
+              }
+            },
+            "Function": 0
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "b6d74b9d00c50c8551c7",
+        "ordinal": 7,
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "MeasuresTable"
+              }
+            },
+            "Property": "RMA Return Rate"
+          }
+        },
+        "type": "Advanced"
+      }
+    ],
+    "filterSortOrder": "Custom"
+  }
+}

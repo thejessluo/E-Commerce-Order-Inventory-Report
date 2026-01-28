@@ -1,0 +1,17 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.5.0/schema.json",
+  "name": "0d45fbe740416ab56b73",
+  "position": {
+    "x": 246.25,
+    "y": 682.5,
+    "z": 6000,
+    "height": 117.5,
+    "width": 166.25,
+    "tabOrder": 7000
+  },
+  "visualGroup": {
+    "displayName": "FAST SELLING",
+    "groupMode": "ScaleMode"
+  },
+  "isHidden": true
+}

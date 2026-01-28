@@ -1,0 +1,4945 @@
+table Amazon_Merchants
+	lineageTag: 05afd48e-4a53-489d-8eeb-5efd9d18030a
+
+	column ID
+		dataType: int64
+		formatString: 0
+		lineageTag: 9b51ea26-f219-4bc2-8229-d1416e15d556
+		summarizeBy: none
+		sourceColumn: ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column CompanyName
+		dataType: string
+		lineageTag: da5a6086-29fc-4d1a-a477-7898673f83cf
+		summarizeBy: none
+		sourceColumn: CompanyName
+
+		annotation SummarizationSetBy = Automatic
+
+	column MerchantToken
+		dataType: string
+		lineageTag: 07404608-5197-4c42-97b7-6ae2884007f6
+		summarizeBy: none
+		sourceColumn: MerchantToken
+
+		annotation SummarizationSetBy = Automatic
+
+	column MerchantName
+		dataType: string
+		lineageTag: 04d905fa-dd41-42f4-9091-22bcfe13b2d4
+		summarizeBy: none
+		sourceColumn: MerchantName
+
+		annotation SummarizationSetBy = Automatic
+
+	column UserName
+		dataType: string
+		lineageTag: 614720bd-4c19-4aae-be28-53b09304ec2a
+		summarizeBy: none
+		sourceColumn: UserName
+
+		annotation SummarizationSetBy = Automatic
+
+	column Password
+		dataType: string
+		lineageTag: 5f38ea50-a44f-4c1a-9092-5e99a9fd5d55
+		summarizeBy: none
+		sourceColumn: Password
+
+		annotation SummarizationSetBy = Automatic
+
+	column Address
+		dataType: string
+		lineageTag: 65a11ae2-7280-4ee3-8121-090819cf74ea
+		summarizeBy: none
+		sourceColumn: Address
+
+		annotation SummarizationSetBy = Automatic
+
+	column LogoFileName
+		dataType: string
+		lineageTag: dc5391e4-9782-438c-a499-6b45dc2ce5fa
+		summarizeBy: none
+		sourceColumn: LogoFileName
+
+		annotation SummarizationSetBy = Automatic
+
+	column ShipRushTemplateFile
+		dataType: string
+		lineageTag: a8f5c522-af61-4056-9148-d0afa75f5a2a
+		summarizeBy: none
+		sourceColumn: ShipRushTemplateFile
+
+		annotation SummarizationSetBy = Automatic
+
+	column Email
+		dataType: string
+		lineageTag: 93302214-df77-45c1-bddb-0af93f12a01d
+		summarizeBy: none
+		sourceColumn: Email
+
+		annotation SummarizationSetBy = Automatic
+
+	column WebSiteURL
+		dataType: string
+		lineageTag: 81d09658-749a-433d-9424-cf708cf1fae1
+		summarizeBy: none
+		sourceColumn: WebSiteURL
+
+		annotation SummarizationSetBy = Automatic
+
+	column InvoiceTemplate
+		dataType: string
+		lineageTag: 7b28c61f-9e42-4506-a5cd-cd2f76077751
+		summarizeBy: none
+		sourceColumn: InvoiceTemplate
+
+		annotation SummarizationSetBy = Automatic
+
+	column MaxSmallPackageSize
+		dataType: double
+		lineageTag: 73ed0372-f7c0-46c1-bc33-e057e73444b7
+		summarizeBy: sum
+		sourceColumn: MaxSmallPackageSize
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column FirstClassIntTemplate
+		dataType: string
+		lineageTag: 6f699fc0-76bc-4520-a1d1-132e9fbefd55
+		summarizeBy: none
+		sourceColumn: FirstClassIntTemplate
+
+		annotation SummarizationSetBy = Automatic
+
+	column CustomsSigner
+		dataType: string
+		lineageTag: 962cc6e6-91d5-43ea-9cef-587421eb181c
+		summarizeBy: none
+		sourceColumn: CustomsSigner
+
+		annotation SummarizationSetBy = Automatic
+
+	column AMTUDiskPath
+		dataType: string
+		lineageTag: ce8eb027-11b1-44e7-a9a5-8b0222d4d515
+		summarizeBy: none
+		sourceColumn: AMTUDiskPath
+
+		annotation SummarizationSetBy = Automatic
+
+	column ShipRushReturnTemplateFile
+		dataType: string
+		lineageTag: db35588d-ea31-45f5-891c-19e115193cde
+		summarizeBy: none
+		sourceColumn: ShipRushReturnTemplateFile
+
+		annotation SummarizationSetBy = Automatic
+
+	column LastUpdatedOn
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: bc0cae37-8777-4285-9a33-774df21461c1
+		summarizeBy: none
+		sourceColumn: LastUpdatedOn
+
+		variation Variation
+			isDefault
+			relationship: 584d53e4-a241-49e5-b43a-aefd5b6c1a28
+			defaultHierarchy: LocalDateTable_b81106a4-614c-4620-87d9-1090a6028abd.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	column IsAmazonEnabled
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: d87b7f4d-1f3f-4b4d-bd6f-17e8d9be00b8
+		summarizeBy: none
+		sourceColumn: IsAmazonEnabled
+
+		annotation SummarizationSetBy = Automatic
+
+	column eBayEnabled
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: e0acc8aa-0de4-4c01-bf6e-7c8b237bbd16
+		summarizeBy: none
+		sourceColumn: eBayEnabled
+
+		annotation SummarizationSetBy = Automatic
+
+	column AMTUInventoryFilesPath
+		dataType: string
+		lineageTag: 416ec575-4161-4dd3-984f-2bb5141526ae
+		summarizeBy: none
+		sourceColumn: AMTUInventoryFilesPath
+
+		annotation SummarizationSetBy = Automatic
+
+	column AMTUInventoryFilesArchivePath
+		dataType: string
+		lineageTag: 9ed2297e-bc33-449c-849d-c023cdbabff1
+		summarizeBy: none
+		sourceColumn: AMTUInventoryFilesArchivePath
+
+		annotation SummarizationSetBy = Automatic
+
+	column AMTUInventoryFilesBadPath
+		dataType: string
+		lineageTag: 96bcf5c9-45d6-48ab-abb9-5c1fe9b19a52
+		summarizeBy: none
+		sourceColumn: AMTUInventoryFilesBadPath
+
+		annotation SummarizationSetBy = Automatic
+
+	column BuyDotComSellerID
+		dataType: string
+		lineageTag: 4d5c040f-c6c4-4319-88f2-dd76334f0e35
+		summarizeBy: none
+		sourceColumn: BuyDotComSellerID
+
+		annotation SummarizationSetBy = Automatic
+
+	column BuyDotComStoreCode
+		dataType: string
+		lineageTag: c05edb3c-ce3c-4653-8958-9681b789aa97
+		summarizeBy: none
+		sourceColumn: BuyDotComStoreCode
+
+		annotation SummarizationSetBy = Automatic
+
+	column Street1
+		dataType: string
+		lineageTag: 4305b3da-d1dc-4b51-933f-e845e90e3b29
+		summarizeBy: none
+		sourceColumn: Street1
+
+		annotation SummarizationSetBy = Automatic
+
+	column Street2
+		dataType: string
+		lineageTag: 9ecaee6c-d5ad-4d84-b814-0d89f30a3a2e
+		summarizeBy: none
+		sourceColumn: Street2
+
+		annotation SummarizationSetBy = Automatic
+
+	column City
+		dataType: string
+		lineageTag: abd6d61e-09f9-4fc3-b073-2374ef27f365
+		summarizeBy: none
+		sourceColumn: City
+
+		annotation SummarizationSetBy = Automatic
+
+	column StateName
+		dataType: string
+		lineageTag: ed5642a2-e389-467c-8fd8-1ff9eda607bb
+		summarizeBy: none
+		sourceColumn: StateName
+
+		annotation SummarizationSetBy = Automatic
+
+	column ZipCode
+		dataType: string
+		lineageTag: a55ec611-7d58-47dc-b63a-f946ef7641ec
+		summarizeBy: none
+		sourceColumn: ZipCode
+
+		annotation SummarizationSetBy = Automatic
+
+	column Phone
+		dataType: string
+		lineageTag: 07093e8f-0159-44bb-b5eb-1ff92b8b166d
+		summarizeBy: none
+		sourceColumn: Phone
+
+		annotation SummarizationSetBy = Automatic
+
+	column Country
+		dataType: string
+		lineageTag: a7cb2251-b348-4288-b862-24fbfeacb11b
+		summarizeBy: none
+		sourceColumn: Country
+
+		annotation SummarizationSetBy = Automatic
+
+	column MerchantSKUPrefix
+		dataType: string
+		lineageTag: 025f6a76-4302-41ee-9304-3ba03f334787
+		summarizeBy: none
+		sourceColumn: MerchantSKUPrefix
+
+		annotation SummarizationSetBy = Automatic
+
+	column BuyDotComFTPUserName
+		dataType: string
+		lineageTag: f1af70d2-04de-431a-9ab8-cf9fdd8f0ebb
+		summarizeBy: none
+		sourceColumn: BuyDotComFTPUserName
+
+		annotation SummarizationSetBy = Automatic
+
+	column BuyDotComFTPPassword
+		dataType: string
+		lineageTag: 69c64b3a-3111-4833-bdcb-3e0286020102
+		summarizeBy: none
+		sourceColumn: BuyDotComFTPPassword
+
+		annotation SummarizationSetBy = Automatic
+
+	column NewEggMerchantID
+		dataType: int64
+		formatString: 0
+		lineageTag: 42b6ce06-5c9e-4073-86ab-cfc0b2fca611
+		summarizeBy: count
+		sourceColumn: NewEggMerchantID
+
+		annotation SummarizationSetBy = Automatic
+
+	column AmazonOrderDocArchivePath
+		dataType: string
+		lineageTag: e26356c4-874a-45df-b3be-d654187bd46c
+		summarizeBy: none
+		sourceColumn: AmazonOrderDocArchivePath
+
+		annotation SummarizationSetBy = Automatic
+
+	column AmazonInventoryDocArchivePath
+		dataType: string
+		lineageTag: 29040f39-6dad-4355-b372-aa1a44f1caa6
+		summarizeBy: none
+		sourceColumn: AmazonInventoryDocArchivePath
+
+		annotation SummarizationSetBy = Automatic
+
+	column AllowGoogleCheckout
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 3df62349-9f75-4900-8626-78d99630f097
+		summarizeBy: none
+		sourceColumn: AllowGoogleCheckout
+
+		annotation SummarizationSetBy = Automatic
+
+	column GoogleCheckOutMerchantID
+		dataType: string
+		lineageTag: 98023088-4d3b-49d1-8aec-1ed688bab079
+		summarizeBy: none
+		sourceColumn: GoogleCheckOutMerchantID
+
+		annotation SummarizationSetBy = Automatic
+
+	column GoogleCheckOutMerchantKey
+		dataType: string
+		lineageTag: 4d31c3a1-ff40-4f02-9409-5b720c0a942c
+		summarizeBy: none
+		sourceColumn: GoogleCheckOutMerchantKey
+
+		annotation SummarizationSetBy = Automatic
+
+	column GoogleCheckOutTestMode
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 54b9fadf-da2b-43f6-9e5b-3bfb6891c762
+		summarizeBy: none
+		sourceColumn: GoogleCheckOutTestMode
+
+		annotation SummarizationSetBy = Automatic
+
+	column GoogleCheckOutCurrency
+		dataType: string
+		lineageTag: 69fa8857-ffc9-4b7f-b355-180cf0ad7c82
+		summarizeBy: none
+		sourceColumn: GoogleCheckOutCurrency
+
+		annotation SummarizationSetBy = Automatic
+
+	column GoogleCheckOutCartExpirationMinutes
+		dataType: int64
+		formatString: 0
+		lineageTag: cfc36655-2bd2-47df-b7cc-2ffef2bdd8cf
+		summarizeBy: sum
+		sourceColumn: GoogleCheckOutCartExpirationMinutes
+
+		annotation SummarizationSetBy = Automatic
+
+	column AmazonMWSAccessKey
+		dataType: string
+		lineageTag: 0ef5de67-b903-4516-9f9e-23d5c3ef4d5a
+		summarizeBy: none
+		sourceColumn: AmazonMWSAccessKey
+
+		annotation SummarizationSetBy = Automatic
+
+	column AmazonMWSAssociateID
+		dataType: string
+		lineageTag: df3efe6e-07d3-47c8-8ecd-70b9765ae02b
+		summarizeBy: none
+		sourceColumn: AmazonMWSAssociateID
+
+		annotation SummarizationSetBy = Automatic
+
+	column AllowAmazonCheckout
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 9f6eeee1-aaa0-433b-8f35-25729fae1fde
+		summarizeBy: none
+		sourceColumn: AllowAmazonCheckout
+
+		annotation SummarizationSetBy = Automatic
+
+	column AmazonCheckoutTestMode
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: bd011c20-6064-4f85-b713-c11c2f02ae71
+		summarizeBy: none
+		sourceColumn: AmazonCheckoutTestMode
+
+		annotation SummarizationSetBy = Automatic
+
+	column AmazonCheckoutDescription
+		dataType: string
+		lineageTag: d9361f0d-dcea-42be-a462-655d7fbfc9de
+		summarizeBy: none
+		sourceColumn: AmazonCheckoutDescription
+
+		annotation SummarizationSetBy = Automatic
+
+	column LoginContactID
+		dataType: int64
+		formatString: 0
+		lineageTag: 7d53889c-da98-45a3-98e9-949a5c3ba853
+		summarizeBy: count
+		sourceColumn: LoginContactID
+
+		annotation SummarizationSetBy = Automatic
+
+	column ContactPersonFirstName
+		dataType: string
+		lineageTag: 2cd04404-de0c-422b-835d-d9d9f4711856
+		summarizeBy: none
+		sourceColumn: ContactPersonFirstName
+
+		annotation SummarizationSetBy = Automatic
+
+	column ContactPersonLastName
+		dataType: string
+		lineageTag: 32826f0c-15a4-4983-a9a8-eb2d75d0f6f1
+		summarizeBy: none
+		sourceColumn: ContactPersonLastName
+
+		annotation SummarizationSetBy = Automatic
+
+	column NewEggFtpUserName
+		dataType: string
+		lineageTag: 2bded046-aada-4891-bdbf-e06f889a3769
+		summarizeBy: none
+		sourceColumn: NewEggFtpUserName
+
+		annotation SummarizationSetBy = Automatic
+
+	column NewEggFtpPassword
+		dataType: string
+		lineageTag: a34574ec-0888-42a3-b95b-d1cfd7496c7e
+		summarizeBy: none
+		sourceColumn: NewEggFtpPassword
+
+		annotation SummarizationSetBy = Automatic
+
+	column ClientID
+		dataType: int64
+		formatString: 0
+		lineageTag: 88b21cf1-6fbd-4507-b284-c964caf30428
+		summarizeBy: count
+		sourceColumn: ClientID
+
+		annotation SummarizationSetBy = Automatic
+
+	column IsDefaultCompany
+		dataType: int64
+		formatString: 0
+		lineageTag: 6d4f86c8-55b5-418f-95de-8aed609171a8
+		summarizeBy: sum
+		sourceColumn: IsDefaultCompany
+
+		annotation SummarizationSetBy = Automatic
+
+	column GoogleCheckoutContinueToken
+		dataType: string
+		lineageTag: 4afe7606-0ca9-4550-88df-c31348aa73bc
+		summarizeBy: none
+		sourceColumn: GoogleCheckoutContinueToken
+
+		annotation SummarizationSetBy = Automatic
+
+	column BuyDotComDocumentArchivePath
+		dataType: string
+		lineageTag: f35089de-db11-472e-bc1f-c731de41bb7a
+		summarizeBy: none
+		sourceColumn: BuyDotComDocumentArchivePath
+
+		annotation SummarizationSetBy = Automatic
+
+	column YahooStoreID
+		dataType: string
+		lineageTag: 9c0d8cb8-677e-4118-9927-830a5e905298
+		summarizeBy: none
+		sourceColumn: YahooStoreID
+
+		annotation SummarizationSetBy = Automatic
+
+	column YahooStoreName
+		dataType: string
+		lineageTag: 4093bd50-44b8-471a-800a-b458ba615abf
+		summarizeBy: none
+		sourceColumn: YahooStoreName
+
+		annotation SummarizationSetBy = Automatic
+
+	column BuyDotComEnabled
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 669b6c1d-7a4e-4682-9bc4-fc813dac3773
+		summarizeBy: none
+		sourceColumn: BuyDotComEnabled
+
+		annotation SummarizationSetBy = Automatic
+
+	column NewEggEnabled
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 331d2567-c4af-4069-ac6d-2fb21e8cbaa8
+		summarizeBy: none
+		sourceColumn: NewEggEnabled
+
+		annotation SummarizationSetBy = Automatic
+
+	column YahooStoreEnabled
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 1d730c82-7ed6-400a-8576-79c8f5f4ef09
+		summarizeBy: none
+		sourceColumn: YahooStoreEnabled
+
+		annotation SummarizationSetBy = Automatic
+
+	column YahooAPIToken
+		dataType: string
+		lineageTag: 67320ce8-f6b2-45e6-b3c9-5bf4c3612e2d
+		summarizeBy: none
+		sourceColumn: YahooAPIToken
+
+		annotation SummarizationSetBy = Automatic
+
+	column LastYahooOrderID
+		dataType: int64
+		formatString: 0
+		lineageTag: 6e7b7c3b-e9df-4923-a7ed-1178317b5351
+		summarizeBy: count
+		sourceColumn: LastYahooOrderID
+
+		annotation SummarizationSetBy = Automatic
+
+	column OrderDownloadFileNumberLimit
+		dataType: string
+		lineageTag: 11f98266-ca35-45c4-9c33-5a71dfd9d6cd
+		summarizeBy: none
+		sourceColumn: OrderDownloadFileNumberLimit
+
+		annotation SummarizationSetBy = Automatic
+
+	column EnableOrderDownloadFileNumberLimit
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 57bdf912-919d-43df-9840-7c59bd8497e3
+		summarizeBy: none
+		sourceColumn: EnableOrderDownloadFileNumberLimit
+
+		annotation SummarizationSetBy = Automatic
+
+	column AmazonSafetyQuantity
+		dataType: int64
+		formatString: 0
+		lineageTag: 04c950b4-0e1d-4a9a-bc29-3fef401e726a
+		summarizeBy: sum
+		sourceColumn: AmazonSafetyQuantity
+
+		annotation SummarizationSetBy = Automatic
+
+	column AmazonStoreFrontID
+		dataType: string
+		lineageTag: 71cb58bc-e82b-4471-abe9-c9b165a2aa8b
+		summarizeBy: none
+		sourceColumn: AmazonStoreFrontID
+
+		annotation SummarizationSetBy = Automatic
+
+	column AmazonSearchIndex
+		dataType: string
+		lineageTag: bd448a7c-6f21-4656-8d5c-29194174d764
+		summarizeBy: none
+		sourceColumn: AmazonSearchIndex
+
+		annotation SummarizationSetBy = Automatic
+
+	column AllowCombineShipping
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 30d3ff6e-f849-484c-a20e-97d2b8ecded6
+		summarizeBy: none
+		sourceColumn: AllowCombineShipping
+
+		annotation SummarizationSetBy = Automatic
+
+	column EnableScrollingBanner
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 3a058dc4-2aef-481e-b7a0-26a6c9694fbf
+		summarizeBy: none
+		sourceColumn: EnableScrollingBanner
+
+		annotation SummarizationSetBy = Automatic
+
+	column ScrollingBannerText
+		dataType: string
+		lineageTag: cd9347aa-12d5-430b-9f39-3a99f5ec5af0
+		summarizeBy: none
+		sourceColumn: ScrollingBannerText
+
+		annotation SummarizationSetBy = Automatic
+
+	column TestimonialImagesPath
+		dataType: string
+		lineageTag: d3f0df75-552d-473a-83e0-8d57c33be7c1
+		summarizeBy: none
+		sourceColumn: TestimonialImagesPath
+
+		annotation SummarizationSetBy = Automatic
+
+	column SearsEnabled
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 3d0c5be1-e167-4c03-a723-3b5c7c4d2b25
+		summarizeBy: none
+		sourceColumn: SearsEnabled
+
+		annotation SummarizationSetBy = Automatic
+
+	column SearsEmail
+		dataType: string
+		lineageTag: c423bdd2-e8ff-4856-ba4f-f2a9163498c9
+		summarizeBy: none
+		sourceColumn: SearsEmail
+
+		annotation SummarizationSetBy = Automatic
+
+	column SearsPassword
+		dataType: string
+		lineageTag: 530f20c9-052e-41e0-9858-2aa103b1ee47
+		summarizeBy: none
+		sourceColumn: SearsPassword
+
+		annotation SummarizationSetBy = Automatic
+
+	column SearsStoreLocations
+		dataType: string
+		lineageTag: b96fb9e2-8ebc-42a2-85f0-8a259b442de7
+		summarizeBy: none
+		sourceColumn: SearsStoreLocations
+
+		annotation SummarizationSetBy = Automatic
+
+	column YahooUserID
+		dataType: string
+		lineageTag: dfbd48a3-eff0-4225-98ff-99dc6a3d0d15
+		summarizeBy: none
+		sourceColumn: YahooUserID
+
+		annotation SummarizationSetBy = Automatic
+
+	column YahooPassword
+		dataType: string
+		lineageTag: 253b65ac-4b06-4c72-9ec3-477b2cfcb5c2
+		summarizeBy: none
+		sourceColumn: YahooPassword
+
+		annotation SummarizationSetBy = Automatic
+
+	column YahooInventoryReliesOnMasterSKU
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 144b23a5-beea-4ef0-94c9-06454571fa5c
+		summarizeBy: none
+		sourceColumn: YahooInventoryReliesOnMasterSKU
+
+		annotation SummarizationSetBy = Automatic
+
+	column BuyDotComEnableOrderDownload
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 23598e04-fe93-4259-a74f-8531c8bba8a2
+		summarizeBy: none
+		sourceColumn: BuyDotComEnableOrderDownload
+
+		annotation SummarizationSetBy = Automatic
+
+	column BuyDotComEnableInventoryUpload
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 4e338fe9-c321-4848-8217-1b41f1681d24
+		summarizeBy: none
+		sourceColumn: BuyDotComEnableInventoryUpload
+
+		annotation SummarizationSetBy = Automatic
+
+	column BuyDotComEnableFullfillmentUpload
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 0f2494d5-fa27-456b-8f3d-0088f8a90b71
+		summarizeBy: none
+		sourceColumn: BuyDotComEnableFullfillmentUpload
+
+		annotation SummarizationSetBy = Automatic
+
+	column NewEggEnableOrderDownload
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 71b2906c-2b5e-4143-b0e6-8bf6573809b5
+		summarizeBy: none
+		sourceColumn: NewEggEnableOrderDownload
+
+		annotation SummarizationSetBy = Automatic
+
+	column NewEggEnableInventoryUpload
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 23481787-3d45-4344-a227-4e6e15060603
+		summarizeBy: none
+		sourceColumn: NewEggEnableInventoryUpload
+
+		annotation SummarizationSetBy = Automatic
+
+	column NewEggEnableFullfillmentUpload
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 38da8235-d6ee-4159-a6cf-f4f949512f10
+		summarizeBy: none
+		sourceColumn: NewEggEnableFullfillmentUpload
+
+		annotation SummarizationSetBy = Automatic
+
+	column OverStockEnabled
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 705b0c89-079c-4673-8d48-ce1e27feec5d
+		summarizeBy: none
+		sourceColumn: OverStockEnabled
+
+		annotation SummarizationSetBy = Automatic
+
+	column OverStockLoginVerified
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: b92e04f8-168c-4f30-9e3b-657380131a8d
+		summarizeBy: none
+		sourceColumn: OverStockLoginVerified
+
+		annotation SummarizationSetBy = Automatic
+
+	column OverStockAuthenticationId
+		dataType: string
+		lineageTag: 606e497f-399b-4186-b4af-f8056be9e5f5
+		summarizeBy: none
+		sourceColumn: OverStockAuthenticationId
+
+		annotation SummarizationSetBy = Automatic
+
+	column OverStockAuthenticatedOn
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 2cfa4c37-db95-4b1f-906d-9bc03922f6a9
+		summarizeBy: none
+		sourceColumn: OverStockAuthenticatedOn
+
+		variation Variation
+			isDefault
+			relationship: 8592b1fd-e4db-4e21-801c-95eb77e64279
+			defaultHierarchy: LocalDateTable_b0f7befb-a315-4504-ad74-b7dcfa2204c9.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	column Cart32Enabled
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 28631b41-94e5-450d-8ed9-b5c1526fde95
+		summarizeBy: none
+		sourceColumn: Cart32Enabled
+
+		annotation SummarizationSetBy = Automatic
+
+	column Cart32FTPAddress
+		dataType: string
+		lineageTag: b0a44808-1e0b-4699-8b1d-358bc1d39257
+		summarizeBy: none
+		sourceColumn: Cart32FTPAddress
+
+		annotation SummarizationSetBy = Automatic
+
+	column Cart32FTPUserName
+		dataType: string
+		lineageTag: de01cef7-6aad-4a24-a22f-e0e26bd61101
+		summarizeBy: none
+		sourceColumn: Cart32FTPUserName
+
+		annotation SummarizationSetBy = Automatic
+
+	column Cart32FTPPassword
+		dataType: string
+		lineageTag: 1f67cede-c3b8-44b1-aa39-f16397ac8054
+		summarizeBy: none
+		sourceColumn: Cart32FTPPassword
+
+		annotation SummarizationSetBy = Automatic
+
+	column Cart32FTPPort
+		dataType: int64
+		formatString: 0
+		lineageTag: b20faae5-74be-474a-ac72-d5dc6e80940b
+		summarizeBy: sum
+		sourceColumn: Cart32FTPPort
+
+		annotation SummarizationSetBy = Automatic
+
+	column AmazonEnableInventoryUpload
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: c3cfc0fe-403d-49dd-95ef-c321c78af3c7
+		summarizeBy: none
+		sourceColumn: AmazonEnableInventoryUpload
+
+		annotation SummarizationSetBy = Automatic
+
+	column AmazonEnableOrderDownload
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 90c1cd57-ea5f-4423-be6b-c594bf3ba3f1
+		summarizeBy: none
+		sourceColumn: AmazonEnableOrderDownload
+
+		annotation SummarizationSetBy = Automatic
+
+	column AmazonEnableFullfillmentUpload
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: a0a8b6c5-34cf-48fa-b015-5145c74b0768
+		summarizeBy: none
+		sourceColumn: AmazonEnableFullfillmentUpload
+
+		annotation SummarizationSetBy = Automatic
+
+	column InvoiceCustomMessage
+		dataType: string
+		lineageTag: 96e5c7cc-01e9-4475-95d0-adb8e391a751
+		summarizeBy: none
+		sourceColumn: InvoiceCustomMessage
+
+		annotation SummarizationSetBy = Automatic
+
+	column CalculateOrderWeight
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 3fd6767c-a0c5-4a63-9931-abce0bab4c23
+		summarizeBy: none
+		sourceColumn: CalculateOrderWeight
+
+		annotation SummarizationSetBy = Automatic
+
+	column Cart32DeleteFilesFromFtp
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 40ec9e0b-b1ff-42fe-aad4-e0be13b02b6f
+		summarizeBy: none
+		sourceColumn: Cart32DeleteFilesFromFtp
+
+		annotation SummarizationSetBy = Automatic
+
+	column AmazonMarketPlaceID
+		dataType: string
+		lineageTag: 8be1c235-39df-451a-9443-7f699f2d29fc
+		summarizeBy: none
+		sourceColumn: AmazonMarketPlaceID
+
+		annotation SummarizationSetBy = Automatic
+
+	column ProductViewURL
+		dataType: string
+		lineageTag: 3075ed6b-f8ef-4ce6-a066-18c67524046d
+		summarizeBy: none
+		sourceColumn: ProductViewURL
+
+		annotation SummarizationSetBy = Automatic
+
+	column AmazonEnablePriceUpdate
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 73782676-d269-4acf-8167-70d8500573c7
+		summarizeBy: none
+		sourceColumn: AmazonEnablePriceUpdate
+
+		annotation SummarizationSetBy = Automatic
+
+	column BuyDotComSafetyQuantity
+		dataType: int64
+		formatString: 0
+		lineageTag: 24733c93-3940-4fd3-9089-d2da20a96028
+		summarizeBy: sum
+		sourceColumn: BuyDotComSafetyQuantity
+
+		annotation SummarizationSetBy = Automatic
+
+	column SearsSafetyQuantity
+		dataType: int64
+		formatString: 0
+		lineageTag: c083ddda-c7b4-484a-9335-d469244654f4
+		summarizeBy: sum
+		sourceColumn: SearsSafetyQuantity
+
+		annotation SummarizationSetBy = Automatic
+
+	column NewEggSafetyQuantity
+		dataType: int64
+		formatString: 0
+		lineageTag: f4cca7db-4089-4e1b-a87c-4779d283d4f3
+		summarizeBy: sum
+		sourceColumn: NewEggSafetyQuantity
+
+		annotation SummarizationSetBy = Automatic
+
+	column EnableFBAOrders
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: a43eb20c-c2bc-47c0-b5de-d12852fed589
+		summarizeBy: none
+		sourceColumn: EnableFBAOrders
+
+		annotation SummarizationSetBy = Automatic
+
+	column ShippingRuleConfirmedOnly
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: ea5f54c7-b022-420f-8907-b3d3b0998ce9
+		summarizeBy: none
+		sourceColumn: ShippingRuleConfirmedOnly
+
+		annotation SummarizationSetBy = Automatic
+
+	column ShippingRuleInvoicedOnly
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 3ed19c79-e559-4180-8805-11da507ba61e
+		summarizeBy: none
+		sourceColumn: ShippingRuleInvoicedOnly
+
+		annotation SummarizationSetBy = Automatic
+
+	column ShippingRuleOkToShipOnly
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 58c6845f-3f53-4e24-b25e-57fcee990010
+		summarizeBy: none
+		sourceColumn: ShippingRuleOkToShipOnly
+
+		annotation SummarizationSetBy = Automatic
+
+	column ShippingRuleDropShipOtherThanNoneOnly
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 733ee41c-948d-4f7d-9f18-ebf72769dcc2
+		summarizeBy: none
+		sourceColumn: ShippingRuleDropShipOtherThanNoneOnly
+
+		annotation SummarizationSetBy = Automatic
+
+	column OverStockAllowOrderDownload
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: cb8fe19d-effd-493d-8a9d-a00338307429
+		summarizeBy: none
+		sourceColumn: OverStockAllowOrderDownload
+
+		annotation SummarizationSetBy = Automatic
+
+	column OverStockAllowOrderAcknowledgements
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 5c66c76d-084a-412a-91e4-953958059cf7
+		summarizeBy: none
+		sourceColumn: OverStockAllowOrderAcknowledgements
+
+		annotation SummarizationSetBy = Automatic
+
+	column OverStockAllowOrderShipConfirmation
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 91a66fb1-b8af-4872-9ada-a6f4d117fee8
+		summarizeBy: none
+		sourceColumn: OverStockAllowOrderShipConfirmation
+
+		annotation SummarizationSetBy = Automatic
+
+	column OverStockAllowInventoryUpload
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 7e27f527-b672-4077-848e-cd1d3418dd85
+		summarizeBy: none
+		sourceColumn: OverStockAllowInventoryUpload
+
+		annotation SummarizationSetBy = Automatic
+
+	column AmazonEnableOrderCancellation
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: c1b4afbb-30b5-40d7-b21d-a18b6f236015
+		summarizeBy: none
+		sourceColumn: AmazonEnableOrderCancellation
+
+		annotation SummarizationSetBy = Automatic
+
+	column OverStockSafetyQty
+		dataType: int64
+		formatString: 0
+		lineageTag: 0a34aaa0-909d-432c-ba94-19212e2a022c
+		summarizeBy: sum
+		sourceColumn: OverStockSafetyQty
+
+		annotation SummarizationSetBy = Automatic
+
+	column HomeCountryCode
+		dataType: int64
+		formatString: 0
+		lineageTag: 7975f155-0478-4817-9b30-bedfb761ea2a
+		summarizeBy: count
+		sourceColumn: HomeCountryCode
+
+		annotation SummarizationSetBy = Automatic
+
+	column HomeCurrencyCode
+		dataType: int64
+		formatString: 0
+		lineageTag: 4211733c-2d94-497e-88b0-d31453f07d0f
+		summarizeBy: count
+		sourceColumn: HomeCurrencyCode
+
+		annotation SummarizationSetBy = Automatic
+
+	column AmazonSafetyQuantityReplenishable
+		dataType: int64
+		formatString: 0
+		lineageTag: 0543a2c9-df5d-44c1-bddd-6268a5fdd06c
+		summarizeBy: sum
+		sourceColumn: AmazonSafetyQuantityReplenishable
+
+		annotation SummarizationSetBy = Automatic
+
+	column AmazonFBAAccessKey
+		dataType: string
+		lineageTag: 61bea780-ef9d-4deb-b02d-6fdca17d9c87
+		summarizeBy: none
+		sourceColumn: AmazonFBAAccessKey
+
+		annotation SummarizationSetBy = Automatic
+
+	column AmazonFBAAssociateID
+		dataType: string
+		lineageTag: 6e13fe1a-38ad-4ea6-8ead-4bbdd13ef16f
+		summarizeBy: none
+		sourceColumn: AmazonFBAAssociateID
+
+		annotation SummarizationSetBy = Automatic
+
+	column NewEggDotComMerchantID
+		dataType: string
+		lineageTag: 21965376-4b95-44b4-8ef1-6d9fcc553e56
+		summarizeBy: none
+		sourceColumn: NewEggDotComMerchantID
+
+		annotation SummarizationSetBy = Automatic
+
+	column NewEggDotComFtpUserName
+		dataType: string
+		lineageTag: a6592f01-b1a7-4b8b-85bb-3a2401935efa
+		summarizeBy: none
+		sourceColumn: NewEggDotComFtpUserName
+
+		annotation SummarizationSetBy = Automatic
+
+	column NewEggDotComFtpPassword
+		dataType: string
+		lineageTag: dfb687c5-09bd-4c16-bc38-59d9fcc10cb8
+		summarizeBy: none
+		sourceColumn: NewEggDotComFtpPassword
+
+		annotation SummarizationSetBy = Automatic
+
+	column NewEggDotComEnabled
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 0fd5ca42-76fb-4ba7-b48b-b3cfe3db233e
+		summarizeBy: none
+		sourceColumn: NewEggDotComEnabled
+
+		annotation SummarizationSetBy = Automatic
+
+	column NewEggDotComEnableOrderDownload
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 0934aca4-d424-4577-af20-655cb31f5e5d
+		summarizeBy: none
+		sourceColumn: NewEggDotComEnableOrderDownload
+
+		annotation SummarizationSetBy = Automatic
+
+	column NewEggDotComEnableInventoryUpload
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: a8639054-1bc9-4961-82e7-367ca0fd0726
+		summarizeBy: none
+		sourceColumn: NewEggDotComEnableInventoryUpload
+
+		annotation SummarizationSetBy = Automatic
+
+	column NewEggDotComEnableFullfillmentUpload
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 2e5ab686-e9ca-49f5-9ff1-c61360bbea1b
+		summarizeBy: none
+		sourceColumn: NewEggDotComEnableFullfillmentUpload
+
+		annotation SummarizationSetBy = Automatic
+
+	column NewEggDotComSafetyQuantity
+		dataType: int64
+		formatString: 0
+		lineageTag: 6b530abf-d581-45d1-8c7a-836b687e73a9
+		summarizeBy: sum
+		sourceColumn: NewEggDotComSafetyQuantity
+
+		annotation SummarizationSetBy = Automatic
+
+	column NewEggDotComFTPHost
+		dataType: string
+		lineageTag: 75f884d8-faba-4001-b2c1-5e3b8c359cb6
+		summarizeBy: none
+		sourceColumn: NewEggDotComFTPHost
+
+		annotation SummarizationSetBy = Automatic
+
+	column Invoice_UseHtml2PDF
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: b66563dc-631a-4606-9692-507d8ac071bf
+		summarizeBy: none
+		sourceColumn: Invoice_UseHtml2PDF
+
+		annotation SummarizationSetBy = Automatic
+
+	column Invoice_ShowProductImages
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 8c5c4bc7-ce48-486e-ba3b-30450dab4017
+		summarizeBy: none
+		sourceColumn: Invoice_ShowProductImages
+
+		annotation SummarizationSetBy = Automatic
+
+	column Invoice_ShowPrices
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: caa980ec-c028-41d9-9fa4-c2e826d584ea
+		summarizeBy: none
+		sourceColumn: Invoice_ShowPrices
+
+		annotation SummarizationSetBy = Automatic
+
+	column Invoice_ShowCustomerMessage
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 427b1cb8-756a-4268-816e-846a3d61fed4
+		summarizeBy: none
+		sourceColumn: Invoice_ShowCustomerMessage
+
+		annotation SummarizationSetBy = Automatic
+
+	column Invoice_ShowTotalQty
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 4e6526a7-c6cf-4199-99ff-fa8f6cdeb7d2
+		summarizeBy: none
+		sourceColumn: Invoice_ShowTotalQty
+
+		annotation SummarizationSetBy = Automatic
+
+	column Invoice_ShowRushOrder
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: a8d3e737-0a4f-47c6-9be6-e677402f2d85
+		summarizeBy: none
+		sourceColumn: Invoice_ShowRushOrder
+
+		annotation SummarizationSetBy = Automatic
+
+	column Invoice_ShowGiftMessage
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 2cce4bc9-0d96-46a2-a6ba-f2df0de63173
+		summarizeBy: none
+		sourceColumn: Invoice_ShowGiftMessage
+
+		annotation SummarizationSetBy = Automatic
+
+	column Invoice_ShowLocationNotes
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 45d30033-04b0-4d6e-851a-01f2120c376e
+		summarizeBy: none
+		sourceColumn: Invoice_ShowLocationNotes
+
+		annotation SummarizationSetBy = Automatic
+
+	column NewEggDotComDeleteFilesFromFtp
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 7e5e21c5-be24-4b01-976b-35c769d8308f
+		summarizeBy: none
+		sourceColumn: NewEggDotComDeleteFilesFromFtp
+
+		annotation SummarizationSetBy = Automatic
+
+	column NewEggDeleteFilesFromFtp
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: d7760f2e-3ac5-4f02-9b70-0a793679a326
+		summarizeBy: none
+		sourceColumn: NewEggDeleteFilesFromFtp
+
+		annotation SummarizationSetBy = Automatic
+
+	column BuyDotComDeleteFilesFromFtp
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: f31b6a97-85e1-4556-b5b8-9eadb94fc36a
+		summarizeBy: none
+		sourceColumn: BuyDotComDeleteFilesFromFtp
+
+		annotation SummarizationSetBy = Automatic
+
+	column Invoice_ShowCompanyAddress
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: b08034ad-42d8-40fd-a6ae-18913233516e
+		summarizeBy: none
+		sourceColumn: Invoice_ShowCompanyAddress
+
+		annotation SummarizationSetBy = Automatic
+
+	column SearsEnableOrderDownload
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 0e11f24a-6add-4580-a821-4a46343234f1
+		summarizeBy: none
+		sourceColumn: SearsEnableOrderDownload
+
+		annotation SummarizationSetBy = Automatic
+
+	column SearsEnableInventoryUpload
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 4d80aaa9-4e0e-4e7f-889b-da6a88fd17b0
+		summarizeBy: none
+		sourceColumn: SearsEnableInventoryUpload
+
+		annotation SummarizationSetBy = Automatic
+
+	column SearsEnableFullfillmentUpload
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: b6b81721-0fd9-44dc-9085-8315c787fb22
+		summarizeBy: none
+		sourceColumn: SearsEnableFullfillmentUpload
+
+		annotation SummarizationSetBy = Automatic
+
+	column SearsEnableNewProductPosting
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: dc009ae1-f9e8-4fda-9c84-b820b1c21489
+		summarizeBy: none
+		sourceColumn: SearsEnableNewProductPosting
+
+		annotation SummarizationSetBy = Automatic
+
+	column SearsEnablePricingUpdate
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 67276c83-79e0-409b-8a71-4a2a9c718ffc
+		summarizeBy: none
+		sourceColumn: SearsEnablePricingUpdate
+
+		annotation SummarizationSetBy = Automatic
+
+	column AmazonDefaultFixedQty
+		dataType: int64
+		formatString: 0
+		lineageTag: 10073bfd-6238-4dac-9bb1-f49f3e0522a9
+		summarizeBy: sum
+		sourceColumn: AmazonDefaultFixedQty
+
+		annotation SummarizationSetBy = Automatic
+
+	column Invoice_DontPrintInvoice
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: b420bae3-fadf-4b64-ac73-9bb18c85e33e
+		summarizeBy: none
+		sourceColumn: Invoice_DontPrintInvoice
+
+		annotation SummarizationSetBy = Automatic
+
+	column Invoice_Print2InvoiceCopies
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: cc899b37-b163-43c2-ae49-e9762bfe1189
+		summarizeBy: none
+		sourceColumn: Invoice_Print2InvoiceCopies
+
+		annotation SummarizationSetBy = Automatic
+
+	column Invoice_UseQueue
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: c51d17e4-86a7-496b-9046-45d2b456556d
+		summarizeBy: none
+		sourceColumn: Invoice_UseQueue
+
+		annotation SummarizationSetBy = Automatic
+
+	column Invoice_InsuranceLine
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: db6b3569-466e-4d6d-bc06-9c2e357cef27
+		summarizeBy: none
+		sourceColumn: Invoice_InsuranceLine
+
+		annotation SummarizationSetBy = Automatic
+
+	column Invoice_InsuranceLineOriginal
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 76e1d302-de92-476a-b5db-2f8364a6d8db
+		summarizeBy: none
+		sourceColumn: Invoice_InsuranceLineOriginal
+
+		annotation SummarizationSetBy = Automatic
+
+	column Invoice_HandlingLine
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: b1a2cc5d-6220-4e58-9180-2cafbaec5dbb
+		summarizeBy: none
+		sourceColumn: Invoice_HandlingLine
+
+		annotation SummarizationSetBy = Automatic
+
+	column Invoice_DiscountLine
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 58d2f740-3e82-4206-aa86-636553652493
+		summarizeBy: none
+		sourceColumn: Invoice_DiscountLine
+
+		annotation SummarizationSetBy = Automatic
+
+	column Invoice_TrackingNumber
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: bcd85c15-2805-47c6-b124-9bc3e7e4580e
+		summarizeBy: none
+		sourceColumn: Invoice_TrackingNumber
+
+		annotation SummarizationSetBy = Automatic
+
+	column Invoice_ShippingService
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 163e1ba2-6a42-44cf-b00e-c129ae790f6e
+		summarizeBy: none
+		sourceColumn: Invoice_ShippingService
+
+		annotation SummarizationSetBy = Automatic
+
+	column Invoice_PrintOrderID
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: a4319952-d770-4fb5-add0-37bf6aacb1ff
+		summarizeBy: none
+		sourceColumn: Invoice_PrintOrderID
+
+		annotation SummarizationSetBy = Automatic
+
+	column Invoice_BlackOutUPS
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 252b5014-978c-4571-9301-dee9d518ff04
+		summarizeBy: none
+		sourceColumn: Invoice_BlackOutUPS
+
+		annotation SummarizationSetBy = Automatic
+
+	column Invoice_PrintProductNameInMultiLine
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 36f71a8a-5ce4-46c8-b2f6-9d24d989303a
+		summarizeBy: none
+		sourceColumn: Invoice_PrintProductNameInMultiLine
+
+		annotation SummarizationSetBy = Automatic
+
+	column Invoice_PrintKitItemsInMultiLine
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 9806ae82-308f-461c-9a0d-19976e7293af
+		summarizeBy: none
+		sourceColumn: Invoice_PrintKitItemsInMultiLine
+
+		annotation SummarizationSetBy = Automatic
+
+	column Invoice_PrintBarCode
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: a38a5391-51ed-4693-aa65-6b204e2bd12c
+		summarizeBy: none
+		sourceColumn: Invoice_PrintBarCode
+
+		annotation SummarizationSetBy = Automatic
+
+	column Invoice_BarCodeUseSmallFont
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 96961939-1d74-4f96-b82d-3bd6f5d7b5c5
+		summarizeBy: none
+		sourceColumn: Invoice_BarCodeUseSmallFont
+
+		annotation SummarizationSetBy = Automatic
+
+	column Invoice_PrintBarCodeOption
+		dataType: int64
+		formatString: 0
+		lineageTag: 2422e95b-2692-45db-808d-ac4292692fe2
+		summarizeBy: sum
+		sourceColumn: Invoice_PrintBarCodeOption
+
+		annotation SummarizationSetBy = Automatic
+
+	column Invoice_InvoiceLayoutType
+		dataType: int64
+		formatString: 0
+		lineageTag: 11103f87-4d74-4ce1-8939-c9b60e3ef54a
+		summarizeBy: sum
+		sourceColumn: Invoice_InvoiceLayoutType
+
+		annotation SummarizationSetBy = Automatic
+
+	column Invoice_InvoiceMultiPageOption
+		dataType: int64
+		formatString: 0
+		lineageTag: cc1364a2-fb58-4c0e-8aa0-d0f7f2e9a315
+		summarizeBy: sum
+		sourceColumn: Invoice_InvoiceMultiPageOption
+
+		annotation SummarizationSetBy = Automatic
+
+	column Invoice_OverStockInvoiceLayout
+		dataType: int64
+		formatString: 0
+		lineageTag: 75eade8d-6810-4058-87eb-d3071790be1d
+		summarizeBy: sum
+		sourceColumn: Invoice_OverStockInvoiceLayout
+
+		annotation SummarizationSetBy = Automatic
+
+	column Invoice_UseQueueInvoicePerChunk
+		dataType: int64
+		formatString: 0
+		lineageTag: 7091730d-f656-4c97-a533-c35b117c1a7a
+		summarizeBy: sum
+		sourceColumn: Invoice_UseQueueInvoicePerChunk
+
+		annotation SummarizationSetBy = Automatic
+
+	column Invoice_InvoicePrintType
+		dataType: int64
+		formatString: 0
+		lineageTag: 0146db53-5b82-4c49-bfc1-2af853fb2da0
+		summarizeBy: sum
+		sourceColumn: Invoice_InvoicePrintType
+
+		annotation SummarizationSetBy = Automatic
+
+	column LinkShare_FTPServer
+		dataType: string
+		lineageTag: daaab64c-285e-4a49-8a9c-5670a5ad23c5
+		summarizeBy: none
+		sourceColumn: LinkShare_FTPServer
+
+		annotation SummarizationSetBy = Automatic
+
+	column LinkShare_FTPUserName
+		dataType: string
+		lineageTag: 0eef363a-08cc-4c9d-9318-55e6d7cedc35
+		summarizeBy: none
+		sourceColumn: LinkShare_FTPUserName
+
+		annotation SummarizationSetBy = Automatic
+
+	column LinkShare_FTPPassword
+		dataType: string
+		lineageTag: 33f5bc9e-98bf-45a3-8b71-e60b7ef0f8a7
+		summarizeBy: none
+		sourceColumn: LinkShare_FTPPassword
+
+		annotation SummarizationSetBy = Automatic
+
+	column LinkShare_MerchantID
+		dataType: string
+		lineageTag: c7c8d60b-501f-4deb-b9df-1c3d0c13e5d5
+		summarizeBy: none
+		sourceColumn: LinkShare_MerchantID
+
+		annotation SummarizationSetBy = Automatic
+
+	column LinkShare_EnableFeeds
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 930bd023-81aa-4c91-8001-fb10d1eff45f
+		summarizeBy: none
+		sourceColumn: LinkShare_EnableFeeds
+
+		annotation SummarizationSetBy = Automatic
+
+	column LinkShare_FTPTargetFolder
+		dataType: string
+		lineageTag: ae9ea5bf-88e8-404e-af91-5e2cdd8409c9
+		summarizeBy: none
+		sourceColumn: LinkShare_FTPTargetFolder
+
+		annotation SummarizationSetBy = Automatic
+
+	column LinkShare_UsePassive
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 0e5cd9f5-51ef-4272-88f2-a3cad39e925f
+		summarizeBy: none
+		sourceColumn: LinkShare_UsePassive
+
+		annotation SummarizationSetBy = Automatic
+
+	column LinkShare_FTPPort
+		dataType: int64
+		formatString: 0
+		lineageTag: ccc3a371-6e81-47f6-be1f-873dde13845f
+		summarizeBy: sum
+		sourceColumn: LinkShare_FTPPort
+
+		annotation SummarizationSetBy = Automatic
+
+	column AmazonTaxCode
+		dataType: string
+		lineageTag: 68b691cb-cf09-44d1-9b2b-1b49dc4e88f7
+		summarizeBy: none
+		sourceColumn: AmazonTaxCode
+
+		annotation SummarizationSetBy = Automatic
+
+	column Invoice_ShowShippingMethodRequested
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 950faee3-67bf-46f0-a159-bc2a8effdc12
+		summarizeBy: none
+		sourceColumn: Invoice_ShowShippingMethodRequested
+
+		annotation SummarizationSetBy = Automatic
+
+	column LinkShare_FeedInvervalInHours
+		dataType: int64
+		formatString: 0
+		lineageTag: 8a013c20-4abc-4fdf-a0d2-09e405c47dc6
+		summarizeBy: sum
+		sourceColumn: LinkShare_FeedInvervalInHours
+
+		annotation SummarizationSetBy = Automatic
+
+	column LinkShare_FeedLastGeneratedOn
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 683f2402-68cb-45b9-b6da-2765553a01b1
+		summarizeBy: none
+		sourceColumn: LinkShare_FeedLastGeneratedOn
+
+		variation Variation
+			isDefault
+			relationship: 3943c50e-0632-49dc-8f25-31637cf23f70
+			defaultHierarchy: LocalDateTable_5fc55ee2-9215-4ddd-9762-ab6306c2bbc1.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	column LinkShare_AlwaysSendFullFeed
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 829eda72-bc6c-4cca-8c08-6700c8ccc7e7
+		summarizeBy: none
+		sourceColumn: LinkShare_AlwaysSendFullFeed
+
+		annotation SummarizationSetBy = Automatic
+
+	column AllowShippingUnPaidOrders
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: cdb06976-d39a-4330-8eef-de1b077a179d
+		summarizeBy: none
+		sourceColumn: AllowShippingUnPaidOrders
+
+		annotation SummarizationSetBy = Automatic
+
+	column EnableEbayInventoryControl
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 98e81f75-716e-4ab2-a3f6-2a984cac8245
+		summarizeBy: none
+		sourceColumn: EnableEbayInventoryControl
+
+		annotation SummarizationSetBy = Automatic
+
+	column UPSLicenseNumber
+		dataType: string
+		lineageTag: 46cdded6-2d14-4709-b0ee-8df6711d9893
+		summarizeBy: none
+		sourceColumn: UPSLicenseNumber
+
+		annotation SummarizationSetBy = Automatic
+
+	column UPSShipperNumber
+		dataType: string
+		lineageTag: c01bede2-83e9-4ae4-9f20-faa4a06dcf72
+		summarizeBy: none
+		sourceColumn: UPSShipperNumber
+
+		annotation SummarizationSetBy = Automatic
+
+	column UPSUserName
+		dataType: string
+		lineageTag: 149d61c0-2173-498f-bfbd-fceb8adcab13
+		summarizeBy: none
+		sourceColumn: UPSUserName
+
+		annotation SummarizationSetBy = Automatic
+
+	column UPSPassword
+		dataType: string
+		lineageTag: 3bacb46f-f253-41aa-974b-c1c7ec75580f
+		summarizeBy: none
+		sourceColumn: UPSPassword
+
+		annotation SummarizationSetBy = Automatic
+
+	column USPSUserID
+		dataType: string
+		lineageTag: d35706da-a692-4903-a0ae-42d36cbc10c9
+		summarizeBy: none
+		sourceColumn: USPSUserID
+
+		annotation SummarizationSetBy = Automatic
+
+	column ShippingRuleDropShipIsNone
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 832be976-ba8e-47a0-96bb-a35e5a623cbe
+		summarizeBy: none
+		sourceColumn: ShippingRuleDropShipIsNone
+
+		annotation SummarizationSetBy = Automatic
+
+	column ShippingRuleDropShipLessThanRequested
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 615cf201-c968-496e-9d2b-425be10dc3e3
+		summarizeBy: none
+		sourceColumn: ShippingRuleDropShipLessThanRequested
+
+		annotation SummarizationSetBy = Automatic
+
+	column ShipBridgeSecurityPin
+		dataType: string
+		lineageTag: 6c10af2c-6393-481e-9370-af168cc88e0e
+		summarizeBy: none
+		sourceColumn: ShipBridgeSecurityPin
+
+		annotation SummarizationSetBy = Automatic
+
+	column BindToHomeCountryCompanyProducts
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: b35bd37e-053f-44e2-bcd8-384c33f18a16
+		summarizeBy: none
+		sourceColumn: BindToHomeCountryCompanyProducts
+
+		annotation SummarizationSetBy = Automatic
+
+	column EmailFromName
+		dataType: string
+		lineageTag: a43a2346-c132-4bbc-acee-f4f8bcac03c8
+		summarizeBy: none
+		sourceColumn: EmailFromName
+
+		annotation SummarizationSetBy = Automatic
+
+	column EmailFromEmail
+		dataType: string
+		lineageTag: f9d1fc68-7dd7-478c-a202-e59bf3cbd0a6
+		summarizeBy: none
+		sourceColumn: EmailFromEmail
+
+		annotation SummarizationSetBy = Automatic
+
+	column EmailServer
+		dataType: string
+		lineageTag: 0a782ae8-730f-4201-a0c0-1ced91d4bcfb
+		summarizeBy: none
+		sourceColumn: EmailServer
+
+		annotation SummarizationSetBy = Automatic
+
+	column EmailUserName
+		dataType: string
+		lineageTag: 68d9d11d-111d-4a57-a929-1467708ffde5
+		summarizeBy: none
+		sourceColumn: EmailUserName
+
+		annotation SummarizationSetBy = Automatic
+
+	column EmailPassword
+		dataType: string
+		lineageTag: 45df2b8c-eece-452a-bd0c-24b82b7936fc
+		summarizeBy: none
+		sourceColumn: EmailPassword
+
+		annotation SummarizationSetBy = Automatic
+
+	column EmailPort
+		dataType: int64
+		formatString: 0
+		lineageTag: 214add93-3260-473d-87eb-d9dee04c7bc3
+		summarizeBy: sum
+		sourceColumn: EmailPort
+
+		annotation SummarizationSetBy = Automatic
+
+	column EmailUseSSL
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: db2f3e29-d9ab-42a9-96a4-20d78296a4cd
+		summarizeBy: none
+		sourceColumn: EmailUseSSL
+
+		annotation SummarizationSetBy = Automatic
+
+	column EmailRequiresAuthentication
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 6d63edf3-0645-446a-a9fd-1f1bf7355fd9
+		summarizeBy: none
+		sourceColumn: EmailRequiresAuthentication
+
+		annotation SummarizationSetBy = Automatic
+
+	column LinkShare_MerchantName
+		dataType: string
+		lineageTag: dc2e1bc7-f0e1-4eea-97fa-7e385b959ec6
+		summarizeBy: none
+		sourceColumn: LinkShare_MerchantName
+
+		annotation SummarizationSetBy = Automatic
+
+	column DivideEBayInventoryPerListing
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 8aa366b4-438f-47bf-aa0b-38cd9e0b5087
+		summarizeBy: none
+		sourceColumn: DivideEBayInventoryPerListing
+
+		annotation SummarizationSetBy = Automatic
+
+	column BuyDotComStandardShippingPrice
+		dataType: double
+		lineageTag: aaab5b6c-196e-42de-8005-17bbcfc64868
+		summarizeBy: sum
+		sourceColumn: BuyDotComStandardShippingPrice
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column BuyDotComExpeditedShippingPrice
+		dataType: double
+		lineageTag: e63611f5-6f4b-42e1-ad21-a472d2fd1de7
+		summarizeBy: sum
+		sourceColumn: BuyDotComExpeditedShippingPrice
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column BuyDotComShippingLeadTime
+		dataType: int64
+		formatString: 0
+		lineageTag: 3883b21b-1ad6-482d-8207-78bffc94e371
+		summarizeBy: sum
+		sourceColumn: BuyDotComShippingLeadTime
+
+		annotation SummarizationSetBy = Automatic
+
+	column ShipBridge_LockFullyShippedTab
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: cbe286c5-14aa-4e03-a025-cf10018567a0
+		summarizeBy: none
+		sourceColumn: ShipBridge_LockFullyShippedTab
+
+		annotation SummarizationSetBy = Automatic
+
+	column ShipBridge_LockOptionsTab
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: ffd2c515-0105-41ff-8760-34271d24b271
+		summarizeBy: none
+		sourceColumn: ShipBridge_LockOptionsTab
+
+		annotation SummarizationSetBy = Automatic
+
+	column ShipBridge_LockUnShippedTab
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 0feef8f2-b5ac-4aec-bc78-33344aba78ec
+		summarizeBy: none
+		sourceColumn: ShipBridge_LockUnShippedTab
+
+		annotation SummarizationSetBy = Automatic
+
+	column InventoryMaxQtyForAmazonEnabled
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: fcb6183e-1319-4aa1-860a-595d63ce3f67
+		summarizeBy: none
+		sourceColumn: InventoryMaxQtyForAmazonEnabled
+
+		annotation SummarizationSetBy = Automatic
+
+	column InventoryMaxQtyForAmazon
+		dataType: int64
+		formatString: 0
+		lineageTag: 29f7514e-a710-4c53-a4c3-774ee6fc785f
+		summarizeBy: sum
+		sourceColumn: InventoryMaxQtyForAmazon
+
+		annotation SummarizationSetBy = Automatic
+
+	column AmazonFulfillmentLatencyEnabled
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: e485dabb-3f51-48d0-b065-d52ae455e624
+		summarizeBy: none
+		sourceColumn: AmazonFulfillmentLatencyEnabled
+
+		annotation SummarizationSetBy = Automatic
+
+	column AmazonFulfillmentLatencyDays
+		dataType: int64
+		formatString: 0
+		lineageTag: ebf6a96a-6325-42e3-a33a-71fa711cd085
+		summarizeBy: sum
+		sourceColumn: AmazonFulfillmentLatencyDays
+
+		annotation SummarizationSetBy = Automatic
+
+	column Invoice_ShowKitComponentName
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: f3134275-420e-44a8-b6e1-9a183877a415
+		summarizeBy: none
+		sourceColumn: Invoice_ShowKitComponentName
+
+		annotation SummarizationSetBy = Automatic
+
+	column SearsDefaultProductWeight
+		dataType: double
+		lineageTag: ef916cb2-32b2-4f50-b748-2de4123f2df9
+		summarizeBy: sum
+		sourceColumn: SearsDefaultProductWeight
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column SearsDefaultProductWidth
+		dataType: double
+		lineageTag: 6e1406d3-a369-4ad7-8c6a-c167466b2f01
+		summarizeBy: sum
+		sourceColumn: SearsDefaultProductWidth
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column SearsDefaultProductHeight
+		dataType: double
+		lineageTag: 77725b84-e28c-43df-9b04-051f51d910bf
+		summarizeBy: sum
+		sourceColumn: SearsDefaultProductHeight
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column SearsDefaultProductLength
+		dataType: double
+		lineageTag: 0f59d57e-67db-4954-9d60-b5424e871dc1
+		summarizeBy: sum
+		sourceColumn: SearsDefaultProductLength
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column GooglePicasaUserName
+		dataType: string
+		lineageTag: 07ace6c1-96d3-4007-a538-72af0fa3f151
+		summarizeBy: none
+		sourceColumn: GooglePicasaUserName
+
+		annotation SummarizationSetBy = Automatic
+
+	column GooglePicasaPassword
+		dataType: string
+		lineageTag: c4dd1525-0f88-4dd7-948c-65c16bafc5fd
+		summarizeBy: none
+		sourceColumn: GooglePicasaPassword
+
+		annotation SummarizationSetBy = Automatic
+
+	column ProductImagesHostedOn
+		dataType: int64
+		formatString: 0
+		lineageTag: a6a08e87-8a38-406e-aef1-229db8d1dc3d
+		summarizeBy: sum
+		sourceColumn: ProductImagesHostedOn
+
+		annotation SummarizationSetBy = Automatic
+
+	column OverStockUserName
+		dataType: string
+		lineageTag: 825b17e5-5b75-41bc-8b2c-c16849627e00
+		summarizeBy: none
+		sourceColumn: OverStockUserName
+
+		annotation SummarizationSetBy = Automatic
+
+	column OverStockPassword
+		dataType: string
+		lineageTag: 16b57b68-ee2d-434e-9569-bde05ae8788c
+		summarizeBy: none
+		sourceColumn: OverStockPassword
+
+		annotation SummarizationSetBy = Automatic
+
+	column ShipBridge_LockAddress
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: e1755ee6-b71b-42f5-986b-27d53fa2934a
+		summarizeBy: none
+		sourceColumn: ShipBridge_LockAddress
+
+		annotation SummarizationSetBy = Automatic
+
+	column ShipBridge_LockAddressValidation
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 39a58810-70d8-49df-8333-7310d43ef946
+		summarizeBy: none
+		sourceColumn: ShipBridge_LockAddressValidation
+
+		annotation SummarizationSetBy = Automatic
+
+	column ShipBridge_LockShippingMethod
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: bb1b9d04-8ce7-4329-909a-82dcf3c1bc78
+		summarizeBy: none
+		sourceColumn: ShipBridge_LockShippingMethod
+
+		annotation SummarizationSetBy = Automatic
+
+	column ShipBridge_LockPackageMangaer
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 626437da-b81e-41a3-a78d-69fdf7858125
+		summarizeBy: none
+		sourceColumn: ShipBridge_LockPackageMangaer
+
+		annotation SummarizationSetBy = Automatic
+
+	column ShipBridge_LockEditOrder
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 49e95ccc-0838-4a8e-b877-3a9ad300d607
+		summarizeBy: none
+		sourceColumn: ShipBridge_LockEditOrder
+
+		annotation SummarizationSetBy = Automatic
+
+	column ShipBridge_LockRateCalculator
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 50da09a9-839d-45d7-90e7-97fadf50e73a
+		summarizeBy: none
+		sourceColumn: ShipBridge_LockRateCalculator
+
+		annotation SummarizationSetBy = Automatic
+
+	column ShipBridge_LockFilters
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: e0353805-ae02-4fe0-86d3-05f7bef876ac
+		summarizeBy: none
+		sourceColumn: ShipBridge_LockFilters
+
+		annotation SummarizationSetBy = Automatic
+
+	column CMFeedEnabled
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 9612ea5f-651b-43f6-9806-f1dba3aa20ef
+		summarizeBy: none
+		sourceColumn: CMFeedEnabled
+
+		annotation SummarizationSetBy = Automatic
+
+	column CMFeedFTPUserName
+		dataType: string
+		lineageTag: 80068674-2957-49dc-9d37-4806a5b4d36d
+		summarizeBy: none
+		sourceColumn: CMFeedFTPUserName
+
+		annotation SummarizationSetBy = Automatic
+
+	column CMFeedFTPPassword
+		dataType: string
+		lineageTag: e5fe4444-e4e1-4bce-9bd5-685189f12454
+		summarizeBy: none
+		sourceColumn: CMFeedFTPPassword
+
+		annotation SummarizationSetBy = Automatic
+
+	column CMFeedFTPPort
+		dataType: int64
+		formatString: 0
+		lineageTag: ebd94a76-7cbf-40c7-8d98-589181e52a06
+		summarizeBy: sum
+		sourceColumn: CMFeedFTPPort
+
+		annotation SummarizationSetBy = Automatic
+
+	column CMFeedFTPServer
+		dataType: string
+		lineageTag: 0c05d6c2-1b30-4d7f-bc58-130eab3f19ea
+		summarizeBy: none
+		sourceColumn: CMFeedFTPServer
+
+		annotation SummarizationSetBy = Automatic
+
+	column CMFeedFTPUsePassive
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 3273e26f-ee38-4884-9eb9-2accd3f5823f
+		summarizeBy: none
+		sourceColumn: CMFeedFTPUsePassive
+
+		annotation SummarizationSetBy = Automatic
+
+	column ChannelMaxLoginID
+		dataType: string
+		lineageTag: ce8ab7e5-3a8f-450e-a623-6b56df24bdec
+		summarizeBy: none
+		sourceColumn: ChannelMaxLoginID
+
+		annotation SummarizationSetBy = Automatic
+
+	column AmazonEnableInventoryHealthReport
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 14d41cf3-852a-4d79-a661-179d8e2948ac
+		summarizeBy: none
+		sourceColumn: AmazonEnableInventoryHealthReport
+
+		annotation SummarizationSetBy = Automatic
+
+	column AmazonEnableSettlementReport
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 42863b21-5022-47c2-88c3-39de2cd7aba4
+		summarizeBy: none
+		sourceColumn: AmazonEnableSettlementReport
+
+		annotation SummarizationSetBy = Automatic
+
+	column NewEggDotcomDefaultFixedQty
+		dataType: int64
+		formatString: 0
+		lineageTag: 81e11e52-8528-4d5a-8945-30bc25766427
+		summarizeBy: sum
+		sourceColumn: NewEggDotcomDefaultFixedQty
+
+		annotation SummarizationSetBy = Automatic
+
+	column OverStockDefaultFixedQty
+		dataType: int64
+		formatString: 0
+		lineageTag: 7edc15b6-2b5f-4d32-b780-4203bce1421d
+		summarizeBy: sum
+		sourceColumn: OverStockDefaultFixedQty
+
+		annotation SummarizationSetBy = Automatic
+
+	column BuyDotComDefaultFixedQty
+		dataType: int64
+		formatString: 0
+		lineageTag: da7362f9-0319-4252-800c-bfcbf148d28e
+		summarizeBy: sum
+		sourceColumn: BuyDotComDefaultFixedQty
+
+		annotation SummarizationSetBy = Automatic
+
+	column SearsDefaultFixedQty
+		dataType: int64
+		formatString: 0
+		lineageTag: 17f005dc-0ce2-41d5-8e83-dafae4b3ef8a
+		summarizeBy: sum
+		sourceColumn: SearsDefaultFixedQty
+
+		annotation SummarizationSetBy = Automatic
+
+	column Invoice_PrintUPC
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 8d482835-ebce-4a44-87c9-7bbcc3507fdb
+		summarizeBy: none
+		sourceColumn: Invoice_PrintUPC
+
+		annotation SummarizationSetBy = Automatic
+
+	column Invoice_PrintInventoryAvailableQty
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: b24deeae-7b98-4f9a-a123-bbbfbef2e8c2
+		summarizeBy: none
+		sourceColumn: Invoice_PrintInventoryAvailableQty
+
+		annotation SummarizationSetBy = Automatic
+
+	column Invoice_PrintInvoicePrintedDate
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 3af0e596-8c0a-4882-8e42-5ca1f742bc83
+		summarizeBy: none
+		sourceColumn: Invoice_PrintInvoicePrintedDate
+
+		annotation SummarizationSetBy = Automatic
+
+	column Invoice_InvoicePrintedCount
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: c9b44a13-0c1c-4c52-b879-d1c13b1ec73e
+		summarizeBy: none
+		sourceColumn: Invoice_InvoicePrintedCount
+
+		annotation SummarizationSetBy = Automatic
+
+	column OverStockMerchantID
+		dataType: string
+		lineageTag: 2b68b920-e503-4bdf-8646-7ad4a0a915d5
+		summarizeBy: none
+		sourceColumn: OverStockMerchantID
+
+		annotation SummarizationSetBy = Automatic
+
+	column IsOverStockInTestMode
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: e3782e5e-8c35-48f6-8342-2fa60f364656
+		summarizeBy: none
+		sourceColumn: IsOverStockInTestMode
+
+		annotation SummarizationSetBy = Automatic
+
+	column CMFeedIncludeRepricingModel
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 25bac7bf-7a73-4db4-848e-3101bf8e2fad
+		summarizeBy: none
+		sourceColumn: CMFeedIncludeRepricingModel
+
+		annotation SummarizationSetBy = Automatic
+
+	column AmazonEnablePendingOrdersReport
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 51c8a3b7-8ad4-46d5-b3b6-5b6630032470
+		summarizeBy: none
+		sourceColumn: AmazonEnablePendingOrdersReport
+
+		annotation SummarizationSetBy = Automatic
+
+	column CompanyNameAbbreviation
+		dataType: string
+		lineageTag: b8d4d90b-6ea6-45c6-849c-098044dd5daa
+		summarizeBy: none
+		sourceColumn: CompanyNameAbbreviation
+
+		annotation SummarizationSetBy = Automatic
+
+	column Invoice_PrintProductCondition
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: e58076db-96c2-47d5-977d-5580f22aa10f
+		summarizeBy: none
+		sourceColumn: Invoice_PrintProductCondition
+
+		annotation SummarizationSetBy = Automatic
+
+	column CyberProber_UserName
+		dataType: string
+		lineageTag: 7f4201c5-bdec-4702-9658-8ce6f2538495
+		summarizeBy: none
+		sourceColumn: CyberProber_UserName
+
+		annotation SummarizationSetBy = Automatic
+
+	column CyberProber_Password
+		dataType: string
+		lineageTag: 5a8ec2a1-01fa-4cb1-ab38-0f84654233e0
+		summarizeBy: none
+		sourceColumn: CyberProber_Password
+
+		annotation SummarizationSetBy = Automatic
+
+	column CyberProber_SiteName
+		dataType: string
+		lineageTag: 95474964-3a23-4e57-ae74-dad6239d9635
+		summarizeBy: none
+		sourceColumn: CyberProber_SiteName
+
+		annotation SummarizationSetBy = Automatic
+
+	column AmazonDefaultFulfilledBy
+		dataType: int64
+		formatString: 0
+		lineageTag: 29399842-e975-43ce-9a24-759952ea8dee
+		summarizeBy: sum
+		sourceColumn: AmazonDefaultFulfilledBy
+
+		annotation SummarizationSetBy = Automatic
+
+	column AmazonDefaultCondition
+		dataType: int64
+		formatString: 0
+		lineageTag: d4c4807d-668d-461e-8ef2-560a813a18f7
+		summarizeBy: sum
+		sourceColumn: AmazonDefaultCondition
+
+		annotation SummarizationSetBy = Automatic
+
+	column AmazonDefaultShippingTemplate
+		dataType: int64
+		formatString: 0
+		lineageTag: 1d42ca33-0ac0-462d-bac4-dc96181ac066
+		summarizeBy: sum
+		sourceColumn: AmazonDefaultShippingTemplate
+
+		annotation SummarizationSetBy = Automatic
+
+	column FedExUserName
+		dataType: string
+		lineageTag: 070920c1-b361-4b15-b2f0-49f6d88ab813
+		summarizeBy: none
+		sourceColumn: FedExUserName
+
+		annotation SummarizationSetBy = Automatic
+
+	column FedExAccountNumber
+		dataType: string
+		lineageTag: 84f14510-0b7c-4373-8775-07918adfc80e
+		summarizeBy: none
+		sourceColumn: FedExAccountNumber
+
+		annotation SummarizationSetBy = Automatic
+
+	column FedExMeterNumber
+		dataType: string
+		lineageTag: dcf0e744-daef-4d32-b47b-1a0dfc05a596
+		summarizeBy: none
+		sourceColumn: FedExMeterNumber
+
+		annotation SummarizationSetBy = Automatic
+
+	column FedExPackaging
+		dataType: string
+		lineageTag: f4839d3f-01b1-49b7-8af3-cbcf53a7ea77
+		summarizeBy: none
+		sourceColumn: FedExPackaging
+
+		annotation SummarizationSetBy = Automatic
+
+	column FedExTestMode
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: e6da9e5e-842d-46de-93de-634cb86a1ee0
+		summarizeBy: none
+		sourceColumn: FedExTestMode
+
+		annotation SummarizationSetBy = Automatic
+
+	column NewEggDotComFileFormat
+		dataType: int64
+		formatString: 0
+		lineageTag: 191206a7-3410-4608-a26d-18759b853778
+		summarizeBy: sum
+		sourceColumn: NewEggDotComFileFormat
+
+		annotation SummarizationSetBy = Automatic
+
+	column BuyDotComOrderFileFormat
+		dataType: int64
+		formatString: 0
+		lineageTag: 6ec92788-76a8-4623-a1aa-9dc7a4c5aabf
+		summarizeBy: sum
+		sourceColumn: BuyDotComOrderFileFormat
+
+		annotation SummarizationSetBy = Automatic
+
+	column FedExPassword
+		dataType: string
+		lineageTag: c878304f-adf1-4871-8020-9f3c75881e14
+		summarizeBy: none
+		sourceColumn: FedExPassword
+
+		annotation SummarizationSetBy = Automatic
+
+	column BuyDotComOneDayShippingPrice
+		dataType: double
+		lineageTag: d091d092-5ba7-4149-96ab-e1b925f39c2a
+		summarizeBy: sum
+		sourceColumn: BuyDotComOneDayShippingPrice
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column BuyDotComTwoDaysShippingPrice
+		dataType: double
+		lineageTag: e60cd8dd-d920-4eb9-9b7f-50b0109b755e
+		summarizeBy: sum
+		sourceColumn: BuyDotComTwoDaysShippingPrice
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column BuyDotComOneDayShippingIsFree
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: d38e146a-9941-445e-8d0e-671297593daa
+		summarizeBy: none
+		sourceColumn: BuyDotComOneDayShippingIsFree
+
+		annotation SummarizationSetBy = Automatic
+
+	column BuyDotComTwoDaysShippingIsFree
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: e0d00210-3e67-42b1-8a37-bc3b175f6d5d
+		summarizeBy: none
+		sourceColumn: BuyDotComTwoDaysShippingIsFree
+
+		annotation SummarizationSetBy = Automatic
+
+	column BuyDotComStandardShippingIsFree
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 3e235a94-4852-4e40-93de-79bd73c1687c
+		summarizeBy: none
+		sourceColumn: BuyDotComStandardShippingIsFree
+
+		annotation SummarizationSetBy = Automatic
+
+	column BuyDotComExpeditedShippingIsFree
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 37a4816b-dfc7-4dc0-a67e-71ad0b166930
+		summarizeBy: none
+		sourceColumn: BuyDotComExpeditedShippingIsFree
+
+		annotation SummarizationSetBy = Automatic
+
+	column OrderDownloadDateLimitAmazon
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: af9384ba-2a7c-4374-bdb6-6f0a0619f784
+		summarizeBy: none
+		sourceColumn: OrderDownloadDateLimitAmazon
+
+		variation Variation
+			isDefault
+			relationship: f3a2043b-cc76-4234-b3bb-31fb85cece80
+			defaultHierarchy: LocalDateTable_1c5934aa-0696-4c49-a7bb-26c9d7cd4dbc.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	column EnableOrderDownloadDateLimitAmazon
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: c058d06d-2cfb-453f-92fd-2e913af48343
+		summarizeBy: none
+		sourceColumn: EnableOrderDownloadDateLimitAmazon
+
+		annotation SummarizationSetBy = Automatic
+
+	column FlickrToken
+		dataType: string
+		lineageTag: fbe2a3a3-5476-49ca-b7e5-d091c7017590
+		summarizeBy: none
+		sourceColumn: FlickrToken
+
+		annotation SummarizationSetBy = Automatic
+
+	column FlickrUserName
+		dataType: string
+		lineageTag: e5b00e56-f106-4c67-84d7-5625aaf839b0
+		summarizeBy: none
+		sourceColumn: FlickrUserName
+
+		annotation SummarizationSetBy = Automatic
+
+	column FlickrUserID
+		dataType: string
+		lineageTag: e2529d9f-88c9-495e-9819-0377b810b182
+		summarizeBy: none
+		sourceColumn: FlickrUserID
+
+		annotation SummarizationSetBy = Automatic
+
+	column FlickrAuthenticatedOn
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: d11e7e07-a199-4d39-b1a2-e8611b6f52cd
+		summarizeBy: none
+		sourceColumn: FlickrAuthenticatedOn
+
+		variation Variation
+			isDefault
+			relationship: cfdca4b8-b62e-442a-a996-a14ed28c8f1a
+			defaultHierarchy: LocalDateTable_d2399b2e-86dd-4f49-8aeb-8ffde1db850a.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	column eBayEnableOrderDownload
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: ce268779-5e35-4207-8678-009dbac0f30c
+		summarizeBy: none
+		sourceColumn: eBayEnableOrderDownload
+
+		annotation SummarizationSetBy = Automatic
+
+	column eBayOrderDownloadDateLimitEnabled
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: eb6ebece-5833-4c5c-9757-35930a9878f2
+		summarizeBy: none
+		sourceColumn: eBayOrderDownloadDateLimitEnabled
+
+		annotation SummarizationSetBy = Automatic
+
+	column eBayOrderDownloadDateLimit
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 37f00f70-ba48-41b0-b4b9-4d9e48865be7
+		summarizeBy: none
+		sourceColumn: eBayOrderDownloadDateLimit
+
+		variation Variation
+			isDefault
+			relationship: 8d2f998f-e719-4f11-8df6-be9b7365dcec
+			defaultHierarchy: LocalDateTable_2aa005a5-8d40-498e-aa43-f764443d5139.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	column OverStock_NotifyOrderCancellation
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 3d26b9fe-d144-4148-9e3e-3253b98a69dd
+		summarizeBy: none
+		sourceColumn: OverStock_NotifyOrderCancellation
+
+		annotation SummarizationSetBy = Automatic
+
+	column BuyDotComLoginEmail
+		dataType: string
+		lineageTag: cc3166fa-468d-45de-bfd8-7331884d7c78
+		summarizeBy: none
+		sourceColumn: BuyDotComLoginEmail
+
+		annotation SummarizationSetBy = Automatic
+
+	column BuyDotComLoginPassword
+		dataType: string
+		lineageTag: 1e74cccb-00dd-4af2-95af-c5538461f778
+		summarizeBy: none
+		sourceColumn: BuyDotComLoginPassword
+
+		annotation SummarizationSetBy = Automatic
+
+	column DefaultPurchaseOrderFromAddress
+		dataType: string
+		lineageTag: fc9a6059-35e5-482d-b963-156ecb499f27
+		summarizeBy: none
+		sourceColumn: DefaultPurchaseOrderFromAddress
+
+		annotation SummarizationSetBy = Automatic
+
+	column NetworkSolutionsUserKeyForToken
+		dataType: string
+		lineageTag: d2957dd4-946e-42bc-ab16-4d9ff308a1e3
+		summarizeBy: none
+		sourceColumn: NetworkSolutionsUserKeyForToken
+
+		annotation SummarizationSetBy = Automatic
+
+	column NetworkSolutionsToken
+		dataType: string
+		lineageTag: 5766dd75-5240-46f4-8e78-e4684df399bc
+		summarizeBy: none
+		sourceColumn: NetworkSolutionsToken
+
+		annotation SummarizationSetBy = Automatic
+
+	column NetworkSolutionsTokenVerified
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 05f2efc8-d9c7-4195-a2c0-bd60b835d9cf
+		summarizeBy: none
+		sourceColumn: NetworkSolutionsTokenVerified
+
+		annotation SummarizationSetBy = Automatic
+
+	column NetworkSolutionsTokenVerifiedOn
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 64e0b1c2-387f-48aa-b6ca-904b49b0e35b
+		summarizeBy: none
+		sourceColumn: NetworkSolutionsTokenVerifiedOn
+
+		variation Variation
+			isDefault
+			relationship: ffde3c72-f86e-4ee1-8d6f-ffee04adb0f8
+			defaultHierarchy: LocalDateTable_79697572-8925-4c87-9525-591dbd6c34fd.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	column NetworkSolutionsTokenExpiresOn
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: bb54a644-1a9a-474c-92b1-1c9d8e0f7c29
+		summarizeBy: none
+		sourceColumn: NetworkSolutionsTokenExpiresOn
+
+		variation Variation
+			isDefault
+			relationship: a9e1ec98-a06c-421e-af7e-6a40f45c4ed1
+			defaultHierarchy: LocalDateTable_25b30f97-4398-4df6-b856-918a5efd4e6e.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	column WebsiteStoreType
+		dataType: int64
+		formatString: 0
+		lineageTag: 110e07b9-2bc6-4ec8-a731-30dc2953a988
+		summarizeBy: sum
+		sourceColumn: WebsiteStoreType
+
+		annotation SummarizationSetBy = Automatic
+
+	column ProductIDGeneratorPluginID
+		dataType: string
+		lineageTag: ad0d5a70-720d-4b1e-a357-23c96ce8e3a6
+		summarizeBy: none
+		sourceColumn: ProductIDGeneratorPluginID
+
+		annotation SummarizationSetBy = Automatic
+
+	column LastProductIDCounter
+		dataType: int64
+		formatString: 0
+		lineageTag: b812d909-5ae6-4d1d-8831-dacfbb7b461a
+		summarizeBy: sum
+		sourceColumn: LastProductIDCounter
+
+		annotation SummarizationSetBy = Automatic
+
+	column BDC_ProductCondition
+		dataType: int64
+		formatString: 0
+		lineageTag: 9579468c-d58f-4a82-9eb1-9ecb4fd1aae5
+		summarizeBy: sum
+		sourceColumn: BDC_ProductCondition
+
+		annotation SummarizationSetBy = Automatic
+
+	column MinInventoryForEBayListings
+		dataType: int64
+		formatString: 0
+		lineageTag: 7e88da8d-f1cb-4055-9146-999becc65919
+		summarizeBy: sum
+		sourceColumn: MinInventoryForEBayListings
+
+		annotation SummarizationSetBy = Automatic
+
+	column AmazonProxyServer
+		dataType: string
+		lineageTag: aeff06b2-4a31-4fe1-adde-8684e44508bf
+		summarizeBy: none
+		sourceColumn: AmazonProxyServer
+
+		annotation SummarizationSetBy = Automatic
+
+	column AmazonProxyDomain
+		dataType: string
+		lineageTag: 6b446087-56f4-4420-84f5-673ccc07639f
+		summarizeBy: none
+		sourceColumn: AmazonProxyDomain
+
+		annotation SummarizationSetBy = Automatic
+
+	column AmazonProxyUserName
+		dataType: string
+		lineageTag: d48882d2-2d16-4c8a-854a-bfb41b5f12fa
+		summarizeBy: none
+		sourceColumn: AmazonProxyUserName
+
+		annotation SummarizationSetBy = Automatic
+
+	column AmazonProxyPassword
+		dataType: string
+		lineageTag: 830ea912-bb07-4139-bd8f-d888dc3b5fed
+		summarizeBy: none
+		sourceColumn: AmazonProxyPassword
+
+		annotation SummarizationSetBy = Automatic
+
+	column AmazonProxyPort
+		dataType: int64
+		formatString: 0
+		lineageTag: aa888678-7922-4698-a648-820f667b1b3d
+		summarizeBy: sum
+		sourceColumn: AmazonProxyPort
+
+		annotation SummarizationSetBy = Automatic
+
+	column AmazonProxyEnabled
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: acd72992-d9e0-4416-97f5-71257bb11d66
+		summarizeBy: none
+		sourceColumn: AmazonProxyEnabled
+
+		annotation SummarizationSetBy = Automatic
+
+	column CMFeedFileName
+		dataType: string
+		lineageTag: a80ed935-3626-425f-bc41-c39da78da801
+		summarizeBy: none
+		sourceColumn: CMFeedFileName
+
+		annotation SummarizationSetBy = Automatic
+
+	column CMFeedIncludePurchasePrice
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 56c22782-4295-4fc0-895a-e9abf0d3e776
+		summarizeBy: none
+		sourceColumn: CMFeedIncludePurchasePrice
+
+		annotation SummarizationSetBy = Automatic
+
+	column RequirePINForReceiveBridge
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 4aa63eb4-5773-44c4-8ebb-86e3dd5f2a19
+		summarizeBy: none
+		sourceColumn: RequirePINForReceiveBridge
+
+		annotation SummarizationSetBy = Automatic
+
+	column CMFeedIncludeQuantity
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 1d5cc936-1f50-46c6-ad90-208eb8fb3ce8
+		summarizeBy: none
+		sourceColumn: CMFeedIncludeQuantity
+
+		annotation SummarizationSetBy = Automatic
+
+	column POAlertTo_Purchaser
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 6bd38438-3908-41cb-84b4-9d7fa4727a1a
+		summarizeBy: none
+		sourceColumn: POAlertTo_Purchaser
+
+		annotation SummarizationSetBy = Automatic
+
+	column POAlertTo_Creator
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 0fc7d23e-c1b8-45fd-a4fc-9e8b8bfbb88c
+		summarizeBy: none
+		sourceColumn: POAlertTo_Creator
+
+		annotation SummarizationSetBy = Automatic
+
+	column POAlertTo_Others
+		dataType: string
+		lineageTag: c5c5a4ab-3361-48af-84f5-dcd631619fd4
+		summarizeBy: none
+		sourceColumn: POAlertTo_Others
+
+		annotation SummarizationSetBy = Automatic
+
+	column BuyDotComUsePassive
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: fa14e416-ef98-4c18-b43a-61b0d2cd81f2
+		summarizeBy: none
+		sourceColumn: BuyDotComUsePassive
+
+		annotation SummarizationSetBy = Automatic
+
+	column eBayEnableSecondChanceOffer
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: db1a37c1-0ad4-4a05-9039-73da14386edf
+		summarizeBy: none
+		sourceColumn: eBayEnableSecondChanceOffer
+
+		annotation SummarizationSetBy = Automatic
+
+	column eBaySecondChanceOfferMessage
+		dataType: string
+		lineageTag: f7dea58a-b689-41f6-83ec-5316e4635633
+		summarizeBy: none
+		sourceColumn: eBaySecondChanceOfferMessage
+
+		annotation SummarizationSetBy = Automatic
+
+	column CMFeedIncludeConditionColumn
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: d07aa2ab-27e2-4578-90e6-616aefbaadb1
+		summarizeBy: none
+		sourceColumn: CMFeedIncludeConditionColumn
+
+		annotation SummarizationSetBy = Automatic
+
+	column AmazonProductSearchAPIAccessKey
+		dataType: string
+		lineageTag: cacd6de2-a2e8-4afc-a085-33721913edd6
+		summarizeBy: none
+		sourceColumn: AmazonProductSearchAPIAccessKey
+
+		annotation SummarizationSetBy = Automatic
+
+	column AmazonProductSearchAPIAssociateKey
+		dataType: string
+		lineageTag: 98df18fd-417a-43b3-b9e4-767cde298e51
+		summarizeBy: none
+		sourceColumn: AmazonProductSearchAPIAssociateKey
+
+		annotation SummarizationSetBy = Automatic
+
+	column BuyDotComOfferShippingTwoDay
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 7dadb14d-d2f5-47db-998a-5e72764fd39c
+		summarizeBy: none
+		sourceColumn: BuyDotComOfferShippingTwoDay
+
+		annotation SummarizationSetBy = Automatic
+
+	column BuyDotComOfferShippingOneDay
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: bf93c31b-9a91-4bec-a341-d7546a1b8eff
+		summarizeBy: none
+		sourceColumn: BuyDotComOfferShippingOneDay
+
+		annotation SummarizationSetBy = Automatic
+
+	column BuyDotComOfferShippingExpedited
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 6f7c48de-bfe6-41a1-b735-8ec038f22368
+		summarizeBy: none
+		sourceColumn: BuyDotComOfferShippingExpedited
+
+		annotation SummarizationSetBy = Automatic
+
+	column Invoice_ShowShippingPackage
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 8f6c47ae-7a9d-4593-b514-df7144b6a652
+		summarizeBy: none
+		sourceColumn: Invoice_ShowShippingPackage
+
+		annotation SummarizationSetBy = Automatic
+
+	column Invoice_ShowAmazonEmail
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: d86a143e-b65f-41ef-9117-b513d4e6dbdb
+		summarizeBy: none
+		sourceColumn: Invoice_ShowAmazonEmail
+
+		annotation SummarizationSetBy = Automatic
+
+	column Invoice_ShowBuyDotcomEmail
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 9e4b482f-3a69-43a2-bafa-3c87249a0ceb
+		summarizeBy: none
+		sourceColumn: Invoice_ShowBuyDotcomEmail
+
+		annotation SummarizationSetBy = Automatic
+
+	column WebsiteAllowOrderDownload
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: eea2d9ac-2ab0-452b-beca-62de89b62b0d
+		summarizeBy: none
+		sourceColumn: WebsiteAllowOrderDownload
+
+		annotation SummarizationSetBy = Automatic
+
+	column WebSiteAllowInventoryUpdate
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: ba0da4aa-46c3-4da4-88d6-922f2013821d
+		summarizeBy: none
+		sourceColumn: WebSiteAllowInventoryUpdate
+
+		annotation SummarizationSetBy = Automatic
+
+	column WebSiteAllowTrackingUpdate
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 04eeac9b-a5ca-4d08-b428-79856dea6222
+		summarizeBy: none
+		sourceColumn: WebSiteAllowTrackingUpdate
+
+		annotation SummarizationSetBy = Automatic
+
+	column WebSiteAllowProductsExport
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 9a9e1d9a-aae4-4136-993e-a4bf682eda64
+		summarizeBy: none
+		sourceColumn: WebSiteAllowProductsExport
+
+		annotation SummarizationSetBy = Automatic
+
+	column DefaultReplenishableQtyEnabled
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 308e523a-ee28-4717-a157-2977fabfdfa4
+		summarizeBy: none
+		sourceColumn: DefaultReplenishableQtyEnabled
+
+		annotation SummarizationSetBy = Automatic
+
+	column DefaultReplenishableQty
+		dataType: int64
+		formatString: 0
+		lineageTag: b929f93b-453c-462b-bb3a-51336148eae1
+		summarizeBy: sum
+		sourceColumn: DefaultReplenishableQty
+
+		annotation SummarizationSetBy = Automatic
+
+	column AmazonDefaultFBALabelFormat
+		dataType: int64
+		formatString: 0
+		lineageTag: d26f2873-97d0-4a69-a554-4417d21e0032
+		summarizeBy: sum
+		sourceColumn: AmazonDefaultFBALabelFormat
+
+		annotation SummarizationSetBy = Automatic
+
+	column Volusion_UserName
+		dataType: string
+		lineageTag: 653915d2-8684-4e79-95f6-2a210cf3442d
+		summarizeBy: none
+		sourceColumn: Volusion_UserName
+
+		annotation SummarizationSetBy = Automatic
+
+	column Volusion_EncryptedPassword
+		dataType: string
+		lineageTag: 9fdd830b-c5ac-4151-92f0-185c1db5519b
+		summarizeBy: none
+		sourceColumn: Volusion_EncryptedPassword
+
+		annotation SummarizationSetBy = Automatic
+
+	column Volusion_WebsiteURL
+		dataType: string
+		lineageTag: cd84fb38-4c3c-4baa-9317-fe96957dcc49
+		summarizeBy: none
+		sourceColumn: Volusion_WebsiteURL
+
+		annotation SummarizationSetBy = Automatic
+
+	column BuyDotComUseAmazonPrice
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: e06a8333-f808-438d-b6b0-1a58497a31b9
+		summarizeBy: none
+		sourceColumn: BuyDotComUseAmazonPrice
+
+		annotation SummarizationSetBy = Automatic
+
+	column AutoSplitOrdersHavingMultiItems
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 108429e0-e9ef-46e0-b147-22be5f0863ac
+		summarizeBy: none
+		sourceColumn: AutoSplitOrdersHavingMultiItems
+
+		annotation SummarizationSetBy = Automatic
+
+	column Invoice_ShowWeight
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: ed9447eb-2ce4-4b5c-af84-714c1e5bd5ee
+		summarizeBy: none
+		sourceColumn: Invoice_ShowWeight
+
+		annotation SummarizationSetBy = Automatic
+
+	column WebSiteOrderCreateLimitDate
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: ad49afbd-4e04-4b98-9441-97fd8e0add0c
+		summarizeBy: none
+		sourceColumn: WebSiteOrderCreateLimitDate
+
+		variation Variation
+			isDefault
+			relationship: 0b0ff558-960d-494b-8fbf-caa3581ce663
+			defaultHierarchy: LocalDateTable_d8cede15-2eb4-475f-b409-1de36c6d8e8d.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	column WebSiteOrderCreateLimitDateEnabled
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 5d45ca90-51ef-48b2-b241-9550cf3c1c0d
+		summarizeBy: none
+		sourceColumn: WebSiteOrderCreateLimitDateEnabled
+
+		annotation SummarizationSetBy = Automatic
+
+	column WebsiteSafetyQty
+		dataType: int64
+		formatString: 0
+		lineageTag: 419677de-780e-4144-a4c1-24ca0920330f
+		summarizeBy: sum
+		sourceColumn: WebsiteSafetyQty
+
+		annotation SummarizationSetBy = Automatic
+
+	column WebsiteDefaultQty
+		dataType: int64
+		formatString: 0
+		lineageTag: e60d1ef8-d7ed-4c11-b541-02fcb1f5e5ce
+		summarizeBy: sum
+		sourceColumn: WebsiteDefaultQty
+
+		annotation SummarizationSetBy = Automatic
+
+	column MinInventoryForEBayListingsAuctions
+		dataType: int64
+		formatString: 0
+		lineageTag: 26749293-f4fd-4fa3-85d9-e58206d57d07
+		summarizeBy: sum
+		sourceColumn: MinInventoryForEBayListingsAuctions
+
+		annotation SummarizationSetBy = Automatic
+
+	column NetworkSolutionsApplicationKey
+		dataType: string
+		lineageTag: 62e9e033-68bb-4a62-986e-dcb8a6915956
+		summarizeBy: none
+		sourceColumn: NetworkSolutionsApplicationKey
+
+		annotation SummarizationSetBy = Automatic
+
+	column NetworkSolutionsCertificateKey
+		dataType: string
+		lineageTag: 751dc887-2986-476f-82d7-ff83b3282d80
+		summarizeBy: none
+		sourceColumn: NetworkSolutionsCertificateKey
+
+		annotation SummarizationSetBy = Automatic
+
+	column EnableEBayPricesControl
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 35d5e08f-f6ee-4e22-b9e1-8b4acad9347a
+		summarizeBy: none
+		sourceColumn: EnableEBayPricesControl
+
+		annotation SummarizationSetBy = Automatic
+
+	column Invoice_CustomInvoicePluginID
+		dataType: string
+		lineageTag: dfdb6d6f-727b-4b62-9c15-20d6925c93b3
+		summarizeBy: none
+		sourceColumn: Invoice_CustomInvoicePluginID
+
+		annotation SummarizationSetBy = Automatic
+
+	column Invoice_InvoicePrintingType
+		dataType: int64
+		formatString: 0
+		lineageTag: 7dd556af-971b-47e9-8223-4a01ef2dcf02
+		summarizeBy: sum
+		sourceColumn: Invoice_InvoicePrintingType
+
+		annotation SummarizationSetBy = Automatic
+
+	column AmazonDefaultIsAmazonEnabled
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 52a8bd7a-c316-45ca-b86b-13589937cbd8
+		summarizeBy: none
+		sourceColumn: AmazonDefaultIsAmazonEnabled
+
+		annotation SummarizationSetBy = Automatic
+
+	column Invoice_OrderFormPluginID
+		dataType: string
+		lineageTag: 26e48c0d-8954-4920-bc66-d6082cd45d5f
+		summarizeBy: none
+		sourceColumn: Invoice_OrderFormPluginID
+
+		annotation SummarizationSetBy = Automatic
+
+	column Invoice_ForWholeSalePluginID
+		dataType: string
+		lineageTag: 77d965cb-d8c6-42d0-bb5f-13b4b3e23ba6
+		summarizeBy: none
+		sourceColumn: Invoice_ForWholeSalePluginID
+
+		annotation SummarizationSetBy = Automatic
+
+	column OverStock_OrderDownloadDateLimitEnabled
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: f7d76f19-c004-4de0-bf3a-65b1757d7f36
+		summarizeBy: none
+		sourceColumn: OverStock_OrderDownloadDateLimitEnabled
+
+		annotation SummarizationSetBy = Automatic
+
+	column OverStock_OrderDownloadDateLimitDate
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 7df85817-8d93-4165-b28b-433738753c74
+		summarizeBy: none
+		sourceColumn: OverStock_OrderDownloadDateLimitDate
+
+		variation Variation
+			isDefault
+			relationship: c7e35723-d7ab-489c-8c3f-e8c51da4046d
+			defaultHierarchy: LocalDateTable_965c95f4-cf3d-4cb4-a0c0-c09afaf63995.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	column eBayPriceUseDefault
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: f923c469-ae1f-46c3-92ba-653ad0697a40
+		summarizeBy: none
+		sourceColumn: eBayPriceUseDefault
+
+		annotation SummarizationSetBy = Automatic
+
+	column FedExShipping_KeyID
+		dataType: string
+		lineageTag: a5ea72aa-9ca7-486a-a1bc-3ae18699e59e
+		summarizeBy: none
+		sourceColumn: FedExShipping_KeyID
+
+		annotation SummarizationSetBy = Automatic
+
+	column FedExShipping_Password
+		dataType: string
+		lineageTag: bf2cbfe6-b625-4e69-befb-d2d4f22eff69
+		summarizeBy: none
+		sourceColumn: FedExShipping_Password
+
+		annotation SummarizationSetBy = Automatic
+
+	column FedExShipping_AccountNumber
+		dataType: string
+		lineageTag: 448b716a-dd22-4e34-b301-1e247149c031
+		summarizeBy: none
+		sourceColumn: FedExShipping_AccountNumber
+
+		annotation SummarizationSetBy = Automatic
+
+	column FedExShipping_MeterNumber
+		dataType: string
+		lineageTag: c83a3f7d-70f6-40a6-8008-3cbfe167bcd8
+		summarizeBy: none
+		sourceColumn: FedExShipping_MeterNumber
+
+		annotation SummarizationSetBy = Automatic
+
+	column ENDICIA_AccountID
+		dataType: string
+		lineageTag: a008c9cd-6121-4d05-ba19-5167d3e166f3
+		summarizeBy: none
+		sourceColumn: ENDICIA_AccountID
+
+		annotation SummarizationSetBy = Automatic
+
+	column ENDICIA_PassPhrase
+		dataType: string
+		lineageTag: edd25361-c50c-47b8-bfcd-488562cb8658
+		summarizeBy: none
+		sourceColumn: ENDICIA_PassPhrase
+
+		annotation SummarizationSetBy = Automatic
+
+	column ENDICIA_WebPassword
+		dataType: string
+		lineageTag: 5c56d0a3-8292-4851-a2e1-27aa72ef5145
+		summarizeBy: none
+		sourceColumn: ENDICIA_WebPassword
+
+		annotation SummarizationSetBy = Automatic
+
+	column ENDICIA_TestMode
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: a7f97a2a-315a-4f65-befa-70bb152ad293
+		summarizeBy: none
+		sourceColumn: ENDICIA_TestMode
+
+		annotation SummarizationSetBy = Automatic
+
+	column ReturnAddress
+		dataType: string
+		lineageTag: 6fb0171d-eafb-4997-ab38-e353e5fc7669
+		summarizeBy: none
+		sourceColumn: ReturnAddress
+
+		annotation SummarizationSetBy = Automatic
+
+	column ReturnAddressIsDefaultForAllCompanies
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: d2c15c2f-182a-4f2e-bf5e-409ee428215b
+		summarizeBy: none
+		sourceColumn: ReturnAddressIsDefaultForAllCompanies
+
+		annotation SummarizationSetBy = Automatic
+
+	column ReturnDefaultCarrier
+		dataType: string
+		lineageTag: b1d1f786-46ee-4c0e-a439-0f72eed35e0c
+		summarizeBy: none
+		sourceColumn: ReturnDefaultCarrier
+
+		annotation SummarizationSetBy = Automatic
+
+	column ReturnDefaultService
+		dataType: string
+		lineageTag: 04d57605-1652-42c8-8858-0bf94be8a553
+		summarizeBy: none
+		sourceColumn: ReturnDefaultService
+
+		annotation SummarizationSetBy = Automatic
+
+	column Volusion_ImportFullyPaidOrdersOnly
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 792a26d2-a50a-4432-a026-78c78c194a18
+		summarizeBy: none
+		sourceColumn: Volusion_ImportFullyPaidOrdersOnly
+
+		annotation SummarizationSetBy = Automatic
+
+	column AmazonEnableShippingPriceUpdate
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 406d5880-95ad-4be4-9a5f-55708f622545
+		summarizeBy: none
+		sourceColumn: AmazonEnableShippingPriceUpdate
+
+		annotation SummarizationSetBy = Automatic
+
+	column eBayPhotoDisplayMode
+		dataType: int64
+		formatString: 0
+		lineageTag: ffd24c40-5748-4f83-b15c-3fa9cb1bfb57
+		summarizeBy: sum
+		sourceColumn: eBayPhotoDisplayMode
+
+		annotation SummarizationSetBy = Automatic
+
+	column AuthorizeDoNET_UserName
+		dataType: string
+		lineageTag: 0ef8df83-1dca-4a92-bfbe-fc22d5e030dd
+		summarizeBy: none
+		sourceColumn: AuthorizeDoNET_UserName
+
+		annotation SummarizationSetBy = Automatic
+
+	column AuthorizeDoNET_TransKey
+		dataType: string
+		lineageTag: d91ccd11-7d96-45db-aec8-be2186ee288c
+		summarizeBy: none
+		sourceColumn: AuthorizeDoNET_TransKey
+
+		annotation SummarizationSetBy = Automatic
+
+	column AuthorizeDoNET_TestMode
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 43bce3d7-c897-4e85-9915-731f31dba414
+		summarizeBy: none
+		sourceColumn: AuthorizeDoNET_TestMode
+
+		annotation SummarizationSetBy = Automatic
+
+	column AmazonDefaultIncludeInCMFeed
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: a995019e-c961-45b7-a2c5-4536210fba01
+		summarizeBy: none
+		sourceColumn: AmazonDefaultIncludeInCMFeed
+
+		annotation SummarizationSetBy = Automatic
+
+	column AmazonDefaultUseStopLossPrice
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 6d55fe1a-b87a-4e53-8eee-5220a0c400f1
+		summarizeBy: none
+		sourceColumn: AmazonDefaultUseStopLossPrice
+
+		annotation SummarizationSetBy = Automatic
+
+	column CreditCardTransactionFeeEnabled
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: ff6d88e9-4a12-4a7c-8aaa-b2037dde766f
+		summarizeBy: none
+		sourceColumn: CreditCardTransactionFeeEnabled
+
+		annotation SummarizationSetBy = Automatic
+
+	column CreditCardTransactionFee
+		dataType: double
+		lineageTag: f27889be-000f-412d-82c5-1478905e1fad
+		summarizeBy: sum
+		sourceColumn: CreditCardTransactionFee
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column OrderCreatedForChannelPostActionPlugin
+		dataType: string
+		lineageTag: cf084715-6a9e-46be-af84-c8bd6ca1a480
+		summarizeBy: none
+		sourceColumn: OrderCreatedForChannelPostActionPlugin
+
+		annotation SummarizationSetBy = Automatic
+
+	column CMFeedIncludeSellingVenue
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: f26eebad-6dcc-491e-8253-6deae389722c
+		summarizeBy: none
+		sourceColumn: CMFeedIncludeSellingVenue
+
+		annotation SummarizationSetBy = Automatic
+
+	column eBaySafetyQty
+		dataType: int64
+		formatString: 0
+		lineageTag: e2d0ca60-cc70-4f5c-8ba0-23792f326b20
+		summarizeBy: sum
+		sourceColumn: eBaySafetyQty
+
+		annotation SummarizationSetBy = Automatic
+
+	column NewEggDotComAPIEnabled
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 64b5d0b0-979b-42ea-8d84-9ee3502fd99c
+		summarizeBy: none
+		sourceColumn: NewEggDotComAPIEnabled
+
+		annotation SummarizationSetBy = Automatic
+
+	column NewEggDotComAPIAuthorizationKey
+		dataType: string
+		lineageTag: 3295e14b-3cf5-4c33-a2b2-0ac24449b8ee
+		summarizeBy: none
+		sourceColumn: NewEggDotComAPIAuthorizationKey
+
+		annotation SummarizationSetBy = Automatic
+
+	column NewEggDotComAPISecretKey
+		dataType: string
+		lineageTag: e1c30110-d058-4c9e-a076-bf4701b84110
+		summarizeBy: none
+		sourceColumn: NewEggDotComAPISecretKey
+
+		annotation SummarizationSetBy = Automatic
+
+	column WebsiteStoreTypePluginID
+		dataType: string
+		lineageTag: ada826c4-d632-4c21-b8fa-67667c5edd65
+		summarizeBy: none
+		sourceColumn: WebsiteStoreTypePluginID
+
+		annotation SummarizationSetBy = Automatic
+
+	column NewEggDotComOrderDownloadLimitDateEnabled
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 992c9380-e66c-41fb-aff8-2f5aab87fcca
+		summarizeBy: none
+		sourceColumn: NewEggDotComOrderDownloadLimitDateEnabled
+
+		annotation SummarizationSetBy = Automatic
+
+	column NewEggDotComOrderDownloadLimitDate
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: f229a20c-7836-49e0-a9be-0056f8d41198
+		summarizeBy: none
+		sourceColumn: NewEggDotComOrderDownloadLimitDate
+
+		variation Variation
+			isDefault
+			relationship: 6fec2c40-d637-43cd-94f6-bbab441dd233
+			defaultHierarchy: LocalDateTable_df8ab239-1016-4524-9922-9bf2201828e7.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	column eBayStartPriceDefaultToSitePrice
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 1b88b013-f1c6-4729-99ce-0be9cc27a024
+		summarizeBy: none
+		sourceColumn: eBayStartPriceDefaultToSitePrice
+
+		annotation SummarizationSetBy = Automatic
+
+	column AmazonDefaultUseDefaultPrice
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 9970c72e-2338-4b75-b591-7006e87c1dd3
+		summarizeBy: none
+		sourceColumn: AmazonDefaultUseDefaultPrice
+
+		annotation SummarizationSetBy = Automatic
+
+	column eBayPXOptionEnabled
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 61679a68-b573-4219-b59d-d2d9e12df352
+		summarizeBy: none
+		sourceColumn: eBayPXOptionEnabled
+
+		annotation SummarizationSetBy = Automatic
+
+	column ProductCreationPostPlugin
+		dataType: string
+		lineageTag: ae4bb38b-6f74-4816-b359-181f3cf14c0f
+		summarizeBy: none
+		sourceColumn: ProductCreationPostPlugin
+
+		annotation SummarizationSetBy = Automatic
+
+	column SearsEnableSettlementDownload
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 7ead6bd9-e902-467e-88f2-de8926b97f07
+		summarizeBy: none
+		sourceColumn: SearsEnableSettlementDownload
+
+		annotation SummarizationSetBy = Automatic
+
+	column AmazonDefaultGiftWrapAllowed
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 90b30160-7b5a-46bb-baf7-ec002dbf02c9
+		summarizeBy: none
+		sourceColumn: AmazonDefaultGiftWrapAllowed
+
+		annotation SummarizationSetBy = Automatic
+
+	column AmazonDefaultGiftMessageAvailable
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: b2d7af87-6187-4bf9-8d89-90001fd0bef8
+		summarizeBy: none
+		sourceColumn: AmazonDefaultGiftMessageAvailable
+
+		annotation SummarizationSetBy = Automatic
+
+	column AddressVerificationCarrier
+		dataType: int64
+		formatString: 0
+		lineageTag: 835bb071-1eb7-489c-ad13-ce66c6829ee1
+		summarizeBy: sum
+		sourceColumn: AddressVerificationCarrier
+
+		annotation SummarizationSetBy = Automatic
+
+	column Volusion_EnableShippedEmail
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: bb2bfaad-ec0d-4b5f-9ebf-490471ad5da9
+		summarizeBy: none
+		sourceColumn: Volusion_EnableShippedEmail
+
+		annotation SummarizationSetBy = Automatic
+
+	column ProductDefaultInventoryStatus
+		dataType: int64
+		formatString: 0
+		lineageTag: 18088db2-d37e-47d0-89af-bbcad7c50710
+		summarizeBy: sum
+		sourceColumn: ProductDefaultInventoryStatus
+
+		annotation SummarizationSetBy = Automatic
+
+	column CMFeedFolderName
+		dataType: string
+		lineageTag: 607d2166-a492-4747-ac58-0a33105dd2d0
+		summarizeBy: none
+		sourceColumn: CMFeedFolderName
+
+		annotation SummarizationSetBy = Automatic
+
+	column DefaultRequireSerialNumberScanWhileShipping
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 61bcf4c9-33c0-4e38-abb3-d215168ce56c
+		summarizeBy: none
+		sourceColumn: DefaultRequireSerialNumberScanWhileShipping
+
+		annotation SummarizationSetBy = Automatic
+
+	column PurchaseOrderPDFPlugin
+		dataType: string
+		lineageTag: 6f5329a8-9650-453b-b33e-c9c02c4f508d
+		summarizeBy: none
+		sourceColumn: PurchaseOrderPDFPlugin
+
+		annotation SummarizationSetBy = Automatic
+
+	column eBayEnableOrderFulfillmentUpload
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 237de15c-44ba-4444-9e4c-c64c0c6cbb59
+		summarizeBy: none
+		sourceColumn: eBayEnableOrderFulfillmentUpload
+
+		annotation SummarizationSetBy = Automatic
+
+	column BuyDotComDontRequireUPC
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: acbf76cc-96c4-4e34-a6c6-947c8a77dae4
+		summarizeBy: none
+		sourceColumn: BuyDotComDontRequireUPC
+
+		annotation SummarizationSetBy = Automatic
+
+	column WebSiteAllowUnpaidOrders
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 51996773-9684-4801-b064-2561f9702a45
+		summarizeBy: none
+		sourceColumn: WebSiteAllowUnpaidOrders
+
+		annotation SummarizationSetBy = Automatic
+
+	column AppEagleEnabled
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 9b45738a-1d7c-4e72-bd3b-8b2ac2c1bd9c
+		summarizeBy: none
+		sourceColumn: AppEagleEnabled
+
+		annotation SummarizationSetBy = Automatic
+
+	column DefaultProducteBayEnabled
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: eeee022e-0700-4f1b-8405-386179bb878d
+		summarizeBy: none
+		sourceColumn: DefaultProducteBayEnabled
+
+		annotation SummarizationSetBy = Automatic
+
+	column IsDisabled
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: b1b074a8-a9d1-4fef-a524-2b6d1091ae36
+		summarizeBy: none
+		sourceColumn: IsDisabled
+
+		annotation SummarizationSetBy = Automatic
+
+	column PreventTwoShadowsOfSameParentFromListingOnEBay
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: adf39c0e-85b1-4a2e-8ed1-d2b14998c909
+		summarizeBy: none
+		sourceColumn: PreventTwoShadowsOfSameParentFromListingOnEBay
+
+		annotation SummarizationSetBy = Automatic
+
+	column FaxNumber
+		dataType: string
+		lineageTag: e4cec076-8b86-473d-a1fa-8eacb729bdee
+		summarizeBy: none
+		sourceColumn: FaxNumber
+
+		annotation SummarizationSetBy = Automatic
+
+	column AppEagle_DefaultProfileID_Amazon
+		dataType: string
+		lineageTag: 1da37cc2-9742-479b-92ad-6e2d1f16967f
+		summarizeBy: none
+		sourceColumn: AppEagle_DefaultProfileID_Amazon
+
+		annotation SummarizationSetBy = Automatic
+
+	column AppEagle_DefaultProfileID_eBay
+		dataType: string
+		lineageTag: 8146bd2b-bad3-44fc-b686-277f755807cf
+		summarizeBy: none
+		sourceColumn: AppEagle_DefaultProfileID_eBay
+
+		annotation SummarizationSetBy = Automatic
+
+	column AppEagle_DefaultProfileID_BuyDotCom
+		dataType: string
+		lineageTag: 493ffbf8-0d5d-4214-94fb-de7563442a02
+		summarizeBy: none
+		sourceColumn: AppEagle_DefaultProfileID_BuyDotCom
+
+		annotation SummarizationSetBy = Automatic
+
+	column WebsiteOrderViewURL
+		dataType: string
+		lineageTag: b3cfb64c-53f5-4108-b87e-0eb6262c38db
+		summarizeBy: none
+		sourceColumn: WebsiteOrderViewURL
+
+		annotation SummarizationSetBy = Automatic
+
+	column WebsiteProductViewURL
+		dataType: string
+		lineageTag: e16bca13-2097-4c72-ac51-0dff244d29e9
+		summarizeBy: none
+		sourceColumn: WebsiteProductViewURL
+
+		annotation SummarizationSetBy = Automatic
+
+	column WebSiteAllowPartialpaidOrders
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 27d641db-0f0d-4e48-8721-b75777156a5e
+		summarizeBy: none
+		sourceColumn: WebSiteAllowPartialpaidOrders
+
+		annotation SummarizationSetBy = Automatic
+
+	column WebSiteAllowPriceUpdate
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: cc8b81c7-92a8-45e1-a1af-674cdd0c0203
+		summarizeBy: none
+		sourceColumn: WebSiteAllowPriceUpdate
+
+		annotation SummarizationSetBy = Automatic
+
+	column PurchaseOrderDefaultStatus
+		dataType: int64
+		formatString: 0
+		lineageTag: d5a9e46f-4000-4212-b7f7-90316849e4db
+		summarizeBy: sum
+		sourceColumn: PurchaseOrderDefaultStatus
+
+		annotation SummarizationSetBy = Automatic
+
+	column DefaultOrderHandlingFee
+		dataType: double
+		lineageTag: 82a4c48b-9383-4a19-a74f-fae74bb6c2e4
+		summarizeBy: sum
+		sourceColumn: DefaultOrderHandlingFee
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column DefaultOrderHandlingFeeEnabled
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: efb94199-1ef0-4493-b7c2-ca1c2124ec0b
+		summarizeBy: none
+		sourceColumn: DefaultOrderHandlingFeeEnabled
+
+		annotation SummarizationSetBy = Automatic
+
+	column PurchaseOrderDefaultApproved
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 540abd7f-4de3-4018-85fe-a3c0ce2c76e8
+		summarizeBy: none
+		sourceColumn: PurchaseOrderDefaultApproved
+
+		annotation SummarizationSetBy = Automatic
+
+	column GoogleOpenAuth_accessToken
+		dataType: string
+		lineageTag: 4256f6fb-2467-456b-9553-aa603481ea50
+		summarizeBy: none
+		sourceColumn: GoogleOpenAuth_accessToken
+
+		annotation SummarizationSetBy = Automatic
+
+	column GoogleOpenAuth_refreshToken
+		dataType: string
+		lineageTag: 08079742-7c0a-4e88-b8ff-fb4bd07e8c31
+		summarizeBy: none
+		sourceColumn: GoogleOpenAuth_refreshToken
+
+		annotation SummarizationSetBy = Automatic
+
+	column BuyDotComIgnoreTax
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 654060bb-5448-4e8c-8598-c1187a968f9e
+		summarizeBy: none
+		sourceColumn: BuyDotComIgnoreTax
+
+		annotation SummarizationSetBy = Automatic
+
+	column BuyDotComIgnoreTaxFromCAState
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 69791e31-17cf-4d27-a3d1-3b2eaa8b10b7
+		summarizeBy: none
+		sourceColumn: BuyDotComIgnoreTaxFromCAState
+
+		annotation SummarizationSetBy = Automatic
+
+	column Invoice_HideCustomerEmail
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: ab66cf4b-a963-414e-9447-a0834b05501d
+		summarizeBy: none
+		sourceColumn: Invoice_HideCustomerEmail
+
+		annotation SummarizationSetBy = Automatic
+
+	column WebsiteProductViewURLValueType
+		dataType: int64
+		formatString: 0
+		lineageTag: 5f2ac2e9-cf87-4ffd-b1b5-6a011ac08a49
+		summarizeBy: sum
+		sourceColumn: WebsiteProductViewURLValueType
+
+		annotation SummarizationSetBy = Automatic
+
+	column WebSiteAllowDownloadShippedOrders
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 5872f7e2-ca71-4cef-8a49-0226abb7be92
+		summarizeBy: none
+		sourceColumn: WebSiteAllowDownloadShippedOrders
+
+		annotation SummarizationSetBy = Automatic
+
+	column TaxJarAuthToken
+		dataType: string
+		lineageTag: b0d67bf9-e023-4af8-ab51-a12ba07a2765
+		summarizeBy: none
+		sourceColumn: TaxJarAuthToken
+
+		annotation SummarizationSetBy = Automatic
+
+	column EnableShippingRageAPIFor_FedEx
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: b7f4ce2f-bf4f-4574-bce9-4bc12732ae27
+		summarizeBy: none
+		sourceColumn: EnableShippingRageAPIFor_FedEx
+
+		annotation SummarizationSetBy = Automatic
+
+	column EnableShippingRageAPIFor_UPS
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 3dad57be-112b-43d1-b4cd-aacff596ab8a
+		summarizeBy: none
+		sourceColumn: EnableShippingRageAPIFor_UPS
+
+		annotation SummarizationSetBy = Automatic
+
+	column EnableShippingRageAPIFor_USPS
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: e7c5cd46-b43c-42ca-8cf9-a569961c23a4
+		summarizeBy: none
+		sourceColumn: EnableShippingRageAPIFor_USPS
+
+		annotation SummarizationSetBy = Automatic
+
+	column TaxPostingPluginID
+		dataType: string
+		lineageTag: 5563bb4a-920e-45d3-9984-1b63fe2529b3
+		summarizeBy: none
+		sourceColumn: TaxPostingPluginID
+
+		annotation SummarizationSetBy = Automatic
+
+	column YahooEnableOrderDownload
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: daf0f4ec-f43a-4cd2-b2ce-aee0513a1c40
+		summarizeBy: none
+		sourceColumn: YahooEnableOrderDownload
+
+		annotation SummarizationSetBy = Automatic
+
+	column YahooEnableInventoryUpload
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 3db61a1d-eb4e-49b4-b3ad-cfc93ded1adf
+		summarizeBy: none
+		sourceColumn: YahooEnableInventoryUpload
+
+		annotation SummarizationSetBy = Automatic
+
+	column YahooEnableTrackingUpload
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: eb6fa29d-a873-474a-8286-4491e6d3b66c
+		summarizeBy: none
+		sourceColumn: YahooEnableTrackingUpload
+
+		annotation SummarizationSetBy = Automatic
+
+	column WebsiteStoreIsEnterprise
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 7b699be3-9336-497c-91d0-4a51e272e918
+		summarizeBy: none
+		sourceColumn: WebsiteStoreIsEnterprise
+
+		annotation SummarizationSetBy = Automatic
+
+	column Invoice_UseBinLocation
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 5c4e00a6-491a-4d5f-ad96-f35d49724fad
+		summarizeBy: none
+		sourceColumn: Invoice_UseBinLocation
+
+		annotation SummarizationSetBy = Automatic
+
+	column FedExSmartPostHubName
+		dataType: string
+		lineageTag: 7bd64a58-494d-4b2d-bdc9-179f9dbc55df
+		summarizeBy: none
+		sourceColumn: FedExSmartPostHubName
+
+		annotation SummarizationSetBy = Automatic
+
+	column Invoice_PrintCustomerServiceNotes
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: e39f549e-cd7b-485c-ba92-c6d3dc767b95
+		summarizeBy: none
+		sourceColumn: Invoice_PrintCustomerServiceNotes
+
+		annotation SummarizationSetBy = Automatic
+
+	column OverStockEnableEDIIntegration
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 26ef6f4a-6661-49c6-b0af-1e49cf1dc77d
+		summarizeBy: none
+		sourceColumn: OverStockEnableEDIIntegration
+
+		annotation SummarizationSetBy = Automatic
+
+	column PurchaseOrderDefaultIncludeLogoInPDF
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: bcdf0ca4-daa2-41e2-bc55-498af34d9307
+		summarizeBy: none
+		sourceColumn: PurchaseOrderDefaultIncludeLogoInPDF
+
+		annotation SummarizationSetBy = Automatic
+
+	column eBayEnableSettlementDownload
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 1ea64d65-d057-4854-9c29-df7cb138f2cc
+		summarizeBy: none
+		sourceColumn: eBayEnableSettlementDownload
+
+		annotation SummarizationSetBy = Automatic
+
+	column EnableAmazonShipByRegionTemplates
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 45851d55-b228-497e-820b-e7d032e2903b
+		summarizeBy: none
+		sourceColumn: EnableAmazonShipByRegionTemplates
+
+		annotation SummarizationSetBy = Automatic
+
+	column FBAInboundCartID
+		dataType: int64
+		formatString: 0
+		lineageTag: 270460e6-12f3-4364-b5f1-91462c45ab6b
+		summarizeBy: count
+		sourceColumn: FBAInboundCartID
+
+		annotation SummarizationSetBy = Automatic
+
+	column AmazonFulfillmentLatencyDays_Replenishable
+		dataType: int64
+		formatString: 0
+		lineageTag: f9f7694c-f72e-4125-91c2-7930e2f54639
+		summarizeBy: sum
+		sourceColumn: AmazonFulfillmentLatencyDays_Replenishable
+
+		annotation SummarizationSetBy = Automatic
+
+	column AutoCreateProductsFromAmazon
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: bbe4bbd0-6ca9-4b0c-a2f5-578898be8934
+		summarizeBy: none
+		sourceColumn: AutoCreateProductsFromAmazon
+
+		annotation SummarizationSetBy = Automatic
+
+	column AutoUpdateProductsFromAmazon
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: f203ae11-6cc1-4f09-8409-290cdde8f594
+		summarizeBy: none
+		sourceColumn: AutoUpdateProductsFromAmazon
+
+		annotation SummarizationSetBy = Automatic
+
+	column AutoUpdateProductsFromAmazonDontEnableForAmazon
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 8cf43b5a-9bb9-408b-a227-ba3b13853ed4
+		summarizeBy: none
+		sourceColumn: AutoUpdateProductsFromAmazonDontEnableForAmazon
+
+		annotation SummarizationSetBy = Automatic
+
+	column SearsSellerID
+		dataType: string
+		lineageTag: 0366cf28-0d50-4f34-9ffc-f4e9dcf27dce
+		summarizeBy: none
+		sourceColumn: SearsSellerID
+
+		annotation SummarizationSetBy = Automatic
+
+	column SearsAuthorizationKey
+		dataType: string
+		lineageTag: 35409167-d5e4-45c8-a3c3-eae2847ee2bb
+		summarizeBy: none
+		sourceColumn: SearsAuthorizationKey
+
+		annotation SummarizationSetBy = Automatic
+
+	column SearsEnableSignatureBasedAuthentication
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 528af5fc-6a6d-45d5-a8dc-93c6ecbf6d8a
+		summarizeBy: none
+		sourceColumn: SearsEnableSignatureBasedAuthentication
+
+		annotation SummarizationSetBy = Automatic
+
+	column BuyDotComEnableAPI
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 256de47b-01ba-44e6-b748-4ccc5b8ae7d3
+		summarizeBy: none
+		sourceColumn: BuyDotComEnableAPI
+
+		annotation SummarizationSetBy = Automatic
+
+	column BuyDotComAPIClientID
+		dataType: string
+		lineageTag: 80122759-2bcc-47e0-9095-81d786781a17
+		summarizeBy: none
+		sourceColumn: BuyDotComAPIClientID
+
+		annotation SummarizationSetBy = Automatic
+
+	column BuyDotComAPIClientKey
+		dataType: string
+		lineageTag: 9bb4b958-12e3-4f55-8624-5f11927975a3
+		summarizeBy: none
+		sourceColumn: BuyDotComAPIClientKey
+
+		annotation SummarizationSetBy = Automatic
+
+	column BuyDotComAPIAccessToken
+		dataType: string
+		lineageTag: 4fb7ed44-818b-4e7e-9ea5-cfb56a0be6bb
+		summarizeBy: none
+		sourceColumn: BuyDotComAPIAccessToken
+
+		annotation SummarizationSetBy = Automatic
+
+	column BuyDotComAPIRefreshToken
+		dataType: string
+		lineageTag: 1167f75c-c45b-4a97-91d6-2cc3932a0c37
+		summarizeBy: none
+		sourceColumn: BuyDotComAPIRefreshToken
+
+		annotation SummarizationSetBy = Automatic
+
+	column BuyDotComAPIIssuedOn
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 1a631350-fe7a-4add-9072-8125b347e621
+		summarizeBy: none
+		sourceColumn: BuyDotComAPIIssuedOn
+
+		variation Variation
+			isDefault
+			relationship: 7ca3bbb6-f89e-4550-855a-c534d0d73b10
+			defaultHierarchy: LocalDateTable_c606f62e-29d6-4e9c-828d-129cb7d349b8.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	column BuyDotComAPIExpiresOn
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 17e3b2b2-8a70-46f6-b81a-d12b6776ae7f
+		summarizeBy: none
+		sourceColumn: BuyDotComAPIExpiresOn
+
+		variation Variation
+			isDefault
+			relationship: 151bf9a5-df14-40b6-8293-84a91eca73bf
+			defaultHierarchy: LocalDateTable_4d5a7667-7039-4e35-9f81-e2c15c3cf207.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	column InventoryMaxQtyForWebSite
+		dataType: int64
+		formatString: 0
+		lineageTag: 7fbfc306-ca72-4f1d-baba-b775417ee5b8
+		summarizeBy: sum
+		sourceColumn: InventoryMaxQtyForWebSite
+
+		annotation SummarizationSetBy = Automatic
+
+	column AmazonDefaultShippingTemplateByRegion
+		dataType: string
+		lineageTag: 00e9dcb3-008c-49a4-900a-703794baca1d
+		summarizeBy: none
+		sourceColumn: AmazonDefaultShippingTemplateByRegion
+
+		annotation SummarizationSetBy = Automatic
+
+	column SendInvoiceWithShipNotificationEmail
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 69150f2c-300b-4d63-9c8b-12aaa76b59a8
+		summarizeBy: none
+		sourceColumn: SendInvoiceWithShipNotificationEmail
+
+		annotation SummarizationSetBy = Automatic
+
+	column AmazonProductBusinessDiscountPercent
+		dataType: double
+		lineageTag: 5bd81e7b-618a-4510-96da-870c422dff4f
+		summarizeBy: sum
+		sourceColumn: AmazonProductBusinessDiscountPercent
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column AppEagle_DefaultProfileID_Walmart
+		dataType: string
+		lineageTag: 726e1138-354f-4c4c-9fc7-d47efe1b41ea
+		summarizeBy: none
+		sourceColumn: AppEagle_DefaultProfileID_Walmart
+
+		annotation SummarizationSetBy = Automatic
+
+	column NewEggDotcomMaxQty
+		dataType: int64
+		formatString: 0
+		lineageTag: 40a664ee-8ac1-493f-9994-a9f7c4e57cdb
+		summarizeBy: sum
+		sourceColumn: NewEggDotcomMaxQty
+
+		annotation SummarizationSetBy = Automatic
+
+	column IgnoreAFNListingExistsColumnInFBAInventoryReport
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 11cbde93-bca9-4a52-8992-b5b5ed1cecfb
+		summarizeBy: none
+		sourceColumn: IgnoreAFNListingExistsColumnInFBAInventoryReport
+
+		annotation SummarizationSetBy = Automatic
+
+	column UnitOfMeasure
+		dataType: int64
+		formatString: 0
+		lineageTag: 89936020-2968-4c57-ac9d-5c7146d51be3
+		summarizeBy: sum
+		sourceColumn: UnitOfMeasure
+
+		annotation SummarizationSetBy = Automatic
+
+	column NewEggDotComEnableReturnService
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: ffc861a0-9a08-41b8-a561-586b4aac09eb
+		summarizeBy: none
+		sourceColumn: NewEggDotComEnableReturnService
+
+		annotation SummarizationSetBy = Automatic
+
+	column BuyDotComShopName
+		dataType: string
+		lineageTag: f2838c59-4361-42e6-b131-2bbcb018e729
+		summarizeBy: none
+		sourceColumn: BuyDotComShopName
+
+		annotation SummarizationSetBy = Automatic
+
+	column AmazonEnablePriceUpdateRegular
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: a7abc702-9bee-49fa-9794-33fb757f40f3
+		summarizeBy: none
+		sourceColumn: AmazonEnablePriceUpdateRegular
+
+		annotation SummarizationSetBy = Automatic
+
+	column AmazonMWSAuthToken
+		dataType: string
+		lineageTag: 27ee2a2a-a130-494b-af90-33287c687447
+		summarizeBy: none
+		sourceColumn: AmazonMWSAuthToken
+
+		annotation SummarizationSetBy = Automatic
+
+	column IsAmazonUnifiedAccountParentCompany
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 809b668f-082d-4f1b-9b9f-900300cdf0e3
+		summarizeBy: none
+		sourceColumn: IsAmazonUnifiedAccountParentCompany
+
+		annotation SummarizationSetBy = Automatic
+
+	column AmazonUnifiedAccountParentCompany
+		dataType: int64
+		formatString: 0
+		lineageTag: 660c4ed3-e639-4c60-be90-e496ee3fe124
+		summarizeBy: sum
+		sourceColumn: AmazonUnifiedAccountParentCompany
+
+		annotation SummarizationSetBy = Automatic
+
+	column CurrencyCodeForShipViaFBADeclaredValue
+		dataType: int64
+		formatString: 0
+		lineageTag: a268a4a7-8cbd-479d-8772-948ab2698bc3
+		summarizeBy: sum
+		sourceColumn: CurrencyCodeForShipViaFBADeclaredValue
+
+		annotation SummarizationSetBy = Automatic
+
+	column AmazonMWSAuthTokenEnabled
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 5a8a89c7-2300-48c7-970e-5f8aa8d0daa1
+		summarizeBy: none
+		sourceColumn: AmazonMWSAuthTokenEnabled
+
+		annotation SummarizationSetBy = Automatic
+
+	column NewEggDotComEnableDownloadSBNOrders
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 3fc8cbaa-562c-43d2-8a1f-a9d01a088e79
+		summarizeBy: none
+		sourceColumn: NewEggDotComEnableDownloadSBNOrders
+
+		annotation SummarizationSetBy = Automatic
+
+	column NewEggDotComShippingOptionDefault
+		dataType: string
+		lineageTag: ed1f27cb-3752-48f2-b9a2-0a9f4f6d994c
+		summarizeBy: none
+		sourceColumn: NewEggDotComShippingOptionDefault
+
+		annotation SummarizationSetBy = Automatic
+
+	column Invoice_PrintUPCForKitItems
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 79872ffb-31cf-437c-af41-508bd9280696
+		summarizeBy: none
+		sourceColumn: Invoice_PrintUPCForKitItems
+
+		annotation SummarizationSetBy = Automatic
+
+	column AutoCreateFBARemovalTransfers
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: e9856837-310b-4333-a8c8-4350e525fb77
+		summarizeBy: none
+		sourceColumn: AutoCreateFBARemovalTransfers
+
+		annotation SummarizationSetBy = Automatic
+
+	column AmazonMWSAuthTokenExpiresOn
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 47e1a871-ecb9-4e04-8d60-68c42ed796f0
+		summarizeBy: none
+		sourceColumn: AmazonMWSAuthTokenExpiresOn
+
+		variation Variation
+			isDefault
+			relationship: af608fbb-e541-408d-ac30-eff9d1216e58
+			defaultHierarchy: LocalDateTable_07929841-00c2-450a-9302-e0b368bdfb51.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	column SearsLeadTime
+		dataType: int64
+		formatString: 0
+		lineageTag: 41b16e7b-3fb8-436b-8b7d-5025657e2ff7
+		summarizeBy: sum
+		sourceColumn: SearsLeadTime
+
+		annotation SummarizationSetBy = Automatic
+
+	column CMFeedUseSecureFTP
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 35cf88f9-29b5-4993-8b32-e08183e7b93b
+		summarizeBy: none
+		sourceColumn: CMFeedUseSecureFTP
+
+		annotation SummarizationSetBy = Automatic
+
+	column CMFeedSecureFTPType
+		dataType: int64
+		formatString: 0
+		lineageTag: 438cff58-1bca-4045-b3a8-ae395459b5b4
+		summarizeBy: sum
+		sourceColumn: CMFeedSecureFTPType
+
+		annotation SummarizationSetBy = Automatic
+
+	column CMFeedUseSSHFTPwithKeyauthentication
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 75e915d8-1b1d-4971-a6d7-2826825f2c80
+		summarizeBy: none
+		sourceColumn: CMFeedUseSSHFTPwithKeyauthentication
+
+		annotation SummarizationSetBy = Automatic
+
+	column CMFeedOverrideSSLAllowedCiphers
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 29bfb19b-2c3b-4cfb-b65e-46c475ae67c5
+		summarizeBy: none
+		sourceColumn: CMFeedOverrideSSLAllowedCiphers
+
+		annotation SummarizationSetBy = Automatic
+
+	column CMFeedSSLAllowedCiphers
+		dataType: string
+		lineageTag: 7d43385d-2a08-442c-86de-82c40473980d
+		summarizeBy: none
+		sourceColumn: CMFeedSSLAllowedCiphers
+
+		annotation SummarizationSetBy = Automatic
+
+	column AmazonUseMWSToGetInfoFromAmazon
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 194605e0-bfe5-4393-9f2c-44255d3f3c9c
+		summarizeBy: none
+		sourceColumn: AmazonUseMWSToGetInfoFromAmazon
+
+		annotation SummarizationSetBy = Automatic
+
+	column AmazonDefaultAppEagleEnabled
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: ccb28f14-2113-4e4c-9860-105a5651b55d
+		summarizeBy: none
+		sourceColumn: AmazonDefaultAppEagleEnabled
+
+		annotation SummarizationSetBy = Automatic
+
+	column Invoice_PrintShippedOnDate
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 3b4d19ec-fa01-4176-974a-df2a52f1a977
+		summarizeBy: none
+		sourceColumn: Invoice_PrintShippedOnDate
+
+		annotation SummarizationSetBy = Automatic
+
+	column NewEggDotComEnableIntlListings
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: e9be144b-d261-434f-b9e7-cdcb8736bf83
+		summarizeBy: none
+		sourceColumn: NewEggDotComEnableIntlListings
+
+		annotation SummarizationSetBy = Automatic
+
+	column BuyDotComIncludeLeadTimeInventoryFeed
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 0f3a363b-370d-4a56-92b1-00b906dfef96
+		summarizeBy: none
+		sourceColumn: BuyDotComIncludeLeadTimeInventoryFeed
+
+		annotation SummarizationSetBy = Automatic
+
+	column TaxJarCalculateTax
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 4c8b5d1f-05ce-4057-99cf-85c1c046ea9b
+		summarizeBy: none
+		sourceColumn: TaxJarCalculateTax
+
+		annotation SummarizationSetBy = Automatic
+
+	column eBayDoNotReviseNonUSListings
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 5f1d7725-333f-454f-b7c3-a609fe4ae879
+		summarizeBy: none
+		sourceColumn: eBayDoNotReviseNonUSListings
+
+		annotation SummarizationSetBy = Automatic
+
+	column BuyDotComIgnoreTaxStates
+		dataType: string
+		lineageTag: ca03daf2-4c1a-47cc-b6e5-5c6f70d605f2
+		summarizeBy: none
+		sourceColumn: BuyDotComIgnoreTaxStates
+
+		annotation SummarizationSetBy = Automatic
+
+	column YahooEnableOrderDownloadLimitDate
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 4d3d3fd3-288e-4b9f-94e1-7c3c42d049e1
+		summarizeBy: none
+		sourceColumn: YahooEnableOrderDownloadLimitDate
+
+		annotation SummarizationSetBy = Automatic
+
+	column YahooOrderDownloadLimitDate
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: ec3d7714-cbeb-460f-9d45-72ea90f57779
+		summarizeBy: none
+		sourceColumn: YahooOrderDownloadLimitDate
+
+		variation Variation
+			isDefault
+			relationship: c9d91199-e081-4996-a263-459210abbbd7
+			defaultHierarchy: LocalDateTable_937e5fa6-b1e6-48fd-9c22-3749bd28a91d.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	column TaxJarEnableSubmitTaxViaAPI
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: d69e29e6-8cf0-494a-8061-fd00933548b2
+		summarizeBy: none
+		sourceColumn: TaxJarEnableSubmitTaxViaAPI
+
+		annotation SummarizationSetBy = Automatic
+
+	column NewEggDotComAlwaysSendIntPricesINUSD
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 62602b18-67f9-4a3e-b865-cdd6d31b7837
+		summarizeBy: none
+		sourceColumn: NewEggDotComAlwaysSendIntPricesINUSD
+
+		annotation SummarizationSetBy = Automatic
+
+	column CanadaAPIUsername
+		dataType: string
+		lineageTag: 511084d1-756f-49bc-b9ad-37bccbded4ad
+		summarizeBy: none
+		sourceColumn: CanadaAPIUsername
+
+		annotation SummarizationSetBy = Automatic
+
+	column CanadaAPIPassword
+		dataType: string
+		lineageTag: f3dda67e-76a9-4959-bef0-bc07ad02ba18
+		summarizeBy: none
+		sourceColumn: CanadaAPIPassword
+
+		annotation SummarizationSetBy = Automatic
+
+	column CanadaAPICustomerNumber
+		dataType: string
+		lineageTag: d903b4bc-3e4c-4115-8fe4-d57c386e7654
+		summarizeBy: none
+		sourceColumn: CanadaAPICustomerNumber
+
+		annotation SummarizationSetBy = Automatic
+
+	column PurchaseOrderDefaultWarehouseID
+		dataType: int64
+		formatString: 0
+		lineageTag: 282973e5-af27-46b3-9e12-540544075d43
+		summarizeBy: count
+		sourceColumn: PurchaseOrderDefaultWarehouseID
+
+		annotation SummarizationSetBy = Automatic
+
+	column Invoice_IncludeAllTrackingNumbers
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: b606106c-b5d8-4d38-a48b-50242ea359bd
+		summarizeBy: none
+		sourceColumn: Invoice_IncludeAllTrackingNumbers
+
+		annotation SummarizationSetBy = Automatic
+
+	column NewEggDotComEnableSettlementDownlaod
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: e7b28cf4-eb89-48ba-a391-e6467781215f
+		summarizeBy: none
+		sourceColumn: NewEggDotComEnableSettlementDownlaod
+
+		annotation SummarizationSetBy = Automatic
+
+	column FedExShipping_UseParentCredentials
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: b5b634ed-b5e0-4cdc-97e6-6c4973406130
+		summarizeBy: none
+		sourceColumn: FedExShipping_UseParentCredentials
+
+		annotation SummarizationSetBy = Automatic
+
+	column OverStockImportOrdersAsUnPaid
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 3d86033c-910e-4d44-858a-f9e5d5661f7c
+		summarizeBy: none
+		sourceColumn: OverStockImportOrdersAsUnPaid
+
+		annotation SummarizationSetBy = Automatic
+
+	column DoNotApplyEbaySubsidyOnSites
+		dataType: string
+		lineageTag: f83b0fd7-3633-40f7-9e57-4ccb9b8bd63f
+		summarizeBy: none
+		sourceColumn: DoNotApplyEbaySubsidyOnSites
+
+		annotation SummarizationSetBy = Automatic
+
+	column ebayPaymentFeePercent
+		dataType: double
+		lineageTag: ddaacfbf-4843-4a1d-8462-0f9d7f16b103
+		summarizeBy: sum
+		sourceColumn: ebayPaymentFeePercent
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Invoice_OrderFormWordToPDFFileName
+		dataType: string
+		lineageTag: b327f39e-be1d-47dd-9595-ec38920364fa
+		summarizeBy: none
+		sourceColumn: Invoice_OrderFormWordToPDFFileName
+
+		annotation SummarizationSetBy = Automatic
+
+	column UpdateProductSitePriceBasedOnAmazonPrice
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: a9a88194-7f27-459c-897b-6cdd294a8d5c
+		summarizeBy: none
+		sourceColumn: UpdateProductSitePriceBasedOnAmazonPrice
+
+		annotation SummarizationSetBy = Automatic
+
+	column OverStockMaxQty
+		dataType: int64
+		formatString: 0
+		lineageTag: 96a567e9-65a2-4d43-8f77-dc4e90a28a60
+		summarizeBy: sum
+		sourceColumn: OverStockMaxQty
+
+		annotation SummarizationSetBy = Automatic
+
+	column AlertEmail
+		dataType: string
+		lineageTag: e80c0fed-68a1-4cb0-870f-e46323b9e0b5
+		summarizeBy: none
+		sourceColumn: AlertEmail
+
+		annotation SummarizationSetBy = Automatic
+
+	column EnableMemailaBasedEmails
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 37b46f02-b686-4ffa-8260-8d7dc6180fed
+		summarizeBy: none
+		sourceColumn: EnableMemailaBasedEmails
+
+		annotation SummarizationSetBy = Automatic
+
+	column MemailaAccountID
+		dataType: int64
+		formatString: 0
+		lineageTag: 5d572668-2345-441b-9745-14ae74012099
+		summarizeBy: count
+		sourceColumn: MemailaAccountID
+
+		annotation SummarizationSetBy = Automatic
+
+	column DefaultPurchaseOrderBillingAddress
+		dataType: string
+		lineageTag: c1f4afc5-a784-4a70-b2e2-2c80f0a5abb1
+		summarizeBy: none
+		sourceColumn: DefaultPurchaseOrderBillingAddress
+
+		annotation SummarizationSetBy = Automatic
+
+	column EnableAmazonTransparency
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 05fddc94-e7b9-4a6a-8ff6-ae4de1ede1b2
+		summarizeBy: none
+		sourceColumn: EnableAmazonTransparency
+
+		annotation SummarizationSetBy = Automatic
+
+	column AmazonAdvertisingAPIToken
+		dataType: string
+		lineageTag: 1db9418a-0c67-49bc-a1b7-7ed28e193a7d
+		summarizeBy: none
+		sourceColumn: AmazonAdvertisingAPIToken
+
+		annotation SummarizationSetBy = Automatic
+
+	column AmazonAdvertisingAPIRefreshToken
+		dataType: string
+		lineageTag: a97a7e7e-6fa5-4063-9b77-8edf024e689b
+		summarizeBy: none
+		sourceColumn: AmazonAdvertisingAPIRefreshToken
+
+		annotation SummarizationSetBy = Automatic
+
+	column AmazonAdvertisingAPIRedirectURL
+		dataType: string
+		lineageTag: 995b22b7-442c-4f5e-9c9c-0039e294cd25
+		summarizeBy: none
+		sourceColumn: AmazonAdvertisingAPIRedirectURL
+
+		annotation SummarizationSetBy = Automatic
+
+	column AmazonAdvertisingAPITokenExpiresIn
+		dataType: int64
+		formatString: 0
+		lineageTag: 92c81459-33ba-477d-bbff-08c9dbc28fa0
+		summarizeBy: sum
+		sourceColumn: AmazonAdvertisingAPITokenExpiresIn
+
+		annotation SummarizationSetBy = Automatic
+
+	column AmazonAdvertisingAPITokenExpireOn
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 2bcc46e8-780f-4345-bc9d-4b75b643f2b2
+		summarizeBy: none
+		sourceColumn: AmazonAdvertisingAPITokenExpireOn
+
+		variation Variation
+			isDefault
+			relationship: 119f54b7-5bed-4ad1-a548-cb0846f308fb
+			defaultHierarchy: LocalDateTable_5bb17fe4-35fc-4bb0-b3f7-09fd2a239de3.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	column AmazonAdvertisingAPITokenReceivedOn
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 59fb1861-5900-4292-aea1-242d426e66e5
+		summarizeBy: none
+		sourceColumn: AmazonAdvertisingAPITokenReceivedOn
+
+		variation Variation
+			isDefault
+			relationship: acd8c1d1-3c06-4e10-b60f-632aa778f6b1
+			defaultHierarchy: LocalDateTable_ae725863-defd-4bc1-bd21-3ece5afafbff.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	column GmailRequireOpenAuthentication
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 0f16dc82-c7ed-4228-86f0-0fa76df26ece
+		summarizeBy: none
+		sourceColumn: GmailRequireOpenAuthentication
+
+		annotation SummarizationSetBy = Automatic
+
+	column RMAPDFType
+		dataType: int64
+		formatString: 0
+		lineageTag: 3639e832-b640-49cd-a824-9491c36acf36
+		summarizeBy: sum
+		sourceColumn: RMAPDFType
+
+		annotation SummarizationSetBy = Automatic
+
+	column RMAWordTemplateName
+		dataType: string
+		lineageTag: db4d225a-d614-4d8d-bb57-ac6d7fd933d8
+		summarizeBy: none
+		sourceColumn: RMAWordTemplateName
+
+		annotation SummarizationSetBy = Automatic
+
+	column SubmitRefundtoTaxJar
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 9b558cda-7b90-41fd-869a-abae67842f05
+		summarizeBy: none
+		sourceColumn: SubmitRefundtoTaxJar
+
+		annotation SummarizationSetBy = Automatic
+
+	column AmazonAdvertisingAPIProfileID
+		dataType: string
+		lineageTag: 95bfe8c5-2007-4d82-a421-043757529adf
+		summarizeBy: none
+		sourceColumn: AmazonAdvertisingAPIProfileID
+
+		annotation SummarizationSetBy = Automatic
+
+	column WebsiteEnableActiveListingsDownload
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 24d1404d-b9a2-4167-9388-0e1e583efc41
+		summarizeBy: none
+		sourceColumn: WebsiteEnableActiveListingsDownload
+
+		annotation SummarizationSetBy = Automatic
+
+	column USPSUserID_UseForTracking
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 9c6277eb-b9e9-46b6-9e6e-fa5978c1dc35
+		summarizeBy: none
+		sourceColumn: USPSUserID_UseForTracking
+
+		annotation SummarizationSetBy = Automatic
+
+	column Invoice_ForWholeSaleHTML
+		dataType: string
+		lineageTag: ca1f26d9-0a23-4998-988f-f84faf2c5432
+		summarizeBy: none
+		sourceColumn: Invoice_ForWholeSaleHTML
+
+		annotation SummarizationSetBy = Automatic
+
+	column Invoice_OrderFormHTML
+		dataType: string
+		lineageTag: b3c1b2c6-2144-416f-9583-a6eb09d0c97b
+		summarizeBy: none
+		sourceColumn: Invoice_OrderFormHTML
+
+		annotation SummarizationSetBy = Automatic
+
+	column WebSiteAllowAutoCreateLocalProducts
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 437fa3c8-1af9-4a0e-9e3f-e880e8690b20
+		summarizeBy: none
+		sourceColumn: WebSiteAllowAutoCreateLocalProducts
+
+		annotation SummarizationSetBy = Automatic
+
+	column WebSiteAllowAutoUpdateLocalProducts
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 3a178439-130a-4567-9b03-db6a79985ecd
+		summarizeBy: none
+		sourceColumn: WebSiteAllowAutoUpdateLocalProducts
+
+		annotation SummarizationSetBy = Automatic
+
+	column ProductLabelTypeDefault
+		dataType: string
+		lineageTag: a30a4c64-5923-42a0-8f2c-545cffcabebe
+		summarizeBy: none
+		sourceColumn: ProductLabelTypeDefault
+
+		annotation SummarizationSetBy = Automatic
+
+	column OverStockRequireThirdPartyShipping
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: aff7f184-97b3-41b9-ac6e-223f88a3b1b6
+		summarizeBy: none
+		sourceColumn: OverStockRequireThirdPartyShipping
+
+		annotation SummarizationSetBy = Automatic
+
+	column USPSUserID_PreferForRates
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 0896a384-5d1e-41f7-bf70-27fa9090ba5c
+		summarizeBy: none
+		sourceColumn: USPSUserID_PreferForRates
+
+		annotation SummarizationSetBy = Automatic
+
+	column WebsiteRequireThirdPartyShipping
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: ebd08cc6-3c42-48a4-9051-e0dd017689e1
+		summarizeBy: none
+		sourceColumn: WebsiteRequireThirdPartyShipping
+
+		annotation SummarizationSetBy = Automatic
+
+	column AmazonEnableRemoteFulfillment
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 71c688aa-f024-4d35-a5a3-28613889e418
+		summarizeBy: none
+		sourceColumn: AmazonEnableRemoteFulfillment
+
+		annotation SummarizationSetBy = Automatic
+
+	column EnableShippingRageAPIFor_DHLeCommerce
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: c7b7fc26-9373-48f3-b65f-ccc944fc287a
+		summarizeBy: none
+		sourceColumn: EnableShippingRageAPIFor_DHLeCommerce
+
+		annotation SummarizationSetBy = Automatic
+
+	column Volusion_TransactionFeePercent
+		dataType: double
+		lineageTag: 17ed961f-9c71-44c7-974e-c3d2d2e3b057
+		summarizeBy: sum
+		sourceColumn: Volusion_TransactionFeePercent
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column ProductDefaultAmazonBusinessProfileID
+		dataType: int64
+		formatString: 0
+		lineageTag: b98447df-af99-44c1-85fd-363942773831
+		summarizeBy: count
+		sourceColumn: ProductDefaultAmazonBusinessProfileID
+
+		annotation SummarizationSetBy = Automatic
+
+	column InvoiceCustomMessageSize
+		dataType: int64
+		formatString: 0
+		lineageTag: c4900096-e47a-44f6-86df-2ecb268d966c
+		summarizeBy: sum
+		sourceColumn: InvoiceCustomMessageSize
+
+		annotation SummarizationSetBy = Automatic
+
+	column Invoice_WholeSaleWordToPDFFileName
+		dataType: string
+		lineageTag: 2c662b28-715e-4eb0-b351-0d965fe5c894
+		summarizeBy: none
+		sourceColumn: Invoice_WholeSaleWordToPDFFileName
+
+		annotation SummarizationSetBy = Automatic
+
+	column AppEagle_UseDefaultProfileForNewProduct
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 154102f7-4253-48a2-9f9d-ace7dbfbe597
+		summarizeBy: none
+		sourceColumn: AppEagle_UseDefaultProfileForNewProduct
+
+		annotation SummarizationSetBy = Automatic
+
+	column SearsEnableOrderDownloadLimit
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 9d0f34f0-a98e-4ca4-ab87-6cbb09ffd95c
+		summarizeBy: none
+		sourceColumn: SearsEnableOrderDownloadLimit
+
+		annotation SummarizationSetBy = Automatic
+
+	column SearsOrderDownloadLimitDate
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 287b7e02-b51e-46cc-9e92-71c94dba81a2
+		summarizeBy: none
+		sourceColumn: SearsOrderDownloadLimitDate
+
+		variation Variation
+			isDefault
+			relationship: eed08250-27b7-4e02-9c73-a981c97d65ac
+			defaultHierarchy: LocalDateTable_073704bb-d851-4cba-8b4f-4ced3a47d10a.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	column AppEagle_APIEnabled
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: d26d3d22-e87a-430d-aa0a-5a03209d05b9
+		summarizeBy: none
+		sourceColumn: AppEagle_APIEnabled
+
+		annotation SummarizationSetBy = Automatic
+
+	column AppEagle_APIKey
+		dataType: string
+		lineageTag: d838e7b8-0ff4-49da-ba17-63c9f8132b05
+		summarizeBy: none
+		sourceColumn: AppEagle_APIKey
+
+		annotation SummarizationSetBy = Automatic
+
+	column Invoice_PrintLotNumber
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 53945de4-468f-4cc6-b7c6-7437aff1d354
+		summarizeBy: none
+		sourceColumn: Invoice_PrintLotNumber
+
+		annotation SummarizationSetBy = Automatic
+
+	column Invoice_PrintLotExpiryDate
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 1f4a7336-d7d7-4c7a-a58c-ccea2a84dce6
+		summarizeBy: none
+		sourceColumn: Invoice_PrintLotExpiryDate
+
+		annotation SummarizationSetBy = Automatic
+
+	column eBayEnableBestOffersDownload
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 3ed06814-3452-4667-8578-6d51583238de
+		summarizeBy: none
+		sourceColumn: eBayEnableBestOffersDownload
+
+		annotation SummarizationSetBy = Automatic
+
+	column IsCompanyCreatedByPluginWizard
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: ce8950e9-22d7-4dbd-bf29-761a51b96053
+		summarizeBy: none
+		sourceColumn: IsCompanyCreatedByPluginWizard
+
+		annotation SummarizationSetBy = Automatic
+
+	column PluginWizardChannel
+		dataType: string
+		lineageTag: a7b79953-9ad5-46e0-8dd6-65c7a0515b68
+		summarizeBy: none
+		sourceColumn: PluginWizardChannel
+
+		annotation SummarizationSetBy = Automatic
+
+	column PluginWizardSubChannel
+		dataType: string
+		lineageTag: 7f2a736e-be7c-4943-9c35-c0d0d302592c
+		summarizeBy: none
+		sourceColumn: PluginWizardSubChannel
+
+		annotation SummarizationSetBy = Automatic
+
+	column Invoice_PrintOrderPromiseDate
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: b2a01899-f3f7-4487-a672-96108afab788
+		summarizeBy: none
+		sourceColumn: Invoice_PrintOrderPromiseDate
+
+		annotation SummarizationSetBy = Automatic
+
+	column eBayEnableOrderDownloadPaidOnly
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 31cfbbc4-13f5-412f-990f-7e6d7300dbfb
+		summarizeBy: none
+		sourceColumn: eBayEnableOrderDownloadPaidOnly
+
+		annotation SummarizationSetBy = Automatic
+
+	column AmazonEnableLocations
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 79e9588c-8a13-491c-9159-0e50c7291721
+		summarizeBy: none
+		sourceColumn: AmazonEnableLocations
+
+		annotation SummarizationSetBy = Automatic
+
+	column AppEagle_PluginOrProfileID
+		dataType: string
+		lineageTag: bda775fe-d303-493c-8b96-819c4d5c3ee3
+		summarizeBy: none
+		sourceColumn: AppEagle_PluginOrProfileID
+
+		annotation SummarizationSetBy = Automatic
+
+	column CanadaAPITestMode
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 3f1587fa-b98b-4e3e-ba43-21b836fc5745
+		summarizeBy: none
+		sourceColumn: CanadaAPITestMode
+
+		annotation SummarizationSetBy = Automatic
+
+	column ProductDefaultVendorID
+		dataType: int64
+		formatString: 0
+		lineageTag: 01fc3a8e-dcd5-461e-a945-8b4f3ddc87c6
+		summarizeBy: count
+		sourceColumn: ProductDefaultVendorID
+
+		annotation SummarizationSetBy = Automatic
+
+	column WebSiteAutoCreateLocalProductsEnabledForWebsite
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: af12e023-4c22-4a49-a277-bc684f3a51e8
+		summarizeBy: none
+		sourceColumn: WebSiteAutoCreateLocalProductsEnabledForWebsite
+
+		annotation SummarizationSetBy = Automatic
+
+	column EnableAWDWorkflow
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 975fa9f5-4055-4938-a222-9082bb603b51
+		summarizeBy: none
+		sourceColumn: EnableAWDWorkflow
+
+		annotation SummarizationSetBy = Automatic
+
+	column CMFeedSellingVenue
+		dataType: string
+		lineageTag: 24546a9b-91c2-481c-8c0f-4edab4416d01
+		summarizeBy: none
+		sourceColumn: CMFeedSellingVenue
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Amazon_Merchants = m
+		mode: import
+		source =
+				let
+				    Source = Sql.Databases("10.13.0.206"),
+				    SC = Source{[Name="SC"]}[Data],
+				    dbo_Amazon_Merchants = SC{[Schema="dbo",Item="Amazon_Merchants"]}[Data]
+				in
+				    dbo_Amazon_Merchants
+
+	annotation PBI_ResultType = Table
+

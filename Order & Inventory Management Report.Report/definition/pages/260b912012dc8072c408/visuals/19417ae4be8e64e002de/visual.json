@@ -1,0 +1,17 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.5.0/schema.json",
+  "name": "19417ae4be8e64e002de",
+  "position": {
+    "x": 109.66324556713184,
+    "y": 110.92773115999049,
+    "z": 1000,
+    "height": 80.844586083982549,
+    "width": 115.2,
+    "tabOrder": 2000
+  },
+  "visualGroup": {
+    "displayName": "AOO by Warehouse",
+    "groupMode": "ScaleMode"
+  },
+  "parentGroupName": "8f84e4a45956ecba9bd2"
+}
