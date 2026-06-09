@@ -3,6 +3,8 @@
 ## 📊 Executive Overview
 This Power BI suite provides end-to-end visibility into the Sellercloud ecosystem, integrating **Inventory Management**, **Order Fulfillment**, and **Post-Order Analytics**. It is designed to bridge the gap between warehouse operations and executive decision-making.
 
+Note: This repository contains the report structure and logic. For data security, API tokens and sensitive connection strings have been parameterized and removed, while certain figures have been randomized. 
+
 ## 🚀 Key Dashboard Modules
 
 ### 1. Inventory Management Overview
